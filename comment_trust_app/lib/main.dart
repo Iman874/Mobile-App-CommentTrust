@@ -3,6 +3,7 @@ import 'frontend/screens/home_screen.dart';
 import 'frontend/screens/search_screen.dart';
 import 'frontend/screens/scan_qr_screen.dart';
 import 'frontend/screens/reviews_screen.dart';
+import 'frontend/screens/history_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         '/search': (context) => SearchScreen(),
         '/scan': (context) => ScanQRScreen(),
         '/reviews': (context) => ReviewsScreen(),
-        // You can add '/history' route when you create the history screen
+        '/history': (context) => HistoryScreen(),
       },
     );
   }

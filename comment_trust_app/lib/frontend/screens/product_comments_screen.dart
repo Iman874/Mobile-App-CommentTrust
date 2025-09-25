@@ -60,7 +60,7 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
               Container(
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Color(0xFF4CAF50),
+                  color: Color(0xFF1B4D3E),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -151,7 +151,7 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
               // Tags
               Row(
                 children: [
-                  _buildTag('Bagus', Color(0xFF4CAF50)),
+                  _buildTag('Bagus', Color(0xFF1B4D3E)),
                   SizedBox(width: 8),
                   _buildTag('Pengiriman Lambat', Colors.red),
                 ],

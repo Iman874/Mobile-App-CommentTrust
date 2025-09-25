@@ -48,7 +48,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             children: [
               // Title
               Text(
-                'Halaman',
+                'Halaman Detail Produk',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -166,19 +166,19 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     SizedBox(height: 16),
 
-                    // Trust Indicator - Green
+                    // 1. Tingkat Kepercayaan Produk
                     Container(
                       padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Color(0xFF4CAF50),
-                        borderRadius: BorderRadius.circular(8),
+                        color: Color(0xFFE0A64A), // oranye kekuningan
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Row(
                         children: [
-                          Icon(Icons.check, color: Colors.white, size: 20),
+                          Icon(Icons.check_box, color: Colors.white, size: 20),
                           SizedBox(width: 8),
                           Text(
-                            '55% Tingkat Kepercayaan Produk',
+                            '75% Tingkat Kepercayaan Produk',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,
@@ -188,14 +188,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 8),
+                    SizedBox(height: 12),
 
-                    // Good Comments - Green
+                    // 2. Komentar Baik
                     Container(
                       padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Color(0xFF4CAF50),
-                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Row(
                         children: [
@@ -212,21 +212,45 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 8),
+                    SizedBox(height: 12),
 
-                    // Bad Comments - Red
+                    // 3. Komentar Buruk
                     Container(
                       padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: Colors.red,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.thumb_down, color: Colors.white, size: 20),
+                          SizedBox(width: 8),
+                          Text(
+                            '20% Komentar Buruk',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 12),
+
+                    // 4. Komentar Tidak Berguna
+                    Container(
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Row(
                         children: [
                           Icon(Icons.close, color: Colors.white, size: 20),
                           SizedBox(width: 8),
                           Text(
-                            '33% Komentar Tidak Bergunna',
+                            '10% Komentar Tidak Berguna',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,
@@ -269,7 +293,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     SizedBox(height: 16),
 
-                    // Komentar Penting -> clickable
                     InkWell(
                       onTap: () {
                         Navigator.push(
@@ -285,7 +308,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         Colors.grey[200]!,
                       ),
                     ),
-
                     SizedBox(height: 8),
                     _buildReviewItem('Barang bagus', '(23)', Colors.grey[200]!),
                     SizedBox(height: 8),
@@ -298,7 +320,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     SizedBox(height: 12),
 
-                    // Show More
                     Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: 12,

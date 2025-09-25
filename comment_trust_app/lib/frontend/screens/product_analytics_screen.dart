@@ -383,7 +383,7 @@ class PieChartPainter extends CustomPainter {
 
     // Data pie chart dummy (pakai tipe Map yang lebih jelas)
     final List<Map<String, dynamic>> data = [
-      {'value': 40.0, 'color': Colors.green},
+      {'value': 40.0, 'color': const Color.fromARGB(255, 36, 95, 38)},
       {'value': 30.0, 'color': Colors.orange},
       {'value': 20.0, 'color': Colors.red[300]!},
       {'value': 10.0, 'color': Colors.grey[400]!},

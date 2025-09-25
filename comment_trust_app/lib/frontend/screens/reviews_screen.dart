@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
+import 'product_detail_screen.dart';
 
 class ReviewsScreen extends StatefulWidget {
   @override
@@ -78,6 +79,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
 
                     // First Product
                     _buildProductCard(
+                      context,
                       'Acer Aspire 3 - 78301 - 610M - 15.6" Full HD (1920 x 1080)',
                       Icons.laptop,
                       '5.0/5.0',
@@ -86,6 +88,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
 
                     // Second Product
                     _buildProductCard(
+                      context,
                       'Samsung 32Z Ultra 128GB/8GB Memory',
                       Icons.memory,
                       '5.0/5.0',
@@ -130,6 +133,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
 
                     // First Product
                     _buildProductCard(
+                      context,
                       'Acer Aspire 3 - 78301 - 610M - 15.6" Full HD (1920 x 1080)',
                       Icons.laptop,
                       '5.0/5.0',
@@ -138,6 +142,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
 
                     // Second Product
                     _buildProductCard(
+                      context,
                       'Samsung 32Z Ultra 128GB/8GB Memory',
                       Icons.memory,
                       '5.0/5.0',
@@ -173,7 +178,12 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
     );
   }
 
-  Widget _buildProductCard(String title, IconData icon, String rating) {
+  Widget _buildProductCard(
+    BuildContext context,
+    String title,
+    IconData icon,
+    String rating,
+  ) {
     return Container(
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -224,18 +234,27 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(
-              color: Color(0xFF1B4D3E),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text(
-              'Detail',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
+          GestureDetector(
+            onTap: () {
+              // 🔹 Navigasi langsung ke ProductDetailScreen
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProductDetailScreen()),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: Color(0xFF1B4D3E),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                'Detail',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ),
