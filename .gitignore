@@ -1,0 +1,72 @@
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# === Laravel / PHP ===
+vendor/
+node_modules/
+.env
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# Laravel storage & cache
+/storage/*.key
+/storage/*.cache
+/storage/debugbar
+/storage/logs
+bootstrap/cache/
+
+# === Flutter / Dart ===
+.buildlog/
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.melOS/
+.pub-cache/
+pubspec.lock
+
+# Flutter build
+build/
+ios/Pods/
+android/.gradle/
+android/app/build/
+
+# === Database / Secrets ===
+*.sqlite3
+*.db
+*.sql
+*.json
+*.pem
+*.crt
+*.key
+*.p12
+
+# === OS generated files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === IDE settings ===
+.vscode/
+.idea/
+*.iml
