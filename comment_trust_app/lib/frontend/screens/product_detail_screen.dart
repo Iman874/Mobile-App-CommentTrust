@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import 'product_comments_screen.dart';
+import 'product_analytics_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        backgroundColor: Color(0xFF1B4D3E),
+        backgroundColor: const Color(0xFF1B4D3E),
         elevation: 0,
         title: Row(
           children: [
@@ -26,10 +27,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(4),
               ),
-              child: Icon(Icons.check, color: Color(0xFF1B4D3E), size: 16),
+              child: const Icon(
+                Icons.check,
+                color: Color(0xFF1B4D3E),
+                size: 16,
+              ),
             ),
-            SizedBox(width: 8),
-            Text(
+            const SizedBox(width: 8),
+            const Text(
               'Comment Trust',
               style: TextStyle(
                 color: Colors.white,
@@ -40,14 +45,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ],
         ),
       ),
+
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Title
-              Text(
+              const Text(
                 'Halaman Detail Produk',
                 style: TextStyle(
                   fontSize: 18,
@@ -55,26 +60,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   color: Colors.black87,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-              // Product Section
+              // 🔹 Produk
               Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.05),
-                      blurRadius: 10,
-                      offset: Offset(0, 2),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
                     ),
                   ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Produk',
                       style: TextStyle(
                         fontSize: 16,
@@ -82,25 +87,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         color: Colors.black87,
                       ),
                     ),
-                    SizedBox(height: 16),
-
-                    // Product Image
-                    Container(
-                      width: 120,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Icon(
-                        Icons.laptop,
-                        color: Colors.grey[600],
-                        size: 40,
+                    const SizedBox(height: 14),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        'assets/images/img1.jpg',
+                        width: 110,
+                        height: 80,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    SizedBox(height: 12),
-
-                    Text(
+                    const SizedBox(height: 12),
+                    const Text(
                       'Acer Aspire 3 - 78301 - 610M - 15.6" Full HD (1920 x 1080)',
                       style: TextStyle(
                         fontSize: 12,
@@ -109,245 +107,56 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 12),
-
-                    // Detail Button
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey[400]!),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.expand_more, size: 16),
-                          SizedBox(width: 4),
-                          Text(
-                            'Lihat Lebih Detail',
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: 20),
-
-              // Results Review Section
-              Container(
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      blurRadius: 10,
-                      offset: Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Hasil Review',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    SizedBox(height: 16),
-
-                    // 1. Tingkat Kepercayaan Produk
-                    Container(
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Color(0xFFE0A64A), // oranye kekuningan
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.check_box, color: Colors.white, size: 20),
-                          SizedBox(width: 8),
-                          Text(
-                            '75% Tingkat Kepercayaan Produk',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 12),
-
-                    // 2. Komentar Baik
-                    Container(
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.thumb_up, color: Colors.white, size: 20),
-                          SizedBox(width: 8),
-                          Text(
-                            '65% Komentar Baik',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 12),
-
-                    // 3. Komentar Buruk
-                    Container(
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.thumb_down, color: Colors.white, size: 20),
-                          SizedBox(width: 8),
-                          Text(
-                            '20% Komentar Buruk',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 12),
-
-                    // 4. Komentar Tidak Berguna
-                    Container(
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.close, color: Colors.white, size: 20),
-                          SizedBox(width: 8),
-                          Text(
-                            '10% Komentar Tidak Berguna',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: 20),
-
-              // Detail Review Section
-              Container(
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      blurRadius: 10,
-                      offset: Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Detail Review',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    SizedBox(height: 16),
-
+                    const SizedBox(height: 12),
                     InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProductCommentsScreen(),
+                            builder: (context) => ProductAnalyticsScreen(),
                           ),
                         );
                       },
-                      child: _buildReviewItem(
-                        'Komentar Penting',
-                        '(30)',
-                        Colors.grey[200]!,
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    _buildReviewItem('Barang bagus', '(23)', Colors.grey[200]!),
-                    SizedBox(height: 8),
-                    _buildReviewItem('Tag Komentar', '(13)', Colors.grey[200]!),
-                    SizedBox(height: 8),
-                    _buildReviewItem(
-                      'Tidak sesuai gambar',
-                      '(23)',
-                      Colors.grey[200]!,
-                    ),
-                    SizedBox(height: 12),
-
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey[400]!),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.expand_more, size: 16),
-                          SizedBox(width: 4),
-                          Text(
-                            'Lihat lebih banyak tag',
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ],
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey[400]!),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.expand_more, size: 16),
+                            SizedBox(width: 4),
+                            Text(
+                              'Lihat Lebih Detail',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
+
+              const SizedBox(height: 20),
+
+              // 🔹 Hasil Review
+              _buildReviewCard(),
+
+              const SizedBox(height: 20),
+
+              // 🔹 Detail Review
+              _buildDetailReviewSection(context),
             ],
           ),
         ),
       ),
+
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _currentIndex,
         onTap: (index) {
@@ -360,30 +169,186 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
-  Widget _buildReviewItem(String title, String count, Color bgColor) {
+  // ========================== Hasil Review ==========================
+  Widget _buildReviewCard() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: bgColor,
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          const Text(
+            'Hasil Review',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          _buildReviewItem(
+            icon: Icons.verified,
+            text: '92% Tingkat Kepercayaan Produk',
+            color: const Color(0xFF1B4D3E),
+          ),
+          const SizedBox(height: 10),
+          _buildReviewItem(
+            icon: Icons.thumb_up_alt,
+            text: '75% Komentar Positif',
+            color: const Color(0xFF157F1F),
+          ),
+          const SizedBox(height: 10),
+          _buildReviewItem(
+            icon: Icons.thumb_down_alt,
+            text: '18% Komentar Negatif',
+            color: const Color(0xFF7D0A0A),
+          ),
+          const SizedBox(height: 10),
+          _buildReviewItem(
+            icon: Icons.cancel,
+            text: '7% Komentar Tidak Relevan',
+            color: const Color(0xFF9E9E9E),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReviewItem({
+    required IconData icon,
+    required String text,
+    required Color color,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: Colors.white, size: 18),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              text,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ========================== Detail Review ==========================
+  Widget _buildDetailReviewSection(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Detail Review',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 16),
+          _buildReviewDetailItem('Komentar Penting', '(56)'),
+          const SizedBox(height: 8),
+          _buildReviewDetailItem('Produk Sesuai Deskripsi', '(23)'),
+          const SizedBox(height: 8),
+          _buildReviewDetailItem('Tag Positif', '(15)'),
+          const SizedBox(height: 8),
+          _buildReviewDetailItem('Tidak Sesuai Gambar', '(6)'),
+          const SizedBox(height: 12),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductCommentsScreen(),
+                ),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey[400]!),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.expand_more, size: 16),
+                  SizedBox(width: 4),
+                  Text(
+                    'Lihat lebih banyak tag',
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReviewDetailItem(String title, String count) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
         borderRadius: BorderRadius.circular(6),
       ),
       child: Row(
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: Colors.black87,
+          Expanded(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: Colors.black87,
+              ),
             ),
           ),
-          SizedBox(width: 4),
           Text(count, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
         ],
       ),
     );
   }
 
+  // ========================== Navigasi ==========================
   void _navigateToScreen(BuildContext context, int index) {
     switch (index) {
       case 0:
