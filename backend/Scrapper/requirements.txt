@@ -1,5 +1,5 @@
 # --- Core dependencies ---
-requests==2.32.3
+requests==2.32.4
 
 # --- Optional (untuk fallback scraping / dynamic content) ---
 playwright==1.48.0
