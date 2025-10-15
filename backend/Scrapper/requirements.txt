@@ -1,0 +1,14 @@
+# --- Core dependencies ---
+requests==2.32.3
+
+# --- Optional (untuk fallback scraping / dynamic content) ---
+playwright==1.48.0
+
+# --- JSON & parsing utils (standar library sudah cukup, tapi disarankan versi stabil) ---
+beautifulsoup4==4.12.3
+lxml==5.3.0
+
+# --- Optional logging & retrying (recommended for production) ---
+tenacity==8.2.3
+loguru==0.7.2
+
