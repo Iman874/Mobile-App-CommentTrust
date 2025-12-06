@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
+import '../services/dummy_data_loader.dart';
+import '../services/api_config.dart';
+import '../services/product_service.dart';
 import 'product_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,34 +14,35 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
   bool _showAll = false;
+  List<Map<String, dynamic>> _products = [];
 
-  final List<Map<String, dynamic>> _products = [
-    {
-      'image': 'assets/images/img1.jpg',
-      'name': 'Acer Aspire 3 - 78306 - 610M -15.6" Full HD (1920 x 1080)',
-      'rating': 5.0,
-    },
-    {
-      'image': 'assets/images/img2.jpeg',
-      'name': 'Samsung 32Z Ultra 128GB/8GB Memory',
-      'rating': 5.0,
-    },
-    {
-      'image': 'assets/images/img3.jpg',
-      'name': 'Canon EOS 1200D DSLR – 18MP · Full HD 1080p · 3.0” LCD',
-      'rating': 5.0,
-    },
-    {
-      'image': 'assets/images/imgs4.png',
-      'name': 'G520 X Gaming Mouse – 7200 DPI · RGB · 6 Buttons',
-      'rating': 5.0,
-    },
-    {
-      'image': 'assets/images/img5.jpeg',
-      'name': 'Headphones Setting – 2500 x 2500 Resolution · Stereo Sound',
-      'rating': 5.0,
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await ApiConfig.I.load();
+    if (ApiConfig.I.demoMode) {
+      final list = await DummyDataLoader.loadProducts();
+      if (!mounted) return;
+      setState(() { _products = list; });
+      return;
+    }
+    final baseUrl = ApiConfig.I.baseUrl;
+    final remote = await ProductService.fetchSimplified(baseUrl, limit: 8);
+    // Map remote rows to UI structure (preserve existing keys expected by UI).
+    final mapped = remote.map<Map<String,dynamic>>((p){
+      return {
+        'image': 'assets/images/img1.jpg', // placeholder to keep style
+        'name': p['name'] ?? 'Produk Tanpa Nama',
+        'rating': (p['avg_rating'] ?? 0).toDouble(),
+        'product_key': p['product_key'],
+      }; }).toList();
+    if (!mounted) return;
+    setState(() { _products = mapped; });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -196,8 +200,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              ProductDetailScreen(),
+                                          builder: (context) => ProductDetailScreen(
+                                            productKey: product['product_key']?.toString() ?? '',
+                                            productName: product['name']?.toString() ?? 'Produk',
+                                          ),
                                         ),
                                       );
                                     },

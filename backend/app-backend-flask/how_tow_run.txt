@@ -1,0 +1,29 @@
+# Langkah-langkah untuk menyiapkan dan menjalankan program Python
+
+1. **Buat virtual environment**:
+    Buka terminal di direktori saat ini dan jalankan:
+    ```
+    python -m venv venv
+    ```
+
+2. **Aktifkan virtual environment**:
+    - Di Windows:
+      ```
+      venv\Scripts\activate
+      ```
+    - Di macOS/Linux:
+      ```
+      source venv/bin/activate
+      ```
+
+3. **Install dependensi yang diperlukan**:
+    Pastikan Anda memiliki file `requirements.txt` di direktori. Kemudian jalankan:
+    ```
+    pip install -r requirements.txt
+    ```
+
+4. **Jalankan program**:
+    Eksekusi file `main.py`:
+    ```
+    python main.py
+    ```

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import 'product_comments_screen.dart';
 import 'product_analytics_screen.dart';
+import '../services/history_service.dart';
 
 class HistoryScreen extends StatefulWidget {
   @override
@@ -10,6 +11,25 @@ class HistoryScreen extends StatefulWidget {
 
 class _HistoryScreenState extends State<HistoryScreen> {
   int _currentIndex = 4;
+  String? _lastProductKey;
+  String? _lastProductName;
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLastViewed();
+  }
+
+  Future<void> _loadLastViewed() async {
+    final last = await HistoryService.getLastViewed();
+    if (!mounted) return;
+    setState(() {
+      _lastProductKey = last?['productKey'];
+      _lastProductName = last?['productName'];
+      _loading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +66,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
         ),
       ),
 
-      body: SingleChildScrollView(
+      body: _loading
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           child: Column(
@@ -98,25 +120,36 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Text(
-                      'Acer Aspire 3 - 78301 - 610M - 15.6" Full HD (1920 x 1080)',
-                      style: TextStyle(
+                    Text(
+                      _lastProductName ?? 'Belum ada produk yang dilihat',
+                      style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                         color: Colors.black87,
                       ),
                       textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 12),
 
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProductAnalyticsScreen(),
-                          ),
-                        );
+                        if (_lastProductKey != null && _lastProductName != null && _lastProductKey!.isNotEmpty) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductAnalyticsScreen(
+                                productKey: _lastProductKey!,
+                                productName: _lastProductName!,
+                              ),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Belum ada produk yang dilihat. Silakan pilih produk terlebih dahulu.')),
+                          );
+                        }
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
@@ -127,14 +160,14 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           border: Border.all(color: Colors.grey[400]!),
                           borderRadius: BorderRadius.circular(6),
                         ),
-                        child: const Row(
+                        child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(Icons.expand_more, size: 16),
-                            SizedBox(width: 4),
+                            const Icon(Icons.show_chart, size: 16),
+                            const SizedBox(width: 4),
                             Text(
-                              'Lihat Lebih Detail',
-                              style: TextStyle(fontSize: 12),
+                              (_lastProductKey != null && _lastProductKey!.isNotEmpty) ? 'Lihat Grafik' : 'Belum ada histori',
+                              style: const TextStyle(fontSize: 12),
                             ),
                           ],
                         ),

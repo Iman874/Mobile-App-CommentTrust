@@ -1,0 +1,115 @@
+[2025-12-03T12:01:22.832381] START job for link: https://shopee.co.id/Samsung-Galaxy-S24-Series-S24-Ultra-S24-Basic-S24-FE-Smart-AI-Kamera-200MP-i.1101386382.23860528324
+[2025-12-03T12:01:22.837042] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-12-03T12:01:35.728031] SCRAPER injected 27 cookies from cookies.json into session
+[2025-12-03T12:01:42.292298] SCRAPER product tab detected; proceeding
+[2025-12-03T12:01:42.293270] SCRAPER fetch product data
+[2025-12-03T12:01:45.866369] SCRAPER fetch comments
+[2025-12-03T12:01:46.044778] SCRAPER ratings fetch page 1 offset 0 failed (attempt 1/5): empty ratings
+[2025-12-03T12:01:48.266533] SCRAPER ratings fetch page 1 offset 0 failed (attempt 2/5): empty ratings
+[2025-12-03T12:01:51.447652] SCRAPER ratings fetch page 1 offset 0 failed (attempt 3/5): empty ratings
+[2025-12-03T12:01:55.664897] SCRAPER ratings fetch page 1 offset 0 failed (attempt 4/5): empty ratings
+[2025-12-03T12:02:00.848001] SCRAPER ratings fetch page 1 offset 0 failed (attempt 5/5): empty ratings
+[2025-12-03T12:02:05.849776] SCRAPER skip page 1 after 5 failures; lanjut halaman berikutnya
+[2025-12-03T12:02:06.014919] SCRAPER ratings fetch page 2 offset 20 failed (attempt 1/5): empty ratings
+[2025-12-03T12:02:08.200579] SCRAPER ratings fetch page 2 offset 20 failed (attempt 2/5): empty ratings
+[2025-12-03T12:02:11.369173] SCRAPER ratings fetch page 2 offset 20 failed (attempt 3/5): empty ratings
+[2025-12-03T12:02:15.546961] SCRAPER ratings fetch page 2 offset 20 failed (attempt 4/5): empty ratings
+[2025-12-03T12:02:22.193420] SCRAPER page 2: collected 20/200
+[2025-12-03T12:02:23.358446] SCRAPER page 3: collected 40/200
+[2025-12-03T12:02:25.470048] SCRAPER page 4: collected 60/200
+[2025-12-03T12:02:26.731419] SCRAPER page 5: collected 80/200
+[2025-12-03T12:02:27.920293] SCRAPER page 6: collected 100/200
+[2025-12-03T12:02:29.160140] SCRAPER page 7: collected 120/200
+[2025-12-03T12:02:30.531003] SCRAPER page 8: collected 140/200
+[2025-12-03T12:02:31.624133] SCRAPER page 9: collected 160/200
+[2025-12-03T12:02:32.710898] SCRAPER page 10: collected 180/200
+[2025-12-03T12:02:33.781589] SCRAPER page 11: collected 200/200
+[2025-12-03T12:02:35.478555] SCRAPER page 12: collected 220/200
+[2025-12-03T12:02:36.751875] SCRAPER page 13: collected 240/200
+[2025-12-03T12:02:38.202325] SCRAPER page 14: collected 260/200
+[2025-12-03T12:02:39.483002] SCRAPER page 15: collected 280/200
+[2025-12-03T12:02:40.543356] SCRAPER page 16: collected 300/200
+[2025-12-03T12:02:41.491940] SCRAPER page 17: collected 320/200
+[2025-12-03T12:02:42.422185] SCRAPER page 18: collected 340/200
+[2025-12-03T12:02:43.426195] SCRAPER page 19: collected 360/200
+[2025-12-03T12:02:44.413213] SCRAPER page 20: collected 380/200
+[2025-12-03T12:02:45.388295] SCRAPER page 21: collected 400/200
+[2025-12-03T12:02:46.422225] SCRAPER page 22: collected 420/200
+[2025-12-03T12:02:47.472735] SCRAPER page 23: collected 440/200
+[2025-12-03T12:02:48.440936] SCRAPER page 24: collected 460/200
+[2025-12-03T12:02:49.445660] SCRAPER page 25: collected 480/200
+[2025-12-03T12:02:50.596762] SCRAPER page 26: collected 500/200
+[2025-12-03T12:02:51.620356] SCRAPER page 27: collected 520/200
+[2025-12-03T12:02:52.612943] SCRAPER page 28: collected 540/200
+[2025-12-03T12:02:53.654201] SCRAPER page 29: collected 560/200
+[2025-12-03T12:02:54.690908] SCRAPER page 30: collected 580/200
+[2025-12-03T12:02:55.786618] SCRAPER page 31: collected 600/200
+[2025-12-03T12:02:56.773311] SCRAPER page 32: collected 620/200
+[2025-12-03T12:02:57.840114] SCRAPER page 33: collected 640/200
+[2025-12-03T12:02:58.980390] SCRAPER page 34: collected 655/200
+[2025-12-03T12:02:59.070013] SCRAPER finished; total 655 reviews saved
+[2025-12-03T12:03:01.077608] SCRAPER finished
+[2025-12-03T12:03:01.080606] ANALYSIS 5% :: init: resolve input
+[2025-12-03T12:03:01.142968] ANALYSIS 10% :: [01] preprocess
+[2025-12-03T12:03:01.157194] ANALYSIS 20% :: [01b] tokenize
+[2025-12-03T12:03:01.170623] ANALYSIS 40% :: [03] sentiment
+[2025-12-03T12:03:41.171286] ANALYSIS 70% :: [04] fake detect
+[2025-12-03T12:03:41.281216] ANALYSIS 90% :: [05] trust score
+[2025-12-03T12:03:41.318314] ANALYSIS 98% :: [06] summarize
+[2025-12-03T12:03:41.336323] ANALYSIS 100% :: done
+[2025-12-03T12:03:41.337322] OUTPUT pipeline finished; outputs at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\output\comment\1101386382-23860528324\indobert
+[2025-12-03T12:03:42.439989] Laravel sync succeeded
+[2025-12-03T12:16:16.763165] START job for link: https://shopee.co.id/Samsung-Galaxy-S24-Series-S24-Ultra-S24-Basic-S24-FE-Smart-AI-Kamera-200MP-i.1101386382.23860528324
+[2025-12-03T12:16:16.765564] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-12-03T12:16:28.325654] SCRAPER injected 34 cookies from cookies.json into session
+[2025-12-03T12:16:34.072580] SCRAPER product tab detected; proceeding
+[2025-12-03T12:16:34.073784] SCRAPER fetch product data
+[2025-12-03T12:16:35.230554] SCRAPER fetch comments
+[2025-12-03T12:16:35.936250] SCRAPER page 1: collected 20/1350
+[2025-12-03T12:16:37.171712] SCRAPER page 2: collected 40/1350
+[2025-12-03T12:16:38.311020] SCRAPER page 3: collected 60/1350
+[2025-12-03T12:16:39.443942] SCRAPER page 4: collected 80/1350
+[2025-12-03T12:16:40.576420] SCRAPER page 5: collected 100/1350
+[2025-12-03T12:16:41.687192] SCRAPER page 6: collected 120/1350
+[2025-12-03T12:16:42.815724] SCRAPER page 7: collected 140/1350
+[2025-12-03T12:16:43.889143] SCRAPER page 8: collected 160/1350
+[2025-12-03T12:16:44.957403] SCRAPER page 9: collected 180/1350
+[2025-12-03T12:16:46.098514] SCRAPER page 10: collected 200/1350
+[2025-12-03T12:16:47.098126] SCRAPER page 11: collected 220/1350
+[2025-12-03T12:16:48.133817] SCRAPER page 12: collected 240/1350
+[2025-12-03T12:16:49.218846] SCRAPER page 13: collected 260/1350
+[2025-12-03T12:16:50.413908] SCRAPER page 14: collected 280/1350
+[2025-12-03T12:16:51.567460] SCRAPER page 15: collected 300/1350
+[2025-12-03T12:16:52.657720] SCRAPER page 16: collected 320/1350
+[2025-12-03T12:16:53.668004] SCRAPER page 17: collected 340/1350
+[2025-12-03T12:16:54.656269] SCRAPER page 18: collected 360/1350
+[2025-12-03T12:16:55.662170] SCRAPER page 19: collected 380/1350
+[2025-12-03T12:16:56.654824] SCRAPER page 20: collected 400/1350
+[2025-12-03T12:16:57.664004] SCRAPER page 21: collected 420/1350
+[2025-12-03T12:16:58.649979] SCRAPER page 22: collected 440/1350
+[2025-12-03T12:16:59.699653] SCRAPER page 23: collected 460/1350
+[2025-12-03T12:17:00.732737] SCRAPER page 24: collected 480/1350
+[2025-12-03T12:17:01.765528] SCRAPER page 25: collected 500/1350
+[2025-12-03T12:17:02.781352] SCRAPER page 26: collected 520/1350
+[2025-12-03T12:17:03.816522] SCRAPER page 27: collected 540/1350
+[2025-12-03T12:17:04.850340] SCRAPER page 28: collected 560/1350
+[2025-12-03T12:17:05.900357] SCRAPER page 29: collected 580/1350
+[2025-12-03T12:17:06.906618] SCRAPER page 30: collected 600/1350
+[2025-12-03T12:17:07.985362] SCRAPER page 31: collected 620/1350
+[2025-12-03T12:17:09.057648] SCRAPER page 32: collected 640/1350
+[2025-12-03T12:17:10.131845] SCRAPER page 33: collected 660/1350
+[2025-12-03T12:17:11.246310] SCRAPER page 34: collected 675/1350
+[2025-12-03T12:17:11.318279] SCRAPER finished; total 675 reviews saved
+[2025-12-03T12:17:13.350839] SCRAPER finished
+[2025-12-03T12:17:13.352837] ANALYSIS 5% :: init: resolve input
+[2025-12-03T12:17:13.384571] ANALYSIS 10% :: [01] preprocess
+[2025-12-03T12:17:13.395595] ANALYSIS 20% :: [01b] tokenize
+[2025-12-03T12:17:13.405578] ANALYSIS 40% :: [03] sentiment
+[2025-12-03T12:17:46.708626] ANALYSIS 70% :: [04] fake detect
+[2025-12-03T12:17:46.757153] ANALYSIS 90% :: [05] trust score
+[2025-12-03T12:17:46.787156] ANALYSIS 98% :: [06] summarize
+[2025-12-03T12:17:46.801464] ANALYSIS 100% :: done
+[2025-12-03T12:17:46.806584] OUTPUT pipeline finished; outputs at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\output\comment\1101386382-23860528324\indobert
+[2025-12-03T12:17:47.024136] Laravel ingest accepted (HTTP 200)
+[2025-12-03T12:17:47.203281] Laravel poll: count_reviews=655 status=waiting-db
+[2025-12-03T12:17:47.203281] Laravel sync succeeded

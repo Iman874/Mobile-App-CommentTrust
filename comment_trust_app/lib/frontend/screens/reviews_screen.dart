@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import 'product_detail_screen.dart';
+import '../services/api_config.dart';
+import '../services/dummy_data_loader.dart';
+import '../services/product_service.dart';
 
 class ReviewsScreen extends StatefulWidget {
   @override
@@ -10,33 +13,42 @@ class ReviewsScreen extends StatefulWidget {
 class _ReviewsScreenState extends State<ReviewsScreen> {
   int _currentIndex = 3; // tab aktif: ulasan
 
-  // 🔹 Review terbaru
-  final List<Map<String, dynamic>> _latestReviews = [
-    {
-      'image': 'assets/images/img1.jpg',
-      'name': 'Acer Aspire 3 - 78306 - 610M - 15.6" Full HD (1920 x 1080)',
-      'rating': 5.0,
-    },
-    {
-      'image': 'assets/images/img2.jpeg',
-      'name': 'Samsung 32Z Ultra 128GB/8GB Memory',
-      'rating': 5.0,
-    },
-  ];
+  List<Map<String, dynamic>> _latestReviews = [];
+  List<Map<String, dynamic>> _previousReviews = [];
 
-  // 🔹 Review sebelumnya
-  final List<Map<String, dynamic>> _previousReviews = [
-    {
-      'image': 'assets/images/img3.jpg',
-      'name': 'Canon EOS 1200D DSLR – 18MP · Full HD 1080p · 3.0” LCD',
-      'rating': 5.0,
-    },
-    {
-      'image': 'assets/images/imgs4.png',
-      'name': 'G520 X Gaming Mouse – 7200 DPI · RGB · 6 Buttons',
-      'rating': 5.0,
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    await ApiConfig.I.load();
+    if (ApiConfig.I.demoMode) {
+      final all = await DummyDataLoader.loadProducts();
+      final latest = all.take(2).toList();
+      final prev = all.skip(2).take(2).toList();
+      if (!mounted) return;
+      setState(() {
+        _latestReviews = latest;
+        _previousReviews = prev;
+      });
+      return;
+    }
+    final baseUrl = ApiConfig.I.baseUrl;
+    final data = await ProductService.fetchLatest(baseUrl, limit: 6);
+    // Map to UI fields, keep placeholder image assets
+    final mapped = data.map<Map<String, dynamic>>((p) => {
+      'image': 'assets/images/img1.jpg',
+      'name': p['name'] ?? 'Unknown Product',
+      'rating': (p['avg_rating'] ?? 0).toDouble(),
+    }).toList();
+    if (!mounted) return;
+    setState(() {
+      _latestReviews = mapped.take(2).toList();
+      _previousReviews = mapped.skip(2).take(2).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +223,10 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ProductDetailScreen(),
+                              builder: (context) => ProductDetailScreen(
+                                productKey: review['product_key']?.toString() ?? '',
+                                productName: review['name']?.toString() ?? 'Produk',
+                              ),
                             ),
                           );
                         },

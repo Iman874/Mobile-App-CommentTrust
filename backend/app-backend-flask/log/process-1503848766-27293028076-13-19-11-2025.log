@@ -1,0 +1,454 @@
+[2025-11-19T06:04:44.425138] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:04:45.175227] SCRAPER using profile copy: D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\browser-dummy-copy\edge_profile
+[2025-11-19T06:04:55.935160] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:04:56.648378] SCRAPER using profile copy: D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\browser-dummy-copy\edge_profile
+[2025-11-19T06:06:12.313467] SCRAPER cookie not found at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\browser-dummy\cookie.json, continuing without cookie
+[2025-11-19T06:07:16.049282] SCRAPER login detected
+[2025-11-19T06:07:16.243225] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:16.243225] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:07:19.300476] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:22.349689] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:25.383376] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:28.430164] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:33.767521] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:33.768519] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:07:36.806903] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:39.897431] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:43.008308] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:46.106484] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:49.187098] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:49.188201] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:07:52.282037] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:55.385130] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:07:58.517595] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:08:01.598641] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:08:04.698388] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:08:04.699385] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:08:07.809651] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:08:10.900189] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:08:13.922156] SCRAPER captcha cleared
+[2025-11-19T06:08:16.503811] ERROR scraper failed: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=142.0.3595.80)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff659c92a75+51877]
+	GetHandleVerifier [0x0x7ff659c92ad4+51972]
+	GetHandleVerifier [0x0x7ff659e49425+1848405]
+	(No symbol) [0x0x7ff6599e0e5f]
+	(No symbol) [0x0x7ff659a774ec]
+	(No symbol) [0x0x7ff659a8ed0a]
+	(No symbol) [0x0x7ff659a71df3]
+	(No symbol) [0x0x7ff659a45b36]
+	(No symbol) [0x0x7ff659a44d80]
+	(No symbol) [0x0x7ff659a45973]
+	(No symbol) [0x0x7ff659b0e4a5]
+	(No symbol) [0x0x7ff659b0a75d]
+	GetHandleVerifier [0x0x7ff659cbd2b3+226019]
+	GetHandleVerifier [0x0x7ff659cac481+156849]
+	GetHandleVerifier [0x0x7ff659cb4979+190889]
+	GetHandleVerifier [0x0x7ff659c99bb4+80868]
+	GetHandleVerifier [0x0x7ff659c99d03+81203]
+	GetHandleVerifier [0x0x7ff659c88286+8886]
+	BaseThreadInitThunk [0x0x7ff9c9b0e8d7+23]
+	RtlUserThreadStart [0x0x7ff9cb08c53c+44]
+
+[2025-11-19T06:08:41.531442] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:08:42.234741] SCRAPER using profile copy: D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\browser-dummy-copy\edge_profile
+[2025-11-19T06:10:06.843777] SCRAPER cookie not found at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\browser-dummy\cookie.json, continuing without cookie
+[2025-11-19T06:10:25.126375] SCRAPER login detected
+[2025-11-19T06:10:25.159867] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:25.159867] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:10:28.197338] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:31.227236] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:34.255994] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:37.293173] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:40.322906] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:40.323907] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:10:43.352787] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:46.404694] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:49.433276] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:52.470454] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:55.500625] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:10:55.500625] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:10:58.555972] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:01.585729] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:04.605802] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:07.626402] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:10.672258] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:10.673256] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:11:13.741695] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:16.804204] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:19.875322] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:22.961503] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:26.019503] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:26.019503] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:11:29.122195] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:32.227506] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:35.319708] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:38.376154] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:41.462835] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:41.462835] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:11:44.547165] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:47.625098] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:50.703543] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:53.782270] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:56.867319] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:11:56.867319] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:11:59.955865] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:12:03.031517] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:12:06.117803] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:12:09.203259] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:12:12.219769] SCRAPER captcha cleared
+[2025-11-19T06:12:14.236473] ERROR scraper failed: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff659c92a75+51877]
+	GetHandleVerifier [0x0x7ff659c92ad4+51972]
+	(No symbol) [0x0x7ff659a01149]
+	(No symbol) [0x0x7ff659a444a3]
+	(No symbol) [0x0x7ff659a71f52]
+	(No symbol) [0x0x7ff659a1a525]
+	(No symbol) [0x0x7ff659a6e9a1]
+	(No symbol) [0x0x7ff659a6e139]
+	(No symbol) [0x0x7ff6599d63b5]
+	(No symbol) [0x0x7ff659b0e4a5]
+	(No symbol) [0x0x7ff659b0a75d]
+	GetHandleVerifier [0x0x7ff659cbd2b3+226019]
+	GetHandleVerifier [0x0x7ff659cac481+156849]
+	GetHandleVerifier [0x0x7ff659cb4979+190889]
+	(No symbol) [0x0x7ff6599d4ef3]
+	GetHandleVerifier [0x0x7ff659dfed98+1543624]
+	BaseThreadInitThunk [0x0x7ff9c9b0e8d7+23]
+	RtlUserThreadStart [0x0x7ff9cb08c53c+44]
+
+[2025-11-19T06:15:21.172641] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:15:21.834996] SCRAPER using profile copy: D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\browser-dummy-copy\edge_profile (source=D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\browser-dummy\edge_profile)
+[2025-11-19T06:17:02.493872] SCRAPER injected 27 cookies from cookies.json into session
+[2025-11-19T06:17:10.339030] SCRAPER login detected
+[2025-11-19T06:17:10.356029] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:10.356029] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:17:13.417863] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:16.477469] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:19.592297] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:22.673892] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:25.746743] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:25.747744] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:17:28.836571] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:31.893488] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:34.966767] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:38.039591] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:41.098232] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:41.098232] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:17:44.164467] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:47.227113] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:50.309015] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:53.385721] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:56.455182] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:17:56.455182] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:17:59.525723] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:02.622786] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:05.698481] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:08.796027] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:11.886681] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:11.887683] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:18:15.046887] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:18.135024] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:21.219074] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:24.313873] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:27.399410] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:27.400409] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:18:30.479664] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:33.582990] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:36.683744] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:39.781962] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:42.873506] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:42.873506] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:18:45.945232] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:49.029800] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:52.126845] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:55.215756] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:58.293762] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:18:58.294762] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:19:01.398668] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:04.484848] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:07.573569] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:10.672706] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:13.759367] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:13.760370] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:19:16.854478] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:19.935195] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:23.014671] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:26.107278] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:29.189542] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:29.189542] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:19:32.291097] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:35.382119] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:38.468567] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:41.546935] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:44.620749] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:44.620749] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:19:47.697091] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:50.776928] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:53.861921] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:19:56.965949] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:20:00.064208] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:20:00.064208] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:20:03.160363] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:20:06.169256] SCRAPER captcha cleared
+[2025-11-19T06:20:08.198435] ERROR scraper failed: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff659c92a75+51877]
+	GetHandleVerifier [0x0x7ff659c92ad4+51972]
+	(No symbol) [0x0x7ff659a01149]
+	(No symbol) [0x0x7ff659a444a3]
+	(No symbol) [0x0x7ff659a71f52]
+	(No symbol) [0x0x7ff659a1a525]
+	(No symbol) [0x0x7ff659a6e9a1]
+	(No symbol) [0x0x7ff659a6e139]
+	(No symbol) [0x0x7ff6599d63b5]
+	(No symbol) [0x0x7ff659b0e4a5]
+	(No symbol) [0x0x7ff659b0a75d]
+	GetHandleVerifier [0x0x7ff659cbd2b3+226019]
+	GetHandleVerifier [0x0x7ff659cac481+156849]
+	GetHandleVerifier [0x0x7ff659cb4979+190889]
+	(No symbol) [0x0x7ff6599d4ef3]
+	GetHandleVerifier [0x0x7ff659dfed98+1543624]
+	BaseThreadInitThunk [0x0x7ff9c9b0e8d7+23]
+	RtlUserThreadStart [0x0x7ff9cb08c53c+44]
+
+[2025-11-19T06:21:13.829202] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:21:14.007492] SCRAPER using profile copy: D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\browser-dummy\edge_profile (source=EMPTY)
+[2025-11-19T06:22:37.910958] SCRAPER injected 27 cookies from cookies.json into session
+[2025-11-19T06:22:43.809395] SCRAPER login detected
+[2025-11-19T06:22:43.878132] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:22:43.879133] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:22:46.978560] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:22:50.076251] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:22:53.180231] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:22:56.268302] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:22:59.339265] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:22:59.339265] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:23:02.358000] SCRAPER captcha cleared
+[2025-11-19T06:23:04.382125] ERROR scraper failed: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff659c92a75+51877]
+	GetHandleVerifier [0x0x7ff659c92ad4+51972]
+	(No symbol) [0x0x7ff659a01149]
+	(No symbol) [0x0x7ff659a444a3]
+	(No symbol) [0x0x7ff659a71f52]
+	(No symbol) [0x0x7ff659a1a525]
+	(No symbol) [0x0x7ff659a6e9a1]
+	(No symbol) [0x0x7ff659a6e139]
+	(No symbol) [0x0x7ff6599d63b5]
+	(No symbol) [0x0x7ff659b0e4a5]
+	(No symbol) [0x0x7ff659b0a75d]
+	GetHandleVerifier [0x0x7ff659cbd2b3+226019]
+	GetHandleVerifier [0x0x7ff659cac481+156849]
+	GetHandleVerifier [0x0x7ff659cb4979+190889]
+	(No symbol) [0x0x7ff6599d4ef3]
+	GetHandleVerifier [0x0x7ff659dfed98+1543624]
+	BaseThreadInitThunk [0x0x7ff9c9b0e8d7+23]
+	RtlUserThreadStart [0x0x7ff9cb08c53c+44]
+
+[2025-11-19T06:36:18.535906] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:36:37.433642] SCRAPER using profile copy: D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\browser-dummy\edge_profile (source=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data\Default
+profile=Default
+files=12088)
+[2025-11-19T06:37:50.563755] SCRAPER injected 27 cookies from cookies.json into session
+[2025-11-19T06:37:53.945733] SCRAPER login detected
+[2025-11-19T06:37:53.974984] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:37:53.976101] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:37:57.121705] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:00.200262] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:03.289989] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:06.379927] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:09.524203] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:09.524203] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:38:12.611715] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:15.690750] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:18.800137] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:21.902689] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:24.996454] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:24.997458] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T06:38:28.086968] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:31.193132] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:34.333502] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:37.405163] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T06:38:40.418761] SCRAPER captcha cleared
+[2025-11-19T06:38:42.433509] ERROR scraper failed: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff659c92a75+51877]
+	GetHandleVerifier [0x0x7ff659c92ad4+51972]
+	(No symbol) [0x0x7ff659a01149]
+	(No symbol) [0x0x7ff659a444a3]
+	(No symbol) [0x0x7ff659a71f52]
+	(No symbol) [0x0x7ff659a1a525]
+	(No symbol) [0x0x7ff659a6e9a1]
+	(No symbol) [0x0x7ff659a6e139]
+	(No symbol) [0x0x7ff6599d63b5]
+	(No symbol) [0x0x7ff659b0e4a5]
+	(No symbol) [0x0x7ff659b0a75d]
+	GetHandleVerifier [0x0x7ff659cbd2b3+226019]
+	GetHandleVerifier [0x0x7ff659cac481+156849]
+	GetHandleVerifier [0x0x7ff659cb4979+190889]
+	(No symbol) [0x0x7ff6599d4ef3]
+	GetHandleVerifier [0x0x7ff659dfed98+1543624]
+	BaseThreadInitThunk [0x0x7ff9c9b0e8d7+23]
+	RtlUserThreadStart [0x0x7ff9cb08c53c+44]
+
+[2025-11-19T06:44:06.442060] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:44:06.445063] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-11-19T06:44:06.591539] ERROR scraper failed: msedgedriver not found at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\browser-dummy\edgedriver_win64\msedgedriver.exe. Place it under app-backend-flask/browser-dummy/edgedriver_win64/msedgedriver.exe
+[2025-11-19T06:45:45.571879] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:45:45.573875] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-11-19T06:46:51.617269] ERROR scraper failed: Message: session not created: probably user data directory is already in use, please specify a unique value for --user-data-dir argument, or don't use --user-data-dir; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7abd52a75+51877]
+	GetHandleVerifier [0x0x7ff7abd52ad4+51972]
+	GetHandleVerifier [0x0x7ff7abf09425+1848405]
+	(No symbol) [0x0x7ff7abafb88d]
+	(No symbol) [0x0x7ff7abaf893c]
+	(No symbol) [0x0x7ff7abb3d64e]
+	(No symbol) [0x0x7ff7abb31df3]
+	(No symbol) [0x0x7ff7abb05b36]
+	(No symbol) [0x0x7ff7abb04d80]
+	(No symbol) [0x0x7ff7abb05973]
+	(No symbol) [0x0x7ff7abbce4a5]
+	(No symbol) [0x0x7ff7abbca75d]
+	GetHandleVerifier [0x0x7ff7abd7d2b3+226019]
+	GetHandleVerifier [0x0x7ff7abd6c481+156849]
+	GetHandleVerifier [0x0x7ff7abd74979+190889]
+	GetHandleVerifier [0x0x7ff7abd59bb4+80868]
+	GetHandleVerifier [0x0x7ff7abd59d03+81203]
+	GetHandleVerifier [0x0x7ff7abd48286+8886]
+	BaseThreadInitThunk [0x0x7ff9c9b0e8d7+23]
+	RtlUserThreadStart [0x0x7ff9cb08c53c+44]
+
+[2025-11-19T06:47:59.352748] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:47:59.354107] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-11-19T06:49:05.527809] ERROR scraper failed: Message: session not created: probably user data directory is already in use, please specify a unique value for --user-data-dir argument, or don't use --user-data-dir; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7abd52a75+51877]
+	GetHandleVerifier [0x0x7ff7abd52ad4+51972]
+	GetHandleVerifier [0x0x7ff7abf09425+1848405]
+	(No symbol) [0x0x7ff7abafb88d]
+	(No symbol) [0x0x7ff7abaf893c]
+	(No symbol) [0x0x7ff7abb3d64e]
+	(No symbol) [0x0x7ff7abb31df3]
+	(No symbol) [0x0x7ff7abb05b36]
+	(No symbol) [0x0x7ff7abb04d80]
+	(No symbol) [0x0x7ff7abb05973]
+	(No symbol) [0x0x7ff7abbce4a5]
+	(No symbol) [0x0x7ff7abbca75d]
+	GetHandleVerifier [0x0x7ff7abd7d2b3+226019]
+	GetHandleVerifier [0x0x7ff7abd6c481+156849]
+	GetHandleVerifier [0x0x7ff7abd74979+190889]
+	GetHandleVerifier [0x0x7ff7abd59bb4+80868]
+	GetHandleVerifier [0x0x7ff7abd59d03+81203]
+	GetHandleVerifier [0x0x7ff7abd48286+8886]
+	BaseThreadInitThunk [0x0x7ff9c9b0e8d7+23]
+	RtlUserThreadStart [0x0x7ff9cb08c53c+44]
+
+[2025-11-19T06:49:44.649027] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:49:44.651219] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-11-19T06:50:50.786592] ERROR scraper failed: Message: session not created: probably user data directory is already in use, please specify a unique value for --user-data-dir argument, or don't use --user-data-dir; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7abd52a75+51877]
+	GetHandleVerifier [0x0x7ff7abd52ad4+51972]
+	GetHandleVerifier [0x0x7ff7abf09425+1848405]
+	(No symbol) [0x0x7ff7abafb88d]
+	(No symbol) [0x0x7ff7abaf893c]
+	(No symbol) [0x0x7ff7abb3d64e]
+	(No symbol) [0x0x7ff7abb31df3]
+	(No symbol) [0x0x7ff7abb05b36]
+	(No symbol) [0x0x7ff7abb04d80]
+	(No symbol) [0x0x7ff7abb05973]
+	(No symbol) [0x0x7ff7abbce4a5]
+	(No symbol) [0x0x7ff7abbca75d]
+	GetHandleVerifier [0x0x7ff7abd7d2b3+226019]
+	GetHandleVerifier [0x0x7ff7abd6c481+156849]
+	GetHandleVerifier [0x0x7ff7abd74979+190889]
+	GetHandleVerifier [0x0x7ff7abd59bb4+80868]
+	GetHandleVerifier [0x0x7ff7abd59d03+81203]
+	GetHandleVerifier [0x0x7ff7abd48286+8886]
+	BaseThreadInitThunk [0x0x7ff9c9b0e8d7+23]
+	RtlUserThreadStart [0x0x7ff9cb08c53c+44]
+
+[2025-11-19T06:53:42.384591] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:53:42.387694] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-11-19T06:54:45.862314] SCRAPER launched Edge remote-debug with profile=Profile 8
+[2025-11-19T06:55:07.107129] ERROR scraper failed: Edge remote debugging not reachable on 9222
+[2025-11-19T06:56:41.662929] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:56:41.664930] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-11-19T06:57:45.139483] SCRAPER launched Edge remote-debug with profile=Profile 8 on 9222
+[2025-11-19T06:58:06.412250] SCRAPER remote debugging not open yet; if a window reused an existing Edge process, please close all Edge windows for this profile and start Edge manually with:
+[2025-11-19T06:58:06.413241] "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" --remote-debugging-port=9222 --user-data-dir="C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data" --profile-directory="Profile 8"
+[2025-11-19T06:59:48.258424] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T06:59:48.260645] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-11-19T07:00:07.649130] ERROR scraper failed: Edge remote debugging not reachable on 9222
+[2025-11-19T07:00:51.367550] SCRAPER launched Edge remote-debug with profile=Profile 8 on 9222
+[2025-11-19T07:01:00.517530] SCRAPER injected 27 cookies from cookies.json into session
+[2025-11-19T07:01:05.035272] SCRAPER login detected
+[2025-11-19T07:01:05.068459] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:05.069460] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T07:01:08.127033] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:11.187555] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:14.234400] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:17.294031] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:20.334311] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:20.335355] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T07:01:23.433770] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:26.529483] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:29.579661] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:32.631696] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:35.692925] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:35.693931] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T07:01:38.763048] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:41.821613] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:44.893347] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:47.937328] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:51.012997] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:51.012997] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T07:01:54.077556] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:01:57.145219] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:00.201179] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:03.256514] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:06.326896] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:06.326896] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T07:02:09.405001] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:12.485843] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:15.544146] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:18.613761] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:21.675133] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:21.675133] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T07:02:24.732628] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:27.815109] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:30.889103] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:33.944329] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:36.986253] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-11-19T07:02:36.987368] SCRAPER captcha detected; waiting user solve...
+[2025-11-19T07:02:40.018843] SCRAPER captcha cleared
+[2025-11-19T07:02:42.031446] ERROR scraper failed: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=142.0.3595.80)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7abd52a75+51877]
+	GetHandleVerifier [0x0x7ff7abd52ad4+51972]
+	GetHandleVerifier [0x0x7ff7abf09425+1848405]
+	(No symbol) [0x0x7ff7abaa0e5f]
+	(No symbol) [0x0x7ff7abb374ec]
+	(No symbol) [0x0x7ff7abb4ed0a]
+	(No symbol) [0x0x7ff7abb31df3]
+	(No symbol) [0x0x7ff7abb05b36]
+	(No symbol) [0x0x7ff7abb04d80]
+	(No symbol) [0x0x7ff7abb05973]
+	(No symbol) [0x0x7ff7abbce4a5]
+	(No symbol) [0x0x7ff7abbca75d]
+	GetHandleVerifier [0x0x7ff7abd7d2b3+226019]
+	GetHandleVerifier [0x0x7ff7abd6c481+156849]
+	GetHandleVerifier [0x0x7ff7abd74979+190889]
+	GetHandleVerifier [0x0x7ff7abd59bb4+80868]
+	GetHandleVerifier [0x0x7ff7abd59d03+81203]
+	GetHandleVerifier [0x0x7ff7abd48286+8886]
+	BaseThreadInitThunk [0x0x7ff9c9b0e8d7+23]
+	RtlUserThreadStart [0x0x7ff9cb08c53c+44]
+

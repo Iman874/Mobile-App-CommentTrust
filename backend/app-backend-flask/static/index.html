@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>CommentTrust Backend</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+  <h2>CommentTrust Backend</h2>
+  <p>Gunakan halaman progress untuk submit link dan memonitor proses:</p>
+  <p><a class="badge" href="/progress">Buka Progress</a></p>
+  <h3>Visualisasi</h3>
+  <p>
+    Lihat hasil analisis dalam bentuk dashboard interaktif. Masukkan <code>product_id</code>
+    (format: <code>shopid-itemid</code>) lalu buka halaman visualisasi.
+  </p>
+  <form id="vizForm">
+    <input id="pid" placeholder="contoh: 1503848766-27293028076" style="width:380px" />
+    <button type="submit">Buka Visualisasi</button>
+    <a id="vizLink" href="#" style="margin-left:8px">/visualisasi.html?product={id}</a>
+  </form>
+  <h3>API</h3>
+  <ul>
+    <li>POST <code>/api/input/link</code> — body: { "link": "https://..." }</li>
+    <li>GET <code>/api/status/&lt;job_id&gt;</code></li>
+    <li>GET <code>/api/visualisasi/&lt;product_id&gt;</code> — data JSON untuk halaman visualisasi</li>
+  </ul>
+  <script>
+    const f = document.getElementById('vizForm');
+    const i = document.getElementById('pid');
+    const a = document.getElementById('vizLink');
+    function updateLink(){
+      const v = (i.value||'').trim();
+      const href = v ? ('/visualisasi.html?product='+encodeURIComponent(v)) : '#';
+      a.textContent = href; a.href = href;
+    }
+    i.addEventListener('input', updateLink); updateLink();
+    f.addEventListener('submit', (ev)=>{ ev.preventDefault(); if(!i.value.trim()) return; window.location.href = '/visualisasi.html?product='+encodeURIComponent(i.value.trim()); });
+  </script>
+</body>
+</html>

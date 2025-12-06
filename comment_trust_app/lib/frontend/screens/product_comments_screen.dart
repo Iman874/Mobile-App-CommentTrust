@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
+import '../services/api_config.dart';
+import '../services/tag_service.dart';
 
 class ProductCommentsScreen extends StatefulWidget {
   @override
@@ -8,9 +10,29 @@ class ProductCommentsScreen extends StatefulWidget {
 
 class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
   int _currentIndex = 3;
-
-  // 🔹 Status apakah card sedang dibuka untuk lihat detail
+  bool _loading = true;
+  List<Map<String,dynamic>> _comments = [];
   Map<int, bool> expandedStatus = {};
+  String? _productKey; // passed via ModalRoute or inherited context later
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(_init); // defer to ensure context available
+  }
+
+  void _init() async {
+    // Expect arguments: {productKey:..., tag: optional}
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args is Map && args['productKey'] is String) {
+      _productKey = args['productKey'] as String;
+    }
+    await ApiConfig.I.load();
+    if (_productKey != null && _productKey!.isNotEmpty && !ApiConfig.I.demoMode) {
+      _comments = await TagService.fetchCommentsByTag(ApiConfig.I.baseUrl, _productKey!, args is Map && args['tag'] is String ? args['tag'] as String : '');
+    }
+    if (mounted) setState(()=> _loading = false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,38 +111,18 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
               const SizedBox(height: 16),
 
               // 🔹 Comments List
-              _buildCommentCard(
-                index: 0,
-                name: 'Andi Saputra',
-                comment:
-                    'Produknya bagus dan sesuai deskripsi. Pengiriman cepat, packing rapi banget. Puas banget belanja di sini!',
-              ),
-              const SizedBox(height: 12),
-
-              _buildCommentCard(
-                index: 1,
-                name: 'Dewi Lestari',
-                comment:
-                    'Barangnya bagus, tapi pengiriman agak lambat karena kurirnya telat ambil paket. Untungnya tetap sampai dengan aman.',
-                showExpand: true,
-              ),
-              const SizedBox(height: 12),
-
-              _buildCommentCard(
-                index: 2,
-                name: 'Rizky Pratama',
-                comment:
-                    'Kualitas produk cukup oke. Harga sebanding dengan kualitas. Akan beli lagi kalau ada diskon.',
-              ),
-              const SizedBox(height: 12),
-
-              _buildCommentCard(
-                index: 3,
-                name: 'Nadia Rahma',
-                comment:
-                    'Barang datang dengan kondisi baik, tapi warna tidak sesuai gambar. Masih bisa diterima sih.',
-                showExpand: true,
-              ),
+              if (_loading) const Center(child: CircularProgressIndicator()) else ...[
+                for (int i=0; i<_comments.length; i++) ...[
+                  _buildCommentCard(
+                    index: i,
+                    name: (_comments[i]['username'] ?? 'Anon').toString(),
+                    comment: (_comments[i]['comment'] ?? '').toString(),
+                    showExpand: true,
+                    tags: (_comments[i]['tags'] as List?)?.cast<dynamic>() ?? const [],
+                  ),
+                  const SizedBox(height:12),
+                ]
+              ],
               const SizedBox(height: 20),
 
               // 🔹 Bagian media dan tag dalam satu card
@@ -207,6 +209,7 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
     required String name,
     required String comment,
     bool showExpand = false,
+    List<dynamic> tags = const [],
   }) {
     bool isExpanded = expandedStatus[index] ?? false;
 
@@ -248,14 +251,13 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
           const SizedBox(height: 10),
 
           // Isi komentar
-          Text(
-            comment,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Colors.black87,
-              height: 1.4,
-            ),
-          ),
+          Text(comment, style: const TextStyle(fontSize:12,color:Colors.black87,height:1.4)),
+          if(tags.isNotEmpty) ...[
+            const SizedBox(height:8),
+            Wrap(spacing:6,runSpacing:6,children:[
+              for(final t in tags) _buildTag(t.toString(), const Color(0xFF1B4D3E)),
+            ]),
+          ],
 
           if (showExpand) ...[
             const SizedBox(height: 10),

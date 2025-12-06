@@ -1,0 +1,158 @@
+[2025-11-19T04:28:33.528049] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T04:28:33.529555] SCRAPER collected 0/40
+[2025-11-19T04:28:34.041052] SCRAPER collected 5/40
+[2025-11-19T04:28:34.541692] SCRAPER collected 10/40
+[2025-11-19T04:28:35.043497] SCRAPER collected 15/40
+[2025-11-19T04:28:35.558467] SCRAPER collected 20/40
+[2025-11-19T04:28:36.068787] SCRAPER collected 25/40
+[2025-11-19T04:28:36.580821] SCRAPER collected 30/40
+[2025-11-19T04:28:37.094799] SCRAPER collected 35/40
+[2025-11-19T04:28:37.606925] SCRAPER collected 40/40
+[2025-11-19T04:28:38.121104] SCRAPER finished
+[2025-11-19T04:28:38.124202] ANALYSIS 5% :: init: resolve input
+[2025-11-19T04:28:38.124202] ANALYSIS 10% :: [01] preprocess
+[2025-11-19T04:28:38.133315] ANALYSIS 20% :: [01b] tokenize
+[2025-11-19T04:28:38.137793] ANALYSIS 40% :: [03] sentiment
+[2025-11-19T04:28:38.142300] ANALYSIS 70% :: [04] fake detect
+[2025-11-19T04:28:38.158294] ANALYSIS 90% :: [05] trust score
+[2025-11-19T04:28:38.168661] ERROR pipeline error: Expected numeric dtype, got object instead.
+[2025-11-19T04:30:53.489806] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T04:30:53.491833] SCRAPER collected 0/40
+[2025-11-19T04:30:54.002005] SCRAPER collected 5/40
+[2025-11-19T04:30:54.517357] SCRAPER collected 10/40
+[2025-11-19T04:30:55.032597] SCRAPER collected 15/40
+[2025-11-19T04:30:55.545565] SCRAPER collected 20/40
+[2025-11-19T04:30:56.061241] SCRAPER collected 25/40
+[2025-11-19T04:30:56.577258] SCRAPER collected 30/40
+[2025-11-19T04:30:57.089752] SCRAPER collected 35/40
+[2025-11-19T04:30:57.591382] SCRAPER collected 40/40
+[2025-11-19T04:30:58.104809] SCRAPER finished
+[2025-11-19T04:30:58.107481] ANALYSIS 5% :: init: resolve input
+[2025-11-19T04:30:58.107481] ANALYSIS 10% :: [01] preprocess
+[2025-11-19T04:30:58.117720] ANALYSIS 20% :: [01b] tokenize
+[2025-11-19T04:30:58.121212] ANALYSIS 40% :: [03] sentiment
+[2025-11-19T04:30:58.125099] ANALYSIS 70% :: [04] fake detect
+[2025-11-19T04:30:58.144231] ANALYSIS 90% :: [05] trust score
+[2025-11-19T04:30:58.148229] ANALYSIS 98% :: [06] summarize
+[2025-11-19T04:30:58.151997] ANALYSIS 100% :: done
+[2025-11-19T04:30:58.152872] OUTPUT pipeline finished; outputs at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\output\comment\1503848766-27293028076\indobert
+[2025-11-19T04:34:03.842303] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T04:34:03.844955] SCRAPER collected 0/40
+[2025-11-19T04:34:04.350256] SCRAPER collected 5/40
+[2025-11-19T04:34:04.863122] SCRAPER collected 10/40
+[2025-11-19T04:34:05.364610] SCRAPER collected 15/40
+[2025-11-19T04:34:05.878849] SCRAPER collected 20/40
+[2025-11-19T04:34:06.390225] SCRAPER collected 25/40
+[2025-11-19T04:34:06.905637] SCRAPER collected 30/40
+[2025-11-19T04:34:07.407541] SCRAPER collected 35/40
+[2025-11-19T04:34:07.908781] SCRAPER collected 40/40
+[2025-11-19T04:34:08.410038] SCRAPER finished
+[2025-11-19T04:34:08.411036] ANALYSIS 5% :: init: resolve input
+[2025-11-19T04:34:08.412035] ANALYSIS 10% :: [01] preprocess
+[2025-11-19T04:34:08.417125] ANALYSIS 20% :: [01b] tokenize
+[2025-11-19T04:34:08.420124] ANALYSIS 40% :: [03] sentiment
+[2025-11-19T04:34:08.422122] ANALYSIS 70% :: [04] fake detect
+[2025-11-19T04:34:08.440051] ANALYSIS 90% :: [05] trust score
+[2025-11-19T04:34:08.444682] ANALYSIS 98% :: [06] summarize
+[2025-11-19T04:34:08.449500] ANALYSIS 100% :: done
+[2025-11-19T04:34:08.449500] OUTPUT pipeline finished; outputs at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\output\comment\1503848766-27293028076\indobert
+[2025-11-19T04:34:40.053369] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T04:34:40.054258] SCRAPER collected 0/40
+[2025-11-19T04:34:40.555689] SCRAPER collected 5/40
+[2025-11-19T04:34:41.066876] SCRAPER collected 10/40
+[2025-11-19T04:34:41.581415] SCRAPER collected 15/40
+[2025-11-19T04:34:42.094782] SCRAPER collected 20/40
+[2025-11-19T04:34:42.606884] SCRAPER collected 25/40
+[2025-11-19T04:34:43.122316] SCRAPER collected 30/40
+[2025-11-19T04:34:43.636789] SCRAPER collected 35/40
+[2025-11-19T04:34:44.150032] SCRAPER collected 40/40
+[2025-11-19T04:34:44.651249] SCRAPER finished
+[2025-11-19T04:34:44.652233] ANALYSIS 5% :: init: resolve input
+[2025-11-19T04:34:44.652233] ANALYSIS 10% :: [01] preprocess
+[2025-11-19T04:34:44.657848] ANALYSIS 20% :: [01b] tokenize
+[2025-11-19T04:34:44.659362] ANALYSIS 40% :: [03] sentiment
+[2025-11-19T04:34:44.661473] ANALYSIS 70% :: [04] fake detect
+[2025-11-19T04:34:44.672600] ANALYSIS 90% :: [05] trust score
+[2025-11-19T04:34:44.674601] ANALYSIS 98% :: [06] summarize
+[2025-11-19T04:34:44.678757] ANALYSIS 100% :: done
+[2025-11-19T04:34:44.678757] OUTPUT pipeline finished; outputs at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\output\comment\1503848766-27293028076\indobert
+[2025-11-19T04:36:37.998084] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T04:36:37.998084] SCRAPER collected 0/40
+[2025-11-19T04:36:38.505516] SCRAPER collected 5/40
+[2025-11-19T04:36:39.018813] SCRAPER collected 10/40
+[2025-11-19T04:36:39.528505] SCRAPER collected 15/40
+[2025-11-19T04:36:40.030578] SCRAPER collected 20/40
+[2025-11-19T04:36:40.544396] SCRAPER collected 25/40
+[2025-11-19T04:36:41.057820] SCRAPER collected 30/40
+[2025-11-19T04:36:41.569222] SCRAPER collected 35/40
+[2025-11-19T04:36:42.083769] SCRAPER collected 40/40
+[2025-11-19T04:36:42.598259] SCRAPER finished
+[2025-11-19T04:36:42.598259] ANALYSIS 5% :: init: resolve input
+[2025-11-19T04:36:42.599131] ANALYSIS 10% :: [01] preprocess
+[2025-11-19T04:36:42.602250] ANALYSIS 20% :: [01b] tokenize
+[2025-11-19T04:36:42.604638] ANALYSIS 40% :: [03] sentiment
+[2025-11-19T04:36:42.605696] ANALYSIS 70% :: [04] fake detect
+[2025-11-19T04:36:42.612902] ANALYSIS 90% :: [05] trust score
+[2025-11-19T04:36:42.616994] ANALYSIS 98% :: [06] summarize
+[2025-11-19T04:36:42.621118] ANALYSIS 100% :: done
+[2025-11-19T04:36:42.621118] OUTPUT pipeline finished; outputs at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\output\comment\1503848766-27293028076\indobert
+[2025-11-19T04:42:15.457739] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T04:42:15.458739] SCRAPER collected 0/40
+[2025-11-19T04:42:15.965531] SCRAPER collected 5/40
+[2025-11-19T04:42:16.478046] SCRAPER collected 10/40
+[2025-11-19T04:42:16.990873] SCRAPER collected 15/40
+[2025-11-19T04:42:17.505414] SCRAPER collected 20/40
+[2025-11-19T04:42:18.017875] SCRAPER collected 25/40
+[2025-11-19T04:42:18.531291] SCRAPER collected 30/40
+[2025-11-19T04:42:19.045645] SCRAPER collected 35/40
+[2025-11-19T04:42:19.547276] SCRAPER collected 40/40
+[2025-11-19T04:42:20.063281] SCRAPER finished
+[2025-11-19T04:42:20.064598] ANALYSIS 5% :: init: resolve input
+[2025-11-19T04:42:20.064598] ANALYSIS 10% :: [01] preprocess
+[2025-11-19T04:42:20.068677] ANALYSIS 20% :: [01b] tokenize
+[2025-11-19T04:42:20.073257] ANALYSIS 40% :: [03] sentiment
+[2025-11-19T04:42:20.074826] ANALYSIS 70% :: [04] fake detect
+[2025-11-19T04:42:20.096489] ANALYSIS 90% :: [05] trust score
+[2025-11-19T04:42:20.101701] ANALYSIS 98% :: [06] summarize
+[2025-11-19T04:42:20.107047] ANALYSIS 100% :: done
+[2025-11-19T04:42:20.107047] OUTPUT pipeline finished; outputs at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\output\comment\1503848766-27293028076\indobert
+[2025-11-19T04:42:43.956781] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T04:42:43.958104] SCRAPER collected 0/40
+[2025-11-19T04:42:44.463954] SCRAPER collected 5/40
+[2025-11-19T04:42:44.966014] SCRAPER collected 10/40
+[2025-11-19T04:42:45.482174] SCRAPER collected 15/40
+[2025-11-19T04:42:45.987021] SCRAPER collected 20/40
+[2025-11-19T04:42:46.502244] SCRAPER collected 25/40
+[2025-11-19T04:42:47.004937] SCRAPER collected 30/40
+[2025-11-19T04:42:47.517725] SCRAPER collected 35/40
+[2025-11-19T04:42:48.032237] SCRAPER collected 40/40
+[2025-11-19T04:42:48.534540] SCRAPER finished
+[2025-11-19T04:42:48.536593] ANALYSIS 5% :: init: resolve input
+[2025-11-19T04:42:48.536593] ANALYSIS 10% :: [01] preprocess
+[2025-11-19T04:42:48.541215] ANALYSIS 20% :: [01b] tokenize
+[2025-11-19T04:42:48.545740] ANALYSIS 40% :: [03] sentiment
+[2025-11-19T04:42:48.550755] ANALYSIS 70% :: [04] fake detect
+[2025-11-19T04:42:48.574014] ANALYSIS 90% :: [05] trust score
+[2025-11-19T04:42:48.579688] ANALYSIS 98% :: [06] summarize
+[2025-11-19T04:42:48.583559] ANALYSIS 100% :: done
+[2025-11-19T04:42:48.583559] OUTPUT pipeline finished; outputs at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\output\comment\1503848766-27293028076\indobert
+[2025-11-19T04:44:22.265920] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T04:44:22.266926] SCRAPER collected 0/40
+[2025-11-19T04:44:22.778131] SCRAPER collected 5/40
+[2025-11-19T04:44:23.291477] SCRAPER collected 10/40
+[2025-11-19T04:44:23.806960] SCRAPER collected 15/40
+[2025-11-19T04:44:24.321999] SCRAPER collected 20/40
+[2025-11-19T04:44:24.824076] SCRAPER collected 25/40
+[2025-11-19T04:44:25.337579] SCRAPER collected 30/40
+[2025-11-19T04:44:25.840959] SCRAPER collected 35/40
+[2025-11-19T04:44:26.344102] SCRAPER collected 40/40
+[2025-11-19T04:44:26.848195] SCRAPER finished
+[2025-11-19T04:44:26.849709] ANALYSIS 5% :: init: resolve input
+[2025-11-19T04:44:26.851753] ANALYSIS 10% :: [01] preprocess
+[2025-11-19T04:44:26.856339] ANALYSIS 20% :: [01b] tokenize
+[2025-11-19T04:44:26.861947] ANALYSIS 40% :: [03] sentiment
+[2025-11-19T04:44:26.869540] ANALYSIS 70% :: [04] fake detect
+[2025-11-19T04:44:26.892173] ANALYSIS 90% :: [05] trust score
+[2025-11-19T04:44:26.895784] ANALYSIS 98% :: [06] summarize
+[2025-11-19T04:44:26.902356] ANALYSIS 100% :: done
+[2025-11-19T04:44:26.903390] OUTPUT pipeline finished; outputs at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\output\comment\1503848766-27293028076\indobert

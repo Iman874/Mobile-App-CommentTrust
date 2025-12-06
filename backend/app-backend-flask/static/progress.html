@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Progress — Scraper & Analysis</title>
+  <!-- External stylesheet (static served, no Jinja processing for this file) -->
+  <link rel="stylesheet" href="/static/style/progress.css" />
+  <!-- Optional font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="box">
+    <h2>Submit Shopee Link</h2>
+    <form id="f">
+      <input id="link" placeholder="https://..." style="width:55%" />
+      <label style="margin-left:8px;font-size:12px"><input type="checkbox" id="forceScrape" /> Force Scrape</label>
+      <label style="margin-left:8px;font-size:12px"><input type="checkbox" id="forceAnalysis" /> Force Analysis</label>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="jobs"></div>
+    <div id="lastLink" style="margin-top:12px"></div>
+  </div>
+
+  <script>
+    async function postLink(link, mode){
+      let url = '/api/input/link';
+      if(mode === 'forceScrape') url = '/api/force/scrape';
+      else if(mode === 'forceAnalysis') url = '/api/force/analysis';
+      const payload = {link};
+      const res = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+      return res.json();
+    }
+    function renderJob(job){
+      const div = document.createElement('div'); div.className='job';
+      div.id = 'job-'+job.id;
+      div.innerHTML = `
+        <div><strong>Job:</strong> ${job.id} &nbsp; <small>${job.created_at}</small></div>
+        <div><strong>Link:</strong> ${job.link}</div>
+        <div><strong>Canonical:</strong> <a href="${job.canonical||''}" target="_blank">${job.canonical||'-'}</a></div>
+        <div><strong>Short:</strong> <a href="${job.short_link||''}" target="_blank">${job.short_link||'-'}</a></div>
+        <div id="viz-${job.id}" class="muted" style="margin-top:4px"></div>
+        <div id="actions-${job.id}" style="margin-top:8px">
+          <button class="btn-resync" data-pid="${job.product_id||''}" ${!job.product_id? 'disabled':''}>Re-sync to Laravel</button>
+        </div>
+        <div style="margin-top:8px"><strong>Scraper</strong>
+          <div class="bar"><i style="width:${job.scraper_total? (100*job.scraper_progress/job.scraper_total):0}%"></i></div>
+          <div id="scraper-count-${job.id}">${job.scraper_progress}/${job.scraper_total}</div>
+          <div id="scraper-state-${job.id}" class="muted" style="margin-top:4px">State: ${job.scraper_state||'-'}${job.scraper_block? ' — '+job.scraper_block:''}</div>
+        </div>
+        <div style="margin-top:8px"><strong>Analysis</strong>
+          <div class="bar orange"><i style="width:${job.analysis_progress}%"></i></div>
+          <div id="analysis-count-${job.id}">${job.analysis_progress}% — Step ${job.analysis_step_index||0}/${job.analysis_steps_total||0}: ${job.analysis_step_name||'-'}</div>
+        </div>
+        <div style="margin-top:8px"><strong>Laravel Sync</strong>
+          <div class="bar green"><i style="width:${job.laravel_sync_progress||0}%"></i></div>
+          <div id="laravel-sync-${job.id}">Status: ${job.laravel_sync_status||'pending'}${job.laravel_sync_error? ' — '+job.laravel_sync_error:''}${job.laravel_sync_inserted? ' | inserted '+job.laravel_sync_inserted:''}</div>
+        </div>
+        <details style="margin-top:8px"><summary>Logs</summary><pre id="logs-${job.id}"></pre></details>
+      `;
+      return div;
+    }
+
+    async function addJobToUI(job_id){
+      const jobsDiv = document.getElementById('jobs');
+      const r = await fetch('/api/status/'+job_id);
+      if(!r.ok) return;
+      const job = await r.json();
+      const el = renderJob(job);
+      jobsDiv.prepend(el);
+      poll(job.id);
+    }
+
+    async function poll(jobId){
+      const el = document.getElementById('job-'+jobId);
+      if(!el) return;
+      try{
+        const r = await fetch('/api/status/'+jobId);
+        if(!r.ok) return;
+        const job = await r.json();
+        // update bars
+        const barScr = el.querySelector('.bar i');
+        const bars = el.querySelectorAll('.bar i');
+        if(bars && bars.length>=2){
+          bars[0].style.width = (job.scraper_total? (100*job.scraper_progress/job.scraper_total):0)+'%';
+          bars[1].style.width = job.analysis_progress + '%';
+        }
+        // bind resync button
+        const actEl = document.getElementById('actions-'+jobId);
+        if (actEl && !actEl.dataset.bound) {
+          const btn = actEl.querySelector('.btn-resync');
+          if (btn) {
+            btn.addEventListener('click', async () => {
+              const pid = btn.getAttribute('data-pid');
+              if (!pid) return alert('Product ID not ready yet.');
+              btn.disabled = true;
+              btn.textContent = 'Re-syncing...';
+              try {
+                const r = await fetch('/api/resync/'+encodeURIComponent(pid), {method:'POST'});
+                const j = await r.json();
+                if (r.ok) {
+                  alert('Re-sync triggered. Job: '+(j.job_id||''));
+                } else {
+                  alert('Re-sync failed: '+(j.error||'unknown'));
+                }
+              } catch(e) {
+                alert('Re-sync error: '+e);
+              } finally {
+                btn.disabled = false;
+                btn.textContent = 'Re-sync to Laravel';
+              }
+            });
+            actEl.dataset.bound = '1';
+          }
+        }
+        const scrText = document.getElementById('scraper-count-'+jobId);
+        if(scrText){
+          scrText.textContent = job.scraper_progress + '/' + job.scraper_total;
+        }
+        const stateEl = document.getElementById('scraper-state-'+jobId);
+        if(stateEl){
+          stateEl.textContent = 'State: ' + (job.scraper_state||'-') + (job.scraper_block? ' — '+job.scraper_block:'');
+        }
+        const analysisText = document.getElementById('analysis-count-'+jobId);
+        if(analysisText){
+          analysisText.textContent = `${job.analysis_progress}% — Step ${job.analysis_step_index||0}/${job.analysis_steps_total||0}: ${job.analysis_step_name||'-'}`;
+        }
+        // logs
+        const logsEl = document.getElementById('logs-'+jobId);
+        if(logsEl){
+          const all = []
+            .concat(job.logs.input || [])
+            .concat(job.logs.process || []);
+          logsEl.textContent = all.join('\n');
+        }
+        // update laravel sync bar
+        const laravelEl = document.getElementById('laravel-sync-'+jobId);
+        const laravelBar = el.querySelectorAll('.bar.green i')[0];
+        if(laravelEl && laravelBar){
+          laravelEl.textContent = 'Status: ' + (job.laravel_sync_status||'pending') + (job.laravel_sync_error? ' — '+job.laravel_sync_error:'') + (job.laravel_sync_inserted? ' | inserted '+job.laravel_sync_inserted:'');
+          laravelBar.style.width = (job.laravel_sync_progress||0) + '%';
+        }
+        if(job.phase !== 'done' && job.phase !== 'error'){
+          setTimeout(()=>poll(jobId), 1000);
+        } else if (job.phase === 'done') {
+          // Auto-open visualization once per job
+          const pid = job.product_id || '';
+          const vizDiv = document.getElementById('viz-'+jobId);
+          if (pid && !el.dataset.vizOpened) {
+            const vizUrl = '/visualisasi.html?product=' + encodeURIComponent(pid);
+            const laravelUrl = 'http://127.0.0.1:8000/analysis/' + encodeURIComponent(pid);
+            if (vizDiv) vizDiv.innerHTML = `<strong>Visualisasi:</strong> <a href="${vizUrl}" target="_blank">${vizUrl}</a> | <a href="${laravelUrl}" target="_blank">Laravel Dashboard</a>`;
+            try { window.open(vizUrl, '_blank'); } catch(e) {}
+            try { window.open(laravelUrl, '_blank'); } catch(e) {}
+            el.dataset.vizOpened = '1';
+          } else if (vizDiv && pid) {
+            const vizUrl = '/visualisasi.html?product=' + encodeURIComponent(pid);
+            const laravelUrl = 'http://127.0.0.1:8000/analysis/' + encodeURIComponent(pid);
+            vizDiv.innerHTML = `<strong>Visualisasi:</strong> <a href="${vizUrl}" target="_blank">${vizUrl}</a> | <a href="${laravelUrl}" target="_blank">Laravel Dashboard</a>`;
+          }
+        }
+      }catch(e){
+        setTimeout(()=>poll(jobId), 2000);
+      }
+    }
+
+    document.getElementById('f').addEventListener('submit', async (ev)=>{
+      ev.preventDefault();
+      const link = document.getElementById('link').value.trim();
+      if(!link) return alert('Paste link');
+      const forceScrape = document.getElementById('forceScrape').checked;
+      const forceAnalysis = document.getElementById('forceAnalysis').checked;
+      let mode = 'normal';
+      if(forceScrape) mode = 'forceScrape'; else if(forceAnalysis) mode='forceAnalysis';
+      const res = await postLink(link, mode);
+      if(res.job_id){
+        addJobToUI(res.job_id);
+        document.getElementById('lastLink').innerHTML = `<strong>Normalized:</strong> ${res.canonical}<br/><strong>Short:</strong> ${res.short_link}`;
+      }
+    });
+
+    // if ?job= is present, open that job
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const j = params.get('job');
+      if(j) addJobToUI(j);
+    })();
+  </script>
+</body>
+</html>

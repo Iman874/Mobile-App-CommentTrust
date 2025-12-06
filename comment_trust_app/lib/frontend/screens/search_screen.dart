@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import 'product_detail_screen.dart';
+import '../services/api_config.dart';
+import '../services/dummy_data_loader.dart';
+import '../services/product_service.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -9,7 +12,91 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   int _currentIndex = 1; // Set to search tab
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
+  List<Map<String,dynamic>> _allProducts = [];
+  List<Map<String,dynamic>> _visibleProducts = [];
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _initLoad();
+    _searchController.addListener(() => _filter(_searchController.text));
+  }
+
+  Future<void> _initLoad() async {
+    await ApiConfig.I.load();
+    if (ApiConfig.I.demoMode) {
+      final list = await DummyDataLoader.loadProducts();
+      _allProducts = list.map((p) => {
+        'product_key': p['name'], // placeholder key
+        'name': p['name'],
+        'avg_rating': p['rating'],
+        'image': p['image'],
+      }).toList();
+    } else {
+      final base = ApiConfig.I.baseUrl;
+      final remote = await ProductService.fetchAll(base);
+      _allProducts = remote.map((p) => {
+        'product_key': p['product_key'],
+        'name': p['name'] ?? 'Produk Tanpa Nama',
+        'avg_rating': (p['avg_rating'] ?? 0).toDouble(),
+        'image': 'assets/images/img1.jpg',
+      }).toList();
+    }
+    _visibleProducts = _allProducts.take(5).toList();
+    if (!mounted) return;
+    setState(() { _loading = false; });
+  }
+
+  void _filter(String q) {
+    if (q.trim().isEmpty) {
+      setState(() { _visibleProducts = _allProducts.take(5).toList(); });
+      return;
+    }
+    final query = q.toLowerCase();
+    final scored = _allProducts.map((p) {
+      final name = (p['name'] ?? '').toString().toLowerCase();
+      double score;
+      if (name.contains(query)) {
+        score = 1.0;
+      } else {
+        score = _similarity(name, query);
+      }
+      return {'data': p, 'score': score};
+    }).where((e) => (e['score'] as double?) != null && (e['score'] as double) >= 0.4).toList();
+    scored.sort((a,b) => (b['score'] as double).compareTo(a['score'] as double));
+    setState(() { _visibleProducts = scored.map((e)=> e['data'] as Map<String,dynamic>).take(5).toList(); });
+  }
+
+  double _similarity(String a, String b) {
+    final dist = _levenshtein(a, b);
+    final maxLen = a.length > b.length ? a.length : b.length;
+    if (maxLen == 0) return 0.0;
+    return 1.0 - dist / maxLen;
+  }
+
+  int _levenshtein(String s, String t) {
+    if (s == t) return 0;
+    if (s.isEmpty) return t.length;
+    if (t.isEmpty) return s.length;
+    final rows = s.length + 1;
+    final cols = t.length + 1;
+    final matrix = List.generate(rows, (_) => List<int>.filled(cols, 0));
+    for (var i=0;i<rows;i++) { matrix[i][0] = i; }
+    for (var j=0;j<cols;j++) { matrix[0][j] = j; }
+    for (var i=1;i<rows;i++) {
+      for (var j=1;j<cols;j++) {
+        final cost = s[i-1] == t[j-1] ? 0 : 1;
+        matrix[i][j] = [
+          matrix[i-1][j] + 1,
+          matrix[i][j-1] + 1,
+          matrix[i-1][j-1] + cost,
+        ].reduce((a,b)=> a < b ? a : b);
+      }
+    }
+    return matrix[rows-1][cols-1];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,8 +223,10 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               SizedBox(height: 12),
 
-              // Product Card
-              Container(
+              if (_loading)
+                Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()))
+              else ..._visibleProducts.map((p) => Container(
+                margin: EdgeInsets.only(bottom: 12),
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -155,7 +244,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.asset(
-                        'assets/images/img1.jpg',
+                        p['image'] ?? 'assets/images/img1.jpg',
                         width: 60,
                         height: 60,
                         fit: BoxFit.cover,
@@ -167,7 +256,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Acer Aspire 3 - 78301 - 610M - 15.6" Full HD (1920 x 1080)',
+                            p['name'] ?? 'Produk',
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
@@ -190,7 +279,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               ),
                               SizedBox(width: 8),
                               Text(
-                                '5.0/5.0',
+                                '${(p['avg_rating'] ?? 0).toStringAsFixed(1)}/5.0',
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.grey[600],
@@ -206,7 +295,10 @@ class _SearchScreenState extends State<SearchScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProductDetailScreen(),
+                            builder: (context) => ProductDetailScreen(
+                              productKey: p['product_key']?.toString() ?? '',
+                              productName: p['name']?.toString() ?? 'Produk',
+                            ),
                           ),
                         );
                       },
@@ -232,7 +324,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                   ],
                 ),
-              ),
+              ))
             ],
           ),
         ),

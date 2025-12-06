@@ -1,0 +1,21 @@
+[2025-11-19T11:02:29.611430] START job for link: https://shopee.co.id/-Free-Case-Laptop-KLOURUS-Laptop-2in1-360°-Flip-Touchscreen-Intel-N4020-13.3-RAM-16GB-SSD-256GB-IPS-HD-Win11-Bisa-Jadi-Tablet-Cocok-untuk-Belajar-Kerja-Hiburan-Gratis-Stylus-Pen-Garansi-1-Tahun-KLOURUS-Official-Store-​-i.1503848766.27293028076
+[2025-11-19T11:02:29.613972] FORCE SCRAPE: cleared previous review dir
+[2025-11-19T11:02:29.615266] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-11-19T11:02:38.073222] SCRAPER injected 27 cookies from cookies.json into session
+[2025-11-19T11:02:43.184876] SCRAPER product tab detected; proceeding
+[2025-11-19T11:02:43.191091] SCRAPER fetch product data
+[2025-11-19T11:02:45.823336] SCRAPER fetch comments
+[2025-11-19T11:02:46.469722] SCRAPER page 1: collected 20/56
+[2025-11-19T11:02:47.472996] SCRAPER page 2: collected 28/56
+[2025-11-19T11:02:47.485130] SCRAPER finished; total 28 reviews saved
+[2025-11-19T11:02:49.511946] SCRAPER finished
+[2025-11-19T11:02:49.515016] ANALYSIS 5% :: init: resolve input
+[2025-11-19T11:02:49.524165] ANALYSIS 10% :: [01] preprocess
+[2025-11-19T11:02:49.530616] ANALYSIS 20% :: [01b] tokenize
+[2025-11-19T11:02:49.536600] ANALYSIS 40% :: [03] sentiment
+[2025-11-19T11:03:01.388105] ANALYSIS 70% :: [04] fake detect
+[2025-11-19T11:03:01.405336] ANALYSIS 90% :: [05] trust score
+[2025-11-19T11:03:01.422079] ANALYSIS 98% :: [06] summarize
+[2025-11-19T11:03:01.427136] ANALYSIS 100% :: done
+[2025-11-19T11:03:01.427136] OUTPUT pipeline finished; outputs at D:\Iman874\Documents\Github\Mobile-App-CommentTrust\backend\app-backend-flask\output\comment\1503848766-27293028076\indobert
+[2025-11-19T11:03:02.086583] Laravel sync succeeded

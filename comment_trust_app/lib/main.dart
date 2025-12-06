@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'frontend/screens/home_screen.dart';
+import 'frontend/screens/config_screen.dart';
 import 'frontend/screens/search_screen.dart';
 import 'frontend/screens/scan_qr_screen.dart';
 import 'frontend/screens/reviews_screen.dart';
@@ -16,9 +17,10 @@ class MyApp extends StatelessWidget {
       title: 'Comment Trust App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.green, fontFamily: 'Roboto'),
-      initialRoute: '/',
+      initialRoute: '/config',
       routes: {
         '/': (context) => HomeScreen(),
+        '/config': (context) => const ConfigScreen(),
         '/search': (context) => SearchScreen(),
         '/scan': (context) => ScanQRScreen(),
         '/reviews': (context) => ReviewsScreen(),

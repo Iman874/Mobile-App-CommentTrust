@@ -2,14 +2,70 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import 'product_comments_screen.dart';
 import 'product_analytics_screen.dart';
+import '../services/api_config.dart';
+import '../services/analysis_service.dart';
+import '../services/history_service.dart';
+import '../services/tag_service.dart';
+import 'tag_comments_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
+  final String productKey;
+  final String productName;
+  const ProductDetailScreen({required this.productKey, required this.productName, Key? key}) : super(key: key);
+
   @override
   _ProductDetailScreenState createState() => _ProductDetailScreenState();
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   int _currentIndex = 0;
+  bool _loading = true;
+  Map<String, dynamic>? _analysis;
+  List<Map<String,dynamic>> _tagCounts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _persistLastViewed();
+    _fetch();
+  }
+
+  Future<void> _persistLastViewed() async {
+    // Store last viewed product locally for History page
+    if (widget.productKey.isNotEmpty) {
+      await HistoryService.setLastViewed(productKey: widget.productKey, productName: widget.productName);
+    }
+  }
+
+  Future<void> _fetch() async {
+    await ApiConfig.I.load();
+    if (ApiConfig.I.demoMode || widget.productKey.isEmpty) {
+      // Demo mode: fabricate minimal analysis placeholders
+      setState(() {
+        _analysis = {
+          'metrics': {
+            'count_reviews': 0,
+            'avg_rating': 0,
+            'avg_trust_percent_norm': 0,
+            'sentiment_counts': {'positive': 0, 'negative': 0},
+            'pros': [],
+            'cons': []
+          }
+        };
+        _loading = false;
+      });
+      return;
+    }
+    final base = ApiConfig.I.baseUrl;
+    final data = await AnalysisService.fetchAnalysis(base, widget.productKey);
+    final tags = await TagService.fetchTagCounts(base, widget.productKey);
+    if (!mounted) return;
+    setState(() {
+      _analysis = data;
+      _tagCounts = tags;
+      _loading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,44 +154,43 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Text(
-                      'Acer Aspire 3 - 78301 - 610M - 15.6" Full HD (1920 x 1080)',
-                      style: TextStyle(
+                    Text(
+                      widget.productName,
+                      style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                         color: Colors.black87,
                       ),
                       textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 12),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProductAnalyticsScreen(),
+                    SizedBox(
+                      width: 160,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF1B4D3E),
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
                           ),
-                        );
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
                         ),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey[400]!),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: const Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(Icons.expand_more, size: 16),
-                            SizedBox(width: 4),
-                            Text(
-                              'Lihat Lebih Detail',
-                              style: TextStyle(fontSize: 12),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductAnalyticsScreen(
+                                productKey: widget.productKey,
+                                productName: widget.productName,
+                              ),
                             ),
-                          ],
+                          );
+                        },
+                        child: const Text(
+                          'Lihat Grafik',
+                          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -146,12 +201,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               const SizedBox(height: 20),
 
               // 🔹 Hasil Review
-              _buildReviewCard(),
+              _loading ? _buildLoadingCard() : _buildReviewCard(),
 
               const SizedBox(height: 20),
 
-              // 🔹 Detail Review
-              _buildDetailReviewSection(context),
+              // 🔹 Detail Review (menampilkan 4 tag teratas)
+              _loading ? _buildLoadingDetail() : _buildDetailReviewSection(context),
+              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -170,6 +226,25 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   // ========================== Hasil Review ==========================
+  Widget _buildLoadingCard() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: const Center(child: SizedBox(height: 40, width: 40, child: CircularProgressIndicator())),
+    );
+  }
+
   Widget _buildReviewCard() {
     return Container(
       width: double.infinity,
@@ -199,25 +274,25 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
           _buildReviewItem(
             icon: Icons.verified,
-            text: '92% Tingkat Kepercayaan Produk',
+            text: _trustText(),
             color: const Color(0xFF1B4D3E),
           ),
           const SizedBox(height: 10),
           _buildReviewItem(
             icon: Icons.thumb_up_alt,
-            text: '75% Komentar Positif',
+            text: _positiveText(),
             color: const Color(0xFF157F1F),
           ),
           const SizedBox(height: 10),
           _buildReviewItem(
             icon: Icons.thumb_down_alt,
-            text: '18% Komentar Negatif',
+            text: _negativeText(),
             color: const Color(0xFF7D0A0A),
           ),
           const SizedBox(height: 10),
           _buildReviewItem(
             icon: Icons.cancel,
-            text: '7% Komentar Tidak Relevan',
+            text: _otherText(),
             color: const Color(0xFF9E9E9E),
           ),
         ],
@@ -256,7 +331,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   // ========================== Detail Review ==========================
+  Widget _buildLoadingDetail() {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: const SizedBox(height: 40, child: Center(child: CircularProgressIndicator())),
+    );
+  }
+
   Widget _buildDetailReviewSection(BuildContext context) {
+    // Ambil 4 tag teratas berdasarkan jumlah
+    final topTags = List<Map<String, dynamic>>.from(_tagCounts)
+      ..sort((a, b) => ((b['count'] ?? 0) as num).compareTo((a['count'] ?? 0) as num));
+    final visible = topTags.take(4).toList();
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -282,16 +379,21 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          _buildReviewDetailItem('Komentar Penting', '(56)'),
-          const SizedBox(height: 8),
-          _buildReviewDetailItem('Produk Sesuai Deskripsi', '(23)'),
-          const SizedBox(height: 8),
-          _buildReviewDetailItem('Tag Positif', '(15)'),
-          const SizedBox(height: 8),
-          _buildReviewDetailItem('Tidak Sesuai Gambar', '(6)'),
+          if (visible.isEmpty)
+            const Text('Belum ada tag.', style: TextStyle(fontSize: 12, color: Colors.grey))
+          else ...[
+            for (final t in visible) ...[
+              _buildReviewDetailItem(
+                (t['tag'] as String?) ?? '-',
+                '(${(t['count'] ?? 0)})',
+              ),
+              const SizedBox(height: 8),
+            ],
+          ],
           const SizedBox(height: 12),
           InkWell(
             onTap: () {
+              // Arahkan ke layar komentar dengan filter tag jika diperlukan
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -321,6 +423,43 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         ],
       ),
     );
+  }
+
+
+  String _trustText() {
+    final m = _analysis?['metrics'] as Map<String, dynamic>?;
+    if (m == null) return '0% Tingkat Kepercayaan Produk';
+    final trustNorm = (m['avg_trust_percent_norm'] ?? 0).toDouble();
+    return '${trustNorm.round()}% Tingkat Kepercayaan Produk';
+  }
+  String _positiveText() {
+    final m = _analysis?['metrics'] as Map<String, dynamic>?;
+    if (m == null) return '0% Komentar Positif';
+    final sent = (m['sentiment_counts'] as Map<String, dynamic>? ?? {});
+    final total = (m['count_reviews'] ?? 0).toDouble();
+    final pos = (sent['positive'] ?? 0).toDouble();
+    final pct = total > 0 ? (pos / total * 100).round() : 0;
+    return '${pct}% Komentar Positif';
+  }
+  String _negativeText() {
+    final m = _analysis?['metrics'] as Map<String, dynamic>?;
+    if (m == null) return '0% Komentar Negatif';
+    final sent = (m['sentiment_counts'] as Map<String, dynamic>? ?? {});
+    final total = (m['count_reviews'] ?? 0).toDouble();
+    final neg = (sent['negative'] ?? 0).toDouble();
+    final pct = total > 0 ? (neg / total * 100).round() : 0;
+    return '${pct}% Komentar Negatif';
+  }
+  String _otherText() {
+    final m = _analysis?['metrics'] as Map<String, dynamic>?;
+    if (m == null) return '0% Komentar Tidak Relevan';
+    final sent = (m['sentiment_counts'] as Map<String, dynamic>? ?? {});
+    final total = (m['count_reviews'] ?? 0).toDouble();
+    final pos = (sent['positive'] ?? 0).toDouble();
+    final neg = (sent['negative'] ?? 0).toDouble();
+    final otherCount = total - pos - neg;
+    final pct = total > 0 ? (otherCount / total * 100).round() : 0;
+    return '${pct}% Komentar Tidak Relevan';
   }
 
   Widget _buildReviewDetailItem(String title, String count) {
