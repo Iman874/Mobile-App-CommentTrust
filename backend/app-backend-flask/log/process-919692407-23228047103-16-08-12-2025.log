@@ -1,0 +1,58 @@
+[2025-12-08T09:01:18.281733] START job for link: https://shopee.co.id/-BEST-DEALS-ADVAN-Laptop-TBook-Intel-Celeron-N100-Intel-N100-4Gb-128GB-Upgradable14-HD-WIFI-5-Free-Windows-11-Garansi-Resmi-1-Tahun-i.919692407.23228047103
+[2025-12-08T09:01:18.281733] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-12-08T09:02:21.515017] SCRAPER launched Edge remote-debug with profile=Profile 8 on 9222
+[2025-12-08T09:02:24.622633] ERROR scraper failed: Message: session not created: cannot connect to microsoft edge at 127.0.0.1:9222
+from session not created: This version of Microsoft Edge WebDriver only supports Microsoft Edge version 141
+Current browser version is 143.0.3650.66; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7ea932a75+51877]
+	GetHandleVerifier [0x0x7ff7ea932ad4+51972]
+	GetHandleVerifier [0x0x7ff7eaae9425+1848405]
+	(No symbol) [0x0x7ff7ea6e2633]
+	(No symbol) [0x0x7ff7ea6e19be]
+	(No symbol) [0x0x7ff7ea6d69b5]
+	(No symbol) [0x0x7ff7ea71d64e]
+	(No symbol) [0x0x7ff7ea711df3]
+	(No symbol) [0x0x7ff7ea6e5b36]
+	(No symbol) [0x0x7ff7ea6e4d80]
+	(No symbol) [0x0x7ff7ea6e5973]
+	(No symbol) [0x0x7ff7ea7ae4a5]
+	(No symbol) [0x0x7ff7ea7aa75d]
+	GetHandleVerifier [0x0x7ff7ea95d2b3+226019]
+	GetHandleVerifier [0x0x7ff7ea94c481+156849]
+	GetHandleVerifier [0x0x7ff7ea954979+190889]
+	GetHandleVerifier [0x0x7ff7ea939bb4+80868]
+	GetHandleVerifier [0x0x7ff7ea939d03+81203]
+	GetHandleVerifier [0x0x7ff7ea928286+8886]
+	BaseThreadInitThunk [0x0x7ffbe20ae8d7+23]
+	RtlUserThreadStart [0x0x7ffbe308c53c+44]
+
+[2025-12-08T09:06:35.862292] START job for link: https://shopee.co.id/-BEST-DEALS-ADVAN-Laptop-TBook-Intel-Celeron-N100-Intel-N100-4Gb-128GB-Upgradable14-HD-WIFI-5-Free-Windows-11-Garansi-Resmi-1-Tahun-i.919692407.23228047103
+[2025-12-08T09:06:35.871994] SCRAPER using user profile: user-data=C:\Users\Acer\AppData\Local\Microsoft\Edge\User Data profile=Profile 8
+[2025-12-08T09:07:39.186690] SCRAPER launched Edge remote-debug with profile=Profile 8 on 9222
+[2025-12-08T09:07:42.276586] ERROR scraper failed: Message: session not created: cannot connect to microsoft edge at 127.0.0.1:9222
+from session not created: This version of Microsoft Edge WebDriver only supports Microsoft Edge version 141
+Current browser version is 143.0.3650.66; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff7ea932a75+51877]
+	GetHandleVerifier [0x0x7ff7ea932ad4+51972]
+	GetHandleVerifier [0x0x7ff7eaae9425+1848405]
+	(No symbol) [0x0x7ff7ea6e2633]
+	(No symbol) [0x0x7ff7ea6e19be]
+	(No symbol) [0x0x7ff7ea6d69b5]
+	(No symbol) [0x0x7ff7ea71d64e]
+	(No symbol) [0x0x7ff7ea711df3]
+	(No symbol) [0x0x7ff7ea6e5b36]
+	(No symbol) [0x0x7ff7ea6e4d80]
+	(No symbol) [0x0x7ff7ea6e5973]
+	(No symbol) [0x0x7ff7ea7ae4a5]
+	(No symbol) [0x0x7ff7ea7aa75d]
+	GetHandleVerifier [0x0x7ff7ea95d2b3+226019]
+	GetHandleVerifier [0x0x7ff7ea94c481+156849]
+	GetHandleVerifier [0x0x7ff7ea954979+190889]
+	GetHandleVerifier [0x0x7ff7ea939bb4+80868]
+	GetHandleVerifier [0x0x7ff7ea939d03+81203]
+	GetHandleVerifier [0x0x7ff7ea928286+8886]
+	BaseThreadInitThunk [0x0x7ffbe20ae8d7+23]
+	RtlUserThreadStart [0x0x7ffbe308c53c+44]
+
