@@ -10,6 +10,7 @@ from typing import Callable, Tuple, Optional
 
 from . import scrapper_produk as prod
 from . import scrapper_comment as comm
+from . import edge_driver_helper
 
 def _paths(base_dir: str) -> Tuple[str, str, str]:
     """Return driver, cookie, working profile directory (browser-dummy/edge_profile)."""
@@ -164,6 +165,21 @@ def _launch_edge_with_remote(user_data_dir: str, profile_name: Optional[str], po
 
 
 def _make_driver(base_dir: str, user_data_dir: str, profile_name: Optional[str], log: Callable[[str], None], state_cb: Callable[[str, Optional[str]], None]):
+    # Try cross-platform Edge driver helper first
+    import platform
+    os_mode = edge_driver_helper._detect_os_mode()
+    
+    if os_mode == "windows":
+        # Windows: Use existing behavior with remote debugging
+        log(f"SCRAPER detected Windows OS; using remote debugging approach")
+        return _make_driver_windows(base_dir, user_data_dir, profile_name, log, state_cb)
+    else:
+        # Linux: Use direct driver initialization (may not support remote debugging)
+        log(f"SCRAPER detected Linux OS; using direct driver initialization")
+        return _make_driver_linux(log, state_cb)
+
+
+def _make_driver_windows(base_dir: str, user_data_dir: str, profile_name: Optional[str], log: Callable[[str], None], state_cb: Callable[[str, Optional[str]], None]):
     # Use explicit driver path to avoid selenium-manager
     from selenium import webdriver
     from selenium.webdriver.edge.service import Service as EdgeService
@@ -214,6 +230,28 @@ def _make_driver(base_dir: str, user_data_dir: str, profile_name: Optional[str],
     except Exception:
         pass
     return driver
+
+
+def _make_driver_linux(log: Callable[[str], None], state_cb: Callable[[str, Optional[str]], None]):
+    """Initialize Edge driver for Linux using the cross-platform helper."""
+    try:
+        log("SCRAPER initializing Edge driver for Linux")
+        driver = edge_driver_helper.create_edge_driver(debug=True)
+        try:
+            driver.set_window_size(1200, 900)
+        except Exception:
+            pass
+        log("SCRAPER Edge driver initialized successfully on Linux")
+        return driver
+    except FileNotFoundError as e:
+        state_cb('error', f'Edge driver or binary not found: {str(e)}')
+        raise
+    except PermissionError as e:
+        state_cb('error', f'Permission error: {str(e)}')
+        raise
+    except Exception as e:
+        state_cb('error', f'Failed to initialize Edge driver: {str(e)}')
+        raise
 
 def _load_cookies_into_driver(driver, cookie_path: str, log: Callable[[str], None]):
     try:
