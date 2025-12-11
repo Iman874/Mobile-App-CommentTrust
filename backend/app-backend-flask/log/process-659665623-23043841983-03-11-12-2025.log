@@ -1,0 +1,735 @@
+[2025-12-10T20:07:49.253123] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T20:07:49.256550] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T20:07:49.256749] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T20:07:49.257455] SCRAPER initializing Edge driver for Linux
+[2025-12-10T20:07:49.980936] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x624ee76d235e <unknown>
+#1 0x624ee711a696 <unknown>
+#2 0x624ee715b1c8 <unknown>
+#3 0x624ee7156d5b <unknown>
+#4 0x624ee715050b <unknown>
+#5 0x624ee71a009e <unknown>
+#6 0x624ee719f87c <unknown>
+#7 0x624ee715e7a7 <unknown>
+#8 0x624ee715f381 <unknown>
+#9 0x624ee76a10db <unknown>
+#10 0x624ee76a4208 <unknown>
+#11 0x624ee76a3c7d <unknown>
+#12 0x624ee768e2f9 <unknown>
+#13 0x624ee76a4a38 <unknown>
+#14 0x624ee7677b5e <unknown>
+#15 0x624ee76c0648 <unknown>
+#16 0x624ee76c086e <unknown>
+#17 0x624ee76d1869 <unknown>
+#18 0x7edc3409caa4 <unknown>
+#19 0x7edc34129c6c <unknown>
+
+[2025-12-10T20:10:58.846631] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T20:10:58.848676] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T20:10:58.848876] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T20:10:58.848918] SCRAPER initializing Edge driver for Linux
+[2025-12-10T20:10:59.062787] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5fd04fabf35e <unknown>
+#1 0x5fd04f507696 <unknown>
+#2 0x5fd04f5481c8 <unknown>
+#3 0x5fd04f543d5b <unknown>
+#4 0x5fd04f53d50b <unknown>
+#5 0x5fd04f58d09e <unknown>
+#6 0x5fd04f58c87c <unknown>
+#7 0x5fd04f54b7a7 <unknown>
+#8 0x5fd04f54c381 <unknown>
+#9 0x5fd04fa8e0db <unknown>
+#10 0x5fd04fa91208 <unknown>
+#11 0x5fd04fa90c7d <unknown>
+#12 0x5fd04fa7b2f9 <unknown>
+#13 0x5fd04fa91a38 <unknown>
+#14 0x5fd04fa64b5e <unknown>
+#15 0x5fd04faad648 <unknown>
+#16 0x5fd04faad86e <unknown>
+#17 0x5fd04fabe869 <unknown>
+#18 0x7cfd40c9caa4 <unknown>
+#19 0x7cfd40d29c6c <unknown>
+
+[2025-12-10T20:11:11.805953] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T20:11:11.807948] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T20:11:11.810396] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T20:11:11.810509] SCRAPER initializing Edge driver for Linux
+[2025-12-10T20:11:11.959669] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5eacf5feb35e <unknown>
+#1 0x5eacf5a33696 <unknown>
+#2 0x5eacf5a741c8 <unknown>
+#3 0x5eacf5a6fd5b <unknown>
+#4 0x5eacf5a6950b <unknown>
+#5 0x5eacf5ab909e <unknown>
+#6 0x5eacf5ab887c <unknown>
+#7 0x5eacf5a777a7 <unknown>
+#8 0x5eacf5a78381 <unknown>
+#9 0x5eacf5fba0db <unknown>
+#10 0x5eacf5fbd208 <unknown>
+#11 0x5eacf5fbcc7d <unknown>
+#12 0x5eacf5fa72f9 <unknown>
+#13 0x5eacf5fbda38 <unknown>
+#14 0x5eacf5f90b5e <unknown>
+#15 0x5eacf5fd9648 <unknown>
+#16 0x5eacf5fd986e <unknown>
+#17 0x5eacf5fea869 <unknown>
+#18 0x76b06389caa4 <unknown>
+#19 0x76b063929c6c <unknown>
+
+[2025-12-10T20:17:25.354011] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T20:17:25.369364] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T20:17:25.369729] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T20:17:25.369866] SCRAPER initializing Edge driver for Linux
+[2025-12-10T20:17:39.926566] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-10T20:17:39.926721] SCRAPER cookie file not found (tried: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/browser-dummy/cookie.json, /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/browser-dummy/cookies.json)
+[2025-12-10T20:17:56.048535] SCRAPER product tab detected; proceeding
+[2025-12-10T20:17:56.049702] SCRAPER fetch product data
+[2025-12-10T20:18:01.023090] SCRAPER fetch comments
+[2025-12-10T20:18:01.538200] SCRAPER ratings fetch page 1 offset 0 failed (attempt 1/5): empty ratings
+[2025-12-10T20:18:03.837738] SCRAPER ratings fetch page 1 offset 0 failed (attempt 2/5): empty ratings
+[2025-12-10T20:18:07.615436] SCRAPER ratings fetch page 1 offset 0 failed (attempt 3/5): empty ratings
+[2025-12-10T20:18:11.937131] SCRAPER ratings fetch page 1 offset 0 failed (attempt 4/5): empty ratings
+[2025-12-10T20:18:17.272810] SCRAPER ratings fetch page 1 offset 0 failed (attempt 5/5): empty ratings
+[2025-12-10T20:18:22.273352] SCRAPER skip page 1 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:18:23.063190] SCRAPER ratings fetch page 2 offset 20 failed (attempt 1/5): empty ratings
+[2025-12-10T20:18:26.190879] SCRAPER ratings fetch page 2 offset 20 failed (attempt 2/5): empty ratings
+[2025-12-10T20:18:29.990865] SCRAPER ratings fetch page 2 offset 20 failed (attempt 3/5): empty ratings
+[2025-12-10T20:18:35.068292] SCRAPER ratings fetch page 2 offset 20 failed (attempt 4/5): empty ratings
+[2025-12-10T20:18:41.201763] SCRAPER ratings fetch page 2 offset 20 failed (attempt 5/5): empty ratings
+[2025-12-10T20:18:46.204697] SCRAPER skip page 2 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:18:47.958856] SCRAPER ratings fetch page 3 offset 40 failed (attempt 1/5): empty ratings
+[2025-12-10T20:18:52.650677] SCRAPER ratings fetch page 3 offset 40 failed (attempt 2/5): empty ratings
+[2025-12-10T20:18:57.533634] SCRAPER ratings fetch page 3 offset 40 failed (attempt 3/5): empty ratings
+[2025-12-10T20:19:02.342591] SCRAPER ratings fetch page 3 offset 40 failed (attempt 4/5): empty ratings
+[2025-12-10T20:19:08.367426] SCRAPER ratings fetch page 3 offset 40 failed (attempt 5/5): empty ratings
+[2025-12-10T20:19:13.373483] SCRAPER skip page 3 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:19:14.101787] SCRAPER ratings fetch page 4 offset 60 failed (attempt 1/5): empty ratings
+[2025-12-10T20:19:16.685470] SCRAPER ratings fetch page 4 offset 60 failed (attempt 2/5): empty ratings
+[2025-12-10T20:19:20.383854] SCRAPER ratings fetch page 4 offset 60 failed (attempt 3/5): empty ratings
+[2025-12-10T20:19:25.629833] SCRAPER ratings fetch page 4 offset 60 failed (attempt 4/5): empty ratings
+[2025-12-10T20:19:31.178902] SCRAPER ratings fetch page 4 offset 60 failed (attempt 5/5): empty ratings
+[2025-12-10T20:19:36.248590] SCRAPER skip page 4 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:19:36.783290] SCRAPER ratings fetch page 5 offset 80 failed (attempt 1/5): empty ratings
+[2025-12-10T20:19:39.181378] SCRAPER ratings fetch page 5 offset 80 failed (attempt 2/5): empty ratings
+[2025-12-10T20:19:42.680491] SCRAPER ratings fetch page 5 offset 80 failed (attempt 3/5): empty ratings
+[2025-12-10T20:19:49.196340] SCRAPER ratings fetch page 5 offset 80 failed (attempt 4/5): empty ratings
+[2025-12-10T20:19:55.027031] SCRAPER ratings fetch page 5 offset 80 failed (attempt 5/5): empty ratings
+[2025-12-10T20:20:00.032662] SCRAPER skip page 5 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:20:00.558062] SCRAPER ratings fetch page 6 offset 100 failed (attempt 1/5): empty ratings
+[2025-12-10T20:20:03.210693] SCRAPER ratings fetch page 6 offset 100 failed (attempt 2/5): empty ratings
+[2025-12-10T20:20:06.826318] SCRAPER ratings fetch page 6 offset 100 failed (attempt 3/5): empty ratings
+[2025-12-10T20:20:11.657994] SCRAPER ratings fetch page 6 offset 100 failed (attempt 4/5): empty ratings
+[2025-12-10T20:20:34.763831] SCRAPER ratings fetch page 6 offset 100 failed (attempt 5/5): empty ratings
+[2025-12-10T20:20:39.768778] SCRAPER skip page 6 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:20:43.183013] SCRAPER ratings fetch page 7 offset 120 failed (attempt 1/5): empty ratings
+[2025-12-10T20:20:46.995742] SCRAPER ratings fetch page 7 offset 120 failed (attempt 2/5): empty ratings
+[2025-12-10T20:20:51.182234] SCRAPER ratings fetch page 7 offset 120 failed (attempt 3/5): empty ratings
+[2025-12-10T20:20:55.765865] SCRAPER ratings fetch page 7 offset 120 failed (attempt 4/5): empty ratings
+[2025-12-10T20:21:01.503261] SCRAPER ratings fetch page 7 offset 120 failed (attempt 5/5): empty ratings
+[2025-12-10T20:21:06.504501] SCRAPER skip page 7 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:21:07.569604] SCRAPER ratings fetch page 8 offset 140 failed (attempt 1/5): empty ratings
+[2025-12-10T20:21:10.539199] SCRAPER ratings fetch page 8 offset 140 failed (attempt 2/5): empty ratings
+[2025-12-10T20:21:14.228891] SCRAPER ratings fetch page 8 offset 140 failed (attempt 3/5): empty ratings
+[2025-12-10T20:21:18.706797] SCRAPER ratings fetch page 8 offset 140 failed (attempt 4/5): empty ratings
+[2025-12-10T20:21:24.745312] SCRAPER ratings fetch page 8 offset 140 failed (attempt 5/5): empty ratings
+[2025-12-10T20:21:29.746871] SCRAPER skip page 8 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:21:29.842095] SCRAPER ratings fetch page 9 offset 160 failed (attempt 1/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:21:31.898128] SCRAPER ratings fetch page 9 offset 160 failed (attempt 2/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:21:35.011109] SCRAPER ratings fetch page 9 offset 160 failed (attempt 3/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:21:39.099185] SCRAPER ratings fetch page 9 offset 160 failed (attempt 4/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:21:44.183744] SCRAPER ratings fetch page 9 offset 160 failed (attempt 5/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:21:49.198978] SCRAPER skip page 9 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:21:49.248735] SCRAPER ratings fetch page 10 offset 180 failed (attempt 1/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:21:51.257272] SCRAPER ratings fetch page 10 offset 180 failed (attempt 2/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:21:54.334411] SCRAPER ratings fetch page 10 offset 180 failed (attempt 3/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:21:58.340095] SCRAPER ratings fetch page 10 offset 180 failed (attempt 4/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:22:03.351671] SCRAPER ratings fetch page 10 offset 180 failed (attempt 5/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:22:08.352848] SCRAPER skip page 10 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:22:08.359310] SCRAPER ratings fetch page 11 offset 200 failed (attempt 1/5): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x5a5e9f89b35e <unknown>
+#1 0x5a5e9f2e3696 <unknown>
+#2 0x5a5e9f2bb9af <unknown>
+#3 0x5a5e9f362c7b <unknown>
+#4 0x5a5e9f379f66 <unknown>
+#5 0x5a5e9f3277a7 <unknown>
+#6 0x5a5e9f328381 <unknown>
+#7 0x5a5e9f86a0db <unknown>
+#8 0x5a5e9f86d208 <unknown>
+#9 0x5a5e9f86cc7d <unknown>
+#10 0x5a5e9f8572f9 <unknown>
+#11 0x5a5e9f86da38 <unknown>
+#12 0x5a5e9f840b5e <unknown>
+#13 0x5a5e9f889648 <unknown>
+#14 0x5a5e9f88986e <unknown>
+#15 0x5a5e9f89a869 <unknown>
+#16 0x78ba4ae9caa4 <unknown>
+#17 0x78ba4af29c6c <unknown>
+
+[2025-12-10T20:23:34.048808] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T20:23:34.051301] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T20:23:34.051530] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T20:23:34.051590] SCRAPER initializing Edge driver for Linux
+[2025-12-10T20:23:35.512561] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-10T20:23:52.293880] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-10T20:23:57.830891] SCRAPER product tab detected; proceeding
+[2025-12-10T20:23:57.831014] SCRAPER fetch product data
+[2025-12-10T20:23:59.498062] SCRAPER fetch comments
+[2025-12-10T20:23:59.953162] SCRAPER page 1: collected 20/29892
+[2025-12-10T20:24:01.006779] SCRAPER page 2: collected 40/29892
+[2025-12-10T20:24:02.029315] SCRAPER page 3: collected 60/29892
+[2025-12-10T20:24:03.029889] SCRAPER page 4: collected 80/29892
+[2025-12-10T20:24:04.097531] SCRAPER page 5: collected 100/29892
+[2025-12-10T20:24:05.106929] SCRAPER page 6: collected 120/29892
+[2025-12-10T20:24:06.115272] SCRAPER page 7: collected 140/29892
+[2025-12-10T20:24:07.114881] SCRAPER page 8: collected 160/29892
+[2025-12-10T20:24:08.262826] SCRAPER page 9: collected 180/29892
+[2025-12-10T20:24:09.342072] SCRAPER page 10: collected 200/29892
+[2025-12-10T20:24:10.644913] SCRAPER page 11: collected 220/29892
+[2025-12-10T20:24:11.817700] SCRAPER page 12: collected 240/29892
+[2025-12-10T20:24:12.911701] SCRAPER page 13: collected 260/29892
+[2025-12-10T20:24:14.407088] SCRAPER page 14: collected 280/29892
+[2025-12-10T20:24:16.269311] SCRAPER page 15: collected 300/29892
+[2025-12-10T20:24:17.717637] SCRAPER page 16: collected 320/29892
+[2025-12-10T20:24:19.267716] SCRAPER page 17: collected 340/29892
+[2025-12-10T20:24:21.151378] SCRAPER page 18: collected 360/29892
+[2025-12-10T20:24:22.570271] SCRAPER page 19: collected 380/29892
+[2025-12-10T20:24:23.734000] SCRAPER page 20: collected 400/29892
+[2025-12-10T20:24:24.834796] SCRAPER page 21: collected 420/29892
+[2025-12-10T20:24:25.970344] SCRAPER page 22: collected 440/29892
+[2025-12-10T20:24:27.352414] SCRAPER page 23: collected 460/29892
+[2025-12-10T20:24:28.551325] SCRAPER page 24: collected 480/29892
+[2025-12-10T20:24:29.748183] SCRAPER page 25: collected 500/29892
+[2025-12-10T20:24:31.010954] SCRAPER page 26: collected 520/29892
+[2025-12-10T20:24:32.194464] SCRAPER page 27: collected 540/29892
+[2025-12-10T20:24:33.278895] SCRAPER page 28: collected 560/29892
+[2025-12-10T20:24:34.345744] SCRAPER page 29: collected 580/29892
+[2025-12-10T20:24:35.517807] SCRAPER page 30: collected 600/29892
+[2025-12-10T20:24:36.607816] SCRAPER page 31: collected 620/29892
+[2025-12-10T20:24:37.640434] SCRAPER page 32: collected 640/29892
+[2025-12-10T20:24:38.717818] SCRAPER page 33: collected 660/29892
+[2025-12-10T20:24:39.853346] SCRAPER page 34: collected 680/29892
+[2025-12-10T20:24:40.998746] SCRAPER page 35: collected 700/29892
+[2025-12-10T20:24:42.128695] SCRAPER page 36: collected 720/29892
+[2025-12-10T20:24:43.196406] SCRAPER page 37: collected 740/29892
+[2025-12-10T20:24:44.330701] SCRAPER page 38: collected 760/29892
+[2025-12-10T20:24:45.435536] SCRAPER page 39: collected 780/29892
+[2025-12-10T20:24:46.537190] SCRAPER page 40: collected 800/29892
+[2025-12-10T20:24:47.543324] SCRAPER page 41: collected 820/29892
+[2025-12-10T20:24:48.522861] SCRAPER page 42: collected 840/29892
+[2025-12-10T20:24:49.514412] SCRAPER page 43: collected 860/29892
+[2025-12-10T20:24:50.432586] SCRAPER page 44: collected 880/29892
+[2025-12-10T20:24:51.532984] SCRAPER page 45: collected 900/29892
+[2025-12-10T20:24:52.541130] SCRAPER page 46: collected 920/29892
+[2025-12-10T20:24:53.559364] SCRAPER page 47: collected 940/29892
+[2025-12-10T20:24:54.459278] SCRAPER page 48: collected 960/29892
+[2025-12-10T20:24:55.462726] SCRAPER page 49: collected 980/29892
+[2025-12-10T20:24:56.428591] SCRAPER page 50: collected 1000/29892
+[2025-12-10T20:24:57.334326] SCRAPER page 51: collected 1020/29892
+[2025-12-10T20:24:58.322744] SCRAPER page 52: collected 1040/29892
+[2025-12-10T20:24:59.283163] SCRAPER page 53: collected 1060/29892
+[2025-12-10T20:25:00.231348] SCRAPER page 54: collected 1080/29892
+[2025-12-10T20:25:01.137772] SCRAPER page 55: collected 1100/29892
+[2025-12-10T20:25:02.063694] SCRAPER page 56: collected 1120/29892
+[2025-12-10T20:25:03.123169] SCRAPER page 57: collected 1140/29892
+[2025-12-10T20:25:04.045674] SCRAPER page 58: collected 1160/29892
+[2025-12-10T20:25:05.031255] SCRAPER page 59: collected 1180/29892
+[2025-12-10T20:25:06.026668] SCRAPER page 60: collected 1200/29892
+[2025-12-10T20:25:06.948681] SCRAPER page 61: collected 1220/29892
+[2025-12-10T20:25:07.925266] SCRAPER page 62: collected 1240/29892
+[2025-12-10T20:25:09.131697] SCRAPER page 63: collected 1260/29892
+[2025-12-10T20:25:10.134009] SCRAPER page 64: collected 1280/29892
+[2025-12-10T20:25:11.138431] SCRAPER page 65: collected 1300/29892
+[2025-12-10T20:25:12.293509] SCRAPER page 66: collected 1320/29892
+[2025-12-10T20:25:13.301569] SCRAPER page 67: collected 1340/29892
+[2025-12-10T20:25:14.299821] SCRAPER page 68: collected 1360/29892
+[2025-12-10T20:25:15.368841] SCRAPER page 69: collected 1380/29892
+[2025-12-10T20:25:16.379439] SCRAPER page 70: collected 1400/29892
+[2025-12-10T20:25:17.482634] SCRAPER page 71: collected 1420/29892
+[2025-12-10T20:25:18.400826] SCRAPER page 72: collected 1440/29892
+[2025-12-10T20:25:19.478236] SCRAPER page 73: collected 1460/29892
+[2025-12-10T20:25:20.442505] SCRAPER page 74: collected 1480/29892
+[2025-12-10T20:25:21.519670] SCRAPER page 75: collected 1500/29892
+[2025-12-10T20:25:22.529639] SCRAPER page 76: collected 1520/29892
+[2025-12-10T20:25:23.599279] SCRAPER page 77: collected 1540/29892
+[2025-12-10T20:25:24.559438] SCRAPER page 78: collected 1560/29892
+[2025-12-10T20:25:25.566670] SCRAPER page 79: collected 1580/29892
+[2025-12-10T20:25:26.488825] SCRAPER page 80: collected 1600/29892
+[2025-12-10T20:25:27.726633] SCRAPER page 81: collected 1620/29892
+[2025-12-10T20:25:28.681288] SCRAPER page 82: collected 1640/29892
+[2025-12-10T20:25:29.686802] SCRAPER page 83: collected 1660/29892
+[2025-12-10T20:25:30.690486] SCRAPER page 84: collected 1680/29892
+[2025-12-10T20:25:31.841224] SCRAPER page 85: collected 1700/29892
+[2025-12-10T20:25:32.888468] SCRAPER page 86: collected 1720/29892
+[2025-12-10T20:25:34.035591] SCRAPER page 87: collected 1740/29892
+[2025-12-10T20:25:35.069407] SCRAPER page 88: collected 1760/29892
+[2025-12-10T20:25:35.994653] SCRAPER page 89: collected 1780/29892
+[2025-12-10T20:25:36.918828] SCRAPER page 90: collected 1800/29892
+[2025-12-10T20:25:38.140574] SCRAPER page 91: collected 1820/29892
+[2025-12-10T20:25:39.389736] SCRAPER page 92: collected 1840/29892
+[2025-12-10T20:25:40.405349] SCRAPER page 93: collected 1860/29892
+[2025-12-10T20:25:41.388530] SCRAPER page 94: collected 1880/29892
+[2025-12-10T20:25:42.358885] SCRAPER page 95: collected 1900/29892
+[2025-12-10T20:25:43.383745] SCRAPER page 96: collected 1920/29892
+[2025-12-10T20:25:44.376263] SCRAPER page 97: collected 1940/29892
+[2025-12-10T20:25:45.365696] SCRAPER page 98: collected 1960/29892
+[2025-12-10T20:25:46.386018] SCRAPER page 99: collected 1980/29892
+[2025-12-10T20:25:47.317076] SCRAPER page 100: collected 2000/29892
+[2025-12-10T20:25:48.260786] SCRAPER page 101: collected 2020/29892
+[2025-12-10T20:25:49.211259] SCRAPER page 102: collected 2040/29892
+[2025-12-10T20:25:50.157949] SCRAPER page 103: collected 2060/29892
+[2025-12-10T20:25:51.038412] SCRAPER page 104: collected 2080/29892
+[2025-12-10T20:25:51.961237] SCRAPER page 105: collected 2100/29892
+[2025-12-10T20:25:52.927387] SCRAPER page 106: collected 2120/29892
+[2025-12-10T20:25:53.846417] SCRAPER page 107: collected 2140/29892
+[2025-12-10T20:25:54.743259] SCRAPER page 108: collected 2160/29892
+[2025-12-10T20:25:55.706989] SCRAPER page 109: collected 2180/29892
+[2025-12-10T20:25:56.591812] SCRAPER page 110: collected 2200/29892
+[2025-12-10T20:25:57.501046] SCRAPER page 111: collected 2220/29892
+[2025-12-10T20:25:58.388906] SCRAPER page 112: collected 2240/29892
+[2025-12-10T20:25:59.366475] SCRAPER page 113: collected 2260/29892
+[2025-12-10T20:26:00.319886] SCRAPER page 114: collected 2280/29892
+[2025-12-10T20:26:01.281323] SCRAPER page 115: collected 2300/29892
+[2025-12-10T20:26:02.228276] SCRAPER page 116: collected 2320/29892
+[2025-12-10T20:26:03.242610] SCRAPER page 117: collected 2340/29892
+[2025-12-10T20:26:04.177525] SCRAPER page 118: collected 2360/29892
+[2025-12-10T20:26:05.096875] SCRAPER page 119: collected 2380/29892
+[2025-12-10T20:26:06.038326] SCRAPER page 120: collected 2400/29892
+[2025-12-10T20:26:06.921364] SCRAPER page 121: collected 2420/29892
+[2025-12-10T20:26:07.814956] SCRAPER page 122: collected 2440/29892
+[2025-12-10T20:26:08.743315] SCRAPER page 123: collected 2460/29892
+[2025-12-10T20:26:09.627773] SCRAPER page 124: collected 2480/29892
+[2025-12-10T20:26:10.527069] SCRAPER page 125: collected 2500/29892
+[2025-12-10T20:26:11.472217] SCRAPER page 126: collected 2520/29892
+[2025-12-10T20:26:12.849575] SCRAPER page 127: collected 2540/29892
+[2025-12-10T20:26:13.813315] SCRAPER page 128: collected 2560/29892
+[2025-12-10T20:26:14.871601] SCRAPER page 129: collected 2580/29892
+[2025-12-10T20:26:15.777969] SCRAPER page 130: collected 2600/29892
+[2025-12-10T20:26:16.778415] SCRAPER page 131: collected 2620/29892
+[2025-12-10T20:26:17.684192] SCRAPER page 132: collected 2640/29892
+[2025-12-10T20:26:18.878071] SCRAPER page 133: collected 2660/29892
+[2025-12-10T20:26:19.870770] SCRAPER page 134: collected 2680/29892
+[2025-12-10T20:26:20.880861] SCRAPER page 135: collected 2700/29892
+[2025-12-10T20:26:21.769359] SCRAPER page 136: collected 2720/29892
+[2025-12-10T20:26:22.751947] SCRAPER page 137: collected 2740/29892
+[2025-12-10T20:26:23.686143] SCRAPER page 138: collected 2760/29892
+[2025-12-10T20:26:24.662606] SCRAPER page 139: collected 2780/29892
+[2025-12-10T20:26:25.609675] SCRAPER page 140: collected 2800/29892
+[2025-12-10T20:26:26.555918] SCRAPER page 141: collected 2820/29892
+[2025-12-10T20:26:27.484258] SCRAPER page 142: collected 2840/29892
+[2025-12-10T20:26:28.480528] SCRAPER page 143: collected 2860/29892
+[2025-12-10T20:26:29.387838] SCRAPER page 144: collected 2880/29892
+[2025-12-10T20:26:30.316052] SCRAPER page 145: collected 2900/29892
+[2025-12-10T20:26:31.231927] SCRAPER page 146: collected 2920/29892
+[2025-12-10T20:26:32.242037] SCRAPER page 147: collected 2940/29892
+[2025-12-10T20:26:33.143380] SCRAPER page 148: collected 2960/29892
+[2025-12-10T20:26:34.260279] SCRAPER page 149: collected 2980/29892
+[2025-12-10T20:26:35.269589] SCRAPER page 150: collected 3000/29892
+[2025-12-10T20:26:36.341514] SCRAPER page 151: collected 3020/29892
+[2025-12-10T20:26:37.309476] SCRAPER ratings fetch page 152 offset 3020 failed (attempt 1/5): empty ratings
+[2025-12-10T20:26:39.814318] SCRAPER ratings fetch page 152 offset 3020 failed (attempt 2/5): empty ratings
+[2025-12-10T20:26:43.508628] SCRAPER ratings fetch page 152 offset 3020 failed (attempt 3/5): empty ratings
+[2025-12-10T20:26:48.224553] SCRAPER ratings fetch page 152 offset 3020 failed (attempt 4/5): empty ratings
+[2025-12-10T20:26:53.749619] SCRAPER ratings fetch page 152 offset 3020 failed (attempt 5/5): empty ratings
+[2025-12-10T20:26:58.769336] SCRAPER skip page 152 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:26:59.024693] SCRAPER ratings fetch page 153 offset 3040 failed (attempt 1/5): empty ratings
+[2025-12-10T20:27:01.623344] SCRAPER ratings fetch page 153 offset 3040 failed (attempt 2/5): empty ratings
+[2025-12-10T20:27:04.912500] SCRAPER ratings fetch page 153 offset 3040 failed (attempt 3/5): empty ratings
+[2025-12-10T20:27:09.134742] SCRAPER ratings fetch page 153 offset 3040 failed (attempt 4/5): empty ratings
+[2025-12-10T20:27:14.442415] SCRAPER ratings fetch page 153 offset 3040 failed (attempt 5/5): empty ratings
+[2025-12-10T20:27:19.465143] SCRAPER skip page 153 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:27:19.742886] SCRAPER ratings fetch page 154 offset 3060 failed (attempt 1/5): empty ratings
+[2025-12-10T20:27:21.979976] SCRAPER ratings fetch page 154 offset 3060 failed (attempt 2/5): empty ratings
+[2025-12-10T20:27:25.331756] SCRAPER ratings fetch page 154 offset 3060 failed (attempt 3/5): empty ratings
+[2025-12-10T20:27:29.873672] SCRAPER ratings fetch page 154 offset 3060 failed (attempt 4/5): empty ratings
+[2025-12-10T20:27:35.171352] SCRAPER ratings fetch page 154 offset 3060 failed (attempt 5/5): empty ratings
+[2025-12-10T20:27:40.172428] SCRAPER skip page 154 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:27:40.518964] SCRAPER ratings fetch page 155 offset 3080 failed (attempt 1/5): empty ratings
+[2025-12-10T20:27:42.775488] SCRAPER ratings fetch page 155 offset 3080 failed (attempt 2/5): empty ratings
+[2025-12-10T20:27:46.017533] SCRAPER ratings fetch page 155 offset 3080 failed (attempt 3/5): empty ratings
+[2025-12-10T20:27:50.275659] SCRAPER ratings fetch page 155 offset 3080 failed (attempt 4/5): empty ratings
+[2025-12-10T20:27:55.530831] SCRAPER ratings fetch page 155 offset 3080 failed (attempt 5/5): empty ratings
+[2025-12-10T20:28:00.535102] SCRAPER skip page 155 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:28:00.842854] SCRAPER ratings fetch page 156 offset 3100 failed (attempt 1/5): empty ratings
+[2025-12-10T20:28:03.102945] SCRAPER ratings fetch page 156 offset 3100 failed (attempt 2/5): empty ratings
+[2025-12-10T20:28:06.422007] SCRAPER ratings fetch page 156 offset 3100 failed (attempt 3/5): empty ratings
+[2025-12-10T20:28:10.760504] SCRAPER ratings fetch page 156 offset 3100 failed (attempt 4/5): empty ratings
+[2025-12-10T20:28:16.032926] SCRAPER ratings fetch page 156 offset 3100 failed (attempt 5/5): empty ratings
+[2025-12-10T20:28:21.034556] SCRAPER skip page 156 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:28:21.286433] SCRAPER ratings fetch page 157 offset 3120 failed (attempt 1/5): empty ratings
+[2025-12-10T20:28:23.879795] SCRAPER ratings fetch page 157 offset 3120 failed (attempt 2/5): empty ratings
+[2025-12-10T20:28:27.422666] SCRAPER ratings fetch page 157 offset 3120 failed (attempt 3/5): empty ratings
+[2025-12-10T20:28:31.733655] SCRAPER ratings fetch page 157 offset 3120 failed (attempt 4/5): empty ratings
+[2025-12-10T20:28:36.969349] SCRAPER ratings fetch page 157 offset 3120 failed (attempt 5/5): empty ratings
+[2025-12-10T20:28:42.018412] SCRAPER skip page 157 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:28:42.288030] SCRAPER ratings fetch page 158 offset 3140 failed (attempt 1/5): empty ratings
+[2025-12-10T20:28:44.610534] SCRAPER ratings fetch page 158 offset 3140 failed (attempt 2/5): empty ratings
+[2025-12-10T20:28:47.928079] SCRAPER ratings fetch page 158 offset 3140 failed (attempt 3/5): empty ratings
+[2025-12-10T20:28:52.240048] SCRAPER ratings fetch page 158 offset 3140 failed (attempt 4/5): empty ratings
+[2025-12-10T20:28:57.853356] SCRAPER ratings fetch page 158 offset 3140 failed (attempt 5/5): empty ratings
+[2025-12-10T20:29:02.854024] SCRAPER skip page 158 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:29:03.366590] SCRAPER ratings fetch page 159 offset 3160 failed (attempt 1/5): empty ratings
+[2025-12-10T20:29:05.653758] SCRAPER ratings fetch page 159 offset 3160 failed (attempt 2/5): empty ratings
+[2025-12-10T20:29:09.008649] SCRAPER ratings fetch page 159 offset 3160 failed (attempt 3/5): empty ratings
+[2025-12-10T20:29:13.301768] SCRAPER ratings fetch page 159 offset 3160 failed (attempt 4/5): empty ratings
+[2025-12-10T20:29:18.839096] SCRAPER ratings fetch page 159 offset 3160 failed (attempt 5/5): empty ratings
+[2025-12-10T20:29:23.842555] SCRAPER skip page 159 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:29:24.581523] SCRAPER ratings fetch page 160 offset 3180 failed (attempt 1/5): empty ratings
+[2025-12-10T20:29:26.957328] SCRAPER ratings fetch page 160 offset 3180 failed (attempt 2/5): empty ratings
+[2025-12-10T20:29:30.264050] SCRAPER ratings fetch page 160 offset 3180 failed (attempt 3/5): empty ratings
+[2025-12-10T20:29:34.630026] SCRAPER ratings fetch page 160 offset 3180 failed (attempt 4/5): empty ratings
+[2025-12-10T20:29:39.942960] SCRAPER ratings fetch page 160 offset 3180 failed (attempt 5/5): empty ratings
+[2025-12-10T20:29:44.948807] SCRAPER skip page 160 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:29:45.212248] SCRAPER ratings fetch page 161 offset 3200 failed (attempt 1/5): empty ratings
+[2025-12-10T20:29:47.443965] SCRAPER ratings fetch page 161 offset 3200 failed (attempt 2/5): empty ratings
+[2025-12-10T20:29:50.824006] SCRAPER ratings fetch page 161 offset 3200 failed (attempt 3/5): empty ratings
+[2025-12-10T20:29:55.297870] SCRAPER ratings fetch page 161 offset 3200 failed (attempt 4/5): empty ratings
+[2025-12-10T20:30:00.652224] SCRAPER ratings fetch page 161 offset 3200 failed (attempt 5/5): empty ratings
+[2025-12-10T20:30:05.652922] SCRAPER skip page 161 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T20:30:05.946910] SCRAPER ratings fetch page 162 offset 3220 failed (attempt 1/5): empty ratings
+[2025-12-10T20:30:08.396482] SCRAPER ratings fetch page 162 offset 3220 failed (attempt 2/5): empty ratings
+[2025-12-10T20:36:00.825809] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T20:36:00.832197] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T20:36:00.832405] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T20:36:00.832446] SCRAPER initializing Edge driver for Linux
+[2025-12-10T20:36:01.971372] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-10T20:36:19.130114] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-10T20:36:33.036579] SCRAPER product tab detected; proceeding
+[2025-12-10T20:36:33.038249] SCRAPER fetch product data
+[2025-12-10T20:36:37.282441] SCRAPER fetch comments
+[2025-12-10T20:36:49.498848] SCRAPER page 1: collected 20/29892
+[2025-12-10T20:36:54.580397] SCRAPER page 2: collected 40/29892
+[2025-12-10T20:36:58.047166] SCRAPER page 3: collected 60/29892
+[2025-12-10T20:36:59.135471] SCRAPER page 4: collected 80/29892
+[2025-12-10T20:37:00.333630] SCRAPER page 5: collected 100/29892
+[2025-12-10T20:37:02.219256] SCRAPER page 6: collected 120/29892
+[2025-12-10T20:37:03.312696] SCRAPER page 7: collected 140/29892
+[2025-12-10T20:37:04.422192] SCRAPER page 8: collected 160/29892
+[2025-12-10T20:37:05.427996] SCRAPER page 9: collected 180/29892
+[2025-12-10T20:37:06.491542] SCRAPER page 10: collected 200/29892
+[2025-12-10T20:37:07.609653] SCRAPER page 11: collected 220/29892
+[2025-12-10T20:37:09.068516] SCRAPER page 12: collected 240/29892
+[2025-12-10T20:37:10.064983] SCRAPER page 13: collected 260/29892
+[2025-12-10T20:37:10.967166] SCRAPER page 14: collected 280/29892
+[2025-12-10T20:37:11.933836] SCRAPER page 15: collected 300/29892
+[2025-12-10T20:37:12.912234] SCRAPER page 16: collected 320/29892
+[2025-12-10T20:37:13.844826] SCRAPER page 17: collected 340/29892
+[2025-12-10T20:37:14.833744] SCRAPER page 18: collected 360/29892
+[2025-12-10T20:37:15.785412] SCRAPER page 19: collected 380/29892
+[2025-12-10T20:37:16.954594] SCRAPER page 20: collected 400/29892
+[2025-12-10T20:37:18.357477] SCRAPER page 21: collected 420/29892
+[2025-12-10T20:37:19.777882] SCRAPER page 22: collected 440/29892
+[2025-12-10T20:37:21.264799] SCRAPER page 23: collected 460/29892
+[2025-12-10T20:37:22.733163] SCRAPER page 24: collected 480/29892
+[2025-12-10T20:37:24.031230] SCRAPER page 25: collected 500/29892
+[2025-12-10T20:37:25.315574] SCRAPER page 26: collected 520/29892
+[2025-12-10T20:37:26.595354] SCRAPER page 27: collected 540/29892
+[2025-12-10T20:37:28.064811] SCRAPER page 28: collected 560/29892
+[2025-12-10T20:37:29.322185] SCRAPER page 29: collected 580/29892
+[2025-12-10T20:37:30.355616] SCRAPER page 30: collected 600/29892
+[2025-12-10T20:37:31.405919] SCRAPER page 31: collected 620/29892
+[2025-12-10T20:37:32.534605] SCRAPER page 32: collected 640/29892
+[2025-12-10T20:37:33.502581] SCRAPER page 33: collected 660/29892
+[2025-12-10T20:37:34.580276] SCRAPER page 34: collected 680/29892
+[2025-12-10T20:37:35.530693] SCRAPER page 35: collected 700/29892
+[2025-12-10T20:37:37.346036] SCRAPER page 36: collected 720/29892
+[2025-12-10T20:37:38.606522] SCRAPER page 37: collected 740/29892
+[2025-12-10T20:37:40.031398] SCRAPER page 38: collected 760/29892
+[2025-12-10T20:37:41.449151] SCRAPER page 39: collected 780/29892
+[2025-12-10T20:37:42.803881] SCRAPER page 40: collected 800/29892
+[2025-12-10T20:37:44.470563] SCRAPER page 41: collected 820/29892
+[2025-12-10T20:37:46.053904] SCRAPER page 42: collected 840/29892
+[2025-12-10T20:37:47.635284] SCRAPER page 43: collected 860/29892
+[2025-12-10T20:37:49.103441] SCRAPER page 44: collected 880/29892
+[2025-12-10T20:37:50.200462] SCRAPER page 45: collected 900/29892
+[2025-12-10T20:37:51.351016] SCRAPER page 46: collected 920/29892
+[2025-12-10T20:37:52.463902] SCRAPER page 47: collected 940/29892
+[2025-12-10T20:37:53.590711] SCRAPER page 48: collected 960/29892
+[2025-12-10T20:37:54.817674] SCRAPER page 49: collected 980/29892
+[2025-12-10T20:37:55.852060] SCRAPER page 50: collected 1000/29892
+[2025-12-10T20:37:56.851321] SCRAPER page 51: collected 1020/29892
+[2025-12-10T20:37:58.001461] SCRAPER page 52: collected 1040/29892
+[2025-12-10T20:37:59.002758] SCRAPER page 53: collected 1060/29892
+[2025-12-10T20:37:59.975843] SCRAPER page 54: collected 1080/29892
+[2025-12-10T20:38:00.913926] SCRAPER page 55: collected 1100/29892
+[2025-12-10T20:38:02.103147] SCRAPER page 56: collected 1120/29892
+[2025-12-10T20:38:03.807887] SCRAPER page 57: collected 1140/29892
+[2025-12-10T20:38:05.532273] SCRAPER page 58: collected 1160/29892
+[2025-12-10T20:38:07.029476] SCRAPER page 59: collected 1180/29892
+[2025-12-10T20:38:07.974279] SCRAPER page 60: collected 1200/29892
+[2025-12-10T20:38:08.945852] SCRAPER page 61: collected 1220/29892
+[2025-12-10T20:38:09.954554] SCRAPER page 62: collected 1240/29892
+[2025-12-10T20:38:11.293251] SCRAPER page 63: collected 1260/29892
+[2025-12-10T20:38:12.589587] SCRAPER page 64: collected 1280/29892
+[2025-12-10T20:38:14.078504] SCRAPER page 65: collected 1300/29892
+[2025-12-10T20:38:15.138748] SCRAPER page 66: collected 1320/29892
+[2025-12-10T20:38:16.524548] SCRAPER page 67: collected 1340/29892
+[2025-12-10T20:38:17.483736] SCRAPER page 68: collected 1360/29892
+[2025-12-10T20:38:18.464304] SCRAPER page 69: collected 1380/29892
+[2025-12-10T20:38:20.108515] SCRAPER page 70: collected 1400/29892
+[2025-12-10T20:38:21.416530] SCRAPER page 71: collected 1420/29892
+[2025-12-10T20:38:22.639688] SCRAPER page 72: collected 1440/29892
+[2025-12-10T20:38:23.716498] SCRAPER page 73: collected 1460/29892
+[2025-12-10T20:38:24.808858] SCRAPER page 74: collected 1480/29892
+[2025-12-10T20:38:26.135830] SCRAPER page 75: collected 1500/29892
+[2025-12-10T20:38:27.364929] SCRAPER page 76: collected 1520/29892
+[2025-12-10T20:38:28.475526] SCRAPER page 77: collected 1540/29892
+[2025-12-10T20:38:29.581482] SCRAPER page 78: collected 1560/29892
+[2025-12-10T20:38:30.665874] SCRAPER page 79: collected 1580/29892
+[2025-12-10T20:38:31.718268] SCRAPER page 80: collected 1600/29892
+[2025-12-10T20:38:32.745035] SCRAPER page 81: collected 1620/29892
+[2025-12-10T20:38:33.772670] SCRAPER page 82: collected 1640/29892
+[2025-12-10T20:38:34.865553] SCRAPER page 83: collected 1660/29892
+[2025-12-10T20:38:35.882958] SCRAPER page 84: collected 1680/29892
+[2025-12-10T20:38:36.959280] SCRAPER page 85: collected 1700/29892
+[2025-12-10T20:38:38.034690] SCRAPER page 86: collected 1720/29892
+[2025-12-10T20:38:39.069939] SCRAPER page 87: collected 1740/29892
+[2025-12-10T20:38:40.104440] SCRAPER page 88: collected 1760/29892
+[2025-12-10T20:38:41.114143] SCRAPER page 89: collected 1780/29892
+[2025-12-10T20:38:42.219310] SCRAPER page 90: collected 1800/29892
+[2025-12-10T20:38:43.379974] SCRAPER page 91: collected 1820/29892
+[2025-12-10T20:38:44.384975] SCRAPER page 92: collected 1840/29892
+[2025-12-10T20:38:45.474781] SCRAPER page 93: collected 1860/29892
+[2025-12-10T20:38:46.500983] SCRAPER page 94: collected 1880/29892
+[2025-12-10T20:38:47.518347] SCRAPER page 95: collected 1900/29892
+[2025-12-10T20:38:48.616650] SCRAPER page 96: collected 1920/29892
+[2025-12-10T20:38:49.525979] SCRAPER page 97: collected 1940/29892
+[2025-12-10T20:38:50.574681] SCRAPER page 98: collected 1960/29892
+[2025-12-10T20:38:51.574233] SCRAPER page 99: collected 1980/29892
+[2025-12-10T20:38:52.758047] SCRAPER page 100: collected 2000/29892
+[2025-12-10T20:38:53.704842] SCRAPER page 101: collected 2020/29892
+[2025-12-10T20:38:54.918809] SCRAPER page 102: collected 2040/29892
+[2025-12-10T20:38:55.914014] SCRAPER page 103: collected 2060/29892
+[2025-12-10T20:38:56.847801] SCRAPER page 104: collected 2080/29892
+[2025-12-10T20:38:57.895959] SCRAPER page 105: collected 2100/29892
+[2025-12-10T20:38:59.042360] SCRAPER page 106: collected 2120/29892
+[2025-12-10T20:39:00.557203] SCRAPER page 107: collected 2140/29892
+[2025-12-10T20:39:01.697713] SCRAPER page 108: collected 2160/29892

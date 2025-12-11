@@ -1,0 +1,594 @@
+[2025-12-10T11:03:54.155203] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:03:54.162697] FORCE SCRAPE: cleared previous review dir
+[2025-12-10T11:03:54.163874] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:03:54.164122] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:03:54.164164] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:03:54.948278] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-10T11:03:54.950789] SCRAPER cookie file not found (tried: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/browser-dummy/cookie.json, /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/browser-dummy/cookies.json)
+[2025-12-10T11:04:09.305311] SCRAPER product tab detected; proceeding
+[2025-12-10T11:04:09.307607] SCRAPER fetch product data
+[2025-12-10T11:04:18.406259] SCRAPER fetch comments
+[2025-12-10T11:04:18.831339] SCRAPER ratings fetch page 1 offset 0 failed (attempt 1/5): empty ratings
+[2025-12-10T11:04:21.341688] SCRAPER ratings fetch page 1 offset 0 failed (attempt 2/5): empty ratings
+[2025-12-10T11:04:24.885766] SCRAPER ratings fetch page 1 offset 0 failed (attempt 3/5): empty ratings
+[2025-12-10T11:04:29.440269] SCRAPER ratings fetch page 1 offset 0 failed (attempt 4/5): empty ratings
+[2025-12-10T11:04:34.914044] SCRAPER ratings fetch page 1 offset 0 failed (attempt 5/5): empty ratings
+[2025-12-10T11:04:39.919083] SCRAPER skip page 1 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:04:40.466291] SCRAPER ratings fetch page 2 offset 20 failed (attempt 1/5): empty ratings
+[2025-12-10T11:04:42.799217] SCRAPER ratings fetch page 2 offset 20 failed (attempt 2/5): empty ratings
+[2025-12-10T11:04:46.163546] SCRAPER ratings fetch page 2 offset 20 failed (attempt 3/5): empty ratings
+[2025-12-10T11:04:50.850989] SCRAPER ratings fetch page 2 offset 20 failed (attempt 4/5): empty ratings
+[2025-12-10T11:04:56.179445] SCRAPER ratings fetch page 2 offset 20 failed (attempt 5/5): empty ratings
+[2025-12-10T11:05:01.180534] SCRAPER skip page 2 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:05:01.913977] SCRAPER ratings fetch page 3 offset 40 failed (attempt 1/5): empty ratings
+[2025-12-10T11:05:04.524367] SCRAPER ratings fetch page 3 offset 40 failed (attempt 2/5): empty ratings
+[2025-12-10T11:05:08.269417] SCRAPER ratings fetch page 3 offset 40 failed (attempt 3/5): empty ratings
+[2025-12-10T11:05:12.734530] SCRAPER ratings fetch page 3 offset 40 failed (attempt 4/5): empty ratings
+[2025-12-10T11:05:17.970817] SCRAPER ratings fetch page 3 offset 40 failed (attempt 5/5): empty ratings
+[2025-12-10T11:05:22.971616] SCRAPER skip page 3 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:05:23.510747] SCRAPER ratings fetch page 4 offset 60 failed (attempt 1/5): empty ratings
+[2025-12-10T11:05:25.936617] SCRAPER ratings fetch page 4 offset 60 failed (attempt 2/5): empty ratings
+[2025-12-10T11:05:29.969837] SCRAPER ratings fetch page 4 offset 60 failed (attempt 3/5): empty ratings
+[2025-12-10T11:05:34.490779] SCRAPER ratings fetch page 4 offset 60 failed (attempt 4/5): empty ratings
+[2025-12-10T11:05:39.993420] SCRAPER ratings fetch page 4 offset 60 failed (attempt 5/5): empty ratings
+[2025-12-10T11:05:44.994393] SCRAPER skip page 4 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:05:45.370786] SCRAPER ratings fetch page 5 offset 80 failed (attempt 1/5): empty ratings
+[2025-12-10T11:05:47.946508] SCRAPER ratings fetch page 5 offset 80 failed (attempt 2/5): empty ratings
+[2025-12-10T11:05:51.367140] SCRAPER ratings fetch page 5 offset 80 failed (attempt 3/5): empty ratings
+[2025-12-10T11:05:55.830278] SCRAPER ratings fetch page 5 offset 80 failed (attempt 4/5): empty ratings
+[2025-12-10T11:06:01.289183] SCRAPER ratings fetch page 5 offset 80 failed (attempt 5/5): empty ratings
+[2025-12-10T11:06:06.290271] SCRAPER skip page 5 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:06:06.525440] SCRAPER ratings fetch page 6 offset 100 failed (attempt 1/5): empty ratings
+[2025-12-10T11:06:08.824454] SCRAPER ratings fetch page 6 offset 100 failed (attempt 2/5): empty ratings
+[2025-12-10T11:06:12.156064] SCRAPER ratings fetch page 6 offset 100 failed (attempt 3/5): empty ratings
+[2025-12-10T11:06:16.552076] SCRAPER ratings fetch page 6 offset 100 failed (attempt 4/5): empty ratings
+[2025-12-10T11:06:21.839717] SCRAPER ratings fetch page 6 offset 100 failed (attempt 5/5): empty ratings
+[2025-12-10T11:06:26.846740] SCRAPER skip page 6 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:06:27.175332] SCRAPER ratings fetch page 7 offset 120 failed (attempt 1/5): empty ratings
+[2025-12-10T11:06:27.585410] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:06:27.586151] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:06:27.586930] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:06:27.587067] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:06:27.800033] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x6284e220535e <unknown>
+#1 0x6284e1c4d696 <unknown>
+#2 0x6284e1c8e1c8 <unknown>
+#3 0x6284e1c89d5b <unknown>
+#4 0x6284e1c8350b <unknown>
+#5 0x6284e1cd309e <unknown>
+#6 0x6284e1cd287c <unknown>
+#7 0x6284e1c917a7 <unknown>
+#8 0x6284e1c92381 <unknown>
+#9 0x6284e21d40db <unknown>
+#10 0x6284e21d7208 <unknown>
+#11 0x6284e21d6c7d <unknown>
+#12 0x6284e21c12f9 <unknown>
+#13 0x6284e21d7a38 <unknown>
+#14 0x6284e21aab5e <unknown>
+#15 0x6284e21f3648 <unknown>
+#16 0x6284e21f386e <unknown>
+#17 0x6284e2204869 <unknown>
+#18 0x7b2d79f6e56a <unknown>
+#19 0x7b2d79ff1e54 __clone
+
+[2025-12-10T11:06:29.634648] SCRAPER ratings fetch page 7 offset 120 failed (attempt 2/5): empty ratings
+[2025-12-10T11:06:32.854903] SCRAPER ratings fetch page 7 offset 120 failed (attempt 3/5): empty ratings
+[2025-12-10T11:06:37.510577] SCRAPER ratings fetch page 7 offset 120 failed (attempt 4/5): empty ratings
+[2025-12-10T11:06:43.121191] SCRAPER ratings fetch page 7 offset 120 failed (attempt 5/5): empty ratings
+[2025-12-10T11:06:46.674053] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:06:46.675732] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:06:46.675981] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:06:46.676022] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:06:46.884984] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x600575b0035e <unknown>
+#1 0x600575548696 <unknown>
+#2 0x6005755891c8 <unknown>
+#3 0x600575584d5b <unknown>
+#4 0x60057557e50b <unknown>
+#5 0x6005755ce09e <unknown>
+#6 0x6005755cd87c <unknown>
+#7 0x60057558c7a7 <unknown>
+#8 0x60057558d381 <unknown>
+#9 0x600575acf0db <unknown>
+#10 0x600575ad2208 <unknown>
+#11 0x600575ad1c7d <unknown>
+#12 0x600575abc2f9 <unknown>
+#13 0x600575ad2a38 <unknown>
+#14 0x600575aa5b5e <unknown>
+#15 0x600575aee648 <unknown>
+#16 0x600575aee86e <unknown>
+#17 0x600575aff869 <unknown>
+#18 0x7fb63241556a <unknown>
+#19 0x7fb632498e54 __clone
+
+[2025-12-10T11:06:48.125715] SCRAPER skip page 7 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:06:48.315694] SCRAPER ratings fetch page 8 offset 140 failed (attempt 1/5): empty ratings
+[2025-12-10T11:06:50.825376] SCRAPER ratings fetch page 8 offset 140 failed (attempt 2/5): empty ratings
+[2025-12-10T11:06:54.029754] SCRAPER ratings fetch page 8 offset 140 failed (attempt 3/5): empty ratings
+[2025-12-10T11:06:58.212286] SCRAPER ratings fetch page 8 offset 140 failed (attempt 4/5): empty ratings
+[2025-12-10T11:07:03.427345] SCRAPER ratings fetch page 8 offset 140 failed (attempt 5/5): empty ratings
+[2025-12-10T11:07:08.428000] SCRAPER skip page 8 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:07:08.645453] SCRAPER ratings fetch page 9 offset 160 failed (attempt 1/5): empty ratings
+[2025-12-10T11:07:11.133768] SCRAPER ratings fetch page 9 offset 160 failed (attempt 2/5): empty ratings
+[2025-12-10T11:07:14.358349] SCRAPER ratings fetch page 9 offset 160 failed (attempt 3/5): empty ratings
+[2025-12-10T11:07:18.628210] SCRAPER ratings fetch page 9 offset 160 failed (attempt 4/5): empty ratings
+[2025-12-10T11:07:23.842023] SCRAPER ratings fetch page 9 offset 160 failed (attempt 5/5): empty ratings
+[2025-12-10T11:07:28.845014] SCRAPER skip page 9 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:07:29.072396] SCRAPER ratings fetch page 10 offset 180 failed (attempt 1/5): empty ratings
+[2025-12-10T11:07:31.274228] SCRAPER ratings fetch page 10 offset 180 failed (attempt 2/5): empty ratings
+[2025-12-10T11:07:34.508099] SCRAPER ratings fetch page 10 offset 180 failed (attempt 3/5): empty ratings
+[2025-12-10T11:07:38.748913] SCRAPER ratings fetch page 10 offset 180 failed (attempt 4/5): empty ratings
+[2025-12-10T11:07:44.120562] SCRAPER ratings fetch page 10 offset 180 failed (attempt 5/5): empty ratings
+[2025-12-10T11:07:49.126068] SCRAPER skip page 10 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:07:49.406543] SCRAPER ratings fetch page 11 offset 200 failed (attempt 1/5): empty ratings
+[2025-12-10T11:07:51.773328] SCRAPER ratings fetch page 11 offset 200 failed (attempt 2/5): empty ratings
+[2025-12-10T11:07:55.001792] SCRAPER ratings fetch page 11 offset 200 failed (attempt 3/5): empty ratings
+[2025-12-10T11:07:59.386403] SCRAPER ratings fetch page 11 offset 200 failed (attempt 4/5): empty ratings
+[2025-12-10T11:08:27.023176] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:08:27.023572] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:08:27.023693] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:08:27.023734] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:08:27.519706] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5d0a542c035e <unknown>
+#1 0x5d0a53d08696 <unknown>
+#2 0x5d0a53d491c8 <unknown>
+#3 0x5d0a53d44d5b <unknown>
+#4 0x5d0a53d3e50b <unknown>
+#5 0x5d0a53d8e09e <unknown>
+#6 0x5d0a53d8d87c <unknown>
+#7 0x5d0a53d4c7a7 <unknown>
+#8 0x5d0a53d4d381 <unknown>
+#9 0x5d0a5428f0db <unknown>
+#10 0x5d0a54292208 <unknown>
+#11 0x5d0a54291c7d <unknown>
+#12 0x5d0a5427c2f9 <unknown>
+#13 0x5d0a54292a38 <unknown>
+#14 0x5d0a54265b5e <unknown>
+#15 0x5d0a542ae648 <unknown>
+#16 0x5d0a542ae86e <unknown>
+#17 0x5d0a542bf869 <unknown>
+#18 0x7a4e15fa956a <unknown>
+#19 0x7a4e1602ce54 __clone
+
+[2025-12-10T11:08:39.478776] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:08:39.483252] FORCE SCRAPE: cleared previous review dir
+[2025-12-10T11:08:39.483662] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:08:39.483823] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:08:39.484413] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:08:39.689543] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5d6d78a3735e <unknown>
+#1 0x5d6d7847f696 <unknown>
+#2 0x5d6d784c01c8 <unknown>
+#3 0x5d6d784bbd5b <unknown>
+#4 0x5d6d784b550b <unknown>
+#5 0x5d6d7850509e <unknown>
+#6 0x5d6d7850487c <unknown>
+#7 0x5d6d784c37a7 <unknown>
+#8 0x5d6d784c4381 <unknown>
+#9 0x5d6d78a060db <unknown>
+#10 0x5d6d78a09208 <unknown>
+#11 0x5d6d78a08c7d <unknown>
+#12 0x5d6d789f32f9 <unknown>
+#13 0x5d6d78a09a38 <unknown>
+#14 0x5d6d789dcb5e <unknown>
+#15 0x5d6d78a25648 <unknown>
+#16 0x5d6d78a2586e <unknown>
+#17 0x5d6d78a36869 <unknown>
+#18 0x7128c8bc856a <unknown>
+#19 0x7128c8c4be54 __clone
+
+[2025-12-10T11:08:46.937453] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:08:46.942527] FORCE SCRAPE: cleared previous review dir
+[2025-12-10T11:08:46.943343] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:08:46.943476] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:08:46.943837] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:08:47.044163] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5ec67094435e <unknown>
+#1 0x5ec67038c696 <unknown>
+#2 0x5ec6703cd1c8 <unknown>
+#3 0x5ec6703c8d5b <unknown>
+#4 0x5ec6703c250b <unknown>
+#5 0x5ec67041209e <unknown>
+#6 0x5ec67041187c <unknown>
+#7 0x5ec6703d07a7 <unknown>
+#8 0x5ec6703d1381 <unknown>
+#9 0x5ec6709130db <unknown>
+#10 0x5ec670916208 <unknown>
+#11 0x5ec670915c7d <unknown>
+#12 0x5ec6709002f9 <unknown>
+#13 0x5ec670916a38 <unknown>
+#14 0x5ec6708e9b5e <unknown>
+#15 0x5ec670932648 <unknown>
+#16 0x5ec67093286e <unknown>
+#17 0x5ec670943869 <unknown>
+#18 0x79324eab256a <unknown>
+#19 0x79324eb35e54 __clone
+
+[2025-12-10T11:09:30.568561] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:09:30.573302] FORCE SCRAPE: cleared previous review dir
+[2025-12-10T11:09:30.579995] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:09:30.581154] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:09:30.581299] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:09:31.380136] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5a1eae8f435e <unknown>
+#1 0x5a1eae33c696 <unknown>
+#2 0x5a1eae37d1c8 <unknown>
+#3 0x5a1eae378d5b <unknown>
+#4 0x5a1eae37250b <unknown>
+#5 0x5a1eae3c209e <unknown>
+#6 0x5a1eae3c187c <unknown>
+#7 0x5a1eae3807a7 <unknown>
+#8 0x5a1eae381381 <unknown>
+#9 0x5a1eae8c30db <unknown>
+#10 0x5a1eae8c6208 <unknown>
+#11 0x5a1eae8c5c7d <unknown>
+#12 0x5a1eae8b02f9 <unknown>
+#13 0x5a1eae8c6a38 <unknown>
+#14 0x5a1eae899b5e <unknown>
+#15 0x5a1eae8e2648 <unknown>
+#16 0x5a1eae8e286e <unknown>
+#17 0x5a1eae8f3869 <unknown>
+#18 0x7ced30e2656a <unknown>
+#19 0x7ced30ea9e54 __clone
+
+[2025-12-10T11:10:24.615972] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:10:24.617928] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:10:24.618133] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:10:24.618240] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:10:24.838938] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x57b02192d35e <unknown>
+#1 0x57b021375696 <unknown>
+#2 0x57b0213b61c8 <unknown>
+#3 0x57b0213b1d5b <unknown>
+#4 0x57b0213ab50b <unknown>
+#5 0x57b0213fb09e <unknown>
+#6 0x57b0213fa87c <unknown>
+#7 0x57b0213b97a7 <unknown>
+#8 0x57b0213ba381 <unknown>
+#9 0x57b0218fc0db <unknown>
+#10 0x57b0218ff208 <unknown>
+#11 0x57b0218fec7d <unknown>
+#12 0x57b0218e92f9 <unknown>
+#13 0x57b0218ffa38 <unknown>
+#14 0x57b0218d2b5e <unknown>
+#15 0x57b02191b648 <unknown>
+#16 0x57b02191b86e <unknown>
+#17 0x57b02192c869 <unknown>
+#18 0x7d296781056a <unknown>
+#19 0x7d2967893e54 __clone
+
+[2025-12-10T11:10:30.316257] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:10:30.317751] FORCE SCRAPE: cleared previous review dir
+[2025-12-10T11:10:30.318077] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:10:30.318412] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:10:30.318563] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:10:30.470533] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5cf8a380935e <unknown>
+#1 0x5cf8a3251696 <unknown>
+#2 0x5cf8a32921c8 <unknown>
+#3 0x5cf8a328dd5b <unknown>
+#4 0x5cf8a328750b <unknown>
+#5 0x5cf8a32d709e <unknown>
+#6 0x5cf8a32d687c <unknown>
+#7 0x5cf8a32957a7 <unknown>
+#8 0x5cf8a3296381 <unknown>
+#9 0x5cf8a37d80db <unknown>
+#10 0x5cf8a37db208 <unknown>
+#11 0x5cf8a37dac7d <unknown>
+#12 0x5cf8a37c52f9 <unknown>
+#13 0x5cf8a37dba38 <unknown>
+#14 0x5cf8a37aeb5e <unknown>
+#15 0x5cf8a37f7648 <unknown>
+#16 0x5cf8a37f786e <unknown>
+#17 0x5cf8a3808869 <unknown>
+#18 0x75599d72656a <unknown>
+#19 0x75599d7a9e54 __clone
+
+[2025-12-10T11:10:33.185237] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:10:33.193096] FORCE SCRAPE: cleared previous review dir
+[2025-12-10T11:10:33.193343] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:10:33.193448] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:10:33.193515] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:10:33.315492] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5f6f6827c35e <unknown>
+#1 0x5f6f67cc4696 <unknown>
+#2 0x5f6f67d051c8 <unknown>
+#3 0x5f6f67d00d5b <unknown>
+#4 0x5f6f67cfa50b <unknown>
+#5 0x5f6f67d4a09e <unknown>
+#6 0x5f6f67d4987c <unknown>
+#7 0x5f6f67d087a7 <unknown>
+#8 0x5f6f67d09381 <unknown>
+#9 0x5f6f6824b0db <unknown>
+#10 0x5f6f6824e208 <unknown>
+#11 0x5f6f6824dc7d <unknown>
+#12 0x5f6f682382f9 <unknown>
+#13 0x5f6f6824ea38 <unknown>
+#14 0x5f6f68221b5e <unknown>
+#15 0x5f6f6826a648 <unknown>
+#16 0x5f6f6826a86e <unknown>
+#17 0x5f6f6827b869 <unknown>
+#18 0x773ee37ee56a <unknown>
+#19 0x773ee3871e54 __clone
+
+[2025-12-10T11:18:43.678742] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:18:43.681418] FORCE SCRAPE: cleared previous review dir
+[2025-12-10T11:18:43.683369] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:18:43.683690] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:18:43.683821] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:18:50.303589] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-10T11:18:50.303863] SCRAPER cookie file not found (tried: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/browser-dummy/cookie.json, /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/browser-dummy/cookies.json)
+[2025-12-10T11:19:05.511565] SCRAPER product tab detected; proceeding
+[2025-12-10T11:19:05.512014] SCRAPER fetch product data
+[2025-12-10T11:19:08.761167] SCRAPER fetch comments
+[2025-12-10T11:19:09.009865] SCRAPER ratings fetch page 1 offset 0 failed (attempt 1/5): empty ratings
+[2025-12-10T11:19:11.245305] SCRAPER ratings fetch page 1 offset 0 failed (attempt 2/5): empty ratings
+[2025-12-10T11:19:14.710703] SCRAPER ratings fetch page 1 offset 0 failed (attempt 3/5): empty ratings
+[2025-12-10T11:19:19.156347] SCRAPER ratings fetch page 1 offset 0 failed (attempt 4/5): empty ratings
+[2025-12-10T11:19:24.778034] SCRAPER ratings fetch page 1 offset 0 failed (attempt 5/5): empty ratings
+[2025-12-10T11:19:27.843242] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:19:27.844755] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:19:27.844949] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:19:27.845063] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:19:28.163700] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-10T11:19:28.164026] SCRAPER cookie file not found (tried: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/browser-dummy/cookie.json, /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/browser-dummy/cookies.json)
+[2025-12-10T11:19:29.781311] SCRAPER skip page 1 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:19:39.299446] SCRAPER ratings fetch page 2 offset 20 failed (attempt 1/5): empty ratings
+[2025-12-10T11:19:39.975605] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:19:39.977325] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:19:41.621055] SCRAPER ratings fetch page 2 offset 20 failed (attempt 2/5): empty ratings
+[2025-12-10T11:19:42.077339] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:19:44.244687] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:19:45.107417] SCRAPER ratings fetch page 2 offset 20 failed (attempt 3/5): empty ratings
+[2025-12-10T11:19:46.334552] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:19:48.536550] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:19:49.781260] SCRAPER ratings fetch page 2 offset 20 failed (attempt 4/5): empty ratings
+[2025-12-10T11:19:50.603613] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:19:50.603786] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:19:52.879798] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:19:55.038355] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:19:55.064385] SCRAPER ratings fetch page 2 offset 20 failed (attempt 5/5): empty ratings
+[2025-12-10T11:19:57.627462] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:19:59.704233] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:00.083965] SCRAPER skip page 2 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:20:00.820795] SCRAPER ratings fetch page 3 offset 40 failed (attempt 1/5): empty ratings
+[2025-12-10T11:20:01.801852] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:01.802161] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:20:03.135281] SCRAPER ratings fetch page 3 offset 40 failed (attempt 2/5): empty ratings
+[2025-12-10T11:20:03.890566] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:06.088194] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:06.402627] SCRAPER ratings fetch page 3 offset 40 failed (attempt 3/5): empty ratings
+[2025-12-10T11:20:08.131545] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:10.219589] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:10.647550] SCRAPER ratings fetch page 3 offset 40 failed (attempt 4/5): empty ratings
+[2025-12-10T11:20:12.319361] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:12.319569] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:20:14.421913] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:15.964093] SCRAPER ratings fetch page 3 offset 40 failed (attempt 5/5): empty ratings
+[2025-12-10T11:20:16.503163] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:18.585149] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:20.650161] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:20.965994] SCRAPER skip page 3 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:20:21.216891] SCRAPER ratings fetch page 4 offset 60 failed (attempt 1/5): empty ratings
+[2025-12-10T11:20:22.715890] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:22.716190] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:20:23.451123] SCRAPER ratings fetch page 4 offset 60 failed (attempt 2/5): empty ratings
+[2025-12-10T11:20:24.814434] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:26.700328] SCRAPER ratings fetch page 4 offset 60 failed (attempt 3/5): empty ratings
+[2025-12-10T11:20:26.909283] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:29.017353] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:30.967671] SCRAPER ratings fetch page 4 offset 60 failed (attempt 4/5): empty ratings
+[2025-12-10T11:20:31.088129] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:33.206257] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:33.206424] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:20:35.300311] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:36.218846] SCRAPER ratings fetch page 4 offset 60 failed (attempt 5/5): empty ratings
+[2025-12-10T11:20:37.388385] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:39.452154] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:41.219253] SCRAPER skip page 4 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:20:41.472464] SCRAPER ratings fetch page 5 offset 80 failed (attempt 1/5): empty ratings
+[2025-12-10T11:20:41.556323] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:43.670206] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:43.670403] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:20:43.700570] SCRAPER ratings fetch page 5 offset 80 failed (attempt 2/5): empty ratings
+[2025-12-10T11:20:45.824922] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:46.974816] SCRAPER ratings fetch page 5 offset 80 failed (attempt 3/5): empty ratings
+[2025-12-10T11:20:47.913158] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:50.033155] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:51.203916] SCRAPER ratings fetch page 5 offset 80 failed (attempt 4/5): empty ratings
+[2025-12-10T11:20:52.122674] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:54.294790] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:54.294985] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:20:56.587282] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:20:56.649113] SCRAPER ratings fetch page 5 offset 80 failed (attempt 5/5): empty ratings
+[2025-12-10T11:20:58.696884] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:00.851538] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:01.656072] SCRAPER skip page 5 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:21:01.984784] SCRAPER ratings fetch page 6 offset 100 failed (attempt 1/5): empty ratings
+[2025-12-10T11:21:02.947965] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:04.261548] SCRAPER ratings fetch page 6 offset 100 failed (attempt 2/5): empty ratings
+[2025-12-10T11:21:05.086353] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:05.086554] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:21:07.195866] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:07.536214] SCRAPER ratings fetch page 6 offset 100 failed (attempt 3/5): empty ratings
+[2025-12-10T11:21:09.285998] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:11.372191] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:11.768719] SCRAPER ratings fetch page 6 offset 100 failed (attempt 4/5): empty ratings
+[2025-12-10T11:21:13.469634] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:15.550660] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:15.550764] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:21:17.669509] SCRAPER ratings fetch page 6 offset 100 failed (attempt 5/5): empty ratings
+[2025-12-10T11:21:17.803263] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:19.913473] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:22.012208] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:22.670145] SCRAPER skip page 6 after 5 failures; lanjut halaman berikutnya
+[2025-12-10T11:21:23.006817] SCRAPER ratings fetch page 7 offset 120 failed (attempt 1/5): empty ratings
+[2025-12-10T11:21:24.060658] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:25.359193] SCRAPER ratings fetch page 7 offset 120 failed (attempt 2/5): empty ratings
+[2025-12-10T11:21:26.323493] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:26.324023] SCRAPER captcha detected; waiting user solve...
+[2025-12-10T11:21:28.898002] SCRAPER ratings fetch page 7 offset 120 failed (attempt 3/5): empty ratings
+[2025-12-10T11:21:29.140658] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:31.239986] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:33.361885] SCRAPER ratings fetch page 7 offset 120 failed (attempt 4/5): empty ratings
+[2025-12-10T11:21:33.818588] SCRAPER state captcha: Captcha terdeteksi — selesaikan secara manual di tab baru
+[2025-12-10T11:21:51.159795] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:21:51.168304] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:21:51.169495] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:21:51.169677] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:21:51.577183] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x60d750ff435e <unknown>
+#1 0x60d750a3c696 <unknown>
+#2 0x60d750a7d1c8 <unknown>
+#3 0x60d750a78d5b <unknown>
+#4 0x60d750a7250b <unknown>
+#5 0x60d750ac209e <unknown>
+#6 0x60d750ac187c <unknown>
+#7 0x60d750a807a7 <unknown>
+#8 0x60d750a81381 <unknown>
+#9 0x60d750fc30db <unknown>
+#10 0x60d750fc6208 <unknown>
+#11 0x60d750fc5c7d <unknown>
+#12 0x60d750fb02f9 <unknown>
+#13 0x60d750fc6a38 <unknown>
+#14 0x60d750f99b5e <unknown>
+#15 0x60d750fe2648 <unknown>
+#16 0x60d750fe286e <unknown>
+#17 0x60d750ff3869 <unknown>
+#18 0x7e3fd6a8256a <unknown>
+#19 0x7e3fd6b05e54 __clone
+
+[2025-12-10T11:22:04.755039] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:22:04.759538] FORCE SCRAPE: cleared previous review dir
+[2025-12-10T11:22:04.760689] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:22:04.761481] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:22:04.763476] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:22:05.120174] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x56f13c7f735e <unknown>
+#1 0x56f13c23f696 <unknown>
+#2 0x56f13c2801c8 <unknown>
+#3 0x56f13c27bd5b <unknown>
+#4 0x56f13c27550b <unknown>
+#5 0x56f13c2c509e <unknown>
+#6 0x56f13c2c487c <unknown>
+#7 0x56f13c2837a7 <unknown>
+#8 0x56f13c284381 <unknown>
+#9 0x56f13c7c60db <unknown>
+#10 0x56f13c7c9208 <unknown>
+#11 0x56f13c7c8c7d <unknown>
+#12 0x56f13c7b32f9 <unknown>
+#13 0x56f13c7c9a38 <unknown>
+#14 0x56f13c79cb5e <unknown>
+#15 0x56f13c7e5648 <unknown>
+#16 0x56f13c7e586e <unknown>
+#17 0x56f13c7f6869 <unknown>
+#18 0x77f4834b156a <unknown>
+#19 0x77f483534e54 __clone
+
+[2025-12-10T11:36:46.904351] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:36:46.905255] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:36:46.905416] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:36:46.905463] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:36:47.456182] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x61cee356235e <unknown>
+#1 0x61cee2faa696 <unknown>
+#2 0x61cee2feb1c8 <unknown>
+#3 0x61cee2fe6d5b <unknown>
+#4 0x61cee2fe050b <unknown>
+#5 0x61cee303009e <unknown>
+#6 0x61cee302f87c <unknown>
+#7 0x61cee2fee7a7 <unknown>
+#8 0x61cee2fef381 <unknown>
+#9 0x61cee35310db <unknown>
+#10 0x61cee3534208 <unknown>
+#11 0x61cee3533c7d <unknown>
+#12 0x61cee351e2f9 <unknown>
+#13 0x61cee3534a38 <unknown>
+#14 0x61cee3507b5e <unknown>
+#15 0x61cee3550648 <unknown>
+#16 0x61cee355086e <unknown>
+#17 0x61cee3561869 <unknown>
+#18 0x7b15e6b0356a <unknown>
+#19 0x7b15e6b86e54 __clone
+
+[2025-12-10T11:41:33.205993] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:41:33.208551] FORCE SCRAPE: cleared previous review dir
+[2025-12-10T11:41:33.219496] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:41:33.219734] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:41:33.219806] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:41:33.643745] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5ee65b81835e <unknown>
+#1 0x5ee65b260696 <unknown>
+#2 0x5ee65b2a11c8 <unknown>
+#3 0x5ee65b29cd5b <unknown>
+#4 0x5ee65b29650b <unknown>
+#5 0x5ee65b2e609e <unknown>
+#6 0x5ee65b2e587c <unknown>
+#7 0x5ee65b2a47a7 <unknown>
+#8 0x5ee65b2a5381 <unknown>
+#9 0x5ee65b7e70db <unknown>
+#10 0x5ee65b7ea208 <unknown>
+#11 0x5ee65b7e9c7d <unknown>
+#12 0x5ee65b7d42f9 <unknown>
+#13 0x5ee65b7eaa38 <unknown>
+#14 0x5ee65b7bdb5e <unknown>
+#15 0x5ee65b806648 <unknown>
+#16 0x5ee65b80686e <unknown>
+#17 0x5ee65b817869 <unknown>
+#18 0x71bd7f0e156a <unknown>
+#19 0x71bd7f164e54 __clone
+
+[2025-12-10T11:46:59.084794] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T11:46:59.088282] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T11:46:59.101168] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T11:46:59.102347] SCRAPER initializing Edge driver for Linux
+[2025-12-10T11:46:59.331410] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x6483272bf35e <unknown>
+#1 0x648326d07696 <unknown>
+#2 0x648326d481c8 <unknown>
+#3 0x648326d43d5b <unknown>
+#4 0x648326d3d50b <unknown>
+#5 0x648326d8d09e <unknown>
+#6 0x648326d8c87c <unknown>
+#7 0x648326d4b7a7 <unknown>
+#8 0x648326d4c381 <unknown>
+#9 0x64832728e0db <unknown>
+#10 0x648327291208 <unknown>
+#11 0x648327290c7d <unknown>
+#12 0x64832727b2f9 <unknown>
+#13 0x648327291a38 <unknown>
+#14 0x648327264b5e <unknown>
+#15 0x6483272ad648 <unknown>
+#16 0x6483272ad86e <unknown>
+#17 0x6483272be869 <unknown>
+#18 0x71e9ea90d56a <unknown>
+#19 0x71e9ea990e54 __clone
+

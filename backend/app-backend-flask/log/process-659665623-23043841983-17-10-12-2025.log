@@ -1,0 +1,272 @@
+[2025-12-10T10:00:57.213699] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:00:57.215195] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:00:57.215515] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:00:57.217473] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:00:57.217804] ERROR scraper failed: Edge WebDriver not found at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/browser-dummy/edgedriver_linux64/msedgedriver. For LINUX, place the driver at: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/browser-dummy/edgedriver_linux64/msedgedriver. Or set EDGE_DRIVER_PATH environment variable to override.
+[2025-12-10T10:04:21.309101] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:04:21.312368] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:04:21.312905] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:04:21.313000] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:04:21.662069] ERROR scraper failed: Microsoft Edge binary not found on Linux. Checked: /usr/bin/microsoft-edge, /usr/bin/microsoft-edge-stable, /usr/bin/microsoft-edge-dev, /opt/microsoft/msedge/msedge. Please install Edge or set EDGE_BINARY_PATH environment variable. To install on Ubuntu/Debian: sudo apt install microsoft-edge-stable
+[2025-12-10T10:09:49.055901] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:09:49.070025] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:09:49.070166] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:09:49.070207] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:09:49.070770] ERROR scraper failed: Microsoft Edge binary not found on Linux. Checked: /usr/bin/microsoft-edge, /usr/bin/microsoft-edge-stable, /usr/bin/microsoft-edge-dev, /opt/microsoft/msedge/msedge. Please install Edge or set EDGE_BINARY_PATH environment variable. To install on Ubuntu/Debian: sudo apt install microsoft-edge-stable
+[2025-12-10T10:21:16.134002] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:21:16.135860] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:21:16.136007] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:21:16.136049] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:21:16.141012] ERROR scraper failed: Microsoft Edge binary not found on Linux. Checked: /usr/bin/microsoft-edge, /usr/bin/microsoft-edge-stable, /usr/bin/microsoft-edge-dev, /opt/microsoft/msedge/msedge. Please install Edge or set EDGE_BINARY_PATH environment variable. To install on Ubuntu/Debian: sudo apt install microsoft-edge-stable
+[2025-12-10T10:25:57.249284] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:25:57.251155] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:25:57.252401] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:25:57.252527] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:25:57.413777] ERROR scraper failed: Microsoft Edge binary not found on Linux. Checked: /usr/bin/microsoft-edge, /usr/bin/microsoft-edge-stable, /usr/bin/microsoft-edge-dev, /opt/microsoft/msedge/msedge. Please install Edge or set EDGE_BINARY_PATH environment variable. To install on Ubuntu/Debian: sudo apt install microsoft-edge-stable
+[2025-12-10T10:30:39.364073] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:30:39.367350] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:30:39.367665] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:30:39.367747] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:30:39.368700] ERROR scraper failed: Microsoft Edge binary not found on Linux. Checked: /usr/bin/microsoft-edge, /usr/bin/microsoft-edge-stable, /usr/bin/microsoft-edge-dev, /opt/microsoft/msedge/msedge. Please install Edge or set EDGE_BINARY_PATH environment variable. To install on Ubuntu/Debian: sudo apt install microsoft-edge-stable
+[2025-12-10T10:31:10.808317] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:31:10.810677] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:31:10.812616] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:31:10.812722] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:31:11.129737] ERROR scraper failed: Microsoft Edge binary not found on Linux. Checked: /usr/bin/microsoft-edge, /usr/bin/microsoft-edge-stable, /usr/bin/microsoft-edge-dev, /opt/microsoft/msedge/msedge. Please install Edge or set EDGE_BINARY_PATH environment variable. To install on Ubuntu/Debian: sudo apt install microsoft-edge-stable
+[2025-12-10T10:35:13.670198] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:35:13.675379] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:35:13.676405] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:35:13.676497] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:35:14.037553] ERROR scraper failed: Message: session not created
+from unknown error: no msedge binary at /var/lib/flatpak/app/com.microsoft.Edge/x86_64/stable/6d05a9155615ac6a14d53b92a356f461eb0e1378cd5e81a1ccac5577760b225d/files/extra/microsoft-edge; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x611abe62435e <unknown>
+#1 0x611abe06c696 <unknown>
+#2 0x611abe0a5c68 <unknown>
+#3 0x611abe0a250b <unknown>
+#4 0x611abe0f209e <unknown>
+#5 0x611abe0f187c <unknown>
+#6 0x611abe0b07a7 <unknown>
+#7 0x611abe0b1381 <unknown>
+#8 0x611abe5f30db <unknown>
+#9 0x611abe5f6208 <unknown>
+#10 0x611abe5f5c7d <unknown>
+#11 0x611abe5e02f9 <unknown>
+#12 0x611abe5f6a38 <unknown>
+#13 0x611abe5c9b5e <unknown>
+#14 0x611abe612648 <unknown>
+#15 0x611abe61286e <unknown>
+#16 0x611abe623869 <unknown>
+#17 0x773c913aa56a <unknown>
+#18 0x773c9142de54 __clone
+
+[2025-12-10T10:38:20.683167] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:38:20.685135] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:38:20.685439] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:38:20.685477] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:38:20.762420] ERROR scraper failed: Message: session not created
+from unknown error: no msedge binary at /var/lib/flatpak/app/com.microsoft.Edge/x86_64/stable/6d05a9155615ac6a14d53b92a356f461eb0e1378cd5e81a1ccac5577760b225d/files/extra/microsoft-edge; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5f7719e5135e <unknown>
+#1 0x5f7719899696 <unknown>
+#2 0x5f77198d2c68 <unknown>
+#3 0x5f77198cf50b <unknown>
+#4 0x5f771991f09e <unknown>
+#5 0x5f771991e87c <unknown>
+#6 0x5f77198dd7a7 <unknown>
+#7 0x5f77198de381 <unknown>
+#8 0x5f7719e200db <unknown>
+#9 0x5f7719e23208 <unknown>
+#10 0x5f7719e22c7d <unknown>
+#11 0x5f7719e0d2f9 <unknown>
+#12 0x5f7719e23a38 <unknown>
+#13 0x5f7719df6b5e <unknown>
+#14 0x5f7719e3f648 <unknown>
+#15 0x5f7719e3f86e <unknown>
+#16 0x5f7719e50869 <unknown>
+#17 0x7a8b581c156a <unknown>
+#18 0x7a8b58244e54 __clone
+
+[2025-12-10T10:38:42.591841] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:38:42.594643] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:38:42.596698] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:38:42.596887] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:38:42.992469] ERROR scraper failed: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x603e7d27135e <unknown>
+#1 0x603e7ccb9696 <unknown>
+#2 0x603e7ccf6145 <unknown>
+#3 0x603e7ccef50b <unknown>
+#4 0x603e7cd3f09e <unknown>
+#5 0x603e7cd3e87c <unknown>
+#6 0x603e7ccfd7a7 <unknown>
+#7 0x603e7ccfe381 <unknown>
+#8 0x603e7d2400db <unknown>
+#9 0x603e7d243208 <unknown>
+#10 0x603e7d242c7d <unknown>
+#11 0x603e7d22d2f9 <unknown>
+#12 0x603e7d243a38 <unknown>
+#13 0x603e7d216b5e <unknown>
+#14 0x603e7d25f648 <unknown>
+#15 0x603e7d25f86e <unknown>
+#16 0x603e7d270869 <unknown>
+#17 0x7a273af1956a <unknown>
+#18 0x7a273af9ce54 __clone
+
+[2025-12-10T10:40:25.219279] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:40:25.219577] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:40:25.219964] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:40:25.221548] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:40:26.646744] ERROR scraper failed: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x630fdceda35e <unknown>
+#1 0x630fdc922696 <unknown>
+#2 0x630fdc95f145 <unknown>
+#3 0x630fdc95850b <unknown>
+#4 0x630fdc9a809e <unknown>
+#5 0x630fdc9a787c <unknown>
+#6 0x630fdc9667a7 <unknown>
+#7 0x630fdc967381 <unknown>
+#8 0x630fdcea90db <unknown>
+#9 0x630fdceac208 <unknown>
+#10 0x630fdceabc7d <unknown>
+#11 0x630fdce962f9 <unknown>
+#12 0x630fdceaca38 <unknown>
+#13 0x630fdce7fb5e <unknown>
+#14 0x630fdcec8648 <unknown>
+#15 0x630fdcec886e <unknown>
+#16 0x630fdced9869 <unknown>
+#17 0x72468d5f856a <unknown>
+#18 0x72468d67be54 __clone
+
+[2025-12-10T10:40:45.299222] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:40:45.301745] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:40:45.308015] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:40:45.308337] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:40:46.744208] ERROR scraper failed: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x566e4810735e <unknown>
+#1 0x566e47b4f696 <unknown>
+#2 0x566e47b8c145 <unknown>
+#3 0x566e47b8550b <unknown>
+#4 0x566e47bd509e <unknown>
+#5 0x566e47bd487c <unknown>
+#6 0x566e47b937a7 <unknown>
+#7 0x566e47b94381 <unknown>
+#8 0x566e480d60db <unknown>
+#9 0x566e480d9208 <unknown>
+#10 0x566e480d8c7d <unknown>
+#11 0x566e480c32f9 <unknown>
+#12 0x566e480d9a38 <unknown>
+#13 0x566e480acb5e <unknown>
+#14 0x566e480f5648 <unknown>
+#15 0x566e480f586e <unknown>
+#16 0x566e48106869 <unknown>
+#17 0x7af235b1456a <unknown>
+#18 0x7af235b97e54 __clone
+
+[2025-12-10T10:42:14.325704] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:42:14.333425] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:42:14.333598] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:42:14.336608] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:42:15.806538] ERROR scraper failed: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x59d60327635e <unknown>
+#1 0x59d602cbe696 <unknown>
+#2 0x59d602cfb145 <unknown>
+#3 0x59d602cf450b <unknown>
+#4 0x59d602d4409e <unknown>
+#5 0x59d602d4387c <unknown>
+#6 0x59d602d027a7 <unknown>
+#7 0x59d602d03381 <unknown>
+#8 0x59d6032450db <unknown>
+#9 0x59d603248208 <unknown>
+#10 0x59d603247c7d <unknown>
+#11 0x59d6032322f9 <unknown>
+#12 0x59d603248a38 <unknown>
+#13 0x59d60321bb5e <unknown>
+#14 0x59d603264648 <unknown>
+#15 0x59d60326486e <unknown>
+#16 0x59d603275869 <unknown>
+#17 0x7d90683b056a <unknown>
+#18 0x7d9068433e54 __clone
+
+[2025-12-10T10:43:06.896326] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:43:06.903605] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:43:06.903815] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:43:06.903869] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:43:08.319247] ERROR scraper failed: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x58459db0935e <unknown>
+#1 0x58459d551696 <unknown>
+#2 0x58459d58e145 <unknown>
+#3 0x58459d58750b <unknown>
+#4 0x58459d5d709e <unknown>
+#5 0x58459d5d687c <unknown>
+#6 0x58459d5957a7 <unknown>
+#7 0x58459d596381 <unknown>
+#8 0x58459dad80db <unknown>
+#9 0x58459dadb208 <unknown>
+#10 0x58459dadac7d <unknown>
+#11 0x58459dac52f9 <unknown>
+#12 0x58459dadba38 <unknown>
+#13 0x58459daaeb5e <unknown>
+#14 0x58459daf7648 <unknown>
+#15 0x58459daf786e <unknown>
+#16 0x58459db08869 <unknown>
+#17 0x7895a7f7b56a <unknown>
+#18 0x7895a7ffee54 __clone
+
+[2025-12-10T10:49:55.089149] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:49:55.116449] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:49:55.119925] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:49:55.120216] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:49:57.871602] ERROR scraper failed: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x611d835a935e <unknown>
+#1 0x611d82ff1696 <unknown>
+#2 0x611d8302e145 <unknown>
+#3 0x611d8302750b <unknown>
+#4 0x611d8307709e <unknown>
+#5 0x611d8307687c <unknown>
+#6 0x611d830357a7 <unknown>
+#7 0x611d83036381 <unknown>
+#8 0x611d835780db <unknown>
+#9 0x611d8357b208 <unknown>
+#10 0x611d8357ac7d <unknown>
+#11 0x611d835652f9 <unknown>
+#12 0x611d8357ba38 <unknown>
+#13 0x611d8354eb5e <unknown>
+#14 0x611d83597648 <unknown>
+#15 0x611d8359786e <unknown>
+#16 0x611d835a8869 <unknown>
+#17 0x7e0857b7b56a <unknown>
+#18 0x7e0857bfee54 __clone
+
+[2025-12-10T10:57:54.836612] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T10:57:54.846972] FORCE SCRAPE: cleared previous review dir
+[2025-12-10T10:57:54.849030] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T10:57:54.850338] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T10:57:54.850442] SCRAPER initializing Edge driver for Linux
+[2025-12-10T10:57:56.109052] ERROR scraper failed: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x58ccf0cd435e <unknown>
+#1 0x58ccf071c696 <unknown>
+#2 0x58ccf0759145 <unknown>
+#3 0x58ccf075250b <unknown>
+#4 0x58ccf07a209e <unknown>
+#5 0x58ccf07a187c <unknown>
+#6 0x58ccf07607a7 <unknown>
+#7 0x58ccf0761381 <unknown>
+#8 0x58ccf0ca30db <unknown>
+#9 0x58ccf0ca6208 <unknown>
+#10 0x58ccf0ca5c7d <unknown>
+#11 0x58ccf0c902f9 <unknown>
+#12 0x58ccf0ca6a38 <unknown>
+#13 0x58ccf0c79b5e <unknown>
+#14 0x58ccf0cc2648 <unknown>
+#15 0x58ccf0cc286e <unknown>
+#16 0x58ccf0cd3869 <unknown>
+#17 0x7e219312756a <unknown>
+#18 0x7e21931aae54 __clone
+

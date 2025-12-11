@@ -10,8 +10,8 @@ numpy>=1.23
 scikit-learn>=1.3
 
 # Transformers for IndoBERT sentiment (CPU build)
-transformers>=4.57
-torch>=2.3
+# transformers>=4.57
+# torch>=2.3
 
 # Web automation for real scraping
 selenium>=4.12

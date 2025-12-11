@@ -41,3 +41,6 @@
 [2025-12-03T15:34:20.932412] Notify Laravel ok 200: {"ok":true,"inserted":675,"product_id":"1101386382-23860528324"}
 [2025-12-03T21:13:09.511682] Laravel: data exists for 1101386382-23860528324; using cached DB (no overwrite)
 [2025-12-03T21:13:09.552942] Notify Laravel ok 200: {"ok":true,"message":"already ingested; skip (no force)"}
+[2025-12-10T20:42:49.211203] Notify Laravel attempt 1 failed: <urlopen error [Errno 111] Connection refused>
+[2025-12-10T20:42:51.211979] Notify Laravel attempt 2 failed: <urlopen error [Errno 111] Connection refused>
+[2025-12-10T20:42:55.292869] Notify Laravel attempt 3 failed: <urlopen error [Errno 111] Connection refused>

@@ -1,0 +1,834 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Komentar Detail - Comment Trust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .header-info {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .back-button {
+      padding: 8px 16px;
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .back-button:hover {
+      background: #e0e0e0;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 20px;
+    }
+
+    .sidebar {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      height: fit-content;
+      position: sticky;
+      top: 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+    }
+
+    .search-box {
+      margin-bottom: 20px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+
+    .filter-section {
+      margin-bottom: 20px;
+    }
+
+    .filter-section h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .filter-actions {
+      display: flex;
+      gap: 4px;
+    }
+
+    .filter-actions button {
+      padding: 2px 8px;
+      font-size: 11px;
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-actions button:hover {
+      background: #e0e0e0;
+    }
+
+    .tag-filter {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tag-item {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .tag-item:hover {
+      background: #f0f0f0;
+      border-color: #007bff;
+    }
+
+    .tag-item.active {
+      background: #e3f2fd;
+      border-color: #007bff;
+    }
+
+    .tag-item input[type="checkbox"] {
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    .tag-item label {
+      flex: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-item .count {
+      font-size: 12px;
+      color: #999;
+      margin-left: auto;
+    }
+
+    .sentiment-filter {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sentiment-item {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .sentiment-item:hover {
+      background: #f0f0f0;
+    }
+
+    .sentiment-item.active {
+      background: #e3f2fd;
+      border-color: #007bff;
+    }
+
+    .sentiment-item input[type="checkbox"] {
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    .sentiment-item label {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .sentiment-color {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .sentiment-color.positive { background: #4caf50; }
+    .sentiment-color.neutral { background: #ff9800; }
+    .sentiment-color.negative { background: #f44336; }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .results-info {
+      background: white;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      color: #666;
+    }
+
+    .results-info strong {
+      color: #333;
+    }
+
+    .comments-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comment-card {
+      background: white;
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 4px solid #007bff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s;
+    }
+
+    .comment-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .comment-meta {
+      flex: 1;
+    }
+
+    .comment-username {
+      font-weight: 600;
+      color: #333;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .comment-date {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .comment-sentiment {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .comment-sentiment.positive {
+      background: #c8e6c9;
+      color: #2e7d32;
+    }
+
+    .comment-sentiment.neutral {
+      background: #ffe0b2;
+      color: #e65100;
+    }
+
+    .comment-sentiment.negative {
+      background: #ffcdd2;
+      color: #c62828;
+    }
+
+    .comment-text {
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      padding: 8px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+
+    .comment-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .tag-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #e3f2fd;
+      color: #1565c0;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid #bbdefb;
+    }
+
+    .tag-badge:hover {
+      background: #bbdefb;
+      color: #0d47a1;
+    }
+
+    .comment-score {
+      font-size: 12px;
+      color: #999;
+      display: flex;
+      gap: 12px;
+    }
+
+    .score-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+    }
+
+    .empty-state svg {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+
+    .empty-state p {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .empty-state small {
+      font-size: 13px;
+      color: #bbb;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #999;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border: 3px solid #f0f0f0;
+      border-top: 3px solid #007bff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1024px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        top: 0;
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+    }
+
+    .pagination button {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .pagination button:hover {
+      background: #f0f0f0;
+      border-color: #007bff;
+    }
+
+    .pagination button.active {
+      background: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .pagination button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div>
+        <h1 id="headerTitle">Komentar Detail</h1>
+        <div class="header-info" id="headerInfo"></div>
+      </div>
+      <button class="back-button" onclick="goBack()">← Kembali</button>
+    </div>
+
+    <!-- Layout: Sidebar + Main Content -->
+    <div class="layout">
+      <!-- Sidebar: Filters -->
+      <div class="sidebar">
+        <!-- Search -->
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Cari komentar..." />
+        </div>
+
+        <!-- Tags Filter -->
+        <div class="filter-section">
+          <h3>
+            Tag
+            <div class="filter-actions">
+              <button onclick="selectAllTags()">Pilih Semua</button>
+              <button onclick="deselectAllTags()">Hapus Semua</button>
+            </div>
+          </h3>
+          <div class="tag-filter" id="tagFilter"></div>
+        </div>
+
+        <!-- Sentiment Filter -->
+        <div class="filter-section">
+          <h3>Sentimen</h3>
+          <div class="sentiment-filter" id="sentimentFilter"></div>
+        </div>
+      </div>
+
+      <!-- Main Content: Comments -->
+      <div class="main-content">
+        <!-- Results Info -->
+        <div class="results-info">
+          Menampilkan <strong id="resultCount">0</strong> dari <strong id="totalCount">0</strong> komentar
+        </div>
+
+        <!-- Comments Grid -->
+        <div class="comments-grid" id="commentsContainer">
+          <div class="loading">
+            <div class="spinner"></div>
+            <p>Loading komentar...</p>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Constants
+    const ITEMS_PER_PAGE = 10;
+    let currentPage = 1;
+    let allComments = [];
+    let filteredComments = [];
+    let tagStats = {};
+    let productId = '';
+
+    // Get product ID from URL
+    function getProductId() {
+      const params = new URLSearchParams(location.search);
+      return params.get('product');
+    }
+
+    // Initialize
+    async function init() {
+      productId = getProductId();
+      if (!productId) {
+        showError('Product ID tidak ditemukan');
+        return;
+      }
+
+      // Update header
+      document.getElementById('headerTitle').textContent = `Komentar - ${productId}`;
+
+      // Load comments
+      await loadComments();
+      
+      // Initialize filters
+      renderTagFilters();
+      renderSentimentFilters();
+
+      // Setup event listeners
+      document.getElementById('searchInput').addEventListener('input', applyFilters);
+    }
+
+    // Load comments from API
+    async function loadComments() {
+      try {
+        const res = await fetch(`/api/comments/${encodeURIComponent(productId)}`);
+        if (!res.ok) throw new Error('Failed to load comments');
+        
+        const data = await res.json();
+        allComments = data.comments || [];
+        tagStats = data.tag_stats || {};
+
+        document.getElementById('totalCount').textContent = allComments.length;
+        
+        applyFilters();
+      } catch (e) {
+        console.error(e);
+        showError('Gagal memuat komentar: ' + e.message);
+      }
+    }
+
+    // Render tag filters
+    function renderTagFilters() {
+      const container = document.getElementById('tagFilter');
+      if (!tagStats || Object.keys(tagStats).length === 0) {
+        container.innerHTML = '<p style="color: #999; font-size: 12px;">Tidak ada tag</p>';
+        return;
+      }
+
+      const sorted = Object.entries(tagStats).sort((a, b) => b[1] - a[1]);
+      container.innerHTML = sorted.map(([tag, count]) => `
+        <div class="tag-item" data-tag="${tag}">
+          <input type="checkbox" id="tag-${tag}" class="tag-checkbox" value="${tag}" />
+          <label for="tag-${tag}">${tag}</label>
+          <span class="count">${count}</span>
+        </div>
+      `).join('');
+
+      // Add event listeners
+      document.querySelectorAll('.tag-checkbox').forEach(cb => {
+        cb.addEventListener('change', applyFilters);
+      });
+    }
+
+    // Render sentiment filters
+    function renderSentimentFilters() {
+      const container = document.getElementById('sentimentFilter');
+      const sentiments = ['positive', 'neutral', 'negative'];
+      const sentimentLabels = { positive: 'Positif', neutral: 'Netral', negative: 'Negatif' };
+      const sentimentColors = { positive: 'positive', neutral: 'neutral', negative: 'negative' };
+
+      // Count sentiments - treat missing sentiment as 'neutral'
+      const sentimentCounts = {};
+      sentiments.forEach(s => {
+        sentimentCounts[s] = allComments.filter(c => {
+          const sentiment = c.sentiment || 'neutral';
+          return sentiment === s;
+        }).length;
+      });
+
+      container.innerHTML = sentiments.map(sentiment => `
+        <div class="sentiment-item" data-sentiment="${sentiment}">
+          <input type="checkbox" id="sentiment-${sentiment}" class="sentiment-checkbox" value="${sentiment}" checked />
+          <label for="sentiment-${sentiment}">
+            <span class="sentiment-color ${sentimentColors[sentiment]}"></span>
+            ${sentimentLabels[sentiment]} (${sentimentCounts[sentiment]})
+          </label>
+        </div>
+      `).join('');
+
+      // Add event listeners
+      document.querySelectorAll('.sentiment-checkbox').forEach(cb => {
+        cb.addEventListener('change', applyFilters);
+      });
+    }
+
+    // Get selected filters
+    function getSelectedFilters() {
+      const selectedTags = Array.from(document.querySelectorAll('.tag-checkbox:checked')).map(cb => cb.value);
+      const selectedSentiments = Array.from(document.querySelectorAll('.sentiment-checkbox:checked')).map(cb => cb.value);
+      const searchText = document.getElementById('searchInput').value.toLowerCase();
+
+      return { selectedTags, selectedSentiments, searchText };
+    }
+
+    // Apply filters
+    function applyFilters() {
+      const { selectedTags, selectedSentiments, searchText } = getSelectedFilters();
+
+      filteredComments = allComments.filter(comment => {
+        // Get sentiment (treat missing as 'neutral')
+        const commentSentiment = comment.sentiment || 'neutral';
+        
+        // Sentiment filter
+        if (!selectedSentiments.includes(commentSentiment)) return false;
+
+        // Tag filter: if tags selected, comment must have ALL selected tags
+        if (selectedTags.length > 0) {
+          const commentTags = comment.tags || [];
+          const hasAllTags = selectedTags.every(tag => commentTags.includes(tag));
+          if (!hasAllTags) return false;
+        }
+
+        // Search filter
+        if (searchText) {
+          const username = comment.author_username || comment.username || '';
+          const commentText = `${comment.comment} ${username}`.toLowerCase();
+          if (!commentText.includes(searchText)) return false;
+        }
+
+        return true;
+      });
+
+      document.getElementById('resultCount').textContent = filteredComments.length;
+      currentPage = 1;
+      renderComments();
+      renderPagination();
+    }
+
+    // Render comments
+    function renderComments() {
+      const container = document.getElementById('commentsContainer');
+      
+      if (filteredComments.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>Tidak ada komentar yang sesuai</p>
+            <small>Coba ubah filter atau pencarian</small>
+          </div>
+        `;
+        return;
+      }
+
+      const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
+      const endIdx = startIdx + ITEMS_PER_PAGE;
+      const pageComments = filteredComments.slice(startIdx, endIdx);
+
+      container.innerHTML = pageComments.map(comment => {
+        const sentiment = comment.sentiment || 'neutral';
+        const username = comment.author_username || comment.username || 'Anonymous';
+        const timestamp = comment.ctime ? new Date(comment.ctime * 1000).toISOString() : comment.timestamp;
+        const commentText = comment.comment || '';
+        const rating = comment.rating_star || comment.rating || comment.detailed_rating?.product_quality || 0;
+        const tags = comment.tags || [];
+        
+        return `
+        <div class="comment-card">
+          <div class="comment-header">
+            <div class="comment-meta">
+              <div class="comment-username">@${username}</div>
+              <div class="comment-date">${formatDate(timestamp)}</div>
+            </div>
+            <div class="comment-sentiment ${sentiment}">
+              <span>●</span>
+              ${capitalizeFirst(sentiment)}
+            </div>
+          </div>
+
+          <div class="comment-text">${escapeHtml(commentText)}</div>
+
+          ${tags && tags.length > 0 ? `
+            <div class="comment-tags">
+              ${tags.map(tag => `
+                <div class="tag-badge" onclick="filterByTag('${escapeHtml(tag)}')" title="Klik untuk filter tag ini">
+                  ${tag}
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+
+          ${(rating > 0 || comment.trust_score !== undefined || comment.is_fake !== undefined) ? `
+            <div class="comment-score">
+              ${rating > 0 ? `<div class="score-item">⭐ Rating: ${rating}/5</div>` : ''}
+              ${comment.trust_score !== undefined ? `<div class="score-item">📊 Trust: ${comment.trust_score.toFixed(1)}%</div>` : ''}
+              ${comment.is_fake !== undefined ? `<div class="score-item">🔍 Fake: ${comment.is_fake ? 'Ya' : 'Tidak'}</div>` : ''}
+            </div>
+          ` : ''}
+        </div>
+      `
+      }).join('');
+    }
+
+    // Render pagination
+    function renderPagination() {
+      const container = document.getElementById('pagination');
+      const totalPages = Math.ceil(filteredComments.length / ITEMS_PER_PAGE);
+
+      if (totalPages <= 1) {
+        container.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      
+      // Previous button
+      html += `<button onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>← Previous</button>`;
+
+      // Page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+          html += `<button onclick="goToPage(${i})" class="${i === currentPage ? 'active' : ''}">${i}</button>`;
+        } else if (i === 2 || i === totalPages - 1) {
+          html += '<span style="color: #ccc;">...</span>';
+        }
+      }
+
+      // Next button
+      html += `<button onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Next →</button>`;
+
+      container.innerHTML = html;
+    }
+
+    // Filter by tag (from clicking tag badge)
+    function filterByTag(tag) {
+      const checkbox = document.getElementById(`tag-${tag}`);
+      if (checkbox) {
+        checkbox.checked = !checkbox.checked;
+        applyFilters();
+      }
+    }
+
+    // Select all tags
+    function selectAllTags() {
+      document.querySelectorAll('.tag-checkbox').forEach(cb => cb.checked = true);
+      applyFilters();
+    }
+
+    // Deselect all tags
+    function deselectAllTags() {
+      document.querySelectorAll('.tag-checkbox').forEach(cb => cb.checked = false);
+      applyFilters();
+    }
+
+    // Go to page
+    function goToPage(page) {
+      const totalPages = Math.ceil(filteredComments.length / ITEMS_PER_PAGE);
+      if (page >= 1 && page <= totalPages) {
+        currentPage = page;
+        renderComments();
+        renderPagination();
+        window.scrollTo(0, 0);
+      }
+    }
+
+    // Go back
+    function goBack() {
+      history.back();
+    }
+
+    // Utility functions
+    function formatDate(timestamp) {
+      if (!timestamp) return '-';
+      const date = new Date(timestamp);
+      return date.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function capitalizeFirst(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function showError(message) {
+      document.getElementById('commentsContainer').innerHTML = `
+        <div class="empty-state">
+          <p>❌ Error</p>
+          <small>${message}</small>
+        </div>
+      `;
+    }
+
+    // Start
+    init();
+  </script>
+</body>
+</html>

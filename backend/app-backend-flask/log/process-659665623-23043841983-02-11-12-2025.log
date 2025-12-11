@@ -1,0 +1,56 @@
+[2025-12-10T19:49:44.351594] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T19:49:44.352712] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T19:49:44.352884] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T19:49:44.352954] SCRAPER initializing Edge driver for Linux
+[2025-12-10T19:49:44.767504] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5c02cb9cc35e <unknown>
+#1 0x5c02cb414696 <unknown>
+#2 0x5c02cb4551c8 <unknown>
+#3 0x5c02cb450d5b <unknown>
+#4 0x5c02cb44a50b <unknown>
+#5 0x5c02cb49a09e <unknown>
+#6 0x5c02cb49987c <unknown>
+#7 0x5c02cb4587a7 <unknown>
+#8 0x5c02cb459381 <unknown>
+#9 0x5c02cb99b0db <unknown>
+#10 0x5c02cb99e208 <unknown>
+#11 0x5c02cb99dc7d <unknown>
+#12 0x5c02cb9882f9 <unknown>
+#13 0x5c02cb99ea38 <unknown>
+#14 0x5c02cb971b5e <unknown>
+#15 0x5c02cb9ba648 <unknown>
+#16 0x5c02cb9ba86e <unknown>
+#17 0x5c02cb9cb869 <unknown>
+#18 0x7bf9080ca56a <unknown>
+#19 0x7bf90814de54 __clone
+
+[2025-12-10T19:50:32.161958] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T19:50:32.167738] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T19:50:32.167918] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T19:50:32.168005] SCRAPER initializing Edge driver for Linux
+[2025-12-10T19:50:32.603817] ERROR scraper failed: Message: session not created
+from disconnected: unable to connect to renderer; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+#0 0x5db6e59d135e <unknown>
+#1 0x5db6e5419696 <unknown>
+#2 0x5db6e545a1c8 <unknown>
+#3 0x5db6e5455d5b <unknown>
+#4 0x5db6e544f50b <unknown>
+#5 0x5db6e549f09e <unknown>
+#6 0x5db6e549e87c <unknown>
+#7 0x5db6e545d7a7 <unknown>
+#8 0x5db6e545e381 <unknown>
+#9 0x5db6e59a00db <unknown>
+#10 0x5db6e59a3208 <unknown>
+#11 0x5db6e59a2c7d <unknown>
+#12 0x5db6e598d2f9 <unknown>
+#13 0x5db6e59a3a38 <unknown>
+#14 0x5db6e5976b5e <unknown>
+#15 0x5db6e59bf648 <unknown>
+#16 0x5db6e59bf86e <unknown>
+#17 0x5db6e59d0869 <unknown>
+#18 0x7ab56435856a <unknown>
+#19 0x7ab5643dbe54 __clone
+

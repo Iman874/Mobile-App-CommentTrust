@@ -1,0 +1,34 @@
+[2025-12-10T22:11:24.851540] REANALYZE request for product 30169103-19027487468
+[2025-12-10T22:11:24.862347] Deleted analysis directory: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/30169103-19027487468/indobert
+[2025-12-10T22:11:24.862642] [5%] init: resolve input
+[2025-12-10T22:11:24.999000] [10%] [01] preprocess
+[2025-12-10T22:11:25.018590] [20%] [01b] tokenize
+[2025-12-10T22:11:25.038407] [40%] [03] sentiment
+[2025-12-10T22:11:25.068239] [70%] [04] fake detect
+[2025-12-10T22:11:25.143922] [90%] [05] trust score
+[2025-12-10T22:11:25.179580] [98%] [06] summarize
+[2025-12-10T22:11:25.193522] [99%] [07] tagging comments
+[2025-12-10T22:11:25.369406] [100%] done
+[2025-12-10T22:11:25.371625] Pipeline completed, output: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/30169103-19027487468/indobert
+[2025-12-10T22:11:25.690200] Analysis results merged successfully
+[2025-12-10T22:11:25.771630] Tagged 1050 reviews
+[2025-12-10T22:11:25.897191] Saved tag statistics: {"Kualitas Bagus": 133, "Pengiriman Buruk": 65, "Respon Lambat": 32, "Kualitas Buruk": 27, "Harga": 24, "Puas": 24, "Masalah Penjual": 18, "Senang": 9, "Barang Cacat": 7, "Direkomendasikan": 7, "Barang Rusak": 6, "Harga Murah": 3, "Barang Tidak Sesuai": 3, "Promo/Diskon": 1, "Layanan Customer Service": 1, "Harga Mahal": 1, "Masalah Ukuran": 1, "Warna Tidak Sesuai": 1}
+[2025-12-10T22:11:25.902760] Saved tagged reviews CSV: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/30169103-19027487468/indobert/review_tagged.csv
+[2025-12-10T22:11:25.902823] REANALYZE finished successfully
+[2025-12-10T22:23:52.363152] REANALYZE request for product 30169103-19027487468
+[2025-12-10T22:23:52.365399] Deleted analysis directory: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/30169103-19027487468/indobert
+[2025-12-10T22:23:52.371216] [5%] init: resolve input
+[2025-12-10T22:23:52.508935] [10%] [01] preprocess
+[2025-12-10T22:23:52.548864] [20%] [01b] tokenize
+[2025-12-10T22:23:52.595942] [40%] [03] sentiment
+[2025-12-10T22:23:52.646555] [70%] [04] fake detect
+[2025-12-10T22:23:52.712274] [90%] [05] trust score
+[2025-12-10T22:23:52.740348] [98%] [06] summarize
+[2025-12-10T22:23:52.751346] [99%] [07] tagging comments
+[2025-12-10T22:23:52.968707] [100%] done
+[2025-12-10T22:23:52.971654] Pipeline completed, output: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/30169103-19027487468/indobert
+[2025-12-10T22:23:53.426858] Analysis results merged successfully
+[2025-12-10T22:23:53.545531] Tagged 1050 reviews
+[2025-12-10T22:23:53.835089] Saved tag statistics: {"Kualitas Bagus": 133, "Pengiriman Buruk": 65, "Respon Lambat": 32, "Kualitas Buruk": 27, "Harga": 24, "Puas": 24, "Masalah Penjual": 18, "Senang": 9, "Barang Cacat": 7, "Direkomendasikan": 7, "Barang Rusak": 6, "Harga Murah": 3, "Barang Tidak Sesuai": 3, "Promo/Diskon": 1, "Layanan Customer Service": 1, "Harga Mahal": 1, "Masalah Ukuran": 1, "Warna Tidak Sesuai": 1}
+[2025-12-10T22:23:53.855691] Saved tagged reviews CSV: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/30169103-19027487468/indobert/review_tagged.csv
+[2025-12-10T22:23:53.855829] REANALYZE finished successfully

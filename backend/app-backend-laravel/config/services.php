@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'flask' => [
+        'url' => env('FLASK_API_URL', 'http://localhost:5000'),
+    ],
+
 ];

@@ -1,0 +1,10 @@
+[2025-12-10T09:50:16.569689] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T09:50:16.570952] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T09:50:16.574876] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T09:50:16.574979] SCRAPER initializing Edge driver for Linux
+[2025-12-10T09:50:17.288245] ERROR scraper failed: Edge WebDriver not found at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/browser-dummy/edgedriver_linux64/msedgedriver. For LINUX, place the driver at: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/browser-dummy/edgedriver_linux64/msedgedriver. Or set EDGE_DRIVER_PATH environment variable to override.
+[2025-12-10T09:57:36.395045] START job for link: https://shopee.co.id/Jam-Tangan-Wanita-Gaya-Retro-Bisnis-Women-Watches-i.659665623.23043841983
+[2025-12-10T09:57:36.395972] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T09:57:36.403782] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T09:57:36.403917] SCRAPER initializing Edge driver for Linux
+[2025-12-10T09:57:36.404162] ERROR scraper failed: Edge WebDriver not found at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/browser-dummy/edgedriver_linux64/msedgedriver. For LINUX, place the driver at: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/browser-dummy/edgedriver_linux64/msedgedriver. Or set EDGE_DRIVER_PATH environment variable to override.

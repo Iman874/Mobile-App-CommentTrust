@@ -1,0 +1,256 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+
+class GuestAuthController extends Controller
+{
+    /**
+     * Login as guest - create or retrieve existing guest account
+     * POST /api/guest/login
+     * 
+     * Request body is optional. Can include:
+     * {
+     *   "device_id": "unique device identifier (optional)",
+     *   "device_name": "device name (optional)"
+     * }
+     */
+    public function loginAsGuest(Request $request): JsonResponse
+    {
+        try {
+            // Generate unique guest username format:
+            // guest-YYYY-MM-DD-HH-am/pm-increment
+            $now = Carbon::now();
+            $date = $now->format('Y-m-d');
+            $time = $now->format('h');
+            $period = $now->format('a'); // am/pm
+            
+            // Get the highest increment for today
+            $baseUsername = "guest-{$date}-{$time}-{$period}";
+            $existingCount = User::where('name', 'like', "{$baseUsername}-%")
+                ->count();
+            
+            $increment = $existingCount + 1;
+            $guestUsername = "{$baseUsername}-{$increment}";
+            $guestEmail = "{$guestUsername}@guest.local";
+            
+            // Check if guest already exists (by device or session)
+            $deviceId = $request->input('device_id');
+            if ($deviceId) {
+                $existingGuest = User::where('is_guest', true)
+                    ->where('email', 'like', "%{$deviceId}%")
+                    ->where('token_expires_at', '>', now())
+                    ->first();
+                
+                if ($existingGuest && !$existingGuest->isTokenExpired()) {
+                    // Return existing valid guest token
+                    return response()->json([
+                        'ok' => true,
+                        'message' => 'Logged in as guest (existing session)',
+                        'user' => [
+                            'id' => $existingGuest->id,
+                            'name' => $existingGuest->name,
+                            'email' => $existingGuest->email,
+                            'is_guest' => true,
+                        ],
+                        'api_token' => $this->getPlainToken($existingGuest),
+                        'token_type' => 'Bearer',
+                        'expires_at' => $existingGuest->token_expires_at,
+                        'expires_in_seconds' => $existingGuest->getTokenRemainingSeconds(),
+                    ]);
+                }
+            }
+            
+            // Create new guest account
+            $guestUser = User::create([
+                'name' => $guestUsername,
+                'email' => $deviceId ? "{$guestUsername}-{$deviceId}@guest.local" : $guestEmail,
+                'password' => bcrypt(Str::random(32)), // Random password, not used for guests
+                'is_guest' => true,
+                'is_active' => true,
+            ]);
+            
+            // Generate API token with 1-day expiration
+            $plainToken = $guestUser->generateApiToken('guest-auto', true);
+            
+            return response()->json([
+                'ok' => true,
+                'message' => 'Guest account created and logged in',
+                'user' => [
+                    'id' => $guestUser->id,
+                    'name' => $guestUser->name,
+                    'email' => $guestUser->email,
+                    'is_guest' => true,
+                ],
+                'api_token' => $plainToken,
+                'token_type' => 'Bearer',
+                'expires_at' => $guestUser->token_expires_at,
+                'expires_in_seconds' => $guestUser->getTokenRemainingSeconds(),
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Failed to create guest account',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
+     * Refresh guest token if expired
+     * POST /api/guest/refresh-token
+     * Requires: api_token middleware
+     */
+    public function refreshGuestToken(Request $request): JsonResponse
+    {
+        $user = $request->user();
+        
+        if (!$user || !$user->is_guest) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Only guest users can refresh token',
+            ], 401);
+        }
+        
+        // Generate new token with 1-day expiration
+        $plainToken = $user->generateApiToken('guest-refreshed', true);
+        
+        return response()->json([
+            'ok' => true,
+            'message' => 'Token refreshed successfully',
+            'api_token' => $plainToken,
+            'token_type' => 'Bearer',
+            'expires_at' => $user->token_expires_at,
+            'expires_in_seconds' => $user->getTokenRemainingSeconds(),
+        ]);
+    }
+
+    /**
+     * Check guest token validity
+     * GET /api/guest/token-status
+     * Requires: api_token middleware
+     */
+    public function checkTokenStatus(Request $request): JsonResponse
+    {
+        $user = $request->user();
+        
+        if (!$user) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+        
+        return response()->json([
+            'ok' => true,
+            'is_valid' => $user->isTokenValid(),
+            'is_expired' => $user->isTokenExpired(),
+            'expires_at' => $user->token_expires_at,
+            'expires_in_seconds' => $user->getTokenRemainingSeconds(),
+            'is_guest' => $user->is_guest,
+        ]);
+    }
+
+    /**
+     * Convert guest account to regular user account
+     * POST /api/guest/convert-to-user
+     * Requires: api_token middleware
+     */
+    public function convertToRegularUser(Request $request): JsonResponse
+    {
+        $request->validate([
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+            'name' => 'nullable|string|max:255',
+        ]);
+        
+        $user = $request->user();
+        
+        if (!$user || !$user->is_guest) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Only guest users can be converted',
+            ], 401);
+        }
+        
+        try {
+            // Update user to be a regular user
+            $user->update([
+                'name' => $request->name ?? $user->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'is_guest' => false,
+                'token_expires_at' => null, // Remove expiration
+            ]);
+            
+            // Generate new token without expiration
+            $plainToken = $user->generateApiToken('regular-user', false);
+            
+            return response()->json([
+                'ok' => true,
+                'message' => 'Account converted to regular user',
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'is_guest' => false,
+                ],
+                'api_token' => $plainToken,
+                'token_type' => 'Bearer',
+                'expires_at' => $user->token_expires_at,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Failed to convert account',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
+     * Logout guest user
+     * POST /api/guest/logout
+     * Requires: api_token middleware
+     */
+    public function logoutGuest(Request $request): JsonResponse
+    {
+        $user = $request->user();
+        
+        if (!$user) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+        
+        // Revoke token
+        $user->update([
+            'api_token' => null,
+            'api_token_name' => null,
+        ]);
+        
+        return response()->json([
+            'ok' => true,
+            'message' => 'Logged out successfully',
+        ]);
+    }
+
+    /**
+     * Helper: Get plain token for user
+     * This assumes we have just hashed the token and need to retrieve it
+     * In production, you should return the plaintext before hashing
+     */
+    private function getPlainToken(User $user): string
+    {
+        // Since we can't retrieve the plain token from hash, 
+        // this is a workaround - in production, store it temporarily
+        // For now, generate a new one
+        return $user->generateApiToken('guest-retrieve', true);
+    }
+}

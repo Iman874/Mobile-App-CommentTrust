@@ -31,6 +31,80 @@ LOG_DIR = os.path.join(BASE_DIR, "log")
 JOBS = {}
 os.makedirs(LOG_DIR, exist_ok=True)
 
+def _merge_analysis_to_reviews(product_id: str, analysis_backend: str = 'indobert'):
+    """Merge sentiment, fake detection, and trust scores from analysis CSVs back to review.json"""
+    try:
+        review_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
+        review_file = os.path.join(review_dir, 'review.json')
+        analysis_dir = os.path.join(BASE_DIR, 'output', 'comment', product_id, analysis_backend)
+        
+        if not os.path.exists(review_file):
+            return False
+        
+        # Load reviews
+        with open(review_file, 'r', encoding='utf-8') as f:
+            reviews = json.load(f)
+        
+        if not isinstance(reviews, list):
+            reviews = []
+        
+        # Load sentiment results
+        sentiment_file = os.path.join(analysis_dir, 'review_sentiment.csv')
+        if os.path.exists(sentiment_file):
+            sentiment_df = pd.read_csv(sentiment_file, encoding='utf-8-sig')
+            sentiment_map = {}
+            for idx, row in sentiment_df.iterrows():
+                if idx < len(reviews):
+                    sentiment_map[idx] = {
+                        'sentiment': row.get('sentiment', 'neutral'),
+                        'sentiment_confidence': row.get('sentiment_confidence', 0.0)
+                    }
+        
+        # Load fake detection results
+        fake_file = os.path.join(analysis_dir, 'review_fake.csv')
+        fake_map = {}
+        if os.path.exists(fake_file):
+            fake_df = pd.read_csv(fake_file, encoding='utf-8-sig')
+            for idx, row in fake_df.iterrows():
+                if idx < len(reviews):
+                    fake_map[idx] = {
+                        'is_fake': bool(row.get('is_fake', False)),
+                        'fake_confidence': float(row.get('fake_confidence', 0.0))
+                    }
+        
+        # Load trust scores
+        trust_file = os.path.join(analysis_dir, 'review_trust.csv')
+        trust_map = {}
+        if os.path.exists(trust_file):
+            trust_df = pd.read_csv(trust_file, encoding='utf-8-sig')
+            for idx, row in trust_df.iterrows():
+                if idx < len(reviews):
+                    trust_map[idx] = {
+                        'trust_score': float(row.get('trust_score', 0.0))
+                    }
+        
+        # Merge back to reviews
+        for idx, review in enumerate(reviews):
+            if idx in sentiment_map:
+                review['sentiment'] = sentiment_map[idx]['sentiment']
+                review['sentiment_confidence'] = sentiment_map[idx]['sentiment_confidence']
+            
+            if idx in fake_map:
+                review['is_fake'] = fake_map[idx]['is_fake']
+                review['fake_confidence'] = fake_map[idx]['fake_confidence']
+            
+            if idx in trust_map:
+                review['trust_score'] = trust_map[idx]['trust_score']
+        
+        # Save merged reviews
+        with open(review_file, 'w', encoding='utf-8') as f:
+            json.dump(reviews, f, ensure_ascii=False, indent=2)
+        
+        return True
+    except Exception as e:
+        print(f"Error merging analysis: {e}")
+        return False
+
 def _log_filename(job: dict, kind: str):
     product_id = job.get('product_id') or job.get('id')
     stamp = job.get('created_local_stamp')
@@ -154,7 +228,7 @@ def _run_job(job_id: str):
             _write_log(job_id, 'process', f"SCRAPER state {state}: {block}")
 
     # review dir per product - pipeline expects review.json here
-    review_dir = os.path.join(BASE_DIR, 'output', 'review', product_id)
+    review_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
     # optional force-scrape: clear previous review dir
     if job.get('force_scrape'):
         try:
@@ -215,6 +289,15 @@ def _run_job(job_id: str):
     try:
         out_dir = pipeline.run_pipeline(source_dir=review_dir, product_id=product_id, backend='indobert', progress=_progress)
         _write_log(job_id, 'process', f"OUTPUT pipeline finished; outputs at {out_dir}")
+        
+        # Merge sentiment, fake, trust results back to review.json
+        _write_log(job_id, 'process', "Merging analysis results to reviews...")
+        merge_ok = _merge_analysis_to_reviews(product_id, 'indobert')
+        if merge_ok:
+            _write_log(job_id, 'process', "Analysis results merged successfully")
+        else:
+            _write_log(job_id, 'process', "Warning: Could not merge analysis results")
+        
         job['analysis_progress'] = 100
         job['phase'] = 'done'
         # notify Laravel
@@ -412,10 +495,19 @@ def _analysis_only(job_id: str, product_id: str):
             _write_log(job_id, 'process', f"ANALYSIS {job['analysis_progress']}% :: {msg}")
         except Exception:
             pass
-    review_dir = os.path.join(BASE_DIR, 'output', 'review', product_id)
+    review_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
     try:
         out_dir = pipeline.run_pipeline(source_dir=review_dir, product_id=product_id, backend='indobert', progress=_progress)
         _write_log(job_id, 'process', f"OUTPUT pipeline finished; outputs at {out_dir}")
+        
+        # Merge sentiment, fake, trust results back to review.json
+        _write_log(job_id, 'process', "Merging analysis results to reviews...")
+        merge_ok = _merge_analysis_to_reviews(product_id, 'indobert')
+        if merge_ok:
+            _write_log(job_id, 'process', "Analysis results merged successfully")
+        else:
+            _write_log(job_id, 'process', "Warning: Could not merge analysis results")
+        
         job['analysis_progress'] = 100
         job['phase'] = 'done'
         job['laravel_sync_status'] = 'sending'
@@ -532,7 +624,7 @@ def general_log():
 @bp.route('/result/<product_id>/all', methods=['GET'])
 def result_all(product_id):
     base_out = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'output')
-    review_dir = os.path.join(base_out, 'review', product_id)
+    review_dir = os.path.join(base_out, 'scrap-data', product_id)
     # choose backend directory (prefer indobert if exists else first)
     comment_root = os.path.join(base_out, 'comment', product_id)
     backend_dir = None
@@ -620,7 +712,7 @@ def _backend_dir(product_id):
 
 @bp.route('/result/<product_id>/comment', methods=['GET'])
 def result_comment(product_id):
-    review_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'output','review',product_id)
+    review_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'output','scrap-data',product_id)
     data = _csv_to_json_list(os.path.join(review_dir, f'review-{product_id}.csv'))
     return jsonify({'product_id': product_id, 'comments': data})
 
@@ -819,7 +911,7 @@ def visualisasi_data(product_id):
         'summary_json': os.path.exists(summary_json),
         'product_trust_json': os.path.exists(product_trust_json),
         'sentiment_csv': os.path.exists(os.path.join(bdir, 'review_sentiment.csv')),
-        'review_csv': os.path.exists(os.path.join(BASE_DIR, 'output', 'review', product_id, f'review-{product_id}.csv'))
+        'review_csv': os.path.exists(os.path.join(BASE_DIR, 'output', 'scrap-data', product_id, f'review-{product_id}.csv'))
     }
     return jsonify({
         'product_id': product_id,
@@ -857,6 +949,288 @@ def visualisasi_page_redirect():
         return Response(f.read(), mimetype='text/html')
 
 # Manual re-sync endpoint to re-notify Laravel without reanalysis
+# Endpoint untuk menampilkan histori produk yang sudah di-scrape
+@bp.route('/history/products', methods=['GET'])
+def history_products():
+    """List all products that have been scraped with basic statistics."""
+    review_base = os.path.join(BASE_DIR, 'output', 'scrap-data')
+    products = []
+    
+    if not os.path.isdir(review_base):
+        return jsonify({'products': []})
+    
+    for product_id in os.listdir(review_base):
+        product_dir = os.path.join(review_base, product_id)
+        if not os.path.isdir(product_dir):
+            continue
+        
+        # Read product.json
+        product_file = os.path.join(product_dir, 'product.json')
+        product_data = {}
+        if os.path.exists(product_file):
+            try:
+                with open(product_file, 'r', encoding='utf-8') as f:
+                    product_data = json.load(f)
+            except Exception:
+                pass
+        
+        # Read review.json and count
+        review_file = os.path.join(product_dir, 'review.json')
+        review_count = 0
+        if os.path.exists(review_file):
+            try:
+                with open(review_file, 'r', encoding='utf-8') as f:
+                    reviews = json.load(f)
+                    review_count = len(reviews) if isinstance(reviews, list) else 0
+            except Exception:
+                pass
+        
+        # Check if analysis is done
+        analysis_done = False
+        analysis_dir = os.path.join(BASE_DIR, 'output', 'comment', product_id, 'indobert')
+        if os.path.isdir(analysis_dir):
+            analysis_done = os.path.exists(os.path.join(analysis_dir, 'review_trust.csv'))
+        
+        products.append({
+            'product_id': product_id,
+            'product_name': product_data.get('name') or product_data.get('name_prefix') or 'Unknown',
+            'shop_name': product_data.get('shop', {}).get('name') if isinstance(product_data.get('shop'), dict) else '',
+            'price': product_data.get('price'),
+            'review_count': review_count,
+            'analysis_done': analysis_done,
+            'rating': product_data.get('item_rating', {}).get('rating_star', 0),
+        })
+    
+    # Sort by product_id (newest first)
+    products.sort(key=lambda x: x['product_id'], reverse=True)
+    return jsonify({'products': products})
+
+
+@bp.route('/product/<product_id>/stats', methods=['GET'])
+def product_stats(product_id: str):
+    """Get statistics for a specific product."""
+    product_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
+    
+    if not os.path.isdir(product_dir):
+        return jsonify({'error': 'Product not found'}), 404
+    
+    # Read reviews and calculate stats
+    review_file = os.path.join(product_dir, 'review.json')
+    reviews = []
+    if os.path.exists(review_file):
+        try:
+            with open(review_file, 'r', encoding='utf-8') as f:
+                reviews = json.load(f)
+                if not isinstance(reviews, list):
+                    reviews = []
+        except Exception:
+            reviews = []
+    
+    # Read product info
+    product_file = os.path.join(product_dir, 'product.json')
+    product_data = {}
+    if os.path.exists(product_file):
+        try:
+            with open(product_file, 'r', encoding='utf-8') as f:
+                product_data = json.load(f)
+        except Exception:
+            pass
+    
+    # Get tag statistics if available (from analysis)
+    from utils.comment_tagger import get_tag_statistics
+    tag_stats = {}
+    if reviews and len(reviews) > 0 and 'tags' in reviews[0]:
+        tag_stats = get_tag_statistics(reviews)
+    
+    # Count sentiment if available
+    sentiment_count = {'positive': 0, 'neutral': 0, 'negative': 0}
+    for review in reviews:
+        sentiment = review.get('sentiment', '').lower()
+        if sentiment in sentiment_count:
+            sentiment_count[sentiment] += 1
+    
+    return jsonify({
+        'product_id': product_id,
+        'product_name': product_data.get('name') or product_data.get('name_prefix') or 'Unknown',
+        'review_count': len(reviews),
+        'sentiment_count': sentiment_count,
+        'tag_stats': tag_stats,
+        'rating': product_data.get('item_rating', {}).get('rating_star', 0),
+    })
+
+
+@bp.route('/reanalyze/<product_id>', methods=['POST'])
+def reanalyze_product(product_id: str):
+    """Re-run FULL analysis on existing product reviews, deleting old analysis files and starting fresh."""
+    job_id = uuid.uuid4().hex[:8]
+    job = {
+        'id': job_id,
+        'product_id': product_id,
+        'phase': 'analysis',
+        'analysis_progress': 0,
+        'analysis_step_index': 0,
+        'analysis_step_name': 'Starting full re-analysis',
+    }
+    JOBS[job_id] = job
+    
+    def thread_fn():
+        try:
+            _write_log(job_id, 'process', f"REANALYZE request for product {product_id}")
+            
+            # Step 1: Delete old analysis files to ensure fresh start
+            job['analysis_step_name'] = 'Cleaning old analysis files...'
+            job['analysis_progress'] = 10
+            
+            analysis_dirs_to_clean = [
+                os.path.join(BASE_DIR, 'output', 'comment', product_id, 'auto'),
+                os.path.join(BASE_DIR, 'output', 'comment', product_id, 'indobert'),
+            ]
+            
+            for analysis_dir in analysis_dirs_to_clean:
+                if os.path.isdir(analysis_dir):
+                    try:
+                        import shutil
+                        shutil.rmtree(analysis_dir)
+                        _write_log(job_id, 'process', f"Deleted analysis directory: {analysis_dir}")
+                    except Exception as e:
+                        _write_log(job_id, 'process', f"Warning: Could not delete {analysis_dir}: {e}")
+            
+            # Step 2: Run full pipeline
+            job['analysis_step_name'] = 'Running full analysis pipeline...'
+            job['analysis_progress'] = 20
+            
+            review_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
+            review_file = os.path.join(review_dir, 'review.json')
+            
+            if not os.path.exists(review_file):
+                job['phase'] = 'error'
+                job['error'] = 'Review file not found'
+                _write_log(job_id, 'process', 'ERROR: review.json not found')
+                return
+            
+            # Run the full pipeline
+            def progress_callback(percent, msg):
+                job['analysis_progress'] = 20 + int(percent * 0.75)  # Map to 20-95%
+                job['analysis_step_name'] = msg
+                _write_log(job_id, 'process', f"[{percent}%] {msg}")
+            
+            pipeline_output_dir = pipeline.run_pipeline(
+                source_dir=review_dir,
+                product_id=product_id,
+                backend='indobert',
+                progress=progress_callback
+            )
+            
+            _write_log(job_id, 'process', f"Pipeline completed, output: {pipeline_output_dir}")
+            
+            # Step 2.5: Merge sentiment, fake, trust results back to review.json
+            job['analysis_step_name'] = 'Merging analysis results to reviews...'
+            job['analysis_progress'] = 92
+            merge_ok = _merge_analysis_to_reviews(product_id, 'indobert')
+            if merge_ok:
+                _write_log(job_id, 'process', "Analysis results merged successfully")
+            else:
+                _write_log(job_id, 'process', "Warning: Could not merge analysis results")
+            
+            # Step 3: Apply tagging to reviews
+            job['analysis_step_name'] = 'Extracting and applying comment tags...'
+            job['analysis_progress'] = 95
+            
+            with open(review_file, 'r', encoding='utf-8') as f:
+                reviews = json.load(f)
+                if not isinstance(reviews, list):
+                    reviews = []
+            
+            from utils.comment_tagger import tag_comments, get_tag_statistics
+            tagged_reviews = tag_comments(reviews, source_field='comment')
+            _write_log(job_id, 'process', f"Tagged {len(tagged_reviews)} reviews")
+            
+            # Save tagged reviews back to review.json
+            with open(review_file, 'w', encoding='utf-8') as f:
+                json.dump(tagged_reviews, f, ensure_ascii=False, indent=2)
+            
+            # Save tag statistics
+            tag_stats = get_tag_statistics(tagged_reviews)
+            stats_file = os.path.join(review_dir, 'tag_statistics.json')
+            with open(stats_file, 'w', encoding='utf-8') as f:
+                json.dump(tag_stats, f, ensure_ascii=False, indent=2)
+            
+            _write_log(job_id, 'process', f"Saved tag statistics: {json.dumps(tag_stats)}")
+            
+            # Step 4: Create tagged CSV in analysis directory
+            analysis_dir = os.path.join(BASE_DIR, 'output', 'comment', product_id, 'indobert')
+            if os.path.isdir(analysis_dir):
+                import pandas as pd
+                
+                tagged_csv_path = os.path.join(analysis_dir, 'review_tagged.csv')
+                data_for_csv = []
+                for review in tagged_reviews:
+                    data_for_csv.append({
+                        'comment': review.get('comment', ''),
+                        'tags': ' | '.join(review.get('tags', [])),
+                        'sentiment': review.get('sentiment', ''),
+                        'is_fake': review.get('is_fake', ''),
+                        'trust_score': review.get('trust_score', ''),
+                    })
+                
+                df = pd.DataFrame(data_for_csv)
+                df.to_csv(tagged_csv_path, index=False, encoding='utf-8-sig')
+                _write_log(job_id, 'process', f"Saved tagged reviews CSV: {tagged_csv_path}")
+            
+            job['analysis_progress'] = 100
+            job['phase'] = 'done'
+            job['analysis_step_name'] = 'Full re-analysis completed successfully'
+            _write_log(job_id, 'process', 'REANALYZE finished successfully')
+            
+        except Exception as e:
+            import traceback
+            job['phase'] = 'error'
+            job['error'] = str(e)
+            _write_log(job_id, 'process', f"ERROR during reanalyze: {e}")
+            _write_log(job_id, 'process', traceback.format_exc())
+    
+    thread = threading.Thread(target=thread_fn, daemon=True)
+    thread.start()
+    
+    return jsonify({'ok': True, 'job_id': job_id})
+
+
+@bp.route('/comments/<product_id>', methods=['GET'])
+def get_comments_detail(product_id: str):
+    """Get detailed comments for a product with tag statistics"""
+    try:
+        review_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
+        review_file = os.path.join(review_dir, 'review.json')
+        tag_stats_file = os.path.join(review_dir, 'tag_statistics.json')
+        
+        # Load reviews
+        if not os.path.exists(review_file):
+            return jsonify({'ok': False, 'error': 'Product not found'}), 404
+        
+        with open(review_file, 'r', encoding='utf-8') as f:
+            comments = json.load(f)
+        
+        # Load tag statistics
+        tag_stats = {}
+        if os.path.exists(tag_stats_file):
+            with open(tag_stats_file, 'r', encoding='utf-8') as f:
+                tag_stats = json.load(f)
+        
+        # Ensure comments is a list
+        if isinstance(comments, dict):
+            comments = comments.get('reviews', [])
+        
+        return jsonify({
+            'ok': True,
+            'comments': comments,
+            'tag_stats': tag_stats,
+            'total': len(comments)
+        })
+    
+    except Exception as e:
+        return jsonify({'ok': False, 'error': str(e)}), 500
+
+
 @bp.route('/resync/<product_id>', methods=['POST'])
 def resync_laravel(product_id: str):
     job_id = uuid.uuid4().hex[:8]
@@ -875,3 +1249,312 @@ def resync_laravel(product_id: str):
         return jsonify({'ok': True, 'job_id': job_id, 'status': 'ok'})
     _write_log(job_id, 'process', f"RESYNC failed: {err}")
     return jsonify({'ok': False, 'job_id': job_id, 'error': err}), 500
+
+
+# ============================================================================
+# NEW ANALYSIS ENDPOINTS (v2)
+# ============================================================================
+
+@bp.route('/analyze/full', methods=['POST'])
+def analyze_full():
+    """Full analysis: Scrape product data + Analyze comments
+    Request JSON: { "link": "https://shopee.co.id/..." }
+    """
+    j = request.get_json(force=True, silent=True) or request.form or {}
+    link = j.get('link') if isinstance(j, dict) else None
+    if not link:
+        return jsonify({'error': 'missing link parameter'}), 400
+    
+    norm_meta = _build_canonical(link)
+    norm = norm_meta['cleaned']
+    job_id = uuid.uuid4().hex[:12]
+    JOBS[job_id] = {
+        'id': job_id,
+        'link': norm,
+        'phase': 'queued',
+        'created_at': datetime.utcnow().isoformat(),
+        'scraper_progress': 0,
+        'scraper_total': 0,
+        'analysis_progress': 0,
+        'error': None,
+        'canonical': norm_meta.get('canonical'),
+        'short_link': norm_meta.get('short'),
+        'product_id': norm_meta.get('product_id'),
+        'force_copy_browser': j.get('force_copy_browser', False),
+        'mode': 'full'  # Mark as full analysis mode
+    }
+    
+    thread = threading.Thread(target=_run_job, args=(job_id,), daemon=True)
+    thread.start()
+    return jsonify({'ok': True, 'job_id': job_id})
+
+
+@bp.route('/analyze/scrape', methods=['POST'])
+def analyze_scrape_only():
+    """Scrape only: Download product data and comments, no analysis
+    Request JSON: { "link": "https://shopee.co.id/..." }
+    """
+    j = request.get_json(force=True, silent=True) or request.form or {}
+    link = j.get('link') if isinstance(j, dict) else None
+    if not link:
+        return jsonify({'error': 'missing link parameter'}), 400
+    
+    norm_meta = _build_canonical(link)
+    norm = norm_meta['cleaned']
+    job_id = uuid.uuid4().hex[:12]
+    JOBS[job_id] = {
+        'id': job_id,
+        'link': norm,
+        'phase': 'queued',
+        'created_at': datetime.utcnow().isoformat(),
+        'scraper_progress': 0,
+        'scraper_total': 0,
+        'error': None,
+        'canonical': norm_meta.get('canonical'),
+        'short_link': norm_meta.get('short'),
+        'product_id': norm_meta.get('product_id'),
+        'force_copy_browser': j.get('force_copy_browser', False),
+        'mode': 'scrape_only'  # Mark as scrape-only mode
+    }
+    
+    def scrape_only_job(job_id: str):
+        job = JOBS[job_id]
+        link = job["link"]
+        _write_log(job_id, "process", f"START scrape-only job for link: {link}")
+        meta = _build_canonical(link)
+        shopid, itemid = meta.get('shopid'), meta.get('itemid')
+        product_id = f"{shopid}-{itemid}" if shopid and itemid else job_id
+        job['product_id'] = product_id
+        job['canonical'] = meta.get('canonical')
+        job['short_link'] = meta.get('short')
+        
+        job["phase"] = "scraper"
+        job["scraper_total"] = 0
+        job["scraper_progress"] = 0
+        job['scraper_state'] = 'queued'
+        job['scraper_block'] = None
+        
+        def _scraper_progress(done, total):
+            try:
+                job['scraper_total'] = int(total)
+                job['scraper_progress'] = int(done)
+            except Exception:
+                pass
+        
+        def _scraper_log(msg):
+            _write_log(job_id, 'scraper', msg)
+        
+        def _scraper_state(state, block):
+            job['scraper_state'] = state
+            job['scraper_block'] = block
+            if state in {'waiting_login','captcha'}:
+                _write_log(job_id, 'process', f"SCRAPER state {state}: {block}")
+        
+        review_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
+        os.makedirs(review_dir, exist_ok=True)
+        
+        if job.get('force_scrape'):
+            try:
+                if os.path.isdir(review_dir):
+                    shutil.rmtree(review_dir, ignore_errors=True)
+                _write_log(job_id, 'process', 'FORCE SCRAPE: cleared previous review dir')
+            except Exception as e:
+                _write_log(job_id, 'process', f'FORCE SCRAPE cleanup error: {e}')
+        
+        try:
+            reviews_count = edge_runner.run(
+                link=job.get('canonical') or job.get('short_link') or link,
+                shopid=shopid or '',
+                itemid=itemid or '',
+                out_review_dir=review_dir,
+                base_dir=BASE_DIR,
+                force_copy=bool(job.get('force_copy_browser')),
+                progress=_scraper_progress,
+                log=_scraper_log,
+                state_cb=_scraper_state
+            )
+        except Exception as e:
+            job['phase'] = 'error'
+            job['error'] = f'scraper failed: {e}'
+            _write_log(job_id, 'process', f"ERROR scraper failed: {e}")
+            return
+        
+        _write_log(job_id, 'process', 'SCRAPER finished')
+        job['phase'] = 'done'
+        job['scraper_total'] = reviews_count
+        job['scraper_progress'] = reviews_count
+        _write_log(job_id, 'process', f"Scrape-only job completed: {reviews_count} comments saved")
+    
+    thread = threading.Thread(target=scrape_only_job, args=(job_id,), daemon=True)
+    thread.start()
+    return jsonify({'ok': True, 'job_id': job_id, 'message': 'Scrape-only job started'})
+
+
+@bp.route('/analyze/reanalyze', methods=['POST'])
+def analyze_reanalyze():
+    """Re-analyze existing scraped data: Full analysis pipeline on already-scraped data
+    Request JSON: { "product_id": "shopid-itemid" }
+    """
+    j = request.get_json(force=True, silent=True) or request.form or {}
+    product_id = j.get('product_id') if isinstance(j, dict) else None
+    if not product_id:
+        return jsonify({'error': 'missing product_id parameter'}), 400
+    
+    # Check if product has been scraped
+    review_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
+    review_file = os.path.join(review_dir, 'review.json')
+    if not os.path.exists(review_file):
+        return jsonify({'error': 'Product has not been scraped yet'}), 404
+    
+    job_id = uuid.uuid4().hex[:12]
+    JOBS[job_id] = {
+        'id': job_id,
+        'product_id': product_id,
+        'phase': 'queued',
+        'created_at': datetime.utcnow().isoformat(),
+        'analysis_progress': 0,
+        'analysis_step_index': 0,
+        'analysis_steps_total': 7,
+        'analysis_step_name': 'pending',
+        'error': None,
+        'mode': 'reanalyze_only'
+    }
+    
+    def reanalyze_job(job_id: str):
+        """Reanalyze only: Skip scraping, run full analysis pipeline on existing data"""
+        job = JOBS[job_id]
+        product_id = job['product_id']
+        _write_log(job_id, 'process', f"START re-analyze job for product {product_id}")
+        
+        job['phase'] = 'analysis'
+        job['analysis_progress'] = 0
+        job['analysis_step_index'] = 0
+        
+        steps_order = [
+            'init: resolve input',
+            '[01] preprocess',
+            '[01b] tokenize',
+            '[03] sentiment',
+            '[04] fake detect',
+            '[05] trust score',
+            '[06] summarize',
+            'done'
+        ]
+        
+        def _progress(pct, msg):
+            try:
+                job['analysis_progress'] = int(pct)
+                if isinstance(msg, str):
+                    job['analysis_step_name'] = msg
+                    if msg in steps_order:
+                        job['analysis_step_index'] = steps_order.index(msg) + 1
+                _write_log(job_id, 'process', f"ANALYSIS {job['analysis_progress']}% :: {msg}")
+            except Exception:
+                pass
+        
+        try:
+            review_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
+            review_file = os.path.join(review_dir, 'review.json')
+            
+            if not os.path.exists(review_file):
+                job['phase'] = 'error'
+                job['error'] = 'Review file not found'
+                _write_log(job_id, 'process', 'ERROR: review.json not found')
+                return
+            
+            # Delete old analysis files first
+            analysis_dirs_to_clean = [
+                os.path.join(BASE_DIR, 'output', 'comment', product_id, 'auto'),
+                os.path.join(BASE_DIR, 'output', 'comment', product_id, 'indobert'),
+            ]
+            
+            for analysis_dir in analysis_dirs_to_clean:
+                if os.path.isdir(analysis_dir):
+                    try:
+                        shutil.rmtree(analysis_dir)
+                        _write_log(job_id, 'process', f"Deleted analysis directory: {analysis_dir}")
+                    except Exception as e:
+                        _write_log(job_id, 'process', f"Warning: Could not delete {analysis_dir}: {e}")
+            
+            # Run full pipeline
+            job['analysis_step_name'] = 'Running full analysis pipeline...'
+            job['analysis_progress'] = 20
+            
+            _write_log(job_id, 'process', f"Starting pipeline for {product_id}")
+            pipeline_output_dir = pipeline.run_pipeline(
+                source_dir=review_dir,
+                product_id=product_id,
+                backend='indobert',
+                progress=_progress
+            )
+            
+            _write_log(job_id, 'process', f"Pipeline completed, output: {pipeline_output_dir}")
+            
+            # Merge sentiment, fake, trust results back to review.json
+            job['analysis_step_name'] = 'Merging analysis results to reviews...'
+            job['analysis_progress'] = 92
+            merge_ok = _merge_analysis_to_reviews(product_id, 'indobert')
+            if merge_ok:
+                _write_log(job_id, 'process', "Analysis results merged successfully")
+            else:
+                _write_log(job_id, 'process', "Warning: Could not merge analysis results")
+            
+            # Apply tagging
+            job['analysis_step_name'] = 'Extracting and applying comment tags...'
+            job['analysis_progress'] = 95
+            
+            with open(review_file, 'r', encoding='utf-8') as f:
+                reviews = json.load(f)
+                if not isinstance(reviews, list):
+                    reviews = []
+            
+            from utils.comment_tagger import tag_comments, get_tag_statistics
+            tagged_reviews = tag_comments(reviews, source_field='comment')
+            _write_log(job_id, 'process', f"Tagged {len(tagged_reviews)} reviews")
+            
+            # Save tagged reviews
+            with open(review_file, 'w', encoding='utf-8') as f:
+                json.dump(tagged_reviews, f, ensure_ascii=False, indent=2)
+            
+            # Save tag statistics
+            tag_stats = get_tag_statistics(tagged_reviews)
+            stats_file = os.path.join(review_dir, 'tag_statistics.json')
+            with open(stats_file, 'w', encoding='utf-8') as f:
+                json.dump(tag_stats, f, ensure_ascii=False, indent=2)
+            
+            _write_log(job_id, 'process', f"Saved tag statistics: {json.dumps(tag_stats)}")
+            
+            # Create tagged CSV
+            analysis_dir = os.path.join(BASE_DIR, 'output', 'comment', product_id, 'indobert')
+            if os.path.isdir(analysis_dir):
+                tagged_csv_path = os.path.join(analysis_dir, 'review_tagged.csv')
+                data_for_csv = []
+                for review in tagged_reviews:
+                    data_for_csv.append({
+                        'comment': review.get('comment', ''),
+                        'tags': ' | '.join(review.get('tags', [])),
+                        'sentiment': review.get('sentiment', ''),
+                        'is_fake': review.get('is_fake', ''),
+                        'trust_score': review.get('trust_score', ''),
+                    })
+                
+                df = pd.DataFrame(data_for_csv)
+                df.to_csv(tagged_csv_path, index=False, encoding='utf-8-sig')
+                _write_log(job_id, 'process', f"Saved tagged reviews CSV: {tagged_csv_path}")
+            
+            job['analysis_progress'] = 100
+            job['phase'] = 'done'
+            job['analysis_step_name'] = 'Re-analysis completed successfully'
+            _write_log(job_id, 'process', 'RE-ANALYZE finished successfully')
+            
+        except Exception as e:
+            import traceback
+            job['phase'] = 'error'
+            job['error'] = str(e)
+            _write_log(job_id, 'process', f"ERROR during re-analyze: {e}")
+            _write_log(job_id, 'process', traceback.format_exc())
+    
+    thread = threading.Thread(target=reanalyze_job, args=(job_id,), daemon=True)
+    thread.start()
+    return jsonify({'ok': True, 'job_id': job_id, 'message': 'Re-analyze job started'})
+

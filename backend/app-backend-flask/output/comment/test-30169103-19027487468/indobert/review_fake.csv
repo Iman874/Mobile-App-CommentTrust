@@ -1,0 +1,3 @@
+comment,is_fake,fake_confidence
+Good product,False,0.05
+Not bad,False,0.1

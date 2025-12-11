@@ -9,6 +9,120 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    .history-section {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid #ddd;
+    }
+    .product-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      transition: box-shadow 0.2s;
+    }
+    .product-card:hover {
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+    .product-info {
+      flex: 1;
+    }
+    .product-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+    .product-shop {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .product-stats {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: #666;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-label {
+      font-size: 10px;
+      color: #888;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .stat-value {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    .product-actions {
+      display: flex;
+      gap: 8px;
+      margin-left: 16px;
+      flex-wrap: wrap;
+    }
+    .product-actions button {
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .product-actions button:not(.reanalyze) {
+      background: #2196F3;
+      color: #fff;
+    }
+    .product-actions button:not(.reanalyze):hover {
+      background: #1976D2;
+      transform: translateY(-1px);
+    }
+    .product-actions button:not(.reanalyze):active {
+      transform: translateY(0);
+    }
+    .product-actions button.reanalyze {
+      background: #FFC107;
+      color: #333;
+      border: none;
+    }
+    .product-actions button.reanalyze:hover {
+      background: #FFB300;
+      transform: translateY(-1px);
+    }
+    .product-actions button.reanalyze:active {
+      transform: translateY(0);
+    }
+    .analysis-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+    .analysis-badge.done {
+      background: #c8e6c9;
+      color: #1b5e20;
+    }
+    .analysis-badge.pending {
+      background: #ffcccc;
+      color: #c62828;
+    }
+  </style>
+      color: #721c24;
+    }
+  </style>
 </head>
 <body>
   <div class="box">
@@ -21,6 +135,12 @@
     </form>
     <div id="jobs"></div>
     <div id="lastLink" style="margin-top:12px"></div>
+    
+    <!-- History Section -->
+    <div class="history-section">
+      <h3>Histori Produk</h3>
+      <div id="productHistory" style="max-height: 500px; overflow-y: auto;"></div>
+    </div>
   </div>
 
   <script>
@@ -32,6 +152,118 @@
       const res = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
       return res.json();
     }
+    
+    async function loadProductHistory(){
+      try{
+        const res = await fetch('/api/history/products');
+        const data = await res.json();
+        const histDiv = document.getElementById('productHistory');
+        
+        if(!data.products || data.products.length === 0){
+          histDiv.innerHTML = '<p style="color:#999;font-size:12px;">Belum ada histori produk</p>';
+          return;
+        }
+        
+        let html = '';
+        for(const p of data.products){
+          const analysisBadge = p.analysis_done 
+            ? '<span class="analysis-badge done">✓ Analyzed</span>'
+            : '<span class="analysis-badge pending">○ Pending</span>';
+          
+          html += `
+            <div class="product-card">
+              <div class="product-info">
+                <div class="product-name">${p.product_name}${analysisBadge}</div>
+                <div class="product-shop">${p.shop_name || 'Unknown Shop'}</div>
+                <div class="product-stats">
+                  <div class="stat-item">
+                    <span class="stat-label">Comments</span>
+                    <span class="stat-value">${p.review_count}</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">Rating</span>
+                    <span class="stat-value">${p.rating || '-'}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="product-actions">
+                <button class="reanalyze" onclick="reanalyzeProduct('${p.product_id}', this)">Re-Analyze</button>
+                <button onclick="viewProduct('${p.product_id}')">View Details</button>
+                <button onclick="viewComments('${p.product_id}')">💬 View Comments</button>
+              </div>
+            </div>
+          `;
+        }
+        histDiv.innerHTML = html;
+      }catch(e){
+        console.error('Error loading history:', e);
+      }
+    }
+    
+    async function reanalyzeProduct(productId, button){
+      button.disabled = true;
+      button.textContent = 'Processing...';
+      
+      try{
+        const res = await fetch(`/api/reanalyze/${encodeURIComponent(productId)}`, {method:'POST'});
+        const data = await res.json();
+        
+        if(data.ok && data.job_id){
+          addJobToUI(data.job_id);
+          alert('Re-analysis job started. Job ID: ' + data.job_id);
+        } else {
+          alert('Failed to start re-analysis');
+        }
+      }catch(e){
+        alert('Error: ' + e);
+      }finally{
+        button.disabled = false;
+        button.textContent = 'Re-Analyze';
+      }
+    }
+    
+    async function viewProduct(productId){
+      try{
+        const res = await fetch(`/api/product/${encodeURIComponent(productId)}/stats`);
+        const data = await res.json();
+        
+        if(data.error){
+          alert('Product not found');
+          return;
+        }
+        
+        let tagInfo = '';
+        if(Object.keys(data.tag_stats).length > 0){
+          tagInfo = '<strong>Top Tags:</strong><br>';
+          for(const [tag, count] of Object.entries(data.tag_stats).slice(0, 5)){
+            tagInfo += `${tag}: ${count}<br>`;
+          }
+        }
+        
+        let msg = `
+Product: ${data.product_name}
+Product ID: ${productId}
+Total Reviews: ${data.review_count}
+Rating: ${data.rating || 'N/A'}
+
+Sentiment Distribution:
+- Positive: ${data.sentiment_count.positive}
+- Neutral: ${data.sentiment_count.neutral}
+- Negative: ${data.sentiment_count.negative}
+
+${tagInfo}
+        `;
+        
+        alert(msg);
+      }catch(e){
+        alert('Error loading product details: ' + e);
+      }
+    }
+    
+    function viewComments(productId){
+      window.location.href = `/static/comments-detail.html?product=${encodeURIComponent(productId)}`;
+    }
+    
     function renderJob(job){
       const div = document.createElement('div'); div.className='job';
       div.id = 'job-'+job.id;
@@ -159,6 +391,8 @@
             const laravelUrl = 'http://127.0.0.1:8000/analysis/' + encodeURIComponent(pid);
             vizDiv.innerHTML = `<strong>Visualisasi:</strong> <a href="${vizUrl}" target="_blank">${vizUrl}</a> | <a href="${laravelUrl}" target="_blank">Laravel Dashboard</a>`;
           }
+          // Reload product history after job completes
+          loadProductHistory();
         }
       }catch(e){
         setTimeout(()=>poll(jobId), 2000);
@@ -186,6 +420,11 @@
       const j = params.get('job');
       if(j) addJobToUI(j);
     })();
+    
+    // Load product history on page load
+    loadProductHistory();
+    // Reload history every 10 seconds
+    setInterval(loadProductHistory, 10000);
   </script>
 </body>
 </html>

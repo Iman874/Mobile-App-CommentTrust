@@ -12,6 +12,29 @@ from . import scrapper_produk as prod
 from . import scrapper_comment as comm
 from . import edge_driver_helper
 
+def _save_to_root_output(root_output_dir: str, filename: str, data, log: Callable[[str], None]):
+    """Save data to root output folder, appending to existing JSON array if present."""
+    try:
+        output_path = os.path.join(root_output_dir, filename)
+        os.makedirs(root_output_dir, exist_ok=True)
+        
+        # If file exists and is an array, append; otherwise create new
+        if os.path.exists(output_path) and filename == 'review.json':
+            try:
+                with open(output_path, 'r', encoding='utf-8') as f:
+                    existing = json.load(f)
+                if isinstance(existing, list) and isinstance(data, list):
+                    existing.extend(data)
+                    data = existing
+            except Exception as e:
+                log(f"Warning: Could not append to {filename}: {e}")
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        log(f"Saved to root {filename}")
+    except Exception as e:
+        log(f"Error saving to root {filename}: {e}")
+
 def _paths(base_dir: str) -> Tuple[str, str, str]:
     """Return driver, cookie, working profile directory (browser-dummy/edge_profile)."""
     dummy_root = os.path.join(base_dir, 'browser-dummy')
@@ -560,6 +583,7 @@ def run(link: str, shopid: str, itemid: str, out_review_dir: str, base_dir: str,
         # write outputs expected by pipeline (list is accepted)
         with open(os.path.join(out_review_dir, 'review.json'), 'w', encoding='utf-8') as f:
             json.dump(all_reviews, f, ensure_ascii=False, indent=2)
+        
         state_cb('done', None)
         log(f"SCRAPER finished; total {len(all_reviews)} reviews saved")
         return len(all_reviews)

@@ -1,0 +1,79 @@
+[2025-12-10T20:41:14.368227] START job for link: https://shopee.co.id/Laptop-Dell-Latitude-Core-i5-Core-i7-RAM-16GB-SSD-512GB-Mulus-Second-Original-Berkualitas-Bergaransi.-i.30169103.19027487468
+[2025-12-10T20:41:14.369215] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-10T20:41:14.369312] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-10T20:41:14.369471] SCRAPER initializing Edge driver for Linux
+[2025-12-10T20:41:16.960346] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-10T20:41:39.003380] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-10T20:41:46.692437] SCRAPER product tab detected; proceeding
+[2025-12-10T20:41:46.693564] SCRAPER fetch product data
+[2025-12-10T20:41:48.725494] SCRAPER fetch comments
+[2025-12-10T20:41:49.149987] SCRAPER page 1: collected 20/2100
+[2025-12-10T20:41:50.195532] SCRAPER page 2: collected 40/2100
+[2025-12-10T20:41:51.328144] SCRAPER page 3: collected 60/2100
+[2025-12-10T20:41:52.573731] SCRAPER page 4: collected 80/2100
+[2025-12-10T20:41:53.777093] SCRAPER page 5: collected 100/2100
+[2025-12-10T20:41:57.199710] SCRAPER page 6: collected 120/2100
+[2025-12-10T20:41:58.511772] SCRAPER page 7: collected 140/2100
+[2025-12-10T20:41:59.741246] SCRAPER page 8: collected 160/2100
+[2025-12-10T20:42:00.731958] SCRAPER page 9: collected 180/2100
+[2025-12-10T20:42:02.089949] SCRAPER page 10: collected 200/2100
+[2025-12-10T20:42:03.566306] SCRAPER page 11: collected 220/2100
+[2025-12-10T20:42:04.558046] SCRAPER page 12: collected 240/2100
+[2025-12-10T20:42:06.039901] SCRAPER page 13: collected 260/2100
+[2025-12-10T20:42:07.077482] SCRAPER page 14: collected 280/2100
+[2025-12-10T20:42:08.200597] SCRAPER page 15: collected 300/2100
+[2025-12-10T20:42:10.111373] SCRAPER page 16: collected 320/2100
+[2025-12-10T20:42:11.825995] SCRAPER page 17: collected 340/2100
+[2025-12-10T20:42:12.799159] SCRAPER page 18: collected 360/2100
+[2025-12-10T20:42:14.180656] SCRAPER page 19: collected 380/2100
+[2025-12-10T20:42:15.342379] SCRAPER page 20: collected 400/2100
+[2025-12-10T20:42:16.377463] SCRAPER page 21: collected 420/2100
+[2025-12-10T20:42:17.449266] SCRAPER page 22: collected 440/2100
+[2025-12-10T20:42:18.482012] SCRAPER page 23: collected 460/2100
+[2025-12-10T20:42:19.498486] SCRAPER page 24: collected 480/2100
+[2025-12-10T20:42:20.527145] SCRAPER page 25: collected 500/2100
+[2025-12-10T20:42:21.660316] SCRAPER page 26: collected 520/2100
+[2025-12-10T20:42:23.182979] SCRAPER page 27: collected 540/2100
+[2025-12-10T20:42:24.126212] SCRAPER page 28: collected 560/2100
+[2025-12-10T20:42:25.111309] SCRAPER page 29: collected 580/2100
+[2025-12-10T20:42:26.070446] SCRAPER page 30: collected 600/2100
+[2025-12-10T20:42:27.044467] SCRAPER page 31: collected 620/2100
+[2025-12-10T20:42:28.167873] SCRAPER page 32: collected 640/2100
+[2025-12-10T20:42:29.173841] SCRAPER page 33: collected 660/2100
+[2025-12-10T20:42:30.145345] SCRAPER page 34: collected 680/2100
+[2025-12-10T20:42:31.083033] SCRAPER page 35: collected 700/2100
+[2025-12-10T20:42:32.075315] SCRAPER page 36: collected 720/2100
+[2025-12-10T20:42:33.039671] SCRAPER page 37: collected 740/2100
+[2025-12-10T20:42:34.045793] SCRAPER page 38: collected 760/2100
+[2025-12-10T20:42:35.095115] SCRAPER page 39: collected 780/2100
+[2025-12-10T20:42:36.031060] SCRAPER page 40: collected 800/2100
+[2025-12-10T20:42:36.972829] SCRAPER page 41: collected 820/2100
+[2025-12-10T20:42:37.859680] SCRAPER page 42: collected 840/2100
+[2025-12-10T20:42:38.769034] SCRAPER page 43: collected 860/2100
+[2025-12-10T20:42:39.678520] SCRAPER page 44: collected 880/2100
+[2025-12-10T20:42:40.639731] SCRAPER page 45: collected 900/2100
+[2025-12-10T20:42:41.606852] SCRAPER page 46: collected 920/2100
+[2025-12-10T20:42:42.756653] SCRAPER page 47: collected 940/2100
+[2025-12-10T20:42:43.857413] SCRAPER page 48: collected 960/2100
+[2025-12-10T20:42:44.771726] SCRAPER page 49: collected 980/2100
+[2025-12-10T20:42:45.726724] SCRAPER page 50: collected 1000/2100
+[2025-12-10T20:42:46.682081] SCRAPER page 51: collected 1020/2100
+[2025-12-10T20:42:47.602312] SCRAPER page 52: collected 1040/2100
+[2025-12-10T20:42:48.506714] SCRAPER page 53: collected 1050/2100
+[2025-12-10T20:42:48.876553] Saved to root review.json
+[2025-12-10T20:42:48.880337] Saved to root product.json
+[2025-12-10T20:42:48.880391] SCRAPER finished; total 1050 reviews saved
+[2025-12-10T20:42:48.928663] SCRAPER finished
+[2025-12-10T20:42:48.929272] ANALYSIS 5% :: init: resolve input
+[2025-12-10T20:42:49.031952] ANALYSIS 10% :: [01] preprocess
+[2025-12-10T20:42:49.047407] ANALYSIS 20% :: [01b] tokenize
+[2025-12-10T20:42:49.060873] ANALYSIS 40% :: [03] sentiment
+[2025-12-10T20:42:49.079190] ANALYSIS 70% :: [04] fake detect
+[2025-12-10T20:42:49.160939] ANALYSIS 90% :: [05] trust score
+[2025-12-10T20:42:49.191413] ANALYSIS 98% :: [06] summarize
+[2025-12-10T20:42:49.210092] ANALYSIS 100% :: done
+[2025-12-10T20:42:49.210330] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/30169103-19027487468/indobert
+[2025-12-10T20:42:49.211405] Laravel ingest attempt 1 failed: <urlopen error [Errno 111] Connection refused>
+[2025-12-10T20:42:51.212332] Laravel ingest attempt 2 failed: <urlopen error [Errno 111] Connection refused>
+[2025-12-10T20:42:55.293087] Laravel ingest attempt 3 failed: <urlopen error [Errno 111] Connection refused>
+[2025-12-10T20:42:55.293493] Laravel sync failed: notify failed: <urlopen error [Errno 111] Connection refused>

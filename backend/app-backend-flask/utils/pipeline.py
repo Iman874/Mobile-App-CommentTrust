@@ -433,5 +433,33 @@ def run_pipeline(source_dir: str, product_id: str, backend: str = "auto", progre
     trust_csv = step_trust(fake_csv, out_dir, product_id=product_id)
     if progress: progress(98, "[06] summarize")
     step_summarize(trust_csv, out_dir)
+    
+    # Step 7: Apply tagging to reviews in review.json
+    if progress: progress(99, "[07] tagging comments")
+    try:
+        from utils.comment_tagger import tag_comments, get_tag_statistics
+        review_file = os.path.join(review_dir, 'review.json')
+        if os.path.exists(review_file):
+            with open(review_file, 'r', encoding='utf-8') as f:
+                reviews = json.load(f)
+                if not isinstance(reviews, list):
+                    reviews = []
+            
+            # Apply tagging
+            tagged_reviews = tag_comments(reviews, source_field='comment')
+            
+            # Save tagged reviews back
+            with open(review_file, 'w', encoding='utf-8') as f:
+                json.dump(tagged_reviews, f, ensure_ascii=False, indent=2)
+            
+            # Save tag statistics
+            tag_stats = get_tag_statistics(tagged_reviews)
+            stats_file = os.path.join(review_dir, 'tag_statistics.json')
+            with open(stats_file, 'w', encoding='utf-8') as f:
+                json.dump(tag_stats, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        # Tagging is optional, don't fail pipeline if it errors
+        pass
+    
     if progress: progress(100, "done")
     return out_dir

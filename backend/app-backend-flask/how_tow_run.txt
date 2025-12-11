@@ -19,7 +19,7 @@
 3. **Install dependensi yang diperlukan**:
     Pastikan Anda memiliki file `requirements.txt` di direktori. Kemudian jalankan:
     ```
-    pip install -r requirements.txt
+        sudo apt install python3-pip
     ```
 
 4. **Jalankan program**:

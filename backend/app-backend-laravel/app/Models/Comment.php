@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comment extends Model
 {
     protected $fillable = [
+        'user_id',
         'product_id','product_key','username','comment','rating','likes','create_time','commented_at',
         'comment_clean','tokens','tokens_count','sentiment','sentiment_confidence',
         'fake_pred','fake_score','trust_score','text_len','char_repeat_ratio','token_repeat_ratio','dup_score','mismatch',
@@ -25,6 +26,17 @@ class Comment extends Model
         'tags' => 'array',
     ];
 
+    /**
+     * Get the user that owns this comment (through product)
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the product this comment belongs to
+     */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);

@@ -13,6 +13,36 @@ from pathlib import Path
 from typing import Optional, Tuple
 
 
+def _load_env() -> None:
+    """Load .env so EDGE_* vars are available even if caller did not export them."""
+    env_path = Path(__file__).resolve().parents[2] / ".env"  # app-backend-flask/.env
+    if not env_path.exists():
+        return
+
+    # Prefer python-dotenv if available
+    try:
+        from dotenv import load_dotenv  # type: ignore
+
+        load_dotenv(env_path)
+        return
+    except Exception:
+        # Fallback: simple parser for KEY=VALUE lines (ignore comments/empties)
+        try:
+            for line in env_path.read_text().splitlines():
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip())
+        except Exception:
+            pass
+
+
+# Load env variables at import time
+_load_env()
+
+
 def _detect_os_mode() -> str:
     """
     Detect the runtime OS mode.
@@ -96,7 +126,41 @@ def _find_edge_binary_linux() -> Optional[str]:
     Returns:
         Path to Edge binary if found, None otherwise.
     """
+    # 0. Highest priority: environment variable override
+    env_binary = os.environ.get("EDGE_BINARY_PATH")
+    if env_binary:
+        # Direct use if exists and executable
+        if os.path.isfile(env_binary):
+            if not os.access(env_binary, os.X_OK):
+                try:
+                    os.chmod(env_binary, 0o755)
+                except Exception:
+                    pass
+            return env_binary
+    
+    # If env var points to host binary but we're in Flatpak, try to find it
+    # This shouldn't create wrapper - just return the path for validation
+    if env_binary and not os.path.isfile(env_binary):
+        # Path doesn't exist in container, might be on host
+        # Return as-is and let caller handle
+        return env_binary
+
+    # 1. Search Flatpak installs (system/user) for the binary name
+    flatpak_candidates = []
+    for root in (
+        Path("/var/lib/flatpak/app/com.microsoft.Edge"),
+        Path.home() / ".local/share/flatpak/app/com.microsoft.Edge",
+    ):
+        if root.exists():
+            try:
+                found = list(root.rglob("microsoft-edge"))
+                flatpak_candidates.extend(str(p) for p in found)
+            except Exception:
+                pass
+
     candidates = [
+        env_binary,
+        *flatpak_candidates,
         "/usr/bin/microsoft-edge",
         "/usr/bin/microsoft-edge-stable",
         "/usr/bin/microsoft-edge-dev",
@@ -128,16 +192,18 @@ def _resolve_edge_driver_path(os_mode: str) -> str:
         return env_path
 
     # Compute default path relative to this module
+    # Path: app-backend-flask/utils/scrapper/edge_driver_helper.py
+    # Go up 2 levels to reach app-backend-flask
     module_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(os.path.dirname(os.path.dirname(module_dir)))
+    flask_app_dir = os.path.dirname(os.path.dirname(module_dir))
 
     if os_mode == "windows":
         default_path = os.path.join(
-            project_root, "browser-dummy", "edgedriver_win64", "msedgedriver.exe"
+            flask_app_dir, "browser-dummy", "edgedriver_win64", "msedgedriver.exe"
         )
     else:  # linux
         default_path = os.path.join(
-            project_root, "browser-dummy", "edgedriver_linux64", "msedgedriver"
+            flask_app_dir, "browser-dummy", "edgedriver_linux64", "msedgedriver"
         )
 
     return default_path
@@ -188,6 +254,20 @@ def _validate_edge_binary(binary_path: Optional[str], os_mode: str) -> None:
                 "Please install Edge or set EDGE_BINARY_PATH environment variable. "
                 "To install on Ubuntu/Debian: sudo apt install microsoft-edge-stable"
             )
+        
+        # If in Flatpak container, binary might be on host - skip file check
+        if os.path.exists("/.flatpak-info"):
+            # We're in Flatpak - trust EDGE_BINARY_PATH even if not visible in container
+            # The path will be accessed via flatpak-spawn or wrapper
+            return
+        
+        # Native environment - check if file exists
+        if not os.path.isfile(binary_path):
+            raise FileNotFoundError(
+                f"Microsoft Edge binary not found at {binary_path}. "
+                "Please verify the path or install Edge. "
+                "To install on Ubuntu/Debian: sudo apt install microsoft-edge-stable"
+            )
 
 
 def create_edge_driver(debug: bool = False):
@@ -219,29 +299,44 @@ def create_edge_driver(debug: bool = False):
         finally:
             driver.quit()
     """
+    import requests
     from selenium import webdriver
     from selenium.webdriver.edge.service import Service as EdgeService
     from selenium.webdriver.edge.options import Options as EdgeOptions
 
+
+    # --- Remote Debugging Detection ---
+    remote_port = int(os.environ.get("EDGE_REMOTE_PORT", "9222"))
+    remote_debug_url = f"http://localhost:{remote_port}/json"
+    try:
+        resp = requests.get(remote_debug_url, timeout=1)
+        if resp.status_code == 200:
+            if debug:
+                print(f"[EDGE_DRIVER] Detected running Edge with remote debugging at {remote_debug_url}")
+            options = EdgeOptions()
+            options.add_experimental_option("debuggerAddress", f"localhost:{remote_port}")
+            driver = webdriver.Edge(options=options)
+            if debug:
+                print(f"[EDGE_DRIVER] Connected to existing Edge instance via remote debugging.")
+            return driver
+    except Exception:
+        if debug:
+            print(f"[EDGE_DRIVER] No Edge remote debugging instance detected on port {remote_port}, will launch new instance.")
+
+    # --- Normal Edge Launch ---
     # Detect OS mode
     os_mode = _detect_os_mode()
-    
     if debug:
         print(f"[EDGE_DRIVER] OS mode detected: {os_mode}")
         print(f"[EDGE_DRIVER] Platform: {platform.system()}")
-
     # Resolve driver path
     driver_path = _resolve_edge_driver_path(os_mode)
-    
     if debug:
         print(f"[EDGE_DRIVER] Driver path: {driver_path}")
-
     # Validate driver exists
     _validate_edge_driver(driver_path, os_mode)
-
     if debug:
         print(f"[EDGE_DRIVER] Driver validated successfully")
-
     # Platform-specific configuration
     options = EdgeOptions()
 
@@ -251,14 +346,58 @@ def create_edge_driver(debug: bool = False):
         
         if debug:
             print(f"[EDGE_DRIVER] Linux binary candidates checked")
-        
+
+        # Validate binary
         _validate_edge_binary(binary_path, os_mode)
         
+        # If in Flatpak and binary is on host, create wrapper to access it
+        if os.path.exists("/.flatpak-info") and binary_path and not os.path.isfile(binary_path):
+            # We're in Flatpak and binary is on host - create wrapper
+            wrapper_path = "/tmp/edge-flatpak-host-wrapper.sh"
+            with open(wrapper_path, "w") as f:
+                f.write("#!/bin/sh\n")
+                f.write(f'exec flatpak-spawn --host {binary_path} "$@"\n')
+            os.chmod(wrapper_path, 0o755)
+            binary_path = wrapper_path
+            if debug:
+                print(f"[EDGE_DRIVER] Created Flatpak wrapper: {wrapper_path}")
+        
+        if not binary_path or not os.path.isfile(binary_path):
+            # This shouldn't happen after validation, but be safe
+            pass
+        elif not os.access(binary_path, os.X_OK):
+            try:
+                os.chmod(binary_path, 0o755)
+            except Exception:
+                pass
+
         if debug:
             print(f"[EDGE_DRIVER] Linux binary found: {binary_path}")
         
+        # Check if this is a wrapper script (for host access from Flatpak)
+        is_flatpak_wrapper = binary_path.startswith("/tmp/edge-host-wrapper")
+        
         # Set binary location for Linux
         options.binary_location = binary_path
+
+        # Add common arguments for all Linux Edge instances
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-setuid-sandbox")
+        options.add_argument("--remote-debugging-port=9222")
+
+        headless_env = os.environ.get("EDGE_HEADLESS", "1").lower()
+        if headless_env in ("1", "true", "yes", "on"):
+            options.add_argument("--headless=new")
+        
+        # Additional stability arguments
+        options.add_argument("--disable-web-security")
+        options.add_argument("--allow-running-insecure-content")
+        
+        if debug:
+            print(f"[EDGE_DRIVER] Headless mode: {headless_env in ('1', 'true', 'yes', 'on')}")
+            print(f"[EDGE_DRIVER] Using wrapper for host access: {is_flatpak_wrapper}")
     else:
         # Windows: binary location usually not needed (auto-detected)
         binary_path = _find_edge_binary_windows()
