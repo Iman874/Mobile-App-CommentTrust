@@ -4,6 +4,8 @@
 @section('page-subtitle', 'View user information and products')
 
 @section('admin-content')
+<!-- Include Notification Component -->
+@include('components.notification')
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
     <!-- User Information -->
     <div class="lg:col-span-2">
@@ -188,8 +190,8 @@
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-900">{{ $product->comments_count ?? 0 }}</td>
                             <td class="px-6 py-4 text-sm">
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $product->is_analyzed ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
-                                    {{ $product->is_analyzed ? 'Analyzed' : 'Pending' }}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $product->comments_count > 0 ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                    {{ $product->comments_count > 0 ? 'Analyzed' : 'Pending' }}
                                 </span>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500">{{ $product->created_at->format('d M Y') }}</td>
@@ -208,13 +210,13 @@
 <script>
 function copyToken(token) {
     navigator.clipboard.writeText(token);
-    alert('Token copied to clipboard');
+    notificationSystem.success('Token copied to clipboard!');
 }
 
 function refreshToken(userId) {
     if (!confirm('Are you sure you want to refresh this user\'s token?')) return;
 
-    fetch(`/api/admin/users/${userId}/refresh-token`, {
+    fetch(`/admin/users/${userId}/refresh-token`, {
         method: 'POST',
         headers: {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -224,19 +226,21 @@ function refreshToken(userId) {
     .then(r => r.json())
     .then(data => {
         if (data.ok) {
-            alert('Token refreshed successfully');
-            location.reload();
+            notificationSystem.success('Token refreshed successfully. Reloading...');
+            setTimeout(() => location.reload(), 1500);
         } else {
-            alert('Error: ' + (data.message || 'Unknown error'));
+            notificationSystem.error(data.message || 'Failed to refresh token', data.code || 'UNKNOWN', 7000);
         }
     })
-    .catch(e => alert('Error: ' + e.message));
+    .catch(error => {
+        notificationSystem.error('Network error: ' + error.message, 'NETWORK_ERROR', 7000);
+    });
 }
 
 function extendToken(userId) {
     if (!confirm('Are you sure you want to extend this user\'s token?')) return;
 
-    fetch(`/api/admin/users/${userId}/extend-token`, {
+    fetch(`/admin/users/${userId}/extend-token`, {
         method: 'POST',
         headers: {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -246,19 +250,21 @@ function extendToken(userId) {
     .then(r => r.json())
     .then(data => {
         if (data.ok) {
-            alert('Token extended successfully');
-            location.reload();
+            notificationSystem.success('Token extended successfully. Reloading...');
+            setTimeout(() => location.reload(), 1500);
         } else {
-            alert('Error: ' + (data.message || 'Unknown error'));
+            notificationSystem.error(data.message || 'Failed to extend token', data.code || 'UNKNOWN', 7000);
         }
     })
-    .catch(e => alert('Error: ' + e.message));
+    .catch(error => {
+        notificationSystem.error('Network error: ' + error.message, 'NETWORK_ERROR', 7000);
+    });
 }
 
 function resetSessions(userId) {
     if (!confirm('Are you sure you want to reset all sessions for this user?')) return;
 
-    fetch(`/api/admin/users/${userId}/reset-sessions`, {
+    fetch(`/admin/users/${userId}/reset-sessions`, {
         method: 'POST',
         headers: {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -268,20 +274,22 @@ function resetSessions(userId) {
     .then(r => r.json())
     .then(data => {
         if (data.ok) {
-            alert('Sessions reset successfully');
-            location.reload();
+            notificationSystem.success('Sessions reset successfully. Reloading...');
+            setTimeout(() => location.reload(), 1500);
         } else {
-            alert('Error: ' + (data.message || 'Unknown error'));
+            notificationSystem.error(data.message || 'Failed to reset sessions', data.code || 'UNKNOWN', 7000);
         }
     })
-    .catch(e => alert('Error: ' + e.message));
+    .catch(error => {
+        notificationSystem.error('Network error: ' + error.message, 'NETWORK_ERROR', 7000);
+    });
 }
 
 function deleteUser(userId) {
     if (!confirm('Are you sure you want to DELETE this user? This action cannot be undone.')) return;
     if (!confirm('This will permanently delete the user account. Are you absolutely sure?')) return;
 
-    fetch(`/api/admin/users/${userId}`, {
+    fetch(`/admin/users/${userId}`, {
         method: 'DELETE',
         headers: {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -291,13 +299,17 @@ function deleteUser(userId) {
     .then(r => r.json())
     .then(data => {
         if (data.ok) {
-            alert('User deleted successfully');
-            window.location.href = '{{ route("admin.users") }}';
+            notificationSystem.success('User deleted successfully. Redirecting...');
+            setTimeout(() => {
+                window.location.href = '{{ route("admin.users") }}';
+            }, 1500);
         } else {
-            alert('Error: ' + (data.message || 'Unknown error'));
+            notificationSystem.error(data.message || 'Failed to delete user', data.code || 'UNKNOWN', 7000);
         }
     })
-    .catch(e => alert('Error: ' + e.message));
+    .catch(error => {
+        notificationSystem.error('Network error: ' + error.message, 'NETWORK_ERROR', 7000);
+    });
 }
 </script>
 @endsection

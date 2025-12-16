@@ -4,6 +4,8 @@
 @section('page-subtitle', 'Manage all non-admin users and their activities')
 
 @section('admin-content')
+<!-- Include Notification Component -->
+@include('components.notification')
 <div class="bg-white rounded-lg shadow overflow-hidden">
     <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
         <h3 class="text-lg font-semibold text-gray-900">All Users (Non-Admin)</h3>
@@ -108,25 +110,29 @@
 
 <script>
 function deleteUser(userId) {
-    if (confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
-        fetch(`/api/admin/users/${userId}`, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                'Content-Type': 'application/json',
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.ok) {
-                alert('User deleted successfully');
-                location.reload();
-            } else {
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
+    if (!confirm('Are you sure you want to delete this user? This action cannot be undone.')) return;
+    if (!confirm('This will permanently delete the user account. Are you absolutely sure?')) return;
+
+    fetch(`/admin/users/${userId}`, {
+        method: 'DELETE',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            notificationSystem.success('User deleted successfully. Reloading...');
+            setTimeout(() => location.reload(), 1500);
+        } else {
+            const errorCode = data.code || 'UNKNOWN';
+            notificationSystem.error(data.message || 'Failed to delete user', errorCode, 7000);
+        }
+    })
+    .catch(error => {
+        notificationSystem.error('Network error: ' + error.message, 'NETWORK_ERROR', 7000);
+    });
 }
 
 function closeUserModal() {

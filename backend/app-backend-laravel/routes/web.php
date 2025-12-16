@@ -68,6 +68,10 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     Route::prefix('/users')->group(function () {
         Route::get('/', [UserManagementController::class, 'index'])->name('admin.users');
         Route::get('/{id}', [UserManagementController::class, 'show'])->name('admin.users.show');
+        Route::delete('/{id}', [UserManagementController::class, 'destroy'])->name('admin.users.destroy');
+        Route::post('/{id}/refresh-token', [UserManagementController::class, 'refreshToken'])->name('admin.users.refresh-token');
+        Route::post('/{id}/extend-token', [UserManagementController::class, 'extendToken'])->name('admin.users.extend-token');
+        Route::post('/{id}/reset-sessions', [UserManagementController::class, 'resetSessions'])->name('admin.users.reset-sessions');
     });
 
     // Job Management

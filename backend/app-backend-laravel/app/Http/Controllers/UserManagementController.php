@@ -41,7 +41,10 @@ class UserManagementController extends Controller
             ->whereIn('product_id', $user->products()->pluck('id'))
             ->count();
         $scrapedCount = $user->products()->whereNotNull('created_at')->count();
-        $analyzedCount = $user->products()->where('is_analyzed', true)->count();
+        // Count products that have been analyzed (have comments)
+        $analyzedCount = $user->products()
+            ->has('comments')
+            ->count();
 
         $products = $user->products()
             ->withCount('comments')
@@ -102,26 +105,41 @@ class UserManagementController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        
-        // Prevent deleting admin users
-        if ($user->role > 0) {
+        try {
+            $user = User::findOrFail($id);
+            
+            // Prevent deleting admin users
+            if ($user->role > 0) {
+                return response()->json([
+                    'ok' => false,
+                    'code' => 'ADMIN_USER_DELETE',
+                    'message' => 'Cannot delete admin users'
+                ], 403);
+            }
+
+            // Delete user's products and comments
+            $user->products()->delete();
+
+            // Delete user
+            $user->delete();
+
+            return response()->json([
+                'ok' => true,
+                'message' => 'User deleted successfully'
+            ]);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json([
                 'ok' => false,
-                'message' => 'Cannot delete admin users'
-            ], 403);
+                'code' => 'USER_NOT_FOUND',
+                'message' => 'User not found'
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'ok' => false,
+                'code' => 'DELETE_ERROR',
+                'message' => 'Error deleting user: ' . $e->getMessage()
+            ], 500);
         }
-
-        // Delete user's products and comments
-        $user->products()->delete();
-
-        // Delete user
-        $user->delete();
-
-        return response()->json([
-            'ok' => true,
-            'message' => 'User deleted successfully'
-        ]);
     }
 
     /**
@@ -129,18 +147,32 @@ class UserManagementController extends Controller
      */
     public function refreshToken($id)
     {
-        $user = User::findOrFail($id);
+        try {
+            $user = User::findOrFail($id);
 
-        $user->api_token = Str::random(80);
-        $user->token_expires_at = now()->addDays(7);
-        $user->save();
+            $user->api_token = Str::random(80);
+            $user->token_expires_at = now()->addDays(7);
+            $user->save();
 
-        return response()->json([
-            'ok' => true,
-            'message' => 'Token refreshed successfully',
-            'new_token' => $user->api_token,
-            'expires_at' => $user->token_expires_at->toDateTimeString()
-        ]);
+            return response()->json([
+                'ok' => true,
+                'message' => 'Token refreshed successfully',
+                'new_token' => $user->api_token,
+                'expires_at' => $user->token_expires_at->toDateTimeString()
+            ]);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'ok' => false,
+                'code' => 'USER_NOT_FOUND',
+                'message' => 'User not found'
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'ok' => false,
+                'code' => 'TOKEN_REFRESH_ERROR',
+                'message' => 'Error refreshing token: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -148,16 +180,30 @@ class UserManagementController extends Controller
      */
     public function extendToken($id)
     {
-        $user = User::findOrFail($id);
+        try {
+            $user = User::findOrFail($id);
 
-        $user->token_expires_at = $user->token_expires_at->addDays(7);
-        $user->save();
+            $user->token_expires_at = $user->token_expires_at->addDays(7);
+            $user->save();
 
-        return response()->json([
-            'ok' => true,
-            'message' => 'Token extended by 7 days',
-            'expires_at' => $user->token_expires_at->toDateTimeString()
-        ]);
+            return response()->json([
+                'ok' => true,
+                'message' => 'Token extended by 7 days',
+                'expires_at' => $user->token_expires_at->toDateTimeString()
+            ]);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'ok' => false,
+                'code' => 'USER_NOT_FOUND',
+                'message' => 'User not found'
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'ok' => false,
+                'code' => 'TOKEN_EXTEND_ERROR',
+                'message' => 'Error extending token: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -165,14 +211,28 @@ class UserManagementController extends Controller
      */
     public function resetSessions($id)
     {
-        $user = User::findOrFail($id);
+        try {
+            $user = User::findOrFail($id);
 
-        // Delete all sessions for this user
-        \DB::table('sessions')->where('user_id', $id)->delete();
+            // Delete all sessions for this user
+            \DB::table('sessions')->where('user_id', $id)->delete();
 
-        return response()->json([
-            'ok' => true,
-            'message' => 'All sessions reset successfully'
-        ]);
+            return response()->json([
+                'ok' => true,
+                'message' => 'All sessions reset successfully'
+            ]);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'ok' => false,
+                'code' => 'USER_NOT_FOUND',
+                'message' => 'User not found'
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'ok' => false,
+                'code' => 'SESSION_RESET_ERROR',
+                'message' => 'Error resetting sessions: ' . $e->getMessage()
+            ], 500);
+        }
     }
 }
