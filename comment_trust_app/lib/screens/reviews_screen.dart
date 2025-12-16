@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import 'product_detail_screen.dart';
-import '../services/api_config.dart';
-import '../services/dummy_data_loader.dart';
+import '../route/api_config.dart';
+import '../widgets/app_logo.dart';
+import '../data-dummy/dummy_data_loader.dart';
 import '../services/product_service.dart';
 
 class ReviewsScreen extends StatefulWidget {
+  final bool embedded;
+  const ReviewsScreen({super.key, this.embedded = false});
+
   @override
-  _ReviewsScreenState createState() => _ReviewsScreenState();
+  State<ReviewsScreen> createState() => _ReviewsScreenState();
 }
 
 class _ReviewsScreenState extends State<ReviewsScreen> {
@@ -52,6 +56,32 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final content = SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Halaman Ulasan Produk',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            _buildReviewSection('Review Terbaru', _latestReviews),
+            const SizedBox(height: 24),
+            _buildReviewSection('Review Sebelumnya', _previousReviews),
+          ],
+        ),
+      ),
+    );
+
+    if (widget.embedded) return content;
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -59,19 +89,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
         elevation: 0,
         title: Row(
           children: [
-            Container(
-              width: 24,
-              height: 24,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: const Icon(
-                Icons.check,
-                color: Color(0xFF1B4D3E),
-                size: 16,
-              ),
-            ),
+            const AppLogo(),
             const SizedBox(width: 8),
             const Text(
               'Comment Trust',
@@ -84,32 +102,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
           ],
         ),
       ),
-
-      // 🔹 Body
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Halaman Ulasan Produk',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              _buildReviewSection('Review Terbaru', _latestReviews),
-              const SizedBox(height: 24),
-              _buildReviewSection('Review Sebelumnya', _previousReviews),
-            ],
-          ),
-        ),
-      ),
-
+      body: content,
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _currentIndex,
         onTap: (index) {

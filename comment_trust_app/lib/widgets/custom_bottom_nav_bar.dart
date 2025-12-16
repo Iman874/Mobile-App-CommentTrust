@@ -4,7 +4,7 @@ class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
 
-  CustomBottomNavBar({required this.currentIndex, required this.onTap});
+  const CustomBottomNavBar({super.key, required this.currentIndex, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class CustomBottomNavBar extends StatelessWidget {
         ],
       ),
       child: SafeArea(
-        child: Container(
+        child: SizedBox(
           height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

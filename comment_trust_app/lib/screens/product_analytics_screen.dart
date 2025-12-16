@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import '../widgets/custom_bottom_nav_bar.dart';
-import '../services/api_config.dart';
+import '../route/api_config.dart';
 import '../services/analysis_service.dart';
 
 class ProductAnalyticsScreen extends StatefulWidget {
   final String productKey;
   final String productName;
-  const ProductAnalyticsScreen({required this.productKey, required this.productName, Key? key}) : super(key: key);
+  const ProductAnalyticsScreen({super.key, required this.productKey, required this.productName});
 
   @override
-  _ProductAnalyticsScreenState createState() => _ProductAnalyticsScreenState();
+  State<ProductAnalyticsScreen> createState() => _ProductAnalyticsScreenState();
 }
 
 class _ProductAnalyticsScreenState extends State<ProductAnalyticsScreen> {
   int _currentIndex = 3;
   bool _loading = true;
-  List<_PieSeg> _segments = [];
+  List<PieSeg> _segments = [];
+  List<Map<String,dynamic>> _topTags = []; // {tag, count} list for display
 
   @override
   void initState() {
@@ -28,9 +29,9 @@ class _ProductAnalyticsScreenState extends State<ProductAnalyticsScreen> {
     await ApiConfig.I.load();
     if (ApiConfig.I.demoMode || widget.productKey.isEmpty) {
       _segments = [
-        _PieSeg(0.7, const Color(0xFFA5E6D0), '70%'),
-        _PieSeg(0.2, const Color(0xFFF4C18B), '20%'),
-        _PieSeg(0.1, const Color(0xFFFF8C82), '10%'),
+        PieSeg(0.7, const Color(0xFFA5E6D0), '70%'),
+        PieSeg(0.2, const Color(0xFFF4C18B), '20%'),
+        PieSeg(0.1, const Color(0xFFFF8C82), '10%'),
       ];
       setState(() { _loading = false; });
       return;
@@ -45,10 +46,14 @@ class _ProductAnalyticsScreenState extends State<ProductAnalyticsScreen> {
       final other = math.max(0.0, total - pos - neg);
       final safeTotal = total == 0 ? 1.0 : total;
       _segments = [
-        _PieSeg(pos / safeTotal, const Color(0xFFA5E6D0), '${safeTotal==0?0:(pos / safeTotal * 100).round()}%'),
-        _PieSeg(neg / safeTotal, const Color(0xFFF4C18B), '${safeTotal==0?0:(neg / safeTotal * 100).round()}%'),
-        _PieSeg(other / safeTotal, const Color(0xFFFF8C82), '${safeTotal==0?0:(other / safeTotal * 100).round()}%'),
+        PieSeg(pos / safeTotal, const Color(0xFFA5E6D0), '${safeTotal==0?0:(pos / safeTotal * 100).round()}%'),
+        PieSeg(neg / safeTotal, const Color(0xFFF4C18B), '${safeTotal==0?0:(neg / safeTotal * 100).round()}%'),
+        PieSeg(other / safeTotal, const Color(0xFFFF8C82), '${safeTotal==0?0:(other / safeTotal * 100).round()}%'),
       ];
+
+      // Extract top tags from metrics most_common_tags (if available)
+      final tagsMap = (metrics['most_common_tags'] as Map<String,dynamic>?) ?? {};
+      _topTags = tagsMap.entries.map((e) => {'tag': e.key, 'count': e.value}).toList();
     }
     if (mounted) {
       setState(() { _loading = false; });
@@ -170,7 +175,7 @@ class _ProductAnalyticsScreenState extends State<ProductAnalyticsScreen> {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Color.fromRGBO(0,0,0,0.08),
             blurRadius: 6,
             offset: const Offset(0, 3),
           ),
@@ -224,7 +229,7 @@ class _ProductAnalyticsScreenState extends State<ProductAnalyticsScreen> {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Color.fromRGBO(0,0,0,0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -264,7 +269,7 @@ class _ProductAnalyticsScreenState extends State<ProductAnalyticsScreen> {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Color.fromRGBO(0,0,0,0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -285,11 +290,16 @@ class _ProductAnalyticsScreenState extends State<ProductAnalyticsScreen> {
           const SizedBox(height: 20),
           const Text('Tag pada komentar ini', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87)),
           const SizedBox(height: 12),
-          Row(children: [
-            _buildTag('Bagus', const Color(0xFF1B4D3E)),
-            const SizedBox(width: 8),
-            _buildTag('Pengiriman Lambat', const Color(0xFF7D0A0A)),
-          ]),
+          _topTags.isEmpty
+              ? const Text('Belum ada tag.', style: TextStyle(fontSize: 12, color: Colors.grey))
+              : Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: _topTags.map((t) {
+                    final tag = (t['tag'] as String?) ?? '-';
+                    return _buildTag(tag, const Color(0xFF1B4D3E));
+                  }).toList(),
+                ),
         ],
       ),
     );
@@ -323,10 +333,10 @@ class _ProductAnalyticsScreenState extends State<ProductAnalyticsScreen> {
   }
 }
 
-class _PieSeg { final double fraction; final Color color; final String label; _PieSeg(this.fraction,this.color,this.label); }
+class PieSeg { final double fraction; final Color color; final String label; PieSeg(this.fraction,this.color,this.label); }
 
 class PieChartWithLabelPainter extends CustomPainter {
-  final List<_PieSeg> segments;
+  final List<PieSeg> segments;
   PieChartWithLabelPainter(this.segments);
 
   @override

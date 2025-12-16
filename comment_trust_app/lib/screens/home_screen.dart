@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
-import '../services/dummy_data_loader.dart';
-import '../services/api_config.dart';
+import '../data-dummy/dummy_data_loader.dart';
+import '../route/api_config.dart';
 import '../services/product_service.dart';
 import 'product_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+  final bool embedded;
+  const HomeScreen({super.key, this.embedded = false});
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -48,12 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final displayedProducts = _showAll ? _products : _products.take(2).toList();
 
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: CustomAppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
+    final content = SingleChildScrollView(
+      child: Column(
+        children: [
             // 🔹 Bagian Input Link Produk
             Container(
               color: Colors.white,
@@ -229,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ),
                             );
-                          }).toList(),
+                          }),
 
                           // 🔹 Tombol Show More / Less
                           GestureDetector(
@@ -264,7 +264,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-      ),
+      );
+
+    if (widget.embedded) return content;
+
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      appBar: CustomAppBar(),
+      body: content,
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _currentIndex,
         onTap: (index) {

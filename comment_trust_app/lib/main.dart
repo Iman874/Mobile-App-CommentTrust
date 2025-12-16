@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'frontend/screens/home_screen.dart';
-import 'frontend/screens/config_screen.dart';
-import 'frontend/screens/search_screen.dart';
-import 'frontend/screens/scan_qr_screen.dart';
-import 'frontend/screens/reviews_screen.dart';
-import 'frontend/screens/history_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/config_screen.dart';
+import 'screens/search_screen.dart';
+import 'screens/scan_qr_screen.dart';
+import 'screens/reviews_screen.dart';
+import 'screens/history_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Comment Trust App',
+      title: 'Comment Trust',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.green, fontFamily: 'Roboto'),
       initialRoute: '/config',

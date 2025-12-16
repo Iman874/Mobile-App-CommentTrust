@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import 'product_detail_screen.dart';
-import '../services/api_config.dart';
-import '../services/dummy_data_loader.dart';
+import '../route/api_config.dart';
+import '../data-dummy/dummy_data_loader.dart';
 import '../services/product_service.dart';
 
 class SearchScreen extends StatefulWidget {
+  final bool embedded;
+  const SearchScreen({super.key, this.embedded = false});
+
   @override
-  _SearchScreenState createState() => _SearchScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
 class _SearchScreenState extends State<SearchScreen> {
@@ -100,128 +103,97 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        backgroundColor: Color(0xFF1B4D3E),
-        elevation: 0,
-        title: Row(
+    final content = SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Title
+            const Text(
+              'Halaman Pencarian Produk',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // Search Section
             Container(
-              width: 24,
-              height: 24,
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromRGBO(0,0,0,0.05),
+                    blurRadius: 10,
+                    offset: Offset(0, 2),
+                  ),
+                ],
               ),
-              child: Icon(Icons.check, color: Color(0xFF1B4D3E), size: 16),
-            ),
-            SizedBox(width: 8),
-            Text(
-              'Comment Trust',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Title
-              Text(
-                'Halaman Pencarian Produk',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
-                ),
-              ),
-              SizedBox(height: 20),
-
-              // Search Section
-              Container(
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      blurRadius: 10,
-                      offset: Offset(0, 2),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Masukkan Link Produk',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black87,
                     ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Masukkan Link Produk',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black87,
-                      ),
+                  ),
+                  const SizedBox(height: 12),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[50],
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey[300]!),
                     ),
-                    SizedBox(height: 12),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[50],
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.grey[300]!),
-                      ),
-                      child: TextField(
-                        controller: _searchController,
-                        decoration: InputDecoration(
-                          hintText: 'Tempel disini',
-                          hintStyle: TextStyle(color: Colors.grey[500]),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 12,
-                          ),
-                          suffixIcon: Icon(
-                            Icons.search,
-                            color: Colors.grey[600],
-                          ),
+                    child: TextField(
+                      controller: _searchController,
+                      decoration: const InputDecoration(
+                        hintText: 'Tempel disini',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
                         ),
+                        suffixIcon: Icon(Icons.search, color: Colors.grey),
                       ),
                     ),
-                    SizedBox(height: 16),
+                  ),
+                  const SizedBox(height: 16),
 
-                    // Filter Buttons
-                    Row(
-                      children: [
-                        _buildFilterButton('Kata Kunci', true),
-                        SizedBox(width: 8),
-                        _buildFilterButton('Handphone', false),
-                        SizedBox(width: 8),
-                        _buildFilterButton('Laptop', false),
-                      ],
-                    ),
-                  ],
-                ),
+                  // Filter Buttons
+                  Row(
+                    children: [
+                      _buildFilterButton('Kata Kunci', true),
+                      const SizedBox(width: 8),
+                      _buildFilterButton('Handphone', false),
+                      const SizedBox(width: 8),
+                      _buildFilterButton('Laptop', false),
+                    ],
+                  ),
+                ],
               ),
+            ),
 
-              SizedBox(height: 24),
+            const SizedBox(height: 24),
 
-              // Results Section
-              Text(
-                'Hasil Pencarian',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
-                ),
+            // Results Section
+            const Text(
+              'Hasil Pencarian',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
               ),
-              SizedBox(height: 12),
+            ),
+            const SizedBox(height: 12),
 
               if (_loading)
                 Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()))
@@ -233,7 +205,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   borderRadius: BorderRadius.circular(8),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Color.fromRGBO(0,0,0,0.05),
                       blurRadius: 10,
                       offset: Offset(0, 2),
                     ),
@@ -328,7 +300,39 @@ class _SearchScreenState extends State<SearchScreen> {
             ],
           ),
         ),
+      );
+
+    if (widget.embedded) return content;
+
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        backgroundColor: Color(0xFF1B4D3E),
+        elevation: 0,
+        title: Row(
+          children: [
+            Container(
+              width: 24,
+              height: 24,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Icon(Icons.check, color: Color(0xFF1B4D3E), size: 16),
+            ),
+            SizedBox(width: 8),
+            Text(
+              'Comment Trust',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
       ),
+      body: content,
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _currentIndex,
         onTap: (index) {

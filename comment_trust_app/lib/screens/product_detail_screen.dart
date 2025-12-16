@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import 'product_comments_screen.dart';
 import 'product_analytics_screen.dart';
-import '../services/api_config.dart';
+import '../route/api_config.dart';
 import '../services/analysis_service.dart';
 import '../services/history_service.dart';
 import '../services/tag_service.dart';
-import 'tag_comments_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final String productKey;
   final String productName;
-  const ProductDetailScreen({required this.productKey, required this.productName, Key? key}) : super(key: key);
+  const ProductDetailScreen({super.key, required this.productKey, required this.productName});
 
   @override
-  _ProductDetailScreenState createState() => _ProductDetailScreenState();
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
@@ -126,7 +125,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Color.fromRGBO(0,0,0,0.05),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -235,7 +234,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Color.fromRGBO(0,0,0,0.1),
             blurRadius: 8,
             offset: const Offset(0, 3),
           ),
@@ -254,7 +253,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Color.fromRGBO(0,0,0,0.1),
             blurRadius: 8,
             offset: const Offset(0, 3),
           ),
@@ -339,7 +338,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Color.fromRGBO(0,0,0,0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -361,7 +360,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Color.fromRGBO(0,0,0,0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -430,7 +429,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     final m = _analysis?['metrics'] as Map<String, dynamic>?;
     if (m == null) return '0% Tingkat Kepercayaan Produk';
     final trustNorm = (m['avg_trust_percent_norm'] ?? 0).toDouble();
-    return '${trustNorm.round()}% Tingkat Kepercayaan Produk';
+    final pct = trustNorm.round();
+    return '$pct% Tingkat Kepercayaan Produk';
   }
   String _positiveText() {
     final m = _analysis?['metrics'] as Map<String, dynamic>?;
@@ -439,7 +439,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     final total = (m['count_reviews'] ?? 0).toDouble();
     final pos = (sent['positive'] ?? 0).toDouble();
     final pct = total > 0 ? (pos / total * 100).round() : 0;
-    return '${pct}% Komentar Positif';
+    return '$pct% Komentar Positif';
   }
   String _negativeText() {
     final m = _analysis?['metrics'] as Map<String, dynamic>?;
@@ -448,7 +448,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     final total = (m['count_reviews'] ?? 0).toDouble();
     final neg = (sent['negative'] ?? 0).toDouble();
     final pct = total > 0 ? (neg / total * 100).round() : 0;
-    return '${pct}% Komentar Negatif';
+    return '$pct% Komentar Negatif';
   }
   String _otherText() {
     final m = _analysis?['metrics'] as Map<String, dynamic>?;
@@ -459,7 +459,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     final neg = (sent['negative'] ?? 0).toDouble();
     final otherCount = total - pos - neg;
     final pct = total > 0 ? (otherCount / total * 100).round() : 0;
-    return '${pct}% Komentar Tidak Relevan';
+    return '$pct% Komentar Tidak Relevan';
   }
 
   Widget _buildReviewDetailItem(String title, String count) {

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
-import '../services/api_config.dart';
+import '../route/api_config.dart';
 import '../services/tag_service.dart';
+import '../services/analysis_service.dart';
 
 class ProductCommentsScreen extends StatefulWidget {
+  const ProductCommentsScreen({super.key});
+
   @override
-  _ProductCommentsScreenState createState() => _ProductCommentsScreenState();
+  State<ProductCommentsScreen> createState() => _ProductCommentsScreenState();
 }
 
 class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
@@ -24,12 +27,20 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
   void _init() async {
     // Expect arguments: {productKey:..., tag: optional}
     final args = ModalRoute.of(context)?.settings.arguments;
+    String tagArg = '';
     if (args is Map && args['productKey'] is String) {
       _productKey = args['productKey'] as String;
+      if (args['tag'] is String) tagArg = args['tag'] as String;
     }
     await ApiConfig.I.load();
     if (_productKey != null && _productKey!.isNotEmpty && !ApiConfig.I.demoMode) {
-      _comments = await TagService.fetchCommentsByTag(ApiConfig.I.baseUrl, _productKey!, args is Map && args['tag'] is String ? args['tag'] as String : '');
+      if (tagArg.isEmpty) {
+        // fetch all comments for the product
+        _comments = await AnalysisService.fetchComments(ApiConfig.I.baseUrl, _productKey!, limit: 200);
+      } else {
+        // fetch comments filtered by tag
+        _comments = await TagService.fetchCommentsByTag(ApiConfig.I.baseUrl, _productKey!, tagArg, limit: 200);
+      }
     }
     if (mounted) setState(()=> _loading = false);
   }
@@ -115,8 +126,8 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
                 for (int i=0; i<_comments.length; i++) ...[
                   _buildCommentCard(
                     index: i,
-                    name: (_comments[i]['username'] ?? 'Anon').toString(),
-                    comment: (_comments[i]['comment'] ?? '').toString(),
+                    name: (_comments[i]['user_name'] ?? _comments[i]['username'] ?? 'Anon').toString(),
+                    comment: (_comments[i]['text'] ?? _comments[i]['comment'] ?? '').toString(),
                     showExpand: true,
                     tags: (_comments[i]['tags'] as List?)?.cast<dynamic>() ?? const [],
                   ),
@@ -133,7 +144,7 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Color.fromRGBO(0,0,0,0.05),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -220,7 +231,7 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Color.fromRGBO(0,0,0,0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

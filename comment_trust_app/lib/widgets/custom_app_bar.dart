@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+// import 'app_logo.dart';
+// Tidak dipakai untuk saat ini, tapi disiapkan untuk masa depan
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -9,19 +13,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           child: Row(
             children: [
-              Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Icon(Icons.check, color: Color(0xFF1B4D3E), size: 16),
-              ),
-              SizedBox(width: 8),
+              //const AppLogo(),
+              const SizedBox(width: 8),
               Text(
                 'Comment Trust',
                 style: TextStyle(

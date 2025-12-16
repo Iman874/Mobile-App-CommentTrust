@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../services/api_config.dart';
+import '../route/api_config.dart';
 import '../services/tag_service.dart';
 
 class TagCommentsScreen extends StatefulWidget {
   final String productKey;
   final String tag;
-  const TagCommentsScreen({required this.productKey, required this.tag, Key? key}) : super(key: key);
+  const TagCommentsScreen({super.key, required this.productKey, required this.tag});
 
   @override
   State<TagCommentsScreen> createState() => _TagCommentsScreenState();
@@ -50,13 +50,13 @@ class _TagCommentsScreenState extends State<TagCommentsScreen> {
         itemCount: _comments.length,
         itemBuilder: (ctx,i){
           final c = _comments[i];
-          final username = c['username'] ?? 'Anon';
-          final text = c['comment'] ?? '';
+          final username = c['user_name'] ?? c['username'] ?? 'Anon';
+          final text = c['text'] ?? c['comment'] ?? '';
           final tags = (c['tags'] as List?) ?? [];
           return Container(
             margin: const EdgeInsets.only(bottom:12),
             padding: const EdgeInsets.all(14),
-            decoration: BoxDecoration(color:Colors.white,borderRadius:BorderRadius.circular(10),boxShadow:[BoxShadow(color:Colors.black.withOpacity(0.05),blurRadius:8,offset:const Offset(0,2))]),
+            decoration: BoxDecoration(color:Colors.white,borderRadius:BorderRadius.circular(10),boxShadow:[BoxShadow(color:Color.fromRGBO(0,0,0,0.05),blurRadius:8,offset:const Offset(0,2))]),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start,children:[
               Row(children:[
                 CircleAvatar(radius:20,backgroundColor:Colors.grey[300],child:const Icon(Icons.person,color:Colors.grey,size:20)),

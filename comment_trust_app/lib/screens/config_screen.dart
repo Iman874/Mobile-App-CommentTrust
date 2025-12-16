@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../services/api_config.dart';
-import '../services/api_client.dart';
+import '../route/api_config.dart';
+import '../route/api_client.dart';
+import '../services/auth_service.dart';
 
 class ConfigScreen extends StatefulWidget {
   const ConfigScreen({super.key});
@@ -48,6 +49,17 @@ class _ConfigScreenState extends State<ConfigScreen> {
         demoMode: false,
       );
       if (!mounted) return;
+
+      // Attempt guest login so the backend creates a guest user/token
+      final gotGuest = await AuthService.guestLogin(baseUrl);
+      if (!mounted) return;
+      if (!gotGuest) {
+        setState(() {
+          _error = 'Gagal membuat akun guest pada backend. Coba lagi atau periksa konfigurasi.';
+        });
+        return;
+      }
+
       Navigator.pushReplacementNamed(context, '/');
     } else {
       setState(() {
@@ -84,7 +96,7 @@ class _ConfigScreenState extends State<ConfigScreen> {
               const Text('Protocol'),
               const SizedBox(height: 8),
               DropdownButtonFormField<String>(
-                value: _scheme,
+                initialValue: _scheme,
                 items: const [
                   DropdownMenuItem(value: 'http', child: Text('http')),
                   DropdownMenuItem(value: 'https', child: Text('https')),

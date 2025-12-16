@@ -50,6 +50,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.10.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -64,6 +65,17 @@ flutter:
   assets:
     - assets/images/
     - assets/dummy_data/
+    - assets/logo/
+
+# Configuration for flutter_launcher_icons. Run:
+#   flutter pub get
+#   flutter pub run flutter_launcher_icons:main
+# after placing `assets/logo/logo_commenttrust.png` (compressed) in the assets folder.
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo/logo_commenttrust.png"
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
