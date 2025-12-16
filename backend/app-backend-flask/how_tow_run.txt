@@ -22,6 +22,14 @@
         sudo apt install python3-pip
     ```
 
+    '''
+       Jika sistem berbasis linux ubuntuk 
+       jalankan web dengan remote
+       /usr/bin/microsoft-edge-stable --remote-debugging-port=9223
+
+       Jika cookie.json telah invalid, maka ambil cookie baru dan timpa coookie.json yang Lama
+       '''
+
 4. **Jalankan program**:
     Eksekusi file `main.py`:
     ```
