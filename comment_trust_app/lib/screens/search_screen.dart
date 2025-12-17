@@ -44,7 +44,7 @@ class _SearchScreenState extends State<SearchScreen> {
         'product_key': p['product_key'],
         'name': p['name'] ?? 'Produk Tanpa Nama',
         'avg_rating': (p['avg_rating'] ?? 0).toDouble(),
-        'image': 'assets/images/img1.jpg',
+        'image': 'assets/logo/logo_commenttrust.png',
       }).toList();
     }
     _visibleProducts = _allProducts.take(5).toList();
@@ -216,7 +216,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.asset(
-                        p['image'] ?? 'assets/images/img1.jpg',
+                        p['image'] ?? 'assets/logo/logo_commenttrust.png',
                         width: 60,
                         height: 60,
                         fit: BoxFit.cover,
@@ -311,16 +311,6 @@ class _SearchScreenState extends State<SearchScreen> {
         elevation: 0,
         title: Row(
           children: [
-            Container(
-              width: 24,
-              height: 24,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Icon(Icons.check, color: Color(0xFF1B4D3E), size: 16),
-            ),
-            SizedBox(width: 8),
             Text(
               'Comment Trust',
               style: TextStyle(

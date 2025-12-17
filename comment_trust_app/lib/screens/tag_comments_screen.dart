@@ -28,6 +28,7 @@ class _TagCommentsScreenState extends State<TagCommentsScreen> {
       return;
     }
     final data = await TagService.fetchCommentsByTag(ApiConfig.I.baseUrl, widget.productKey, widget.tag);
+    print('[TagCommentsScreen] Fetched ${data.length} comments for tag=${widget.tag}, sample: ${data.isNotEmpty ? data.take(3).toList() : []}');
     if (!mounted) return;
     setState(() { _comments = data; _loading = false; });
   }

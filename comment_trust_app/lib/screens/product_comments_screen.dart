@@ -41,6 +41,8 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
         // fetch comments filtered by tag
         _comments = await TagService.fetchCommentsByTag(ApiConfig.I.baseUrl, _productKey!, tagArg, limit: 200);
       }
+      // Debug: print a sample of fetched raw+normalized comments to console to help backend debugging
+      print('[ProductCommentsScreen] Fetched ${_comments.length} comments sample: ${_comments.isNotEmpty ? _comments.take(3).toList() : []}');
     }
     if (mounted) setState(()=> _loading = false);
   }
@@ -128,8 +130,13 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
                     index: i,
                     name: (_comments[i]['user_name'] ?? _comments[i]['username'] ?? 'Anon').toString(),
                     comment: (_comments[i]['text'] ?? _comments[i]['comment'] ?? '').toString(),
+                    rating: (_comments[i]['rating'] ?? _comments[i]['rating_star']) is num ? (_comments[i]['rating'] ?? _comments[i]['rating_star']).toDouble() : null,
+                    likes: (_comments[i]['likes'] ?? _comments[i]['like_count'] ?? 0) is int ? (_comments[i]['likes'] ?? _comments[i]['like_count']) as int : int.tryParse((_comments[i]['likes'] ?? _comments[i]['like_count'] ?? 0).toString()) ?? 0,
+                    sentiment: (_comments[i]['sentiment'] ?? '').toString(),
+                    fake: (_comments[i]['is_fake'] ?? _comments[i]['fake'] ?? false) == true,
                     showExpand: true,
                     tags: (_comments[i]['tags'] as List?)?.cast<dynamic>() ?? const [],
+                    raw: (_comments[i]['raw'] is Map) ? Map<String,dynamic>.from(_comments[i]['raw'] as Map) : null,
                   ),
                   const SizedBox(height:12),
                 ]
@@ -219,8 +226,13 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
     required int index,
     required String name,
     required String comment,
+    double? rating,
+    int likes = 0,
+    String? sentiment,
+    bool fake = false,
     bool showExpand = false,
     List<dynamic> tags = const [],
+    Map<String,dynamic>? raw,
   }) {
     bool isExpanded = expandedStatus[index] ?? false;
 
@@ -240,7 +252,7 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header: nama + avatar
+          // Header: nama + avatar + rating
           Row(
             children: [
               CircleAvatar(
@@ -249,17 +261,38 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
                 child: const Icon(Icons.person, color: Colors.grey, size: 20),
               ),
               const SizedBox(width: 12),
-              Text(
-                name,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
+              Expanded(
+                child: Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black87,
+                  ),
                 ),
               ),
+              if (rating != null) ...[
+                Row(children: List.generate(rating.round(), (i) => const Icon(Icons.star, size:16, color: Colors.orange))),
+                const SizedBox(width:6),
+                Text('${rating.toStringAsFixed(1)}', style: const TextStyle(fontSize:12, color: Colors.grey)),
+              ],
             ],
           ),
-          const SizedBox(height: 10),
+
+          const SizedBox(height: 8),
+
+          // Metadata row: sentiment, fake flag, likes
+          Row(children: [
+            if (sentiment != null && sentiment.isNotEmpty)
+              Container(padding: const EdgeInsets.symmetric(horizontal:8,vertical:4),decoration:BoxDecoration(color: sentiment.toLowerCase()=='positive' ? Colors.green[600] : sentiment.toLowerCase()=='negative' ? Colors.red[600] : Colors.grey[600],borderRadius: BorderRadius.circular(12)),child: Text(sentiment, style: const TextStyle(color: Colors.white, fontSize: 11))),
+            const SizedBox(width:8),
+            if (fake)
+              Container(padding: const EdgeInsets.symmetric(horizontal:8,vertical:4),decoration:BoxDecoration(color: Colors.orange[700],borderRadius: BorderRadius.circular(12)),child: const Text('⚠ Suspicious', style: TextStyle(color: Colors.white, fontSize: 11))),
+            const Spacer(),
+            if (likes > 0) Row(children: [const Icon(Icons.thumb_up, size:14, color:Colors.grey), const SizedBox(width:4), Text(likes.toString(), style: const TextStyle(fontSize:12, color: Colors.grey))])
+          ]),
+
+          const SizedBox(height: 8),
 
           // Isi komentar
           Text(comment, style: const TextStyle(fontSize:12,color:Colors.black87,height:1.4)),
@@ -277,6 +310,10 @@ class _ProductCommentsScreenState extends State<ProductCommentsScreen> {
                 setState(() {
                   expandedStatus[index] = !isExpanded;
                 });
+                // Debug: when expanding, print raw JSON so backend shape is visible
+                if (!isExpanded && raw != null) {
+                  print('[ProductCommentsScreen] Raw comment JSON (index=$index): $raw');
+                }
               },
               child: Row(
                 children: [

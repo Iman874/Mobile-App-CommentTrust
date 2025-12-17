@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import 'product_detail_screen.dart';
 import '../route/api_config.dart';
-import '../widgets/app_logo.dart';
 import '../data-dummy/dummy_data_loader.dart';
 import '../services/product_service.dart';
 
@@ -43,7 +42,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
     final data = await ProductService.fetchLatest(baseUrl, limit: 6);
     // Map to UI fields, keep placeholder image assets
     final mapped = data.map<Map<String, dynamic>>((p) => {
-      'image': 'assets/images/img1.jpg',
+      'image': 'assets/logo/logo_commenttrust.png',
       'name': p['name'] ?? 'Unknown Product',
       'rating': (p['avg_rating'] ?? 0).toDouble(),
     }).toList();
@@ -89,7 +88,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
         elevation: 0,
         title: Row(
           children: [
-            const AppLogo(),
+            
             const SizedBox(width: 8),
             const Text(
               'Comment Trust',

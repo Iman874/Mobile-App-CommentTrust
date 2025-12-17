@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import 'product_comments_screen.dart';
 import 'product_analytics_screen.dart';
+import 'tag_comments_screen.dart';
 import '../route/api_config.dart';
 import '../services/analysis_service.dart';
 import '../services/history_service.dart';
 import '../services/tag_service.dart';
+import '../services/product_service.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final String productKey;
@@ -19,7 +21,9 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   int _currentIndex = 0;
   bool _loading = true;
+  String? _error; // human readable error for UI
   Map<String, dynamic>? _analysis;
+  Map<String, dynamic>? _product;
   List<Map<String,dynamic>> _tagCounts = [];
 
   @override
@@ -37,33 +41,112 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   Future<void> _fetch() async {
-    await ApiConfig.I.load();
-    if (ApiConfig.I.demoMode || widget.productKey.isEmpty) {
-      // Demo mode: fabricate minimal analysis placeholders
-      setState(() {
-        _analysis = {
-          'metrics': {
-            'count_reviews': 0,
-            'avg_rating': 0,
-            'avg_trust_percent_norm': 0,
-            'sentiment_counts': {'positive': 0, 'negative': 0},
-            'pros': [],
-            'cons': []
+    try {
+      await ApiConfig.I.load();
+      if (ApiConfig.I.demoMode || widget.productKey.isEmpty) {
+        // Demo mode: fabricate minimal analysis placeholders
+        if (!mounted) return;
+        setState(() {
+          _analysis = {
+            'metrics': {
+              'count_reviews': 0,
+              'avg_rating': 0,
+              'avg_trust_percent_norm': 0,
+              'sentiment_counts': {'positive': 0, 'negative': 0},
+              'pros': [],
+              'cons': []
+            }
+          };
+          _tagCounts = [];
+          _loading = false;
+          _error = null;
+        });
+        return;
+      }
+
+      final base = ApiConfig.I.baseUrl;
+
+      // Fetch product details (from Laravel DB) and analysis metrics (may come from Flask or DB)
+      final product = await ProductService.fetchProduct(base, widget.productKey);
+      final data = await AnalysisService.fetchAnalysis(base, widget.productKey);
+
+      List<Map<String, dynamic>> tags = [];
+      try {
+        tags = await TagService.fetchTagCounts(base, widget.productKey);
+      } catch (e) {
+        print('[ProductDetailScreen] Error fetching tags: $e');
+        tags = [];
+      }
+
+      // Also try to extract any tag information included directly in the product payload
+      final prodTags = <Map<String, dynamic>>[];
+      try {
+        final dynamic p = product;
+        if (p is Map) {
+          // product.tags or product.meta.tags or product.meta.metrics.tag_stats
+          final directTags = p['tags'] ?? p['meta']?['tags'] ?? p['meta']?['metrics']?['tag_stats'];
+          if (directTags is List) {
+            for (final t in directTags) {
+              if (t is Map) {
+                final name = (t['name'] ?? t['tag'] ?? t['label'])?.toString() ?? '';
+                final count = t['comments_count'] ?? t['count'] ?? 0;
+                if (name.isNotEmpty) prodTags.add({'tag': name, 'count': count is num ? count : int.tryParse(count.toString()) ?? 0});
+              } else if (t is List && t.length >= 2) {
+                prodTags.add({'tag': t[0].toString(), 'count': t[1] is num ? t[1] : int.tryParse(t[1].toString()) ?? 0});
+              } else if (t is String) {
+                prodTags.add({'tag': t, 'count': 0});
+              }
+            }
           }
-        };
+        }
+      } catch (e) {
+        print('[ProductDetailScreen] Error parsing product tags: $e');
+      }
+
+      // Debug: print fetched data so it appears in terminal/console
+      print('[ProductDetailScreen] Fetched product: $product');
+      print('[ProductDetailScreen] Fetched analysis: $data');
+      print('[ProductDetailScreen] Fetched tags (stats): $tags');
+      print('[ProductDetailScreen] Fetched tags (product): $prodTags');
+
+      if (!mounted) return;
+
+      // Merge tags from different sources and aggregate counts by tag name
+      final Map<String, int> agg = {};
+      void addToAgg(Map<String, dynamic> t) {
+        final name = (t['tag'] ?? t['name'])?.toString() ?? '';
+        if (name.isEmpty) return;
+        final cnt = t['count'] is num ? (t['count'] as num).toInt() : int.tryParse(t['count']?.toString() ?? '0') ?? 0;
+        agg[name] = (agg[name] ?? 0) + cnt;
+      }
+
+      for (final t in tags) addToAgg(t);
+      for (final t in prodTags) addToAgg(t);
+
+      final merged = agg.entries.map((e) => {'tag': e.key, 'count': e.value}).toList();
+
+      setState(() {
+        // If product provides a better name, use it
+        if (product != null && product['name'] != null && product['name'].toString().isNotEmpty) {
+          // Update widget title via setState by rebuilding (alternatively you could keep a local productName)
+          // We'll keep product name in analysis for convenience
+          data?['product_name'] = product['name'];
+        }
+
+        _analysis = data ?? _analysis;
+        _product = product != null ? Map<String,dynamic>.from(product as Map) : null;
+        _tagCounts = merged;
+        _loading = false;
+        _error = null;
+      });
+    } catch (e) {
+      print('[ProductDetailScreen] Error in _fetch: $e');
+      if (!mounted) return;
+      setState(() {
+        _error = 'Gagal memuat data produk. Coba lagi.';
         _loading = false;
       });
-      return;
     }
-    final base = ApiConfig.I.baseUrl;
-    final data = await AnalysisService.fetchAnalysis(base, widget.productKey);
-    final tags = await TagService.fetchTagCounts(base, widget.productKey);
-    if (!mounted) return;
-    setState(() {
-      _analysis = data;
-      _tagCounts = tags;
-      _loading = false;
-    });
   }
 
   @override
@@ -117,6 +200,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
               const SizedBox(height: 20),
 
+              // Error banner
+              if (_error != null) ...[
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  margin: const EdgeInsets.only(bottom: 12),
+                  decoration: BoxDecoration(color: Colors.red[50], borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.red[100]!)),
+                  child: Row(children: [
+                    Expanded(child: Text(_error!, style: const TextStyle(color: Colors.red, fontSize: 13))),
+                    TextButton(onPressed: _fetch, child: const Text('Retry'))
+                  ]),
+                ),
+              ],
+
               // 🔹 Produk
               Container(
                 padding: const EdgeInsets.all(14),
@@ -143,18 +240,22 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                     const SizedBox(height: 14),
+                    const SizedBox(height: 14),
+                    // Use logo as product image for now
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.asset(
-                        'assets/images/img1.jpg',
+                        'assets/logo/logo_commenttrust.png',
                         width: 110,
                         height: 80,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                       ),
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      widget.productName,
+                      (_analysis != null && _analysis!['product_name'] != null && (_analysis!['product_name'] as String).isNotEmpty)
+                          ? _analysis!['product_name']
+                          : widget.productName,
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
@@ -290,10 +391,19 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ),
           const SizedBox(height: 10),
           _buildReviewItem(
-            icon: Icons.cancel,
+            icon: Icons.circle_outlined,
             text: _otherText(),
             color: const Color(0xFF9E9E9E),
           ),
+          // Only show 'Komentar Mencurigakan' when computed percentage > 0
+          if (int.tryParse(_fakeText().replaceAll(RegExp('[^0-9]'), '')) != null && int.tryParse(_fakeText().replaceAll(RegExp('[^0-9]'), ''))! > 0) ...[
+            const SizedBox(height: 10),
+            _buildReviewItem(
+              icon: Icons.report_problem,
+              text: _fakeText(),
+              color: const Color(0xFFFF9800),
+            ),
+          ],
         ],
       ),
     );
@@ -382,9 +492,22 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             const Text('Belum ada tag.', style: TextStyle(fontSize: 12, color: Colors.grey))
           else ...[
             for (final t in visible) ...[
-              _buildReviewDetailItem(
-                (t['tag'] as String?) ?? '-',
-                '(${(t['count'] ?? 0)})',
+              GestureDetector(
+                onTap: () {
+                  final tagName = (t['tag'] ?? t['name'])?.toString() ?? '';
+                  if (tagName.isNotEmpty) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TagCommentsScreen(productKey: widget.productKey, tag: tagName),
+                      ),
+                    );
+                  }
+                },
+                child: _buildReviewDetailItem(
+                  ((t['tag'] ?? t['name']) as String?) ?? '-',
+                  '(${(t['count'] ?? 0)})',
+                ),
               ),
               const SizedBox(height: 8),
             ],
@@ -392,11 +515,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           const SizedBox(height: 12),
           InkWell(
             onTap: () {
-              // Arahkan ke layar komentar dengan filter tag jika diperlukan
+              // Arahkan ke layar komentar dengan productKey agar bisa memuat komentar terkait
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ProductCommentsScreen(),
+                  settings: RouteSettings(arguments: {'productKey': widget.productKey}),
                 ),
               );
             },
@@ -426,10 +550,27 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
 
   String _trustText() {
+    // Try multiple sources for trust score: metrics -> product payload -> meta.metrics
+    double trust = 0.0;
     final m = _analysis?['metrics'] as Map<String, dynamic>?;
-    if (m == null) return '0% Tingkat Kepercayaan Produk';
-    final trustNorm = (m['avg_trust_percent_norm'] ?? 0).toDouble();
-    final pct = trustNorm.round();
+    if (m != null) {
+      final raw = m['avg_trust_percent_norm'] ?? m['avg_trust_percent'] ?? m['avg_trust_score'] ?? m['avg_trust'] ?? 0;
+      if (raw is num) trust = raw.toDouble();
+      else trust = double.tryParse(raw?.toString() ?? '0') ?? 0.0;
+    }
+
+    // fallback to product payload if metrics didn't have a trust value
+    if ((trust == 0 || trust.isNaN) && _product != null) {
+      final p = _product!;
+      final candidate = p['avg_trust_score'] ?? p['meta']?['metrics']?['avg_trust_score'] ?? p['meta']?['metrics']?['avg_trust_percent'];
+      if (candidate is num) trust = candidate.toDouble();
+      else trust = double.tryParse(candidate?.toString() ?? '0') ?? trust;
+    }
+
+    // If trust looks like a 0..1 fraction, convert to percent
+    if (trust > 0 && trust <= 1) trust = trust * 100.0;
+
+    final pct = trust.isFinite ? trust.round() : 0;
     return '$pct% Tingkat Kepercayaan Produk';
   }
   String _positiveText() {
@@ -451,15 +592,44 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     return '$pct% Komentar Negatif';
   }
   String _otherText() {
+    // Use 'neutral' sentiment if available rather than 'other' remainder
     final m = _analysis?['metrics'] as Map<String, dynamic>?;
-    if (m == null) return '0% Komentar Tidak Relevan';
+    if (m == null) return '0% Komentar Netral';
     final sent = (m['sentiment_counts'] as Map<String, dynamic>? ?? {});
     final total = (m['count_reviews'] ?? 0).toDouble();
-    final pos = (sent['positive'] ?? 0).toDouble();
-    final neg = (sent['negative'] ?? 0).toDouble();
-    final otherCount = total - pos - neg;
-    final pct = total > 0 ? (otherCount / total * 100).round() : 0;
-    return '$pct% Komentar Tidak Relevan';
+    final neu = (sent['neutral'] ?? sent['neu'] ?? 0).toDouble();
+    final pct = total > 0 ? (neu / total * 100).round() : 0;
+    return '$pct% Komentar Netral';
+  }
+
+  String _fakeText() {
+    // Prefer metrics values, fallback to product-level fake_rate/count if available
+    final m = _analysis?['metrics'] as Map<String, dynamic>?;
+    final total = (m?['count_reviews'] ?? _product?['count_reviews'] ?? _product?['meta']?['metrics']?['count_reviews'] ?? 0).toDouble();
+
+    dynamic raw = m?['fake_review_count'] ?? m?['fake_rate'];
+    if (raw == null || raw == 0) {
+      // fallback to product payload
+      raw = _product?['fake_rate'] ?? _product?['meta']?['metrics']?['fake_rate'] ?? _product?['meta']?['metrics']?['fake_rate'];
+    }
+
+    double pct = 0.0;
+    if (raw is num) {
+      final val = raw.toDouble();
+      if (val > 0 && val <= 1 && total > 0) {
+        // treat as rate (e.g., 0.766)
+        pct = val * 100.0;
+      } else if (val > 1 && total > 0) {
+        // treat as count
+        pct = (val / total) * 100.0;
+      }
+    } else {
+      final parsed = double.tryParse(raw?.toString() ?? '0') ?? 0.0;
+      if (parsed > 0 && parsed <= 1 && total > 0) pct = parsed * 100.0;
+      else if (parsed > 1 && total > 0) pct = (parsed / total) * 100.0;
+    }
+    final rounded = pct.isFinite ? pct.round() : 0;
+    return '$rounded% Komentar Mencurigakan';
   }
 
   Widget _buildReviewDetailItem(String title, String count) {
