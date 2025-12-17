@@ -1,0 +1,36 @@
+[2025-12-17T01:09:58.080446] START scrape-only job (compat) for link: https://shopee.co.id/Laptop-ASUS-X453-Dual-Core-8GB-512GB-SSD-Win-10-14-inch-2GB-500GB-Bonus-Mouse-Tas-i.1370746900.28262865028
+[2025-12-17T01:10:30.245773] SCRAPER finished (compat)
+[2025-12-17T01:11:36.799213] START scrape-only job (compat) for link: https://shopee.co.id/Laptop-ASUS-X453-Dual-Core-8GB-512GB-SSD-Win-10-14-inch-2GB-500GB-Bonus-Mouse-Tas-i.1370746900.28262865028
+[2025-12-17T01:12:37.027041] SCRAPER finished (compat)
+[2025-12-17T01:13:03.566712] START scrape-only job (compat) for link: https://shopee.co.id/Laptop-ASUS-X453-Dual-Core-8GB-512GB-SSD-Win-10-14-inch-2GB-500GB-Bonus-Mouse-Tas-i.1370746900.28262865028
+[2025-12-17T01:13:32.138081] SCRAPER finished (compat)
+[2025-12-17T01:14:53.730005] START scrape-only job (compat) for link: https://shopee.co.id/Laptop-ASUS-X453-Dual-Core-8GB-512GB-SSD-Win-10-14-inch-2GB-500GB-Bonus-Mouse-Tas-i.1370746900.28262865028
+[2025-12-17T01:14:54.047584] START analyze-only job for product 1370746900-28262865028
+[2025-12-17T01:14:54.099410] ANALYSIS 5% :: init: resolve input
+[2025-12-17T01:14:54.221893] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T01:14:54.233261] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T01:14:54.254641] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T01:14:54.326660] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T01:14:54.432172] ANALYSIS 90% :: [05] trust score
+[2025-12-17T01:14:54.458346] ANALYSIS 98% :: [06] summarize
+[2025-12-17T01:14:54.483301] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T01:14:54.492635] ANALYSIS 100% :: done
+[2025-12-17T01:14:54.492816] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1370746900-28262865028/indobert
+[2025-12-17T01:14:54.492860] Merging analysis results to reviews...
+[2025-12-17T01:14:54.578132] Analysis results merged successfully
+[2025-12-17T01:15:22.065718] SCRAPER finished (compat)
+[2025-12-17T01:20:34.674140] START scrape-only job (compat) for link: https://shopee.co.id/Laptop-ASUS-X453-Dual-Core-8GB-512GB-SSD-Win-10-14-inch-2GB-500GB-Bonus-Mouse-Tas-i.1370746900.28262865028
+[2025-12-17T01:20:34.973954] START analyze-only job for product 1370746900-28262865028
+[2025-12-17T01:20:35.000993] ANALYSIS 5% :: init: resolve input
+[2025-12-17T01:20:35.067205] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T01:20:35.074702] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T01:20:35.082794] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T01:20:35.087945] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T01:20:35.105976] ANALYSIS 90% :: [05] trust score
+[2025-12-17T01:20:35.117818] ANALYSIS 98% :: [06] summarize
+[2025-12-17T01:20:35.123176] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T01:20:35.124121] ANALYSIS 100% :: done
+[2025-12-17T01:20:35.124293] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1370746900-28262865028/indobert
+[2025-12-17T01:20:35.124343] Merging analysis results to reviews...
+[2025-12-17T01:20:35.155407] Analysis results merged successfully
+[2025-12-17T01:21:05.717982] SCRAPER finished (compat)

@@ -1,0 +1,10 @@
+[2025-12-17T02:00:54.381670] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T02:00:54.382467] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T02:00:54.382513] SCRAPER initializing Edge driver for Linux
+[2025-12-17T02:00:55.329842] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T02:01:13.363671] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T02:01:18.496776] SCRAPER product tab detected; proceeding
+[2025-12-17T02:01:18.497455] SCRAPER fetch product data
+[2025-12-17T02:01:21.800729] SCRAPER fetch comments
+[2025-12-17T02:01:22.604814] SCRAPER page 1: collected 12/24
+[2025-12-17T02:01:22.622234] SCRAPER finished; total 12 reviews saved

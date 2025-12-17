@@ -21,6 +21,14 @@ class CommentTrustController extends Controller
     {
         $productKey = $request->input('product_id');
         $force = (bool)$request->boolean('force', false);
+        $userId = $request->input('user_id');
+        
+        \Illuminate\Support\Facades\Log::info('CommentTrustController::ingest', [
+            'product_id' => $productKey,
+            'user_id' => $userId,
+            'force' => $force,
+        ]);
+        
         if (!$productKey) {
             return response()->json(['error' => 'missing product_id'], 400);
         }
@@ -92,7 +100,7 @@ class CommentTrustController extends Controller
         }
 
         $inserted = 0;
-        DB::transaction(function () use ($productKey, $data, $force, &$inserted) {
+        DB::transaction(function () use ($productKey, $data, $force, &$inserted, $userId) {
             if ($force) {
                 Comment::where('product_key', $productKey)->delete();
                 Product::where('product_key', $productKey)->delete();
@@ -105,6 +113,7 @@ class CommentTrustController extends Controller
             $product = Product::updateOrCreate(
                 ['product_key' => $productKey],
                 [
+                    'user_id' => $userId,
                     'shopid' => (int)explode('-', $productKey)[0],
                     'itemid' => (int)explode('-', $productKey)[1],
                     'name' => $prodName,
@@ -159,6 +168,7 @@ class CommentTrustController extends Controller
                 $variantName = $r['variant_name'] ?? null;
                 $tags = $r['tags'] ?? null; // Expect Flask to send array of tag strings per comment
                 $buffer[] = [
+                    'user_id' => $userId,
                     'product_id' => $product->id,
                     'product_key' => $productKey,
                     'username' => $username,

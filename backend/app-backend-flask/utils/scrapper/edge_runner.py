@@ -5,6 +5,7 @@ import time
 import socket
 import subprocess
 import re
+import math
 from urllib.parse import urlsplit
 from typing import Callable, Tuple, Optional
 
@@ -457,7 +458,7 @@ def run(link: str, shopid: str, itemid: str, out_review_dir: str, base_dir: str,
         token = _product_token_from_link(product_url, shopid, itemid)
         state_cb('navigate_product', None)
         driver.get(product_url)
-        time.sleep(1.5)
+        time.sleep(0.5)
 
         # Unified wait loop: consider solved if product tab opens, even if a captcha tab remains
         start_wait = time.time()
@@ -499,7 +500,7 @@ def run(link: str, shopid: str, itemid: str, out_review_dir: str, base_dir: str,
         state_cb('fetch_product', None)
         log("SCRAPER fetch product data")
         prod_data = None
-        for attempt in range(1, 6):
+        for attempt in range(1, 2):
             try:
                 prod_data = prod.scrape_product(driver, shopid, itemid)
                 if prod_data:
@@ -507,11 +508,11 @@ def run(link: str, shopid: str, itemid: str, out_review_dir: str, base_dir: str,
                 else:
                     raise RuntimeError('empty product data')
             except Exception as e:
-                state_cb('retry_product', f'Gagal ambil data produk; coba lagi ({attempt}/5)')
-                log(f"SCRAPER product fetch failed (attempt {attempt}/5): {e}")
-                time.sleep(min(1 + attempt, 5))
+                state_cb('retry_product', f'Gagal ambil data produk; coba lagi ({attempt}/2)')
+                log(f"SCRAPER product fetch failed (attempt {attempt}/2): {e}")
+                time.sleep(min(1 + attempt, 2))
         if not prod_data:
-            log('SCRAPER product fetch failed after 5 attempts; lanjut komentar')
+            log('SCRAPER product fetch failed after 2 attempts; lanjut komentar')
             prod_data = {}
         with open(os.path.join(out_review_dir, 'product.json'), 'w', encoding='utf-8') as f:
             json.dump(prod_data, f, ensure_ascii=False, indent=2)
@@ -542,13 +543,15 @@ def run(link: str, shopid: str, itemid: str, out_review_dir: str, base_dir: str,
         log("SCRAPER fetch comments")
         all_reviews = []
         limit = 20
+        # Precompute an upper bound of pages to avoid infinite loops
+        total_pages = math.ceil(total_reviews / limit) if total_reviews > 0 else None
         offset = 0
         page = 0
         while True:
             page += 1
             ratings = []
             fetch_ok = False
-            for attempt in range(1, 6):
+            for attempt in range(1, 2):
                 try:
                     data = comm._fetch_ratings_via_driver(driver, shopid, itemid, offset=offset, limit=limit)
                     if isinstance(data, dict):
@@ -561,24 +564,30 @@ def run(link: str, shopid: str, itemid: str, out_review_dir: str, base_dir: str,
                     else:
                         raise RuntimeError('empty ratings')
                 except Exception as e:
-                    state_cb('retry_comments', f'Halaman {page}: coba lagi ({attempt}/5)')
-                    log(f"SCRAPER ratings fetch page {page} offset {offset} failed (attempt {attempt}/5): {e}")
-                    time.sleep(min(1 + attempt, 5))
+                    state_cb('retry_comments', f'Halaman {page}: coba lagi ({attempt}/2)')
+                    log(f"SCRAPER ratings fetch page {page} offset {offset} failed (attempt {attempt}/2): {e}")
+                    time.sleep(min(1 + attempt, 2))
             if not fetch_ok:
-                # gagal 5x, lanjut ke halaman berikutnya sesuai instruksi
-                log(f"SCRAPER skip page {page} after 5 failures; lanjut halaman berikutnya")
+                # gagal 2x, lanjut ke halaman berikutnya sesuai instruksi
+                log(f"SCRAPER skip page {page} after 2 failures; lanjut halaman berikutnya")
                 offset += limit
-                # small guard to break if beyond a reasonable bound
-                if len(all_reviews) >= total_reviews or page > 200:
+                # Stop when reaching or passing the last page estimate
+                if (total_pages is not None and page >= total_pages) or offset >= total_reviews:
+                    log(f"SCRAPER reached last page without data; stopping at page {page}")
+                    break
+                # Additional hard guard to avoid runaway loops in case of bad estimates
+                if page > 100:
+                    log("SCRAPER page cap reached (100); stopping to avoid infinite loop")
                     break
                 continue
+
             all_reviews.extend(ratings)
             progress(len(all_reviews), total_reviews)
             log(f"SCRAPER page {page}: collected {len(all_reviews)}/{total_reviews}")
             if len(ratings) < limit:
                 break
             offset += len(ratings)
-            time.sleep(0.6)
+            time.sleep(0.1)
 
         # write outputs expected by pipeline (list is accepted)
         with open(os.path.join(out_review_dir, 'review.json'), 'w', encoding='utf-8') as f:

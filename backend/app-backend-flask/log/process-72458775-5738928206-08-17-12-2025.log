@@ -1,0 +1,17 @@
+[2025-12-17T01:33:02.060783] START scrape-only job (compat) for link: https://shopee.co.id/Laptop-murah-kenceng-hanya-minus-baterai-saja-acer-hp-dell-ram-4gb-8gb-murah-bergaransi-pelajar-kuliah-dan-kerja-murah-bergaransi-i.72458775.5738928206
+[2025-12-17T01:33:39.694624] SCRAPER finished (compat)
+[2025-12-17T01:38:21.664137] START scrape-only job (compat) for link: https://shopee.co.id/Laptop-murah-kenceng-hanya-minus-baterai-saja-acer-hp-dell-ram-4gb-8gb-murah-bergaransi-pelajar-kuliah-dan-kerja-murah-bergaransi-i.72458775.5738928206
+[2025-12-17T01:38:58.361664] SCRAPER finished (compat)
+[2025-12-17T01:39:01.974228] START analyze-only job for product 72458775-5738928206
+[2025-12-17T01:39:01.978019] ANALYSIS 5% :: init: resolve input
+[2025-12-17T01:39:01.990557] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T01:39:01.998650] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T01:39:02.006646] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T01:39:02.020767] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T01:39:02.065985] ANALYSIS 90% :: [05] trust score
+[2025-12-17T01:39:02.089642] ANALYSIS 98% :: [06] summarize
+[2025-12-17T01:39:02.102710] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T01:39:02.103582] ANALYSIS 100% :: done
+[2025-12-17T01:39:02.103650] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/72458775-5738928206/indobert
+[2025-12-17T01:39:02.103673] Merging analysis results to reviews...
+[2025-12-17T01:39:02.188541] Analysis results merged successfully

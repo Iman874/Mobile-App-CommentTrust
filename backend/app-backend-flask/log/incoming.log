@@ -44,3 +44,58 @@
 [2025-12-10T20:42:49.211203] Notify Laravel attempt 1 failed: <urlopen error [Errno 111] Connection refused>
 [2025-12-10T20:42:51.211979] Notify Laravel attempt 2 failed: <urlopen error [Errno 111] Connection refused>
 [2025-12-10T20:42:55.292869] Notify Laravel attempt 3 failed: <urlopen error [Errno 111] Connection refused>
+[2025-12-16T14:10:29.883838] RESULT all 230649038-29825124325 counts review_raw=0 sentiment=420 trust=420 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/230649038-29825124325/indobert
+[2025-12-16T14:10:29.893677] SANITIZE JSON 230649038-29825124325 done
+[2025-12-16T14:10:30.113511] Notify Laravel ok 200: {"ok":true,"inserted":420,"product_id":"230649038-29825124325"}
+[2025-12-17T00:40:05.543390] RESULT all 772901883-23345567541 counts review_raw=0 sentiment=584 trust=584 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/772901883-23345567541/indobert
+[2025-12-17T00:40:05.555656] SANITIZE JSON 772901883-23345567541 done
+[2025-12-17T00:40:05.759151] Notify Laravel ok 200: {"ok":true,"inserted":584,"product_id":"772901883-23345567541"}
+[2025-12-17T01:06:05.112700] RESULT all 1410847844-40250267239 counts review_raw=0 sentiment=629 trust=629 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1410847844-40250267239/indobert
+[2025-12-17T01:06:05.125147] SANITIZE JSON 1410847844-40250267239 done
+[2025-12-17T01:06:05.286967] Notify Laravel ok 200: {"ok":true,"inserted":629,"product_id":"1410847844-40250267239"}
+[2025-12-17T01:47:26.042995] RESULT all 162038834-7322422465 counts review_raw=0 sentiment=568 trust=568 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/162038834-7322422465/indobert
+[2025-12-17T01:47:26.089481] SANITIZE JSON 162038834-7322422465 done
+[2025-12-17T01:47:26.505585] Notify Laravel attempt 1 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:47:28.760363] RESULT all 162038834-7322422465 counts review_raw=0 sentiment=568 trust=568 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/162038834-7322422465/indobert
+[2025-12-17T01:47:28.787844] SANITIZE JSON 162038834-7322422465 done
+[2025-12-17T01:47:29.055661] Notify Laravel attempt 2 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:47:33.337531] RESULT all 162038834-7322422465 counts review_raw=0 sentiment=568 trust=568 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/162038834-7322422465/indobert
+[2025-12-17T01:47:33.359770] SANITIZE JSON 162038834-7322422465 done
+[2025-12-17T01:47:33.603272] Notify Laravel attempt 3 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:48:06.294841] RESULT all 162038834-7322422465 counts review_raw=0 sentiment=568 trust=568 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/162038834-7322422465/indobert
+[2025-12-17T01:48:06.323511] SANITIZE JSON 162038834-7322422465 done
+[2025-12-17T01:48:06.586595] Notify Laravel attempt 1 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:48:08.848434] RESULT all 162038834-7322422465 counts review_raw=0 sentiment=568 trust=568 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/162038834-7322422465/indobert
+[2025-12-17T01:48:08.880205] SANITIZE JSON 162038834-7322422465 done
+[2025-12-17T01:48:09.144579] Notify Laravel attempt 2 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:48:13.413280] RESULT all 162038834-7322422465 counts review_raw=0 sentiment=568 trust=568 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/162038834-7322422465/indobert
+[2025-12-17T01:48:13.436415] SANITIZE JSON 162038834-7322422465 done
+[2025-12-17T01:48:13.676842] Notify Laravel attempt 3 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:56:36.947278] _notify_and_wait_laravel: payload user_id=11 product_id=1000648052-25140956337
+[2025-12-17T01:56:37.147545] RESULT all 1000648052-25140956337 counts review_raw=0 sentiment=238 trust=238 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1000648052-25140956337/indobert
+[2025-12-17T01:56:37.152877] SANITIZE JSON 1000648052-25140956337 done
+[2025-12-17T01:56:37.276417] Notify Laravel attempt 1 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:56:39.482216] RESULT all 1000648052-25140956337 counts review_raw=0 sentiment=238 trust=238 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1000648052-25140956337/indobert
+[2025-12-17T01:56:39.489599] SANITIZE JSON 1000648052-25140956337 done
+[2025-12-17T01:56:39.636443] Notify Laravel attempt 2 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:56:43.815307] RESULT all 1000648052-25140956337 counts review_raw=0 sentiment=238 trust=238 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1000648052-25140956337/indobert
+[2025-12-17T01:56:43.820128] SANITIZE JSON 1000648052-25140956337 done
+[2025-12-17T01:56:43.963191] Notify Laravel attempt 3 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:59:33.914686] _notify_and_wait_laravel: payload user_id=None product_id=1000648052-25140956337
+[2025-12-17T01:59:34.168449] RESULT all 1000648052-25140956337 counts review_raw=0 sentiment=238 trust=238 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1000648052-25140956337/indobert
+[2025-12-17T01:59:34.174083] SANITIZE JSON 1000648052-25140956337 done
+[2025-12-17T01:59:34.312141] Notify Laravel attempt 1 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:59:36.459203] RESULT all 1000648052-25140956337 counts review_raw=0 sentiment=238 trust=238 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1000648052-25140956337/indobert
+[2025-12-17T01:59:36.464547] SANITIZE JSON 1000648052-25140956337 done
+[2025-12-17T01:59:36.613543] Notify Laravel attempt 2 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:59:40.834710] RESULT all 1000648052-25140956337 counts review_raw=0 sentiment=238 trust=238 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1000648052-25140956337/indobert
+[2025-12-17T01:59:40.852338] SANITIZE JSON 1000648052-25140956337 done
+[2025-12-17T01:59:41.370531] Notify Laravel ok 200: {"ok":true,"inserted":238,"product_id":"1000648052-25140956337"}
+[2025-12-17T02:01:26.180313] _notify_and_wait_laravel: payload user_id=11 product_id=1000648052-28875125190
+[2025-12-17T02:01:26.520009] RESULT all 1000648052-28875125190 counts review_raw=0 sentiment=12 trust=12 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1000648052-28875125190/indobert
+[2025-12-17T02:01:26.523668] SANITIZE JSON 1000648052-28875125190 done
+[2025-12-17T02:01:26.607563] Notify Laravel ok 200: {"ok":true,"inserted":12,"product_id":"1000648052-28875125190"}
+[2025-12-17T02:07:09.388802] _notify_and_wait_laravel: payload user_id=11 product_id=1541777118-42056433948
+[2025-12-17T02:07:09.594580] RESULT all 1541777118-42056433948 counts review_raw=0 sentiment=404 trust=404 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1541777118-42056433948/indobert
+[2025-12-17T02:07:09.618385] SANITIZE JSON 1541777118-42056433948 done
+[2025-12-17T02:07:09.817259] Notify Laravel ok 200: {"ok":true,"inserted":404,"product_id":"1541777118-42056433948"}

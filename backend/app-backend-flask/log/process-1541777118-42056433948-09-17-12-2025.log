@@ -1,0 +1,19 @@
+[2025-12-17T02:06:07.015281] START scrape-only job (compat) for link: https://shopee.co.id/BELI-1-GRATIS-2-PRODUK-!!-sabuk-pria-Import-gesper-kanvas-metal-Buckle-GRATIS-DOMPET-DAN-TOPI-KEREN-ikat-pinggang-terlaris-dan-termurah-hitam-i.1541777118.42056433948
+[2025-12-17T02:07:04.973180] SCRAPER finished (compat)
+[2025-12-17T02:07:08.873533] START analyze-only job for product 1541777118-42056433948
+[2025-12-17T02:07:08.883794] ANALYSIS 5% :: init: resolve input
+[2025-12-17T02:07:08.921269] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T02:07:08.936027] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T02:07:08.961830] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T02:07:08.982928] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T02:07:09.085199] ANALYSIS 90% :: [05] trust score
+[2025-12-17T02:07:09.113656] ANALYSIS 98% :: [06] summarize
+[2025-12-17T02:07:09.127486] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T02:07:09.127783] ANALYSIS 100% :: done
+[2025-12-17T02:07:09.127878] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1541777118-42056433948/indobert
+[2025-12-17T02:07:09.127918] Merging analysis results to reviews...
+[2025-12-17T02:07:09.385168] Analysis results merged successfully
+[2025-12-17T02:07:09.817505] Laravel ingest accepted (HTTP 200)
+[2025-12-17T02:07:09.817579] Laravel ingest immediate inserted=404
+[2025-12-17T02:07:10.105543] Laravel poll: count_reviews=404 status=waiting-db
+[2025-12-17T02:07:10.105663] Laravel sync succeeded

@@ -1,0 +1,26 @@
+[2025-12-17T01:55:47.167267] START scrape-only job (compat) for link: https://shopee.co.id/CPU-Gaming-Editing-Core-i5-Ram-16GB-SSD-512GB-Murah-Bergaransi-i.1000648052.25140956337
+[2025-12-17T01:56:32.279659] SCRAPER finished (compat)
+[2025-12-17T01:56:36.776546] START analyze-only job for product 1000648052-25140956337
+[2025-12-17T01:56:36.778079] ANALYSIS 5% :: init: resolve input
+[2025-12-17T01:56:36.800315] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T01:56:36.809816] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T01:56:36.818212] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T01:56:36.828574] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T01:56:36.853221] ANALYSIS 90% :: [05] trust score
+[2025-12-17T01:56:36.868550] ANALYSIS 98% :: [06] summarize
+[2025-12-17T01:56:36.874407] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T01:56:36.874900] ANALYSIS 100% :: done
+[2025-12-17T01:56:36.874945] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1000648052-25140956337/indobert
+[2025-12-17T01:56:36.874962] Merging analysis results to reviews...
+[2025-12-17T01:56:36.947087] Analysis results merged successfully
+[2025-12-17T01:56:37.276607] Laravel ingest attempt 1 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:56:39.636896] Laravel ingest attempt 2 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:56:43.963513] Laravel ingest attempt 3 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:56:43.963734] Laravel sync failed: notify failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:59:33.914474] RESYNC request for product 1000648052-25140956337
+[2025-12-17T01:59:34.312262] Laravel ingest attempt 1 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:59:36.613686] Laravel ingest attempt 2 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:59:41.370772] Laravel ingest accepted (HTTP 200)
+[2025-12-17T01:59:41.370902] Laravel ingest immediate inserted=238
+[2025-12-17T01:59:41.562350] Laravel poll: count_reviews=238 status=waiting-db
+[2025-12-17T01:59:41.562553] RESYNC succeeded

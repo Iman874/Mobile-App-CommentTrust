@@ -1,0 +1,135 @@
+[2025-12-16T13:57:58.264778] START job for link: https://shopee.co.id/Laptop-Macbook-Pro-Intel-Core-i5-Ram-16GB-SSD-256GB-Mac-os-siap-pakai-i.230649038.29825124325
+[2025-12-16T13:57:58.267959] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-16T13:57:58.268197] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-16T13:57:58.268516] SCRAPER initializing Edge driver for Linux
+[2025-12-16T13:57:59.408225] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-16T13:58:14.057186] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-16T13:58:19.329112] SCRAPER product tab detected; proceeding
+[2025-12-16T13:58:19.329331] SCRAPER fetch product data
+[2025-12-16T13:58:20.999058] SCRAPER fetch comments
+[2025-12-16T13:58:22.210967] SCRAPER page 1: collected 20/840
+[2025-12-16T13:58:23.276087] SCRAPER page 2: collected 40/840
+[2025-12-16T13:58:24.240447] SCRAPER page 3: collected 60/840
+[2025-12-16T13:58:25.208432] SCRAPER page 4: collected 80/840
+[2025-12-16T13:58:26.145957] SCRAPER page 5: collected 100/840
+[2025-12-16T13:58:26.967071] SCRAPER page 6: collected 120/840
+[2025-12-16T13:58:27.818488] SCRAPER page 7: collected 140/840
+[2025-12-16T13:58:28.625299] SCRAPER page 8: collected 160/840
+[2025-12-16T13:58:29.365296] SCRAPER page 9: collected 180/840
+[2025-12-16T13:58:30.236340] SCRAPER page 10: collected 200/840
+[2025-12-16T13:58:31.088360] SCRAPER page 11: collected 220/840
+[2025-12-16T13:58:31.852519] SCRAPER page 12: collected 240/840
+[2025-12-16T13:58:32.668573] SCRAPER page 13: collected 260/840
+[2025-12-16T13:58:33.425604] SCRAPER page 14: collected 280/840
+[2025-12-16T13:58:34.297866] SCRAPER page 15: collected 300/840
+[2025-12-16T13:58:35.112991] SCRAPER page 16: collected 320/840
+[2025-12-16T13:58:35.869571] SCRAPER page 17: collected 340/840
+[2025-12-16T13:58:36.944318] SCRAPER page 18: collected 360/840
+[2025-12-16T13:58:37.709452] SCRAPER page 19: collected 380/840
+[2025-12-16T13:58:38.456912] SCRAPER page 20: collected 400/840
+[2025-12-16T13:58:39.318601] SCRAPER page 21: collected 420/840
+[2025-12-16T13:58:39.951676] SCRAPER ratings fetch page 22 offset 420 failed (attempt 1/2): empty ratings
+[2025-12-16T13:58:41.952303] SCRAPER skip page 22 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:58:42.514676] SCRAPER ratings fetch page 23 offset 440 failed (attempt 1/2): empty ratings
+[2025-12-16T13:58:44.515555] SCRAPER skip page 23 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:58:45.084391] SCRAPER ratings fetch page 24 offset 460 failed (attempt 1/2): empty ratings
+[2025-12-16T13:58:47.086343] SCRAPER skip page 24 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:58:47.669932] SCRAPER ratings fetch page 25 offset 480 failed (attempt 1/2): empty ratings
+[2025-12-16T13:58:49.674717] SCRAPER skip page 25 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:58:50.313957] SCRAPER ratings fetch page 26 offset 500 failed (attempt 1/2): empty ratings
+[2025-12-16T13:58:52.315168] SCRAPER skip page 26 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:58:52.825828] SCRAPER ratings fetch page 27 offset 520 failed (attempt 1/2): empty ratings
+[2025-12-16T13:58:54.828892] SCRAPER skip page 27 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:58:55.312417] SCRAPER ratings fetch page 28 offset 540 failed (attempt 1/2): empty ratings
+[2025-12-16T13:58:57.314174] SCRAPER skip page 28 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:58:57.879126] SCRAPER ratings fetch page 29 offset 560 failed (attempt 1/2): empty ratings
+[2025-12-16T13:58:59.880676] SCRAPER skip page 29 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:00.397465] SCRAPER ratings fetch page 30 offset 580 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:02.398116] SCRAPER skip page 30 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:02.896797] SCRAPER ratings fetch page 31 offset 600 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:04.898479] SCRAPER skip page 31 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:05.495133] SCRAPER ratings fetch page 32 offset 620 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:07.495967] SCRAPER skip page 32 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:08.016008] SCRAPER ratings fetch page 33 offset 640 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:10.017464] SCRAPER skip page 33 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:10.570233] SCRAPER ratings fetch page 34 offset 660 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:12.571348] SCRAPER skip page 34 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:13.134998] SCRAPER ratings fetch page 35 offset 680 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:15.137574] SCRAPER skip page 35 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:15.616499] SCRAPER ratings fetch page 36 offset 700 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:17.617832] SCRAPER skip page 36 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:18.159258] SCRAPER ratings fetch page 37 offset 720 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:20.160372] SCRAPER skip page 37 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:20.889471] SCRAPER ratings fetch page 38 offset 740 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:22.890229] SCRAPER skip page 38 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:23.420495] SCRAPER ratings fetch page 39 offset 760 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:25.421397] SCRAPER skip page 39 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:25.946349] SCRAPER ratings fetch page 40 offset 780 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:27.947885] SCRAPER skip page 40 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:28.472646] SCRAPER ratings fetch page 41 offset 800 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:30.475024] SCRAPER skip page 41 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:30.953569] SCRAPER ratings fetch page 42 offset 820 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:32.954530] SCRAPER skip page 42 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:33.508507] SCRAPER ratings fetch page 43 offset 840 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:35.509271] SCRAPER skip page 43 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:36.055543] SCRAPER ratings fetch page 44 offset 860 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:38.056118] SCRAPER skip page 44 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:38.617577] SCRAPER ratings fetch page 45 offset 880 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:40.618322] SCRAPER skip page 45 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:41.174304] SCRAPER ratings fetch page 46 offset 900 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:43.177000] SCRAPER skip page 46 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:43.716729] SCRAPER ratings fetch page 47 offset 920 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:45.718242] SCRAPER skip page 47 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:46.608743] SCRAPER ratings fetch page 48 offset 940 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:48.612238] SCRAPER skip page 48 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:49.128586] SCRAPER ratings fetch page 49 offset 960 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:51.137488] SCRAPER skip page 49 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:51.725598] SCRAPER ratings fetch page 50 offset 980 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:53.726243] SCRAPER skip page 50 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:54.232693] SCRAPER ratings fetch page 51 offset 1000 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:56.234942] SCRAPER skip page 51 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:56.841470] SCRAPER ratings fetch page 52 offset 1020 failed (attempt 1/2): empty ratings
+[2025-12-16T13:59:58.861412] SCRAPER skip page 52 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T13:59:59.819649] SCRAPER ratings fetch page 53 offset 1040 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:01.828224] SCRAPER skip page 53 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:02.440998] SCRAPER ratings fetch page 54 offset 1060 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:04.443944] SCRAPER skip page 54 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:04.789293] SCRAPER ratings fetch page 55 offset 1080 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:06.792709] SCRAPER skip page 55 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:07.120510] SCRAPER ratings fetch page 56 offset 1100 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:09.121262] SCRAPER skip page 56 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:09.500456] SCRAPER ratings fetch page 57 offset 1120 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:11.502394] SCRAPER skip page 57 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:11.965814] SCRAPER ratings fetch page 58 offset 1140 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:13.967042] SCRAPER skip page 58 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:14.395295] SCRAPER ratings fetch page 59 offset 1160 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:16.399547] SCRAPER skip page 59 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:16.761560] SCRAPER ratings fetch page 60 offset 1180 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:18.762126] SCRAPER skip page 60 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:19.183909] SCRAPER ratings fetch page 61 offset 1200 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:21.185986] SCRAPER skip page 61 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:21.697424] SCRAPER ratings fetch page 62 offset 1220 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:23.698282] SCRAPER skip page 62 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:24.154775] SCRAPER ratings fetch page 63 offset 1240 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:26.155701] SCRAPER skip page 63 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:26.576032] SCRAPER ratings fetch page 64 offset 1260 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:28.576880] SCRAPER skip page 64 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:29.021679] SCRAPER ratings fetch page 65 offset 1280 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:31.023412] SCRAPER skip page 65 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:31.412641] SCRAPER ratings fetch page 66 offset 1300 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:33.413552] SCRAPER skip page 66 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:33.838712] SCRAPER ratings fetch page 67 offset 1320 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:35.839736] SCRAPER skip page 67 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:36.261942] SCRAPER ratings fetch page 68 offset 1340 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:38.262522] SCRAPER skip page 68 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:38.667497] SCRAPER ratings fetch page 69 offset 1360 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:40.673038] SCRAPER skip page 69 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:41.133084] SCRAPER ratings fetch page 70 offset 1380 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:43.133582] SCRAPER skip page 70 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:43.818904] SCRAPER ratings fetch page 71 offset 1400 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:45.819341] SCRAPER skip page 71 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:46.379679] SCRAPER ratings fetch page 72 offset 1420 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:48.380802] SCRAPER skip page 72 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:49.005732] SCRAPER ratings fetch page 73 offset 1440 failed (attempt 1/2): empty ratings
+[2025-12-16T14:00:51.008020] SCRAPER skip page 73 after 2 failures; lanjut halaman berikutnya
+[2025-12-16T14:00:51.404893] SCRAPER ratings fetch page 74 offset 1460 failed (attempt 1/2): empty ratings

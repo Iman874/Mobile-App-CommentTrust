@@ -1,0 +1,24 @@
+[2025-12-17T01:46:34.794851] START scrape-only job (compat) for link: https://shopee.co.id/Paket-PC-Lengkap-Ram-16GB-Free-WiFi-Online-Game-Desain-i.162038834.7322422465
+[2025-12-17T01:47:21.990152] SCRAPER finished (compat)
+[2025-12-17T01:47:25.034789] START analyze-only job for product 162038834-7322422465
+[2025-12-17T01:47:25.038036] ANALYSIS 5% :: init: resolve input
+[2025-12-17T01:47:25.102218] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T01:47:25.120079] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T01:47:25.139371] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T01:47:25.162341] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T01:47:25.237528] ANALYSIS 90% :: [05] trust score
+[2025-12-17T01:47:25.292380] ANALYSIS 98% :: [06] summarize
+[2025-12-17T01:47:25.309261] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T01:47:25.310153] ANALYSIS 100% :: done
+[2025-12-17T01:47:25.310886] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/162038834-7322422465/indobert
+[2025-12-17T01:47:25.310956] Merging analysis results to reviews...
+[2025-12-17T01:47:25.710820] Analysis results merged successfully
+[2025-12-17T01:47:26.506384] Laravel ingest attempt 1 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:47:29.057712] Laravel ingest attempt 2 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:47:33.604178] Laravel ingest attempt 3 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:47:33.604543] Laravel sync failed: notify failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:48:06.095399] RESYNC request for product 162038834-7322422465
+[2025-12-17T01:48:06.587736] Laravel ingest attempt 1 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:48:09.146068] Laravel ingest attempt 2 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:48:13.677231] Laravel ingest attempt 3 failed: HTTP Error 500: Internal Server Error
+[2025-12-17T01:48:13.677399] RESYNC failed: notify failed: HTTP Error 500: Internal Server Error

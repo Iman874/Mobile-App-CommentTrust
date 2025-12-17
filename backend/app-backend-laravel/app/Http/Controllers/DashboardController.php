@@ -31,11 +31,20 @@ class DashboardController extends Controller
             ];
         }
         
+        // Count products and comments for this user
+        $productCount = $user->products()->count();
+        $commentCount = \App\Models\Comment::whereIn(
+            'product_id',
+            $user->products()->pluck('id')
+        )->count();
+        
         return view('guest.dashboard', [
             'user' => $user,
             'isGuest' => $isGuest,
             'tokenStatus' => $tokenStatus,
             'products' => $user->products()->latest()->paginate(10),
+            'productCount' => $productCount,
+            'commentCount' => $commentCount,
         ]);
     }
 

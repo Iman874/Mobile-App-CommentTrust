@@ -1,0 +1,57 @@
+[2025-12-17T00:39:25.727807] START job for link: https://shopee.co.id/HP-Elitebook-Probook-Second-Laptop-14inch-840-G3-645-G4-Core-I5-I7-RAM-8-16G-SSD-256-512-GB-Bekas-Peningkatan-baru-laptop-original-berkualitas-Mulus-Bekas-IPS-US-Keyboard-backlight-i.772901883.23345567541
+[2025-12-17T00:39:25.736360] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T00:39:25.739882] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T00:39:25.740206] SCRAPER initializing Edge driver for Linux
+[2025-12-17T00:39:26.882433] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T00:39:39.079136] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T00:39:46.199244] SCRAPER product tab detected; proceeding
+[2025-12-17T00:39:46.200038] SCRAPER fetch product data
+[2025-12-17T00:39:47.741071] SCRAPER fetch comments
+[2025-12-17T00:39:48.729075] SCRAPER page 1: collected 20/1168
+[2025-12-17T00:39:49.789368] SCRAPER page 2: collected 40/1168
+[2025-12-17T00:39:50.570493] SCRAPER page 3: collected 60/1168
+[2025-12-17T00:39:51.346586] SCRAPER page 4: collected 80/1168
+[2025-12-17T00:39:52.122837] SCRAPER page 5: collected 100/1168
+[2025-12-17T00:39:52.937405] SCRAPER page 6: collected 120/1168
+[2025-12-17T00:39:53.610803] SCRAPER page 7: collected 140/1168
+[2025-12-17T00:39:54.114404] SCRAPER page 8: collected 160/1168
+[2025-12-17T00:39:54.705417] SCRAPER page 9: collected 180/1168
+[2025-12-17T00:39:55.287293] SCRAPER page 10: collected 200/1168
+[2025-12-17T00:39:55.907629] SCRAPER page 11: collected 220/1168
+[2025-12-17T00:39:56.497021] SCRAPER page 12: collected 240/1168
+[2025-12-17T00:39:57.000667] SCRAPER page 13: collected 260/1168
+[2025-12-17T00:39:57.395511] SCRAPER page 14: collected 280/1168
+[2025-12-17T00:39:57.999000] SCRAPER page 15: collected 300/1168
+[2025-12-17T00:39:58.613305] SCRAPER page 16: collected 320/1168
+[2025-12-17T00:39:59.086642] SCRAPER page 17: collected 340/1168
+[2025-12-17T00:39:59.586208] SCRAPER page 18: collected 360/1168
+[2025-12-17T00:40:00.084374] SCRAPER page 19: collected 380/1168
+[2025-12-17T00:40:00.487620] SCRAPER page 20: collected 400/1168
+[2025-12-17T00:40:00.913514] SCRAPER page 21: collected 420/1168
+[2025-12-17T00:40:01.387628] SCRAPER page 22: collected 440/1168
+[2025-12-17T00:40:01.807659] SCRAPER page 23: collected 460/1168
+[2025-12-17T00:40:02.285267] SCRAPER page 24: collected 480/1168
+[2025-12-17T00:40:02.731708] SCRAPER page 25: collected 500/1168
+[2025-12-17T00:40:03.183932] SCRAPER page 26: collected 520/1168
+[2025-12-17T00:40:03.623272] SCRAPER page 27: collected 540/1168
+[2025-12-17T00:40:04.119177] SCRAPER page 28: collected 560/1168
+[2025-12-17T00:40:04.591083] SCRAPER page 29: collected 580/1168
+[2025-12-17T00:40:05.035408] SCRAPER page 30: collected 584/1168
+[2025-12-17T00:40:05.129520] SCRAPER finished; total 584 reviews saved
+[2025-12-17T00:40:05.158562] SCRAPER finished
+[2025-12-17T00:40:05.159365] ANALYSIS 5% :: init: resolve input
+[2025-12-17T00:40:05.182324] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T00:40:05.190762] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T00:40:05.198226] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T00:40:05.206392] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T00:40:05.228891] ANALYSIS 90% :: [05] trust score
+[2025-12-17T00:40:05.249055] ANALYSIS 98% :: [06] summarize
+[2025-12-17T00:40:05.255756] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T00:40:05.255940] ANALYSIS 100% :: done
+[2025-12-17T00:40:05.255990] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/772901883-23345567541/indobert
+[2025-12-17T00:40:05.256014] Merging analysis results to reviews...
+[2025-12-17T00:40:05.407881] Analysis results merged successfully
+[2025-12-17T00:40:05.759376] Laravel ingest accepted (HTTP 200)
+[2025-12-17T00:40:05.759445] Laravel ingest immediate inserted=584
+[2025-12-17T00:40:05.927258] Laravel poll: count_reviews=584 status=waiting-db
+[2025-12-17T00:40:05.927606] Laravel sync succeeded

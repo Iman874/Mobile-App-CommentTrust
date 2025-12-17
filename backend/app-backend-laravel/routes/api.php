@@ -28,6 +28,8 @@ Route::prefix('/auth')->group(function () {
 // Guest Authentication endpoints (Public)
 Route::prefix('/guest')->group(function () {
     Route::post('/login', [GuestAuthController::class, 'loginAsGuest']);
+    Route::get('/list', [GuestAuthController::class, 'listGuests']);
+    Route::post('/login-as-existing', [GuestAuthController::class, 'loginAsExistingGuest']);
 });
 
 // ============================================================================
@@ -102,7 +104,8 @@ Route::middleware(['api_token', 'check_token_expiration'])->group(function () {
 // ============================================================================
 // Admin Routes (Require Authentication & Admin Role)
 // ============================================================================
-Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
+// Admin routes should also honor API token expiration rules
+Route::middleware(['auth', 'admin', 'check_token_expiration'])->prefix('/admin')->group(function () {
     // Dashboard & Stats
     Route::get('/stats', [AdminController::class, 'getStats']);
 
@@ -114,6 +117,10 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     Route::post('/users/{id}/refresh-token', [UserManagementController::class, 'refreshToken']);
     Route::post('/users/{id}/extend-token', [UserManagementController::class, 'extendToken']);
     Route::post('/users/{id}/reset-sessions', [UserManagementController::class, 'resetSessions']);
+
+    // Admin self-token management (tokens expire after 24 hours)
+    Route::post('/token/generate', [AdminController::class, 'generateAdminToken']);
+    Route::post('/token/revoke', [AdminController::class, 'revokeAdminToken']);
 
     // Job Management
     Route::get('/jobs', [JobManagementController::class, 'list']);

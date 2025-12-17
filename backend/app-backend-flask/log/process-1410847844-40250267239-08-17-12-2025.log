@@ -1,0 +1,25 @@
+[2025-12-17T01:02:25.175461] START scrape-only job (compat) for link: https://shopee.co.id/Loggio-Jam-Tangan-Cowok-Kalender-Tahan-Air-Kuarsa-Santai-Bisnis-Tali-Kulit-Jam-Tangan-Pria-i.1410847844.40250267239
+[2025-12-17T01:03:23.150517] SCRAPER finished (compat)
+[2025-12-17T01:03:27.263690] START scrape-only job (compat) for link: https://shopee.co.id/Loggio-Jam-Tangan-Cowok-Kalender-Tahan-Air-Kuarsa-Santai-Bisnis-Tali-Kulit-Jam-Tangan-Pria-i.1410847844.40250267239
+[2025-12-17T01:04:10.908586] SCRAPER finished (compat)
+[2025-12-17T01:05:41.373014] REANALYZE request for product 1410847844-40250267239
+[2025-12-17T01:05:41.374538] [5%] init: resolve input
+[2025-12-17T01:05:41.452462] [10%] [01] preprocess
+[2025-12-17T01:05:41.467258] [20%] [01b] tokenize
+[2025-12-17T01:05:41.475957] [40%] [03] sentiment
+[2025-12-17T01:05:41.483727] [70%] [04] fake detect
+[2025-12-17T01:05:41.519468] [90%] [05] trust score
+[2025-12-17T01:05:41.546641] [98%] [06] summarize
+[2025-12-17T01:05:41.558664] [99%] [07] tagging comments
+[2025-12-17T01:05:41.559454] [100%] done
+[2025-12-17T01:05:41.559586] Pipeline completed, output: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1410847844-40250267239/indobert
+[2025-12-17T01:05:41.795214] Analysis results merged successfully
+[2025-12-17T01:05:41.816511] Tagged 629 reviews
+[2025-12-17T01:05:41.886042] Saved tag statistics: {"Kualitas Bagus": 49, "Harga": 22, "Puas": 21, "Harga Murah": 11, "Senang": 8, "Pengiriman Buruk": 8, "Kualitas Buruk": 6, "Warna Tidak Sesuai": 3, "Akan Beli Lagi": 1, "Barang Cacat": 1, "Direkomendasikan": 1, "Promo/Diskon": 1, "Tidak Berfungsi": 1, "Barang Rusak": 1, "Respon Lambat": 1, "Harga Mahal": 1}
+[2025-12-17T01:05:41.913469] Saved tagged reviews CSV: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1410847844-40250267239/indobert/review_tagged.csv
+[2025-12-17T01:05:41.913607] REANALYZE finished successfully
+[2025-12-17T01:06:04.997513] RESYNC request for product 1410847844-40250267239
+[2025-12-17T01:06:05.287116] Laravel ingest accepted (HTTP 200)
+[2025-12-17T01:06:05.287164] Laravel ingest immediate inserted=629
+[2025-12-17T01:06:05.390794] Laravel poll: count_reviews=629 status=waiting-db
+[2025-12-17T01:06:05.390963] RESYNC succeeded

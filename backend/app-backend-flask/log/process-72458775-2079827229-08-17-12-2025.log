@@ -1,0 +1,18 @@
+[2025-12-17T01:16:04.949125] START scrape-only job (compat) for link: https://shopee.co.id/Laptop-brand-berkelas-toshiba-acer-hp-ram-4gb-8gb-kuat-dan-cepat-cocok-untuk-pelajar-kuliah-kerja-bergaransi-i.72458775.2079827229
+[2025-12-17T01:17:02.157150] SCRAPER finished (compat)
+[2025-12-17T01:18:09.462226] REANALYZE request for product 72458775-2079827229
+[2025-12-17T01:18:09.463492] [5%] init: resolve input
+[2025-12-17T01:18:09.564547] [10%] [01] preprocess
+[2025-12-17T01:18:09.618391] [20%] [01b] tokenize
+[2025-12-17T01:18:09.648619] [40%] [03] sentiment
+[2025-12-17T01:18:09.688356] [70%] [04] fake detect
+[2025-12-17T01:18:09.811663] [90%] [05] trust score
+[2025-12-17T01:18:09.839818] [98%] [06] summarize
+[2025-12-17T01:18:09.849313] [99%] [07] tagging comments
+[2025-12-17T01:18:09.849520] [100%] done
+[2025-12-17T01:18:09.849606] Pipeline completed, output: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/72458775-2079827229/indobert
+[2025-12-17T01:18:10.078119] Analysis results merged successfully
+[2025-12-17T01:18:10.136736] Tagged 999 reviews
+[2025-12-17T01:18:10.250624] Saved tag statistics: {"Kualitas Bagus": 115, "Harga": 63, "Pengiriman Buruk": 54, "Puas": 15, "Masalah Penjual": 14, "Barang Tidak Sesuai": 12, "Harga Murah": 10, "Direkomendasikan": 9, "Tidak Berfungsi": 9, "Kualitas Buruk": 8, "Respon Lambat": 8, "Senang": 6, "Barang Rusak": 4, "Masalah Ukuran": 3, "Harga Mahal": 3, "Akan Beli Lagi": 2, "Warna Tidak Sesuai": 2, "Barang Cacat": 2, "Warna": 1}
+[2025-12-17T01:18:10.256515] Saved tagged reviews CSV: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/72458775-2079827229/indobert/review_tagged.csv
+[2025-12-17T01:18:10.256581] REANALYZE finished successfully

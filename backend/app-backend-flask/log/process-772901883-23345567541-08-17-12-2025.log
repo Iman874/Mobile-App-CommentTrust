@@ -1,0 +1,15 @@
+[2025-12-17T01:23:17.819015] START scrape-only job (compat) for link: https://shopee.co.id/HP-Elitebook-Probook-Second-Laptop-14inch-840-G3-645-G4-Core-I5-I7-RAM-8-16G-SSD-256-512-GB-Bekas-Peningkatan-baru-laptop-original-berkualitas-Mulus-Bekas-IPS-US-Keyboard-backlight-i.772901883.23345567541
+[2025-12-17T01:23:18.053936] START analyze-only job for product 772901883-23345567541
+[2025-12-17T01:23:18.057668] ANALYSIS 5% :: init: resolve input
+[2025-12-17T01:23:18.090669] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T01:23:18.100680] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T01:23:18.109442] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T01:23:18.123043] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T01:23:18.157145] ANALYSIS 90% :: [05] trust score
+[2025-12-17T01:23:18.183343] ANALYSIS 98% :: [06] summarize
+[2025-12-17T01:23:18.190382] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T01:23:18.190453] ANALYSIS 100% :: done
+[2025-12-17T01:23:18.190474] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/772901883-23345567541/indobert
+[2025-12-17T01:23:18.190487] Merging analysis results to reviews...
+[2025-12-17T01:23:18.550958] Analysis results merged successfully
+[2025-12-17T01:24:22.932670] SCRAPER finished (compat)

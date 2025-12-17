@@ -5,104 +5,51 @@
   <title>Progress — Scraper & Analysis</title>
   <!-- External stylesheet (static served, no Jinja processing for this file) -->
   <link rel="stylesheet" href="/static/style/progress.css" />
-  <!-- Optional font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    .history-section {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 2px solid #ddd;
+    :root {
+      --bg: #f7f7f7;
+      --panel: #ffffff;
+      --border: #d9d9d9;
+      --text: #1a1a1a;
+      --muted: #666;
+      --accent: #1f6feb;
+      --accent-2: #f4b400;
     }
-    .product-card {
-      background: #fff;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-      transition: box-shadow 0.2s;
-    }
-    .product-card:hover {
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-    }
+    body { background: var(--bg); font-family: Arial, sans-serif; color: var(--text); }
+    .box { background: var(--panel); border: 1px solid var(--border); }
+    h2, h3 { margin: 0 0 12px 0; font-weight: 600; }
+    .history-section { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .product-card { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; gap: 12px; }
     .product-info {
       flex: 1;
     }
-    .product-name {
-      font-weight: 600;
-      font-size: 14px;
-      color: #1a1a1a;
-      margin-bottom: 4px;
-    }
-    .product-shop {
-      font-size: 12px;
-      color: #555;
-      margin-bottom: 6px;
-    }
+    .product-name { font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 4px; }
+    .product-shop { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
     .product-stats {
       display: flex;
       gap: 16px;
       font-size: 12px;
-      color: #666;
+      color: var(--muted);
     }
     .stat-item {
       display: flex;
       flex-direction: column;
     }
     .stat-label {
-      font-size: 10px;
-      color: #888;
-      text-transform: uppercase;
-      font-weight: 500;
+      font-size: 10px; color: #888; text-transform: uppercase; font-weight: 500;
     }
     .stat-value {
-      font-weight: 600;
-      color: #1a1a1a;
+      font-weight: 600; color: var(--text);
     }
     .product-actions {
       display: flex;
-      gap: 8px;
-      margin-left: 16px;
-      flex-wrap: wrap;
+      gap: 8px; margin-left: 16px; flex-wrap: wrap;
     }
     .product-actions button {
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: 500;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
+      padding: 8px 12px; font-size: 12px; font-weight: 500; border: 1px solid var(--border); border-radius: 5px; cursor: pointer; background: #fafafa; color: var(--text);
     }
-    .product-actions button:not(.reanalyze) {
-      background: #2196F3;
-      color: #fff;
-    }
-    .product-actions button:not(.reanalyze):hover {
-      background: #1976D2;
-      transform: translateY(-1px);
-    }
-    .product-actions button:not(.reanalyze):active {
-      transform: translateY(0);
-    }
-    .product-actions button.reanalyze {
-      background: #FFC107;
-      color: #333;
-      border: none;
-    }
-    .product-actions button.reanalyze:hover {
-      background: #FFB300;
-      transform: translateY(-1px);
-    }
-    .product-actions button.reanalyze:active {
-      transform: translateY(0);
-    }
+    .product-actions button:not(.reanalyze) { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .product-actions button.reanalyze { background: var(--accent-2); color: #1a1a1a; border-color: var(--accent-2); }
     .analysis-badge {
       display: inline-block;
       padding: 3px 10px;
@@ -120,9 +67,6 @@
       color: #c62828;
     }
   </style>
-      color: #721c24;
-    }
-  </style>
 </head>
 <body>
   <div class="box">
@@ -135,6 +79,11 @@
     </form>
     <div id="jobs"></div>
     <div id="lastLink" style="margin-top:12px"></div>
+
+    <div class="history-section">
+      <h3>Jobs Berjalan</h3>
+      <div id="runningHint" style="font-size:12px;color:#666;margin-bottom:8px;">Job terbaru akan muncul di sini. Jika kosong, kirim link untuk memulai job.</div>
+    </div>
     
     <!-- History Section -->
     <div class="history-section">
@@ -296,12 +245,64 @@ ${tagInfo}
 
     async function addJobToUI(job_id){
       const jobsDiv = document.getElementById('jobs');
+      // avoid duplicates
+      if (document.getElementById('job-'+job_id)) return;
       const r = await fetch('/api/status/'+job_id);
       if(!r.ok) return;
       const job = await r.json();
       const el = renderJob(job);
       jobsDiv.prepend(el);
+      const hint = document.getElementById('runningHint');
+      if (hint) hint.textContent = '';
       poll(job.id);
+    }
+
+    async function fetchRunningJobs(){
+      try{
+        const res = await fetch('/api/jobs/running');
+        if(!res.ok) return;
+        const data = await res.json();
+        const jobs = Array.isArray(data.jobs) ? data.jobs : [];
+        let added = 0;
+        for(const j of jobs){
+          if(j && j.id){
+            await addJobToUI(j.id);
+            added++;
+          }
+        }
+        const hint = document.getElementById('runningHint');
+        if(hint){
+          hint.textContent = jobs.length > 0 ? '' : 'Job terbaru akan muncul di sini. Jika kosong, kirim link untuk memulai job.';
+        }
+        return added;
+      }catch(e){
+        console.warn('fetchRunningJobs error', e);
+        const hint = document.getElementById('runningHint');
+        if(hint && !document.getElementById('jobs').children.length){
+          hint.textContent = 'Gagal memuat job. Coba refresh atau kirim link baru.';
+        }
+      }
+    }
+
+    function persistJob(jobId){
+      try {
+        const raw = localStorage.getItem('recent_jobs') || '[]';
+        const arr = JSON.parse(raw);
+        const next = [jobId].concat(arr.filter(id => id !== jobId)).slice(0, 5);
+        localStorage.setItem('recent_jobs', JSON.stringify(next));
+      } catch(e) {
+        console.warn('persist job failed', e);
+      }
+    }
+
+    function restoreJobs(){
+      try {
+        const raw = localStorage.getItem('recent_jobs') || '[]';
+        const arr = JSON.parse(raw);
+        arr.forEach(id => addJobToUI(id));
+      } catch(e) {
+        console.warn('restore jobs failed', e);
+      }
     }
 
     async function poll(jobId){
@@ -410,6 +411,7 @@ ${tagInfo}
       const res = await postLink(link, mode);
       if(res.job_id){
         addJobToUI(res.job_id);
+        persistJob(res.job_id);
         document.getElementById('lastLink').innerHTML = `<strong>Normalized:</strong> ${res.canonical}<br/><strong>Short:</strong> ${res.short_link}`;
       }
     });
@@ -419,7 +421,12 @@ ${tagInfo}
       const params = new URLSearchParams(location.search);
       const j = params.get('job');
       if(j) addJobToUI(j);
+      restoreJobs();
     })();
+
+    // Auto-discover running jobs from the backend
+    fetchRunningJobs();
+    setInterval(fetchRunningJobs, 5000);
     
     // Load product history on page load
     loadProductHistory();

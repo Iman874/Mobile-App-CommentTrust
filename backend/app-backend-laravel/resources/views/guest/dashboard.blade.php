@@ -241,6 +241,99 @@
 </div>
 
 <script>
+// Lightweight status helper
+function setStatus(msg, color = 'text-gray-700') {
+    const statusMessage = document.getElementById('statusMessage');
+    statusMessage.className = `text-sm ${color}`;
+    statusMessage.textContent = msg;
+}
+
+// Helper to perform API calls with Bearer token and auto-refresh on 401
+async function apiFetch(url, options = {}) {
+    let token = (typeof localStorage !== 'undefined' && localStorage.getItem('api_token')) || '{{ session('api_token') }}';
+    const headers = Object.assign({
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+    }, options.headers || {});
+    if (token) headers['Authorization'] = 'Bearer ' + token;
+    const resp = await fetch(url, Object.assign({}, options, { headers }));
+    if (resp.status === 401) {
+        // Try to generate a new token, then retry once
+        try {
+            const genResp = await fetch('/api/auth/token/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    ...(token ? { 'Authorization': 'Bearer ' + token } : {}),
+                },
+                body: JSON.stringify({ reason: 'auto-refresh from dashboard' })
+            });
+            const genData = await genResp.json().catch(() => ({}));
+            if (genResp.ok && (genData.token || genData.api_token)) {
+                token = genData.token || genData.api_token;
+                try { localStorage.setItem('api_token', token); } catch (e) {}
+                headers['Authorization'] = 'Bearer ' + token;
+                return fetch(url, Object.assign({}, options, { headers }));
+            }
+        } catch (e) {
+            // fall through
+        }
+
+        // As guest users may not have a valid token, attempt guest login to obtain one
+        try {
+            const guestResp = await fetch('/api/guest/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: JSON.stringify({ purpose: 'dashboard-auto-login' })
+            });
+            const guestData = await guestResp.json().catch(() => ({}));
+            if (guestResp.ok && (guestData.token || guestData.api_token)) {
+                token = guestData.token || guestData.api_token;
+                try { localStorage.setItem('api_token', token); } catch (e) {}
+                headers['Authorization'] = 'Bearer ' + token;
+                return fetch(url, Object.assign({}, options, { headers }));
+            }
+        } catch (e) {
+            // fall through
+        }
+    }
+    return resp;
+}
+
+// Wait until scrape-only job finishes before requesting analysis
+async function waitForScrapeCompletion(jobId, productIdHint) {
+    const maxMs = 12 * 60 * 1000; // 12 minutes cap
+    const delay = (ms) => new Promise(res => setTimeout(res, ms));
+    const start = Date.now();
+    let productId = productIdHint;
+    while (Date.now() - start < maxMs) {
+        setStatus('🧭 Menunggu scraping selesai... (job ' + jobId + ')', 'text-gray-700');
+        const resp = await apiFetch(`/api/analysis/job/${encodeURIComponent(jobId)}`);
+        const data = await resp.json().catch(() => ({}));
+        const job = (data && (data.job?.data || data.job || data.data)) || {};
+        if (job.product_id && !productId) productId = job.product_id;
+
+        const phase = job.phase || 'unknown';
+        const scrTotal = Number(job.scraper_total || 0);
+        const scrProg = Number(job.scraper_progress || 0);
+        if (phase === 'error' || job.error) {
+            return { ok: false, error: job.error || 'scrape error', productId };
+        }
+        const scrapeDone = phase === 'done' || (scrTotal > 0 && scrProg >= scrTotal);
+        if (scrapeDone) {
+            return { ok: true, productId: productId || job.product_id }; // proceed
+        }
+        await delay(4000);
+    }
+    return { ok: false, error: 'timeout menunggu scraping selesai', productId };
+}
+
 document.getElementById('scrapeForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
@@ -252,40 +345,91 @@ document.getElementById('scrapeForm').addEventListener('submit', async function(
     
     // Show status
     statusDiv.classList.remove('hidden');
-    statusMessage.textContent = '⏳ Starting scraping process...';
+    setStatus('⏳ Menyiapkan permintaan scraping...', 'text-gray-700');
     progressBar.classList.remove('hidden');
     progress.style.width = '20%';
     
     try {
-        const response = await fetch('/api/analysis/scrape', {
+        setStatus('🔑 Memeriksa token & autentikasi...', 'text-gray-700');
+        // Call analysis scrape endpoint defined in api.php
+        const response = await apiFetch('/api/analysis/scrape', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer {{ session("api_token") }}',
-                'X-Requested-With': 'XMLHttpRequest'
             },
-            body: JSON.stringify({ product_url: productUrl })
+            // Send canonical key expected by controller
+            body: JSON.stringify({ product_url: productUrl, source: 'shopee' })
         });
-        
+        setStatus('⏳ Mengirim permintaan ke scraper...', 'text-gray-700');
         const data = await response.json();
         progress.style.width = '100%';
         
         if (data.ok || response.ok) {
-            statusMessage.textContent = '✅ Scraping completed! Product ID: ' + (data.product_id || 'N/A');
-            statusMessage.classList.add('text-green-700');
+            let productId = data.product_id || data.id || (data.product && data.product.id) || null;
+            setStatus('✅ Permintaan scraping dikirim. Backend sedang berjalan.' + (productId ? ' Product ID: ' + productId : ''), 'text-green-700');
             
-            // Reload page after 2 seconds
-            setTimeout(() => location.reload(), 2000);
+            // Show job info if available
+            if (data.job_id) {
+                const jobInfo = document.createElement('div');
+                jobInfo.className = 'mt-2 text-xs text-gray-600 bg-green-50 rounded p-2';
+                jobInfo.textContent = 'Job ID: ' + data.job_id + ' — proses berjalan di backend.';
+                statusMessage.parentElement.appendChild(jobInfo);
+            }
+
+            // Wait for scraping to finish before firing analysis
+            if (data.job_id) {
+                const waitRes = await waitForScrapeCompletion(data.job_id, productId);
+                if (!waitRes.ok) {
+                    setStatus('⚠️ Scraping belum selesai: ' + (waitRes.error || 'unknown'), 'text-orange-600');
+                    return;
+                }
+                productId = waitRes.productId;
+            }
+
+            // Trigger analysis only after scrape completion
+            if (productId) {
+                setStatus('⏳ Memulai analisis komentar setelah scraping selesai...', 'text-gray-700');
+                const analyzeResp = await apiFetch(`/api/analysis/analyze/${productId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({})
+                });
+                const analyzeData = await analyzeResp.json().catch(() => ({}));
+                if (analyzeData.ok || analyzeResp.ok) {
+                    const analyzeJob = analyzeData.job_id || 'N/A';
+                    setStatus('✅ Permintaan analisis dikirim setelah scraping selesai. Job ID: ' + analyzeJob, 'text-green-700');
+                    const jobInfo2 = document.createElement('div');
+                    jobInfo2.className = 'mt-2 text-xs text-gray-600 bg-green-50 rounded p-2';
+                    jobInfo2.textContent = 'Analysis job berjalan di backend. Anda bisa me-refresh daftar produk untuk melihat hasil.';
+                    statusMessage.parentElement.appendChild(jobInfo2);
+                } else {
+                    const errTxt = (analyzeData && (analyzeData.message || analyzeData.error)) || 'Gagal memulai analisis';
+                    setStatus('⚠️ Analisis gagal dimulai: ' + errTxt, 'text-orange-600');
+                }
+            } else {
+                setStatus('✅ Scraping dimulai. Menunggu backend selesai sebelum analisis; Product ID belum tersedia.', 'text-green-700');
+            }
         } else {
-            statusMessage.textContent = '❌ Error: ' + (data.message || 'Failed to scrape product');
-            statusMessage.classList.add('text-red-700');
+            const errText = (data && (data.message || data.error)) || 'Failed to scrape product';
+            setStatus('❌ Error (' + response.status + '): ' + errText, 'text-red-700');
             progress.classList.add('bg-red-600');
+            if (response.status === 401) {
+                const help = 'Your API token may be missing or expired. Please refresh your token from the profile or try again.';
+                statusMessage.textContent += ' — ' + help;
+            }
+            if (data && data.details) {
+                const detailsEl = document.createElement('pre');
+                detailsEl.className = 'mt-2 text-xs text-gray-600 bg-gray-100 rounded p-2 overflow-auto';
+                detailsEl.textContent = JSON.stringify(data.details, null, 2);
+                statusMessage.parentElement.appendChild(detailsEl);
+            }
         }
     } catch (error) {
         progress.style.width = '100%';
         progress.classList.add('bg-red-600');
-        statusMessage.textContent = '❌ Error: ' + error.message;
-        statusMessage.classList.add('text-red-700');
+        setStatus('❌ Error: ' + error.message, 'text-red-700');
     }
 });
 </script>

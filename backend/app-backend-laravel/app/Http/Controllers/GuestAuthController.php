@@ -242,6 +242,111 @@ class GuestAuthController extends Controller
     }
 
     /**
+     * List all active guest accounts
+     * GET /api/guest/list
+     * Public endpoint - no authentication needed
+     */
+    public function listGuests(): JsonResponse
+    {
+        try {
+            $guests = User::where('is_guest', true)
+                ->where('is_active', true)
+                ->select(['id', 'name', 'email', 'token_expires_at', 'created_at'])
+                ->orderByDesc('created_at')
+                ->get()
+                ->map(function ($guest) {
+                    return [
+                        'id' => $guest->id,
+                        'name' => $guest->name,
+                        'email' => $guest->email,
+                        'token_expires_at' => $guest->token_expires_at,
+                        'is_valid' => !$guest->isTokenExpired(),
+                        'created_at' => $guest->created_at->format('Y-m-d H:i:s'),
+                    ];
+                });
+
+            return response()->json([
+                'ok' => true,
+                'message' => 'Guest list retrieved',
+                'guests' => $guests,
+                'total' => count($guests),
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Failed to retrieve guest list',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
+     * Login as an existing guest account
+     * POST /api/guest/login-as-existing
+     * Body: { "guest_id": 123 }
+     * Public endpoint - no authentication needed
+     */
+    public function loginAsExistingGuest(Request $request): JsonResponse
+    {
+        try {
+            $request->validate([
+                'guest_id' => 'required|integer|exists:users,id',
+            ]);
+
+            $guestId = $request->input('guest_id');
+            
+            // Fetch the guest user
+            $guestUser = User::where('id', $guestId)
+                ->where('is_guest', true)
+                ->where('is_active', true)
+                ->first();
+
+            if (!$guestUser) {
+                return response()->json([
+                    'ok' => false,
+                    'message' => 'Guest account not found or inactive',
+                ], 404);
+            }
+
+            // Check if token is expired
+            if ($guestUser->isTokenExpired()) {
+                // Refresh the token with 1-day expiration
+                $plainToken = $guestUser->generateApiToken('guest-refreshed', true);
+            } else {
+                // Token still valid, retrieve existing
+                $plainToken = $this->getPlainToken($guestUser);
+            }
+
+            return response()->json([
+                'ok' => true,
+                'message' => 'Logged in as guest',
+                'user' => [
+                    'id' => $guestUser->id,
+                    'name' => $guestUser->name,
+                    'email' => $guestUser->email,
+                    'is_guest' => true,
+                ],
+                'api_token' => $plainToken,
+                'token_type' => 'Bearer',
+                'expires_at' => $guestUser->token_expires_at,
+                'expires_in_seconds' => $guestUser->getTokenRemainingSeconds(),
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Validation failed',
+                'errors' => $e->errors(),
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Failed to login as guest',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
      * Helper: Get plain token for user
      * This assumes we have just hashed the token and need to retrieve it
      * In production, you should return the plaintext before hashing

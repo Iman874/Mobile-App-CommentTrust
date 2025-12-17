@@ -330,6 +330,7 @@ def input_link():
     j = request.get_json(force=True, silent=True) or request.form or {}
     link = j.get('link') if isinstance(j, dict) else None
     force_copy_browser = bool(j.get('force_copy_browser')) if isinstance(j, dict) else False
+    user_id = j.get('user_id') if isinstance(j, dict) else None
     if not link:
         return jsonify({'error': 'missing link parameter'}), 400
     norm_meta = _build_canonical(link)
@@ -347,7 +348,8 @@ def input_link():
         'canonical': norm_meta.get('canonical'),
         'short_link': norm_meta.get('short'),
         'product_id': norm_meta.get('product_id'),
-        'force_copy_browser': force_copy_browser
+        'force_copy_browser': force_copy_browser,
+        'user_id': user_id,
     }
     _write_log(job_id, 'input', f"INPUT received link: {link} -> normalized: {norm}")
     # start background thread
@@ -374,6 +376,25 @@ def status(job_id):
     }
     return jsonify(job)
 
+
+@bp.route('/jobs/running', methods=['GET'])
+def jobs_running():
+    """Return all non-finished jobs so UI can auto-discover new ones."""
+    items = []
+    for job_id, job in JOBS.items():
+        phase = job.get('phase')
+        if phase in {'done', 'error'}:
+            continue
+        items.append({
+            'id': job_id,
+            'phase': phase,
+            'created_at': job.get('created_at') or job.get('created_local_stamp') or '',
+            'link': job.get('link'),
+            'product_id': job.get('product_id'),
+        })
+    items.sort(key=lambda x: x.get('created_at') or '', reverse=True)
+    return jsonify({'jobs': items})
+
 # legacy name removed; use _notify_and_wait_laravel
 
 def _laravel_api_base() -> str:
@@ -394,7 +415,15 @@ def _notify_and_wait_laravel(job: dict, product_id: str, force: bool = False, ma
     """
     api_base = _laravel_api_base()
     ingest_url = os.environ.get('LARAVEL_WEBHOOK_URL', f"{api_base}/ingest/commenttrust")
-    payload = json.dumps({'product_id': product_id, 'force': bool(force)}).encode('utf-8')
+    payload = json.dumps({
+        'product_id': product_id,
+        'force': bool(force),
+        'canonical': job.get('canonical'),
+        'short_link': job.get('short_link'),
+        'link': job.get('link'),
+        'user_id': job.get('user_id'),
+    }).encode('utf-8')
+    _write_general_log(f'_notify_and_wait_laravel: payload user_id={job.get("user_id")} product_id={product_id}')
     for i in range(max_post_retries):
         job['laravel_sync_status'] = f'sending({i+1}/{max_post_retries})'
         job['laravel_sync_progress'] = 10 + int(10*i)
@@ -559,6 +588,7 @@ def input_link_force_copy():
 def force_scrape():
     j = request.get_json(force=True, silent=True) or request.form or {}
     link = j.get('link') if isinstance(j, dict) else None
+    user_id = j.get('user_id') if isinstance(j, dict) else None
     if not link:
         return jsonify({'error': 'missing link parameter'}), 400
     norm_meta = _build_canonical(link)
@@ -576,7 +606,8 @@ def force_scrape():
         'canonical': norm_meta.get('canonical'),
         'short_link': norm_meta.get('short'),
         'product_id': norm_meta.get('product_id'),
-        'force_scrape': True
+        'force_scrape': True,
+        'user_id': user_id,
     }
     _write_log(job_id, 'input', f"FORCE SCRAPE received link: {link} -> normalized: {norm}")
     t = threading.Thread(target=_run_job, args=(job_id,), daemon=True)
@@ -588,6 +619,7 @@ def force_analysis():
     j = request.get_json(force=True, silent=True) or request.form or {}
     link = j.get('link') if isinstance(j, dict) else None
     product_id = j.get('product_id') if isinstance(j, dict) else None
+    user_id = j.get('user_id') if isinstance(j, dict) else None
     if link and not product_id:
         meta = _build_canonical(link)
         product_id = meta.get('product_id')
@@ -604,7 +636,8 @@ def force_analysis():
         'analysis_progress': 0,
         'error': None,
         'product_id': product_id,
-        'force_analysis': True
+        'force_analysis': True,
+        'user_id': user_id,
     }
     _write_log(job_id, 'input', f"FORCE ANALYSIS for product: {product_id}")
     t = threading.Thread(target=_analysis_only, args=(job_id, product_id), daemon=True)
@@ -1070,6 +1103,7 @@ def reanalyze_product(product_id: str):
         'analysis_progress': 0,
         'analysis_step_index': 0,
         'analysis_step_name': 'Starting full re-analysis',
+        'created_at': datetime.utcnow().isoformat(),
     }
     JOBS[job_id] = job
     
@@ -1387,7 +1421,220 @@ def analyze_scrape_only():
     
     thread = threading.Thread(target=scrape_only_job, args=(job_id,), daemon=True)
     thread.start()
-    return jsonify({'ok': True, 'job_id': job_id, 'message': 'Scrape-only job started'})
+    return jsonify({
+        'ok': True,
+        'job_id': job_id,
+        'message': 'Scrape-only job started',
+        'product_id': norm_meta.get('product_id'),
+        'canonical': norm_meta.get('canonical'),
+        'short_link': norm_meta.get('short')
+    })
+
+
+# Analyze existing scraped data by product_id (path variant expected by Laravel)
+@bp.route('/analyze/<product_id>', methods=['POST'])
+def analyze_product(product_id: str):
+    """Run analysis pipeline on existing scraped data for a given product_id.
+    Path variant to match Laravel client expectation (/api/analyze/{product_id}).
+    """
+    if not product_id:
+        return jsonify({'ok': False, 'error': 'missing product_id parameter'}), 400
+
+    body = request.get_json(force=True, silent=True) or {}
+    user_id = body.get('user_id') if isinstance(body, dict) else None
+
+    review_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
+    review_file = os.path.join(review_dir, 'review.json')
+    if not os.path.exists(review_file):
+        return jsonify({'ok': False, 'error': 'Product has not been scraped yet'}), 404
+
+    job_id = uuid.uuid4().hex[:12]
+    JOBS[job_id] = {
+        'id': job_id,
+        'product_id': product_id,
+        'phase': 'queued',
+        'created_at': datetime.utcnow().isoformat(),
+        'analysis_progress': 0,
+        'analysis_step_index': 0,
+        'analysis_steps_total': 7,
+        'analysis_step_name': 'pending',
+        'error': None,
+        'mode': 'reanalyze_only',
+        'user_id': user_id,
+    }
+
+    def reanalyze_job(job_id: str):
+        job = JOBS[job_id]
+        pid = job['product_id']
+        _write_log(job_id, 'process', f"START analyze-only job for product {pid}")
+
+        job['phase'] = 'analysis'
+        job['analysis_progress'] = 0
+        job['analysis_step_index'] = 0
+
+        steps_order = [
+            'init: resolve input',
+            '[01] preprocess',
+            '[01b] tokenize',
+            '[03] sentiment',
+            '[04] fake detect',
+            '[05] trust score',
+            '[06] summarize',
+            'done'
+        ]
+
+        def _progress(pct, msg):
+            try:
+                job['analysis_progress'] = int(pct)
+                if isinstance(msg, str):
+                    job['analysis_step_name'] = msg
+                    if msg in steps_order:
+                        job['analysis_step_index'] = steps_order.index(msg) + 1
+                _write_log(job_id, 'process', f"ANALYSIS {job['analysis_progress']}% :: {msg}")
+            except Exception:
+                pass
+
+        try:
+            out_dir = pipeline.run_pipeline(source_dir=review_dir, product_id=pid, backend='indobert', progress=_progress)
+            _write_log(job_id, 'process', f"OUTPUT pipeline finished; outputs at {out_dir}")
+            _write_log(job_id, 'process', "Merging analysis results to reviews...")
+            merge_ok = _merge_analysis_to_reviews(pid, 'indobert')
+            if merge_ok:
+                _write_log(job_id, 'process', "Analysis results merged successfully")
+            else:
+                _write_log(job_id, 'process', "Warning: Could not merge analysis results")
+            job['analysis_progress'] = 100
+            job['phase'] = 'done'
+            job['laravel_sync_status'] = 'sending'
+            job['laravel_sync_progress'] = 10
+            try:
+                ok, err = _notify_and_wait_laravel(job, pid, force=True, max_post_retries=3, poll_seconds=120)
+                if ok:
+                    job['laravel_sync_status'] = 'ok'
+                    job['laravel_sync_progress'] = 100
+                    _write_log(job_id, 'process', 'Laravel sync succeeded')
+                else:
+                    job['laravel_sync_status'] = 'error'
+                    job['laravel_sync_error'] = err
+                    job['laravel_sync_progress'] = 100
+                    _write_log(job_id, 'process', f'Laravel sync failed: {err}')
+            except Exception as e:
+                job['laravel_sync_status'] = 'error'
+                job['laravel_sync_error'] = str(e)
+                job['laravel_sync_progress'] = 100
+                _write_log(job_id, 'process', f'Laravel notify exception: {e}')
+        except Exception as e:
+            job['phase'] = 'error'
+            job['error'] = str(e)
+            _write_log(job_id, 'process', f"ERROR analysis error: {e}")
+
+    thread = threading.Thread(target=reanalyze_job, args=(job_id,), daemon=True)
+    thread.start()
+    return jsonify({'ok': True, 'job_id': job_id, 'product_id': product_id})
+
+
+# Backward-compatible endpoint expected by Laravel FlaskService
+@bp.route('/scrape/start', methods=['POST'])
+def scrape_start_compat():
+    """Compatibility endpoint: Start scrape-only job
+    Accepts JSON: { "link": "https://shopee.co.id/..." }
+    Internally normalizes long Shopee URLs to canonical short form.
+    """
+    j = request.get_json(force=True, silent=True) or request.form or {}
+    link = j.get('link') if isinstance(j, dict) else None
+    user_id = j.get('user_id') if isinstance(j, dict) else None
+    if not link:
+        return jsonify({'ok': False, 'error': 'missing link parameter'}), 400
+    # Normalize incoming link to canonical form to improve scraper success
+    norm_meta = _build_canonical(str(link))
+    # Reuse analyze_scrape_only logic by constructing JOB and spawning thread
+    norm = norm_meta['cleaned']
+    job_id = uuid.uuid4().hex[:12]
+    JOBS[job_id] = {
+        'id': job_id,
+        'link': norm,
+        'phase': 'queued',
+        'created_at': datetime.utcnow().isoformat(),
+        'scraper_progress': 0,
+        'scraper_total': 0,
+        'error': None,
+        'canonical': norm_meta.get('canonical'),
+        'short_link': norm_meta.get('short'),
+        'product_id': norm_meta.get('product_id'),
+        'force_copy_browser': j.get('force_copy_browser', False),
+        'mode': 'scrape_only',
+        'user_id': user_id,
+    }
+    # Define thread function same as analyze_scrape_only
+    def scrape_only_job(job_id: str):
+        job = JOBS[job_id]
+        link = job["link"]
+        _write_log(job_id, "process", f"START scrape-only job (compat) for link: {link}")
+        meta = _build_canonical(link)
+        shopid, itemid = meta.get('shopid'), meta.get('itemid')
+        product_id = f"{shopid}-{itemid}" if shopid and itemid else job_id
+        job['product_id'] = product_id
+        job['canonical'] = meta.get('canonical')
+        job['short_link'] = meta.get('short')
+
+        job["phase"] = "scraper"
+        job["scraper_total"] = 0
+        job["scraper_progress"] = 0
+        job['scraper_state'] = 'queued'
+        job['scraper_block'] = None
+
+        def _scraper_progress(done, total):
+            try:
+                job['scraper_total'] = int(total)
+                job['scraper_progress'] = int(done)
+            except Exception:
+                pass
+
+        def _scraper_log(msg):
+            _write_log(job_id, 'scraper', msg)
+
+        def _scraper_state(state, block):
+            job['scraper_state'] = state
+            job['scraper_block'] = block
+            if state in {'waiting_login','captcha'}:
+                _write_log(job_id, 'process', f"SCRAPER state {state}: {block}")
+
+        review_dir = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id)
+        os.makedirs(review_dir, exist_ok=True)
+
+        try:
+            reviews_count = edge_runner.run(
+                link=job.get('canonical') or job.get('short_link') or link,
+                shopid=shopid or '',
+                itemid=itemid or '',
+                out_review_dir=review_dir,
+                base_dir=BASE_DIR,
+                force_copy=bool(job.get('force_copy_browser')),
+                progress=_scraper_progress,
+                log=_scraper_log,
+                state_cb=_scraper_state
+            )
+        except Exception as e:
+            job['phase'] = 'error'
+            job['error'] = f'scraper failed: {e}'
+            _write_log(job_id, 'process', f"ERROR scraper failed: {e}")
+            return
+
+        _write_log(job_id, 'process', 'SCRAPER finished (compat)')
+        job['phase'] = 'done'
+        job['scraper_total'] = reviews_count
+        job['scraper_progress'] = reviews_count
+
+    thread = threading.Thread(target=scrape_only_job, args=(job_id,), daemon=True)
+    thread.start()
+    return jsonify({
+        'ok': True,
+        'job_id': job_id,
+        'message': 'Scrape-only job started',
+        'product_id': norm_meta.get('product_id'),
+        'canonical': norm_meta.get('canonical'),
+        'short_link': norm_meta.get('short')
+    })
 
 
 @bp.route('/analyze/reanalyze', methods=['POST'])

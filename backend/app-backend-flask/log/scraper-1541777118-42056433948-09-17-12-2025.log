@@ -1,0 +1,30 @@
+[2025-12-17T02:06:07.018078] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T02:06:07.018296] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T02:06:07.018323] SCRAPER initializing Edge driver for Linux
+[2025-12-17T02:06:07.802630] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T02:06:35.106270] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T02:06:44.660786] SCRAPER product tab detected; proceeding
+[2025-12-17T02:06:44.664014] SCRAPER fetch product data
+[2025-12-17T02:06:48.151847] SCRAPER fetch comments
+[2025-12-17T02:06:49.071465] SCRAPER page 1: collected 20/808
+[2025-12-17T02:06:49.877793] SCRAPER page 2: collected 40/808
+[2025-12-17T02:06:50.729974] SCRAPER page 3: collected 60/808
+[2025-12-17T02:06:51.492612] SCRAPER page 4: collected 80/808
+[2025-12-17T02:06:52.455321] SCRAPER page 5: collected 100/808
+[2025-12-17T02:06:53.385904] SCRAPER page 6: collected 120/808
+[2025-12-17T02:06:54.177808] SCRAPER page 7: collected 140/808
+[2025-12-17T02:06:54.937787] SCRAPER page 8: collected 160/808
+[2025-12-17T02:06:55.687534] SCRAPER page 9: collected 180/808
+[2025-12-17T02:06:56.505811] SCRAPER page 10: collected 200/808
+[2025-12-17T02:06:57.244285] SCRAPER page 11: collected 220/808
+[2025-12-17T02:06:57.970311] SCRAPER page 12: collected 240/808
+[2025-12-17T02:06:58.687552] SCRAPER page 13: collected 260/808
+[2025-12-17T02:06:59.465739] SCRAPER page 14: collected 280/808
+[2025-12-17T02:07:00.189456] SCRAPER page 15: collected 300/808
+[2025-12-17T02:07:00.966292] SCRAPER page 16: collected 320/808
+[2025-12-17T02:07:01.668779] SCRAPER page 17: collected 340/808
+[2025-12-17T02:07:02.451211] SCRAPER page 18: collected 360/808
+[2025-12-17T02:07:03.325639] SCRAPER page 19: collected 380/808
+[2025-12-17T02:07:04.127913] SCRAPER page 20: collected 400/808
+[2025-12-17T02:07:04.785799] SCRAPER page 21: collected 404/808
+[2025-12-17T02:07:04.920763] SCRAPER finished; total 404 reviews saved

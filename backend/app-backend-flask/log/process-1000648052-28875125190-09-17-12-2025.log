@@ -1,0 +1,19 @@
+[2025-12-17T02:00:54.378799] START scrape-only job (compat) for link: https://shopee.co.id/product/1000648052/28875125190
+[2025-12-17T02:01:23.639830] SCRAPER finished (compat)
+[2025-12-17T02:01:26.024430] START analyze-only job for product 1000648052-28875125190
+[2025-12-17T02:01:26.031588] ANALYSIS 5% :: init: resolve input
+[2025-12-17T02:01:26.037713] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T02:01:26.044912] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T02:01:26.057393] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T02:01:26.064710] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T02:01:26.113532] ANALYSIS 90% :: [05] trust score
+[2025-12-17T02:01:26.145162] ANALYSIS 98% :: [06] summarize
+[2025-12-17T02:01:26.151387] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T02:01:26.151517] ANALYSIS 100% :: done
+[2025-12-17T02:01:26.151550] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1000648052-28875125190/indobert
+[2025-12-17T02:01:26.151571] Merging analysis results to reviews...
+[2025-12-17T02:01:26.179787] Analysis results merged successfully
+[2025-12-17T02:01:26.609463] Laravel ingest accepted (HTTP 200)
+[2025-12-17T02:01:26.609689] Laravel ingest immediate inserted=12
+[2025-12-17T02:01:26.868106] Laravel poll: count_reviews=12 status=waiting-db
+[2025-12-17T02:01:26.868550] Laravel sync succeeded

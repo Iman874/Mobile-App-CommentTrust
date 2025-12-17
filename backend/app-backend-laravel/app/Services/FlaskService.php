@@ -19,11 +19,12 @@ class FlaskService
     /**
      * Start full analysis (scrape + analyze)
      */
-    public function analyzeFullUrl(string $productUrl): array
+    public function analyzeFullUrl(string $productUrl, int $userId = null): array
     {
         return $this->post('/api/input/link', [
             'link' => $productUrl,
-            'force_copy_browser' => false
+            'force_copy_browser' => false,
+            'user_id' => $userId,
         ]);
     }
 
@@ -32,7 +33,8 @@ class FlaskService
      */
     public function getJobStatus(string $jobId): array
     {
-        return $this->get("/api/job/{$jobId}");
+        // Flask exposes job status at /api/status/{jobId}
+        return $this->get("/api/status/{$jobId}");
     }
 
     /**
@@ -91,19 +93,22 @@ class FlaskService
     /**
      * Get scrape-only job
      */
-    public function scrapeOnly(string $productUrl): array
+    public function scrapeOnly(string $productUrl, int $userId = null): array
     {
         return $this->post('/api/scrape/start', [
-            'link' => $productUrl
+            'link' => $productUrl,
+            'user_id' => $userId,
         ]);
     }
 
     /**
      * Get analysis-only job (from existing scraped data)
      */
-    public function analyzeOnly(string $productId): array
+    public function analyzeOnly(string $productId, int $userId = null): array
     {
-        return $this->post("/api/analyze/{$productId}", []);
+        return $this->post("/api/analyze/{$productId}", [
+            'user_id' => $userId,
+        ]);
     }
 
     /**

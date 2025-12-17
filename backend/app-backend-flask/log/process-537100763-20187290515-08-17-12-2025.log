@@ -1,0 +1,18 @@
+[2025-12-17T01:26:30.074543] START scrape-only job (compat) for link: https://shopee.co.id/PC-GAMING-DESIGN-AMD-RYZEN-5-5600G-5600GT-5500GT-4600G-SSD-NVME-1TB-HDD-500GB-LED-24-inch-Gaming-i.537100763.20187290515
+[2025-12-17T01:27:17.719147] SCRAPER finished (compat)
+[2025-12-17T01:30:13.487759] REANALYZE request for product 537100763-20187290515
+[2025-12-17T01:30:13.493076] [5%] init: resolve input
+[2025-12-17T01:30:13.541802] [10%] [01] preprocess
+[2025-12-17T01:30:13.552357] [20%] [01b] tokenize
+[2025-12-17T01:30:13.567475] [40%] [03] sentiment
+[2025-12-17T01:30:13.583656] [70%] [04] fake detect
+[2025-12-17T01:30:13.642383] [90%] [05] trust score
+[2025-12-17T01:30:13.680315] [98%] [06] summarize
+[2025-12-17T01:30:13.695421] [99%] [07] tagging comments
+[2025-12-17T01:30:13.696456] [100%] done
+[2025-12-17T01:30:13.696557] Pipeline completed, output: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/537100763-20187290515/indobert
+[2025-12-17T01:30:13.904009] Analysis results merged successfully
+[2025-12-17T01:30:13.950922] Tagged 596 reviews
+[2025-12-17T01:30:14.064616] Saved tag statistics: {"Kualitas Bagus": 62, "Respon Lambat": 41, "Pengiriman Buruk": 40, "Puas": 18, "Masalah Penjual": 16, "Direkomendasikan": 11, "Harga": 11, "Harga Murah": 5, "Kualitas Buruk": 4, "Barang Rusak": 3, "Barang Tidak Sesuai": 2, "Akan Beli Lagi": 2, "Senang": 2, "Masalah Ukuran": 1, "Tidak Berfungsi": 1, "Layanan Customer Service": 1, "Harga Mahal": 1}
+[2025-12-17T01:30:14.072438] Saved tagged reviews CSV: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/537100763-20187290515/indobert/review_tagged.csv
+[2025-12-17T01:30:14.072624] REANALYZE finished successfully

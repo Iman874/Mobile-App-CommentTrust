@@ -1,0 +1,21 @@
+[2025-12-17T01:55:47.167630] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T01:55:47.167692] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T01:55:47.167711] SCRAPER initializing Edge driver for Linux
+[2025-12-17T01:55:48.465400] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T01:56:00.104084] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T01:56:10.456351] SCRAPER product tab detected; proceeding
+[2025-12-17T01:56:10.456649] SCRAPER fetch product data
+[2025-12-17T01:56:17.184378] SCRAPER fetch comments
+[2025-12-17T01:56:22.346793] SCRAPER page 1: collected 20/476
+[2025-12-17T01:56:26.171236] SCRAPER page 2: collected 40/476
+[2025-12-17T01:56:27.026485] SCRAPER page 3: collected 60/476
+[2025-12-17T01:56:27.642512] SCRAPER page 4: collected 80/476
+[2025-12-17T01:56:28.466062] SCRAPER page 5: collected 100/476
+[2025-12-17T01:56:29.103910] SCRAPER page 6: collected 120/476
+[2025-12-17T01:56:29.595910] SCRAPER page 7: collected 140/476
+[2025-12-17T01:56:30.084089] SCRAPER page 8: collected 160/476
+[2025-12-17T01:56:30.612707] SCRAPER page 9: collected 180/476
+[2025-12-17T01:56:31.108764] SCRAPER page 10: collected 200/476
+[2025-12-17T01:56:31.652419] SCRAPER page 11: collected 220/476
+[2025-12-17T01:56:32.215744] SCRAPER page 12: collected 238/476
+[2025-12-17T01:56:32.237360] SCRAPER finished; total 238 reviews saved

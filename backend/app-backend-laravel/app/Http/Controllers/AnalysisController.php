@@ -30,10 +30,14 @@ class AnalysisController extends Controller
         ]);
 
         $user = $request->user();
+        $userId = $user ? $user->id : null;
+        
+        \Illuminate\Support\Facades\Log::info('AnalysisController::startFullAnalysis user_id=' . $userId);
+        
         $productUrl = $request->product_url;
 
         // Call Flask to start scraping + analysis
-        $flaskResponse = $this->flaskService->analyzeFullUrl($productUrl);
+        $flaskResponse = $this->flaskService->analyzeFullUrl($productUrl, $userId);
 
         if (!$flaskResponse['ok'] ?? false) {
             return response()->json([
@@ -301,21 +305,47 @@ class AnalysisController extends Controller
      */
     public function scrapeOnly(Request $request): JsonResponse
     {
+        // Accept multiple aliases for URL for frontend compatibility
         $request->validate([
-            'product_url' => 'required|url',
+            'product_url' => 'nullable|url',
+            'url' => 'nullable|url',
+            'source' => 'nullable|string',
         ]);
 
         $user = $request->user();
-        $productUrl = $request->product_url;
+        $userId = $user ? $user->id : null;
+        
+        \Illuminate\Support\Facades\Log::info('AnalysisController::scrapeOnly user_id=' . $userId);
+        
+        $productUrl = $request->product_url ?? $request->url;
+        if (!$productUrl) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Product URL is required',
+                'error' => 'Missing product_url or url field'
+            ], 422);
+        }
 
         // Call Flask to scrape only
-        $flaskResponse = $this->flaskService->scrapeOnly($productUrl);
+        $flaskResponse = $this->flaskService->scrapeOnly($productUrl, $userId);
 
-        if (!$flaskResponse['ok'] ?? false) {
+        if (!($flaskResponse['ok'] ?? false)) {
+            $status = (int)($flaskResponse['status'] ?? 400);
+            $msg = $flaskResponse['error'] ?? ($flaskResponse['message'] ?? 'Failed to start scraping');
+            // If Flask indicates 404, propagate it to help UI/UX
+            if ($status === 404) {
+                return response()->json([
+                    'ok' => false,
+                    'message' => 'Product not found or unsupported URL',
+                    'error' => $msg,
+                    'details' => $flaskResponse
+                ], 404);
+            }
             return response()->json([
                 'ok' => false,
                 'message' => 'Failed to start scraping',
-                'error' => $flaskResponse['error'] ?? 'Unknown error'
+                'error' => $msg,
+                'details' => $flaskResponse
             ], 400);
         }
 
@@ -323,7 +353,10 @@ class AnalysisController extends Controller
             'ok' => true,
             'job_id' => $flaskResponse['job_id'] ?? null,
             'message' => 'Scraping started',
-            'product_url' => $productUrl
+            'product_url' => $productUrl,
+            'product_id' => $flaskResponse['product_id'] ?? null,
+            'canonical' => $flaskResponse['canonical'] ?? null,
+            'short_link' => $flaskResponse['short_link'] ?? null
         ]);
     }
 
@@ -334,9 +367,12 @@ class AnalysisController extends Controller
     public function analyzeOnly(Request $request, string $productId): JsonResponse
     {
         $user = $request->user();
+        $userId = $user ? $user->id : null;
+        
+        \Illuminate\Support\Facades\Log::info('AnalysisController::analyzeOnly user_id=' . $userId . ' product=' . $productId);
 
         // Validate user has access (or product exists in Flask)
-        $flaskResponse = $this->flaskService->analyzeOnly($productId);
+        $flaskResponse = $this->flaskService->analyzeOnly($productId, $userId);
 
         if (!$flaskResponse['ok'] ?? false) {
             return response()->json([
