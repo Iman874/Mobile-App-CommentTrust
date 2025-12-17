@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Comment;
 use App\Models\Tag;
+use App\Services\TagService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -13,6 +14,13 @@ use Carbon\Carbon;
 
 class CommentTrustController extends Controller
 {
+    protected TagService $tagService;
+
+    public function __construct(TagService $tagService = null)
+    {
+        $this->tagService = $tagService ?? new TagService();
+    }
+
     private function flaskBase(): string
     {
         return rtrim(env('FLASK_BASE_URL', 'http://127.0.0.1:5001/api'), '/');
@@ -405,6 +413,48 @@ class CommentTrustController extends Controller
                 'tags_found_total' => $tagsFoundCount,
                 'comments_with_tags_queue_items' => count($tagsQueue),
             ]);
+
+            // Process tags_csv dan tag_statistics dari Flask (NEW - Comment Tagger Integration)
+            try {
+                $tagsCsvData = $request->input('tags_csv', []);
+                $tagStatistics = $request->input('tag_statistics', []);
+
+                if (!empty($tagsCsvData) || !empty($tagStatistics)) {
+                    Log::info("Processing tags from Flask", [
+                        'product_id' => $productKey,
+                        'tags_csv_count' => count($tagsCsvData),
+                        'tag_statistics_count' => count($tagStatistics),
+                    ]);
+
+                    // Get product yang baru di-insert
+                    $product = Product::where('product_key', $productKey)->first();
+
+                    if ($product) {
+                        // Process tags CSV data jika ada
+                        if (!empty($tagsCsvData)) {
+                            $tagsProcessed = $this->tagService->processTagsCsvData($tagsCsvData, $product);
+                            Log::info("Tags CSV processed", [
+                                'product_id' => $productKey,
+                                'stats' => $tagsProcessed,
+                            ]);
+                        }
+
+                        // Update product dengan tag statistics
+                        if (!empty($tagStatistics)) {
+                            $this->tagService->updateProductTagStatistics($product, $tagStatistics);
+                        } else {
+                            // Calculate jika tidak disediakan oleh Flask
+                            $this->tagService->updateProductTagStatistics($product);
+                        }
+                    }
+                }
+            } catch (\Exception $e) {
+                Log::warning("Error processing tags from Flask", [
+                    'product_id' => $productKey,
+                    'error' => $e->getMessage(),
+                ]);
+                // Don't fail the whole ingest if tags processing fails
+            }
         });
 
         return response()->json(['ok' => true, 'inserted' => $inserted, 'product_id' => $productKey]);

@@ -1,0 +1,19 @@
+[2025-12-17T04:58:49.151526] START scrape-only job (compat) for link: https://shopee.co.id/Samsung-Sodimm-Ddr4-16GB-Pc21300-2666-Garansi-Lifetime-i.95959099.3249518513
+[2025-12-17T04:59:42.540378] SCRAPER finished (compat)
+[2025-12-17T04:59:43.935026] START analyze-only job for product 95959099-3249518513
+[2025-12-17T04:59:43.936222] ANALYSIS 5% :: init: resolve input
+[2025-12-17T04:59:43.955185] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T04:59:43.961052] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T04:59:43.968795] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T04:59:43.975737] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T04:59:44.000949] ANALYSIS 90% :: [05] trust score
+[2025-12-17T04:59:44.039417] ANALYSIS 98% :: [06] summarize
+[2025-12-17T04:59:44.055202] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T04:59:44.055525] ANALYSIS 100% :: done
+[2025-12-17T04:59:44.055612] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/95959099-3249518513/indobert
+[2025-12-17T04:59:44.055671] Merging analysis results to reviews...
+[2025-12-17T04:59:44.271172] Analysis results merged successfully
+[2025-12-17T04:59:45.060427] Laravel ingest accepted (HTTP 200)
+[2025-12-17T04:59:45.060514] Laravel ingest immediate inserted=382
+[2025-12-17T04:59:45.449258] Laravel poll: count_reviews=382 status=waiting-db
+[2025-12-17T04:59:45.449681] Laravel sync succeeded

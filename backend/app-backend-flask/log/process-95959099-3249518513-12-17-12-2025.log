@@ -1,0 +1,38 @@
+[2025-12-17T05:10:35.182960] START scrape-only job (compat) for link: https://shopee.co.id/Samsung-Sodimm-Ddr4-16GB-Pc21300-2666-Garansi-Lifetime-i.95959099.3249518513
+[2025-12-17T05:11:42.170457] SCRAPER finished (compat)
+[2025-12-17T05:11:45.872743] START analyze-only job for product 95959099-3249518513
+[2025-12-17T05:11:45.873540] ANALYSIS 5% :: init: resolve input
+[2025-12-17T05:11:45.917529] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T05:11:45.951315] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T05:11:45.959230] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T05:11:45.974698] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T05:11:46.029269] ANALYSIS 90% :: [05] trust score
+[2025-12-17T05:11:46.043329] ANALYSIS 98% :: [06] summarize
+[2025-12-17T05:11:46.049434] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T05:11:46.049882] ANALYSIS 100% :: done
+[2025-12-17T05:11:46.050449] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/95959099-3249518513/indobert
+[2025-12-17T05:11:46.050511] Merging analysis results to reviews...
+[2025-12-17T05:11:46.296375] Analysis results merged successfully
+[2025-12-17T05:11:47.907693] Laravel ingest accepted (HTTP 200)
+[2025-12-17T05:11:47.908230] Laravel ingest immediate inserted=382
+[2025-12-17T05:11:48.433636] Laravel poll: count_reviews=382 status=waiting-db
+[2025-12-17T05:11:48.434759] Laravel sync succeeded
+[2025-12-17T05:18:53.964106] START scrape-only job (compat) for link: https://shopee.co.id/Samsung-Sodimm-Ddr4-16GB-Pc21300-2666-Garansi-Lifetime-i.95959099.3249518513
+[2025-12-17T05:19:57.232225] SCRAPER finished (compat)
+[2025-12-17T05:19:57.732743] START analyze-only job for product 95959099-3249518513
+[2025-12-17T05:19:57.735806] ANALYSIS 5% :: init: resolve input
+[2025-12-17T05:19:57.769855] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T05:19:57.788149] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T05:19:57.802734] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T05:19:57.822517] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T05:19:57.854453] ANALYSIS 90% :: [05] trust score
+[2025-12-17T05:19:57.869709] ANALYSIS 98% :: [06] summarize
+[2025-12-17T05:19:57.889228] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T05:19:57.890138] ANALYSIS 100% :: done
+[2025-12-17T05:19:57.890263] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/95959099-3249518513/indobert
+[2025-12-17T05:19:57.890333] Merging analysis results to reviews...
+[2025-12-17T05:19:58.207941] Analysis results merged successfully
+[2025-12-17T05:19:59.170899] Laravel ingest accepted (HTTP 200)
+[2025-12-17T05:19:59.171006] Laravel ingest immediate inserted=382
+[2025-12-17T05:19:59.539359] Laravel poll: count_reviews=382 status=waiting-db
+[2025-12-17T05:19:59.541465] Laravel sync succeeded

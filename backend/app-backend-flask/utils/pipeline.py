@@ -403,6 +403,65 @@ def ensure_review_csv(src_dir: str, out_dir: str, product_id: str):
     return csv_path
 
 
+def step_tags_csv(trust_csv: str, review_json: str, out_dir: str) -> str:
+    """
+    Create a CSV file with tags extracted from comments.
+    Merges sentiment/trust data with tags from review.json.
+    Returns path to tags CSV.
+    """
+    try:
+        from utils.comment_tagger import tag_comments
+    except ImportError:
+        # Fallback: try direct import
+        from comment_tagger import tag_comments
+    
+    # Load trust/sentiment/fake data from CSV
+    df_analysis = pd.read_csv(trust_csv, encoding='utf-8-sig')
+    
+    # Load reviews with tags from JSON
+    reviews = []
+    if os.path.exists(review_json):
+        try:
+            with open(review_json, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                reviews = data if isinstance(data, list) else []
+        except Exception:
+            pass
+    
+    # If reviews don't have tags yet, apply tagging
+    if reviews and not (reviews and 'tags' in reviews[0]):
+        reviews = tag_comments(reviews, source_field='comment')
+    
+    # Build output dataframe with tags
+    rows = []
+    for idx, review in enumerate(reviews):
+        row = {
+            'index': idx,
+            'comment': review.get('comment', ''),
+            'tags': '|'.join(review.get('tags', [])),  # Join tags with pipe separator
+            'sentiment': review.get('sentiment', 'neutral'),
+            'is_fake': review.get('is_fake', False),
+            'trust_score': review.get('trust_score', 0.0)
+        }
+        rows.append(row)
+    
+    df_tags = pd.DataFrame(rows)
+    
+    # Merge with analysis data if available
+    if len(df_analysis) > 0 and len(df_tags) > 0:
+        # Ensure both have matching indices
+        if len(df_analysis) == len(df_tags):
+            df_tags['sentiment'] = df_analysis.get('sentiment', df_tags['sentiment'])
+            df_tags['sentiment_confidence'] = df_analysis.get('sentiment_confidence', 0.0)
+            df_tags['is_fake'] = df_analysis.get('fake_pred', df_tags['is_fake']).astype(bool)
+            df_tags['fake_confidence'] = df_analysis.get('fake_confidence', df_analysis.get('fake_score', 0.0))
+            df_tags['trust_score'] = df_analysis.get('trust_score', df_tags['trust_score'])
+    
+    out_csv = os.path.join(out_dir, 'review_tags.csv')
+    df_tags.to_csv(out_csv, index=False, encoding='utf-8-sig')
+    return out_csv
+
+
 def run_pipeline(source_dir: str, product_id: str, backend: str = "auto", progress=None):
     """Run E2E pipeline using inputs in source_dir. Returns out_dir."""
     # separate raw review directory and analysis output
@@ -412,7 +471,7 @@ def run_pipeline(source_dir: str, product_id: str, backend: str = "auto", progre
     try:
         for fname in [
             "review_clean.csv","review_tokens.csv","review_sentiment.csv",
-            "review_fake.csv","review_trust.csv","summary.json","product_trust.json"
+            "review_fake.csv","review_trust.csv","review_tags.csv","summary.json","product_trust.json"
         ]:
             p = os.path.join(out_dir, fname)
             if os.path.exists(p):
@@ -434,7 +493,7 @@ def run_pipeline(source_dir: str, product_id: str, backend: str = "auto", progre
     if progress: progress(98, "[06] summarize")
     step_summarize(trust_csv, out_dir)
     
-    # Step 7: Apply tagging to reviews in review.json
+    # Step 7: Apply tagging to reviews in review.json and create tags CSV
     if progress: progress(99, "[07] tagging comments")
     try:
         from utils.comment_tagger import tag_comments, get_tag_statistics
@@ -457,6 +516,9 @@ def run_pipeline(source_dir: str, product_id: str, backend: str = "auto", progre
             stats_file = os.path.join(review_dir, 'tag_statistics.json')
             with open(stats_file, 'w', encoding='utf-8') as f:
                 json.dump(tag_stats, f, ensure_ascii=False, indent=2)
+            
+            # Create tags CSV with all tag data
+            tags_csv = step_tags_csv(trust_csv, review_file, out_dir)
     except Exception as e:
         # Tagging is optional, don't fail pipeline if it errors
         pass

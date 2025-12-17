@@ -430,6 +430,29 @@ def _notify_and_wait_laravel(job: dict, product_id: str, force: bool = False, ma
     product_name = product_data.get('name') or product_data.get('name_prefix') or 'Unknown Product'
     shop_name = product_data.get('shop', {}).get('name') if isinstance(product_data.get('shop'), dict) else ''
     
+    # Load tags data if available
+    tags_csv = None
+    tag_stats = {}
+    tag_stats_file = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id, 'tag_statistics.json')
+    if os.path.exists(tag_stats_file):
+        try:
+            with open(tag_stats_file, 'r', encoding='utf-8') as f:
+                tag_stats = json.load(f)
+            _write_general_log(f'Loaded tag statistics for {product_id}: {tag_stats}')
+        except Exception as e:
+            _write_general_log(f'Error loading tag statistics: {e}')
+    
+    # Load tags CSV if available
+    tags_csv_file = os.path.join(BASE_DIR, 'output', 'comment', product_id, 'indobert', 'review_tags.csv')
+    if os.path.exists(tags_csv_file):
+        try:
+            import pandas as pd
+            tags_df = pd.read_csv(tags_csv_file, encoding='utf-8-sig')
+            tags_csv = tags_df.to_dict(orient='records')
+            _write_general_log(f'Loaded tags CSV for {product_id}: {len(tags_csv)} records')
+        except Exception as e:
+            _write_general_log(f'Error loading tags CSV: {e}')
+    
     payload = json.dumps({
         'product_id': product_id,
         'force': bool(force),
@@ -440,8 +463,10 @@ def _notify_and_wait_laravel(job: dict, product_id: str, force: bool = False, ma
         'product_name': product_name,
         'shop_name': shop_name,
         'product_data': product_data,
+        'tag_statistics': tag_stats,
+        'tags_csv': tags_csv,
     }).encode('utf-8')
-    _write_general_log(f'_notify_and_wait_laravel: payload user_id={job.get("user_id")} product_id={product_id}')
+    _write_general_log(f'_notify_and_wait_laravel: payload user_id={job.get("user_id")} product_id={product_id} has_tags={bool(tags_csv)}')
     for i in range(max_post_retries):
         job['laravel_sync_status'] = f'sending({i+1}/{max_post_retries})'
         job['laravel_sync_progress'] = 10 + int(10*i)
@@ -797,6 +822,23 @@ def result_summary(product_id):
     bdir = _backend_dir(product_id)
     data = _json_load(os.path.join(bdir or '', 'summary.json'))
     return jsonify({'product_id': product_id, 'summary': data})
+
+@bp.route('/result/<product_id>/tags', methods=['GET'])
+def result_tags(product_id):
+    """Get comment tags for a product."""
+    bdir = _backend_dir(product_id)
+    # Load tags from CSV if available
+    tags_csv_data = _csv_to_json_list(os.path.join(bdir or '', 'review_tags.csv'))
+    
+    # Load tag statistics if available
+    tag_stats_file = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id, 'tag_statistics.json')
+    tag_stats = _json_load(tag_stats_file) or {}
+    
+    return jsonify({
+        'product_id': product_id,
+        'tags': tags_csv_data,
+        'tag_statistics': tag_stats
+    })
 
 @bp.route('/health', methods=['GET'])
 def health():
