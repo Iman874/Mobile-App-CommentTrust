@@ -230,49 +230,29 @@
         btn.textContent = '🔄 Logging in...';
 
         try {
-            if (selectedGuestId === null) {
-                // Create new guest account
-                const response = await fetch('/api/guest/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
-                    },
-                    body: JSON.stringify({})
-                });
+            const payload = selectedGuestId === null ? {} : { guest_id: selectedGuestId };
 
-                const data = await response.json();
+            const response = await fetch('/guest-login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
+                },
+                body: JSON.stringify(payload)
+            });
 
-                if (!data.ok) {
-                    throw new Error(data.message || 'Failed to create guest account');
-                }
+            const data = await response.json();
 
-                // Store token and redirect
-                localStorage.setItem('api_token', data.api_token);
-                localStorage.setItem('user_id', data.user.id);
-                window.location.href = '/dashboard';
-            } else {
-                // Login to existing guest account
-                const response = await fetch('/api/guest/login-as-existing', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
-                    },
-                    body: JSON.stringify({ guest_id: selectedGuestId })
-                });
-
-                const data = await response.json();
-
-                if (!data.ok) {
-                    throw new Error(data.message || 'Failed to login as guest');
-                }
-
-                // Store token and redirect
-                localStorage.setItem('api_token', data.api_token);
-                localStorage.setItem('user_id', data.user.id);
-                window.location.href = '/dashboard';
+            if (!data.ok) {
+                throw new Error(data.message || 'Failed to login as guest');
             }
+
+            // Store token and redirect (web session already created server-side)
+            if (data.api_token) {
+                localStorage.setItem('api_token', data.api_token);
+            }
+            window.location.href = data.redirect || '/dashboard';
         } catch (error) {
             console.error('Error during guest login:', error);
             alert('Login failed: ' + error.message);

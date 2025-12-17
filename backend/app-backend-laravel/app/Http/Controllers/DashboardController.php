@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
@@ -12,40 +13,65 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        $user = Auth::user();
-        
-        // Redirect admin to admin dashboard
-        if ($user->role > 0) {
-            return redirect()->route('admin.dashboard');
+        try {
+            $user = Auth::user();
+
+            Log::info('DashboardController::index start', [
+                'user_id' => $user?->id,
+                'role' => $user?->role,
+                'is_guest' => $user?->is_guest,
+                'api_token_present' => $user?->api_token ? true : false,
+                'token_expires_at' => $user?->token_expires_at,
+                'token_remaining_seconds' => $user?->getTokenRemainingSeconds(),
+                'session_api_token' => $request->session()->get('api_token'),
+            ]);
+            
+            // Redirect admin to admin dashboard
+            if ($user->role > 0) {
+                return redirect()->route('admin.dashboard');
+            }
+            
+            $isGuest = $user->is_guest;
+            $tokenStatus = null;
+            
+            if ($isGuest) {
+                $tokenStatus = [
+                    'is_valid' => $user->isTokenValid(),
+                    'is_expired' => $user->isTokenExpired(),
+                    'expires_at' => $user->token_expires_at,
+                    'expires_in_seconds' => $user->getTokenRemainingSeconds(),
+                ];
+            }
+            
+            // Count products and comments for this user
+            $productIds = $user->products()->pluck('id');
+            $productCount = $productIds->count();
+            $commentCount = \App\Models\Comment::whereIn('product_id', $productIds)->count();
+
+            Log::info('DashboardController::index data', [
+                'user_id' => $user->id,
+                'product_ids_count' => $productCount,
+                'comment_count' => $commentCount,
+            ]);
+            
+            return view('guest.dashboard', [
+                'user' => $user,
+                'isGuest' => $isGuest,
+                'tokenStatus' => $tokenStatus,
+                'products' => $user->products()->latest()->paginate(10),
+                'productCount' => $productCount,
+                'commentCount' => $commentCount,
+            ]);
+        } catch (\Throwable $e) {
+            Log::error('DashboardController::index error', [
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return back()->withErrors([
+                'error' => 'Dashboard error: ' . $e->getMessage(),
+            ]);
         }
-        
-        $isGuest = $user->is_guest;
-        $tokenStatus = null;
-        
-        if ($isGuest) {
-            $tokenStatus = [
-                'is_valid' => $user->isTokenValid(),
-                'is_expired' => $user->isTokenExpired(),
-                'expires_at' => $user->token_expires_at,
-                'expires_in_seconds' => $user->getTokenRemainingSeconds(),
-            ];
-        }
-        
-        // Count products and comments for this user
-        $productCount = $user->products()->count();
-        $commentCount = \App\Models\Comment::whereIn(
-            'product_id',
-            $user->products()->pluck('id')
-        )->count();
-        
-        return view('guest.dashboard', [
-            'user' => $user,
-            'isGuest' => $isGuest,
-            'tokenStatus' => $tokenStatus,
-            'products' => $user->products()->latest()->paginate(10),
-            'productCount' => $productCount,
-            'commentCount' => $commentCount,
-        ]);
     }
 
     /**

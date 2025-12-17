@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class GuestAuthController extends Controller
 {
@@ -23,6 +24,12 @@ class GuestAuthController extends Controller
     public function loginAsGuest(Request $request): JsonResponse
     {
         try {
+            Log::info('Guest login request received', [
+                'device_id' => $request->input('device_id'),
+                'ip' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+            ]);
+
             // Generate unique guest username format:
             // guest-YYYY-MM-DD-HH-am/pm-increment
             $now = Carbon::now();
@@ -48,6 +55,10 @@ class GuestAuthController extends Controller
                     ->first();
                 
                 if ($existingGuest && !$existingGuest->isTokenExpired()) {
+                    Log::info('Reusing existing guest session', [
+                        'guest_id' => $existingGuest->id,
+                        'expires_at' => $existingGuest->token_expires_at,
+                    ]);
                     // Return existing valid guest token
                     return response()->json([
                         'ok' => true,
@@ -77,6 +88,12 @@ class GuestAuthController extends Controller
             
             // Generate API token with 1-day expiration
             $plainToken = $guestUser->generateApiToken('guest-auto', true);
+
+            Log::info('Guest account created', [
+                'guest_id' => $guestUser->id,
+                'email' => $guestUser->email,
+                'token_expires_at' => $guestUser->token_expires_at,
+            ]);
             
             return response()->json([
                 'ok' => true,
@@ -93,6 +110,10 @@ class GuestAuthController extends Controller
                 'expires_in_seconds' => $guestUser->getTokenRemainingSeconds(),
             ], 201);
         } catch (\Exception $e) {
+            Log::error('Guest login failed', [
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
             return response()->json([
                 'ok' => false,
                 'message' => 'Failed to create guest account',
@@ -293,6 +314,12 @@ class GuestAuthController extends Controller
                 'guest_id' => 'required|integer|exists:users,id',
             ]);
 
+            Log::info('Guest login-as-existing request received', [
+                'guest_id' => $request->input('guest_id'),
+                'ip' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+            ]);
+
             $guestId = $request->input('guest_id');
             
             // Fetch the guest user
@@ -302,6 +329,9 @@ class GuestAuthController extends Controller
                 ->first();
 
             if (!$guestUser) {
+                Log::warning('Guest login-as-existing failed: guest not found or inactive', [
+                    'guest_id' => $guestId,
+                ]);
                 return response()->json([
                     'ok' => false,
                     'message' => 'Guest account not found or inactive',
@@ -312,9 +342,17 @@ class GuestAuthController extends Controller
             if ($guestUser->isTokenExpired()) {
                 // Refresh the token with 1-day expiration
                 $plainToken = $guestUser->generateApiToken('guest-refreshed', true);
+                Log::info('Guest token refreshed during login', [
+                    'guest_id' => $guestUser->id,
+                    'expires_at' => $guestUser->token_expires_at,
+                ]);
             } else {
                 // Token still valid, retrieve existing
                 $plainToken = $this->getPlainToken($guestUser);
+                Log::info('Guest token reused during login', [
+                    'guest_id' => $guestUser->id,
+                    'expires_at' => $guestUser->token_expires_at,
+                ]);
             }
 
             return response()->json([
@@ -332,12 +370,20 @@ class GuestAuthController extends Controller
                 'expires_in_seconds' => $guestUser->getTokenRemainingSeconds(),
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
+            Log::warning('Guest login-as-existing validation failed', [
+                'errors' => $e->errors(),
+            ]);
             return response()->json([
                 'ok' => false,
                 'message' => 'Validation failed',
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
+            Log::error('Guest login-as-existing failed', [
+                'guest_id' => $request->input('guest_id'),
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
             return response()->json([
                 'ok' => false,
                 'message' => 'Failed to login as guest',

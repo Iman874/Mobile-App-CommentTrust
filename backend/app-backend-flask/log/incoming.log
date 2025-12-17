@@ -99,3 +99,7 @@
 [2025-12-17T02:07:09.594580] RESULT all 1541777118-42056433948 counts review_raw=0 sentiment=404 trust=404 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1541777118-42056433948/indobert
 [2025-12-17T02:07:09.618385] SANITIZE JSON 1541777118-42056433948 done
 [2025-12-17T02:07:09.817259] Notify Laravel ok 200: {"ok":true,"inserted":404,"product_id":"1541777118-42056433948"}
+[2025-12-17T02:38:02.594700] _notify_and_wait_laravel: payload user_id=11 product_id=170314189-22067861650
+[2025-12-17T02:38:02.855647] RESULT all 170314189-22067861650 counts review_raw=0 sentiment=1122 trust=1122 backend_dir=/home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/170314189-22067861650/indobert
+[2025-12-17T02:38:02.918153] SANITIZE JSON 170314189-22067861650 done
+[2025-12-17T02:38:03.558613] Notify Laravel ok 200: {"ok":true,"inserted":1122,"product_id":"170314189-22067861650"}

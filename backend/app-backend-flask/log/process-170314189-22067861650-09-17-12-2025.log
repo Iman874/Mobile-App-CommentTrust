@@ -1,0 +1,19 @@
+[2025-12-17T02:36:45.323301] START scrape-only job (compat) for link: https://shopee.co.id/Lip-Balm-Pemerah-bibir-cowok-perokok-Produk-pemerah-bibir-cowok-Lipstik-pemerah-bibir-cowok-Lipbalm-Cowok-Glossmen-Lip-Serum-Pria-Lip-Balm-Bibir-Hitam-Jadi-Merah-MLH-L01-i.170314189.22067861650
+[2025-12-17T02:37:56.056709] SCRAPER finished (compat)
+[2025-12-17T02:38:01.107194] START analyze-only job for product 170314189-22067861650
+[2025-12-17T02:38:01.114459] ANALYSIS 5% :: init: resolve input
+[2025-12-17T02:38:01.210153] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T02:38:01.230585] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T02:38:01.255552] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T02:38:01.274929] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T02:38:01.594896] ANALYSIS 90% :: [05] trust score
+[2025-12-17T02:38:01.754439] ANALYSIS 98% :: [06] summarize
+[2025-12-17T02:38:01.795387] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T02:38:01.795719] ANALYSIS 100% :: done
+[2025-12-17T02:38:01.795821] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/170314189-22067861650/indobert
+[2025-12-17T02:38:01.795882] Merging analysis results to reviews...
+[2025-12-17T02:38:02.593813] Analysis results merged successfully
+[2025-12-17T02:38:03.558930] Laravel ingest accepted (HTTP 200)
+[2025-12-17T02:38:03.559003] Laravel ingest immediate inserted=1122
+[2025-12-17T02:38:03.938306] Laravel poll: count_reviews=1122 status=waiting-db
+[2025-12-17T02:38:03.938525] Laravel sync succeeded

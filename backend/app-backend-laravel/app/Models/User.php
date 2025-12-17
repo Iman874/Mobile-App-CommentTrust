@@ -112,7 +112,7 @@ class User extends Authenticatable
             return null;
         }
         
-        $remaining = $this->token_expires_at->diffInSeconds(now(), false);
+        $remaining = now()->diffInSeconds($this->token_expires_at, false);
         return max(0, $remaining);
     }
 
