@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentTrustController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\AnalysisController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestAuthController;
@@ -80,6 +81,22 @@ Route::middleware(['api_token', 'check_token_expiration'])->group(function () {
         Route::get('/{productId}/search', [CommentController::class, 'search']);   // Text search
         Route::get('/{productId}/stats', [CommentController::class, 'stats']);     // Comment statistics
     });
+
+    // ========================================================================
+    // Tags Management
+    // ========================================================================
+    Route::prefix('/tags')->group(function () {
+        Route::get('/', [TagController::class, 'index']);                         // List all tags
+        Route::post('/', [TagController::class, 'store']);                        // Create tag
+        Route::get('/stats/summary', [TagController::class, 'stats']);            // Tag statistics
+        Route::get('/by-category/{category}', [TagController::class, 'byCategory']);  // Tags by category
+        Route::get('/{tagSlug}/comments', [TagController::class, 'getTagComments']);  // Comments with tag
+        Route::put('/{tag}', [TagController::class, 'update']);                   // Update tag
+        Route::delete('/{tag}', [TagController::class, 'destroy']);               // Delete tag
+    });
+
+    // Get tags for a specific product
+    Route::get('/products/{productId}/tags', [TagController::class, 'getProductTags']);
 
     // ========================================================================
     // Analysis & Jobs

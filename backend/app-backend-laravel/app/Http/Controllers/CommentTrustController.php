@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Comment;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -15,6 +16,40 @@ class CommentTrustController extends Controller
     private function flaskBase(): string
     {
         return rtrim(env('FLASK_BASE_URL', 'http://127.0.0.1:5001/api'), '/');
+    }
+
+    /**
+     * Helper method untuk insert comments dan attach tags
+     */
+    private function _insertCommentsWithTags($buffer, $tagsQueue, $productKey)
+    {
+        // Insert comments dalam bulk
+        Comment::insert($buffer);
+        
+        // Attach tags untuk komentar yang memiliki tags
+        if (!empty($tagsQueue)) {
+            // Fetch komentar yang baru di-insert berdasarkan product_key
+            // karena bulk insert tidak mengembalikan IDs, kita fetch komentar terakhir
+            $comments = Comment::where('product_key', $productKey)
+                ->orderBy('id', 'desc')
+                ->limit(count($buffer))
+                ->get()
+                ->reverse()
+                ->values();
+            
+            foreach ($tagsQueue as $tagInfo) {
+                $index = $tagInfo['index'];
+                $tagNames = $tagInfo['tags'];
+                
+                if (isset($comments[$index])) {
+                    $comment = $comments[$index];
+                    // Sync tags untuk komentar ini
+                    if (is_array($tagNames)) {
+                        $comment->syncTagsByName($tagNames);
+                    }
+                }
+            }
+        }
     }
 
     public function ingest(Request $request)
@@ -190,6 +225,8 @@ class CommentTrustController extends Controller
             }
             $now = Carbon::now();
             $buffer = [];
+            $tagsQueue = []; // Queue for attaching tags after insert
+            
             foreach (($rows ?? []) as $r) {
                 // Normalize keys from different sources
                 $username = $r['username'] ?? $r['user'] ?? null;
@@ -209,8 +246,9 @@ class CommentTrustController extends Controller
                 $mismatch = isset($r['mismatch']) ? (bool)$r['mismatch'] : null;
                 $productLabel = $r['product_label'] ?? null;
                 $variantName = $r['variant_name'] ?? null;
-                $tags = $r['tags'] ?? null; // Expect Flask to send array of tag strings per comment
-                $buffer[] = [
+                $tags = $r['tags'] ?? null; // Flask sends array of tag strings per comment
+                
+                $commentData = [
                     'user_id' => $userId,
                     'product_id' => $product->id,
                     'product_key' => $productKey,
@@ -235,21 +273,35 @@ class CommentTrustController extends Controller
                     'mismatch' => $mismatch,
                     'product_label' => $productLabel,
                     'variant_name' => $variantName,
-                    'tags' => $tags,
+                    'tags' => $tags, // Store as JSON array in tags column
                     'extras' => null,
                     'created_at' => $now,
                     'updated_at' => $now,
                 ];
+                
+                $buffer[] = $commentData;
+                
+                // Queue tags untuk diproses setelah bulk insert
+                if (!empty($tags) && is_array($tags)) {
+                    $tagsQueue[] = [
+                        'index' => count($buffer) - 1,
+                        'tags' => $tags
+                    ];
+                }
+                
                 if (count($buffer) >= 1000) {
-                    Comment::insert($buffer);
+                    $this->_insertCommentsWithTags($buffer, $tagsQueue, $productKey);
                     $inserted += 1000;
                     $buffer = [];
+                    $tagsQueue = [];
                 }
             }
+            
             if (!empty($buffer)) {
-                Comment::insert($buffer);
+                $this->_insertCommentsWithTags($buffer, $tagsQueue, $productKey);
                 $inserted += count($buffer);
             }
+            
             Log::info("Ingested {$inserted} comments from source={$source} for product={$productKey}");
         });
 

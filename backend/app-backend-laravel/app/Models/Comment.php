@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Comment extends Model
 {
@@ -40,5 +41,48 @@ class Comment extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
+    }
+
+    /**
+     * Get all tags associated with this comment (many-to-many)
+     */
+    public function commentTags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'comment_tag')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Shortcut alias untuk commentTags
+     */
+    public function tags(): BelongsToMany
+    {
+        return $this->commentTags();
+    }
+
+    /**
+     * Attach multiple tags by name
+     */
+    public function attachTagsByName(array $tagNames, $category = null)
+    {
+        $tagIds = [];
+        foreach ($tagNames as $tagName) {
+            $tag = Tag::findOrCreateByName($tagName, $category);
+            $tagIds[] = $tag->id;
+        }
+        $this->commentTags()->syncWithoutDetaching($tagIds);
+    }
+
+    /**
+     * Sync tags by name (replace existing)
+     */
+    public function syncTagsByName(array $tagNames, $category = null)
+    {
+        $tagIds = [];
+        foreach ($tagNames as $tagName) {
+            $tag = Tag::findOrCreateByName($tagName, $category);
+            $tagIds[] = $tag->id;
+        }
+        $this->commentTags()->sync($tagIds);
     }
 }

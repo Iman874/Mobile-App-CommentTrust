@@ -1,0 +1,4 @@
+[2025-12-17T04:05:30.344915] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T04:05:30.345227] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T04:05:30.345716] SCRAPER initializing Edge driver for Linux
+[2025-12-17T04:05:34.468834] SCRAPER Edge driver initialized successfully on Linux
