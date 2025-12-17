@@ -1,0 +1,18 @@
+[2025-12-17T02:52:04.991720] START scrape-only job (compat) for link: https://shopee.co.id/RAM-KINGSTON-HYPER-X-DDR4-8GB-PC2666-LIFETIME-WARRANTY-i.95959099.3229189042
+[2025-12-17T02:54:38.970462] SCRAPER finished (compat)
+[2025-12-17T02:55:42.174042] REANALYZE request for product 95959099-3229189042
+[2025-12-17T02:55:42.177368] [5%] init: resolve input
+[2025-12-17T02:55:42.314863] [10%] [01] preprocess
+[2025-12-17T02:55:42.336296] [20%] [01b] tokenize
+[2025-12-17T02:55:42.364911] [40%] [03] sentiment
+[2025-12-17T02:55:42.421711] [70%] [04] fake detect
+[2025-12-17T02:55:42.518689] [90%] [05] trust score
+[2025-12-17T02:55:42.562677] [98%] [06] summarize
+[2025-12-17T02:55:42.587063] [99%] [07] tagging comments
+[2025-12-17T02:55:42.587184] [100%] done
+[2025-12-17T02:55:42.587215] Pipeline completed, output: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/95959099-3229189042/indobert
+[2025-12-17T02:55:43.384794] Analysis results merged successfully
+[2025-12-17T02:55:43.579084] Tagged 2312 reviews
+[2025-12-17T02:55:44.171705] Saved tag statistics: {"Pengiriman Buruk": 82, "Kualitas Bagus": 64, "Harga": 27, "Respon Lambat": 22, "Harga Murah": 20, "Barang Tidak Sesuai": 14, "Kualitas Buruk": 12, "Puas": 7, "Masalah Penjual": 6, "Barang Rusak": 4, "Direkomendasikan": 4, "Akan Beli Lagi": 4, "Tidak Berfungsi": 1, "Promo/Diskon": 1, "Barang Cacat": 1}
+[2025-12-17T02:55:44.191244] Saved tagged reviews CSV: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/95959099-3229189042/indobert/review_tagged.csv
+[2025-12-17T02:55:44.191334] REANALYZE finished successfully

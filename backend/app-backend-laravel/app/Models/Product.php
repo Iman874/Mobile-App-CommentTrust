@@ -10,7 +10,7 @@ class Product extends Model
 {
     protected $fillable = [
         'user_id',
-        'product_key','shopid','itemid','name',
+        'product_key','shopid','itemid','name','shop_name',
         'count_reviews','avg_rating','avg_trust_score','fake_rate',
         'positive_summary','negative_summary','pros','cons','meta'
     ];

@@ -415,6 +415,21 @@ def _notify_and_wait_laravel(job: dict, product_id: str, force: bool = False, ma
     """
     api_base = _laravel_api_base()
     ingest_url = os.environ.get('LARAVEL_WEBHOOK_URL', f"{api_base}/ingest/commenttrust")
+    
+    # Load product data from product.json
+    product_data = {}
+    product_file = os.path.join(BASE_DIR, 'output', 'scrap-data', product_id, 'product.json')
+    if os.path.exists(product_file):
+        try:
+            with open(product_file, 'r', encoding='utf-8') as f:
+                product_data = json.load(f)
+        except Exception as e:
+            _write_general_log(f'Error loading product.json for {product_id}: {e}')
+    
+    # Extract product name from product.json
+    product_name = product_data.get('name') or product_data.get('name_prefix') or 'Unknown Product'
+    shop_name = product_data.get('shop', {}).get('name') if isinstance(product_data.get('shop'), dict) else ''
+    
     payload = json.dumps({
         'product_id': product_id,
         'force': bool(force),
@@ -422,6 +437,9 @@ def _notify_and_wait_laravel(job: dict, product_id: str, force: bool = False, ma
         'short_link': job.get('short_link'),
         'link': job.get('link'),
         'user_id': job.get('user_id'),
+        'product_name': product_name,
+        'shop_name': shop_name,
+        'product_data': product_data,
     }).encode('utf-8')
     _write_general_log(f'_notify_and_wait_laravel: payload user_id={job.get("user_id")} product_id={product_id}')
     for i in range(max_post_retries):

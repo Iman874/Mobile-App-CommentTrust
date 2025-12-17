@@ -27,6 +27,8 @@ class CommentTrustController extends Controller
             'product_id' => $productKey,
             'user_id' => $userId,
             'force' => $force,
+            'product_name_from_request' => $request->input('product_name'),
+            'shop_name_from_request' => $request->input('shop_name'),
         ]);
         
         if (!$productKey) {
@@ -100,15 +102,55 @@ class CommentTrustController extends Controller
         }
 
         $inserted = 0;
-        DB::transaction(function () use ($productKey, $data, $force, &$inserted, $userId) {
+        DB::transaction(function () use ($productKey, $data, $force, &$inserted, $userId, $request) {
             if ($force) {
                 Comment::where('product_key', $productKey)->delete();
                 Product::where('product_key', $productKey)->delete();
             }
             $pt = $data['product_trust'] ?? [];
             $summary = $data['summary'] ?? [];
-            $prodName = $pt['product']['name'] ?? null;
+            
+            // Try to get product name from multiple sources:
+            // 1. From product_data sent by Flask (new method)
+            // 2. From product_trust data (old method)
+            // 3. From request payload (fallback)
+            $prodName = null;
+            
+            // First try: product_data sent from Flask
+            $productData = $request->input('product_data', []);
+            if (is_array($productData) && !empty($productData)) {
+                $prodName = $productData['name'] ?? $productData['name_prefix'] ?? null;
+            }
+            
+            // Fallback: product_name sent directly by Flask
+            if (!$prodName) {
+                $prodName = $request->input('product_name') ?? null;
+            }
+            
+            // Fallback: from product_trust (old method)
+            if (!$prodName) {
+                $prodName = $pt['product']['name'] ?? null;
+            }
+            
+            // Final fallback: Unknown Product
+            if (!$prodName) {
+                $prodName = 'Unknown Product';
+            }
+            
             $metrics = $pt['metrics'] ?? [];
+            
+            // Also get shop_name if available
+            $shopName = $request->input('shop_name') ?? 
+                       ($productData['shop']['name'] ?? 'Unknown Shop' ?? 'Unknown Shop');
+
+            // Log the product name and shop for verification
+            Log::info("PRODUCT_NAME_EXTRACTION product_id={$productKey}", [
+                'product_name' => $prodName,
+                'shop_name' => $shopName,
+                'from_product_data' => !empty($productData),
+                'from_direct_field' => !empty($request->input('product_name')),
+                'from_product_trust' => !empty($pt['product']['name'] ?? null),
+            ]);
 
             $product = Product::updateOrCreate(
                 ['product_key' => $productKey],
@@ -117,6 +159,7 @@ class CommentTrustController extends Controller
                     'shopid' => (int)explode('-', $productKey)[0],
                     'itemid' => (int)explode('-', $productKey)[1],
                     'name' => $prodName,
+                    'shop_name' => $shopName,
                     'count_reviews' => $metrics['count_reviews'] ?? 0,
                     'avg_rating' => $metrics['avg_rating'] ?? null,
                     'avg_trust_score' => $metrics['avg_trust_score'] ?? null,
