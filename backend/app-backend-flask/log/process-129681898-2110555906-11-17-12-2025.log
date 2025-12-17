@@ -1,1 +1,57 @@
 [2025-12-17T04:05:30.338757] START scrape-only job (compat) for link: https://shopee.co.id/SSD-M.2-NVMe-256GB-V-GeN-Kecepatan-Tinggi-i.129681898.2110555906
+[2025-12-17T04:06:55.159333] SCRAPER finished (compat)
+[2025-12-17T04:06:57.639054] START analyze-only job for product 129681898-2110555906
+[2025-12-17T04:06:57.643048] ANALYSIS 5% :: init: resolve input
+[2025-12-17T04:06:57.869896] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T04:06:57.917910] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T04:06:57.931918] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T04:06:57.956332] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T04:06:58.124303] ANALYSIS 90% :: [05] trust score
+[2025-12-17T04:06:58.234314] ANALYSIS 98% :: [06] summarize
+[2025-12-17T04:06:58.249529] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T04:06:58.251612] ANALYSIS 100% :: done
+[2025-12-17T04:06:58.254218] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/129681898-2110555906/indobert
+[2025-12-17T04:06:58.257749] Merging analysis results to reviews...
+[2025-12-17T04:06:58.533667] Analysis results merged successfully
+[2025-12-17T04:06:59.374401] Laravel ingest accepted (HTTP 200)
+[2025-12-17T04:06:59.374575] Laravel ingest immediate inserted=265
+[2025-12-17T04:07:00.154738] Laravel poll: count_reviews=265 status=waiting-db
+[2025-12-17T04:07:00.155705] Laravel sync succeeded
+[2025-12-17T04:09:58.196220] START scrape-only job (compat) for link: https://shopee.co.id/SSD-M.2-NVMe-256GB-V-GeN-Kecepatan-Tinggi-i.129681898.2110555906
+[2025-12-17T04:11:04.784148] SCRAPER finished (compat)
+[2025-12-17T04:11:07.215143] START analyze-only job for product 129681898-2110555906
+[2025-12-17T04:11:07.216352] ANALYSIS 5% :: init: resolve input
+[2025-12-17T04:11:07.234482] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T04:11:07.243399] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T04:11:07.246982] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T04:11:07.250650] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T04:11:07.265268] ANALYSIS 90% :: [05] trust score
+[2025-12-17T04:11:07.281440] ANALYSIS 98% :: [06] summarize
+[2025-12-17T04:11:07.288683] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T04:11:07.289430] ANALYSIS 100% :: done
+[2025-12-17T04:11:07.289561] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/129681898-2110555906/indobert
+[2025-12-17T04:11:07.289598] Merging analysis results to reviews...
+[2025-12-17T04:11:07.412363] Analysis results merged successfully
+[2025-12-17T04:11:07.952522] Laravel ingest accepted (HTTP 200)
+[2025-12-17T04:11:07.952714] Laravel ingest immediate inserted=265
+[2025-12-17T04:11:08.206102] Laravel poll: count_reviews=265 status=waiting-db
+[2025-12-17T04:11:08.207375] Laravel sync succeeded
+[2025-12-17T04:13:47.674864] START scrape-only job (compat) for link: https://shopee.co.id/SSD-M.2-NVMe-256GB-V-GeN-Kecepatan-Tinggi-i.129681898.2110555906
+[2025-12-17T04:15:02.685497] SCRAPER finished (compat)
+[2025-12-17T04:15:06.245098] START analyze-only job for product 129681898-2110555906
+[2025-12-17T04:15:06.267307] ANALYSIS 5% :: init: resolve input
+[2025-12-17T04:15:06.319231] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T04:15:06.341419] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T04:15:06.371914] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T04:15:06.386557] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T04:15:06.522230] ANALYSIS 90% :: [05] trust score
+[2025-12-17T04:15:06.563703] ANALYSIS 98% :: [06] summarize
+[2025-12-17T04:15:06.598373] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T04:15:06.599188] ANALYSIS 100% :: done
+[2025-12-17T04:15:06.599294] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/129681898-2110555906/indobert
+[2025-12-17T04:15:06.599337] Merging analysis results to reviews...
+[2025-12-17T04:15:07.689015] Analysis results merged successfully
+[2025-12-17T04:15:09.671457] Laravel ingest accepted (HTTP 200)
+[2025-12-17T04:15:09.671638] Laravel ingest immediate inserted=265
+[2025-12-17T04:15:10.401364] Laravel poll: count_reviews=265 status=waiting-db
+[2025-12-17T04:15:10.402106] Laravel sync succeeded

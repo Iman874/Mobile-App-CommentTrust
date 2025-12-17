@@ -23,32 +23,86 @@ class CommentTrustController extends Controller
      */
     private function _insertCommentsWithTags($buffer, $tagsQueue, $productKey)
     {
-        // Insert comments dalam bulk
-        Comment::insert($buffer);
+        Log::info("_insertCommentsWithTags START", [
+            'buffer_count' => count($buffer),
+            'tags_queue_count' => count($tagsQueue),
+            'product_key' => $productKey,
+        ]);
         
-        // Attach tags untuk komentar yang memiliki tags
-        if (!empty($tagsQueue)) {
-            // Fetch komentar yang baru di-insert berdasarkan product_key
-            // karena bulk insert tidak mengembalikan IDs, kita fetch komentar terakhir
-            $comments = Comment::where('product_key', $productKey)
-                ->orderBy('id', 'desc')
-                ->limit(count($buffer))
-                ->get()
-                ->reverse()
-                ->values();
+        try {
+            // Insert comments dalam bulk
+            Comment::insert($buffer);
+            Log::info("_insertCommentsWithTags inserted comments successfully", [
+                'count' => count($buffer),
+            ]);
             
-            foreach ($tagsQueue as $tagInfo) {
-                $index = $tagInfo['index'];
-                $tagNames = $tagInfo['tags'];
+            // Attach tags untuk komentar yang memiliki tags
+            if (!empty($tagsQueue)) {
+                Log::info("_insertCommentsWithTags processing tags queue", [
+                    'tags_queue_count' => count($tagsQueue),
+                ]);
                 
-                if (isset($comments[$index])) {
-                    $comment = $comments[$index];
-                    // Sync tags untuk komentar ini
-                    if (is_array($tagNames)) {
-                        $comment->syncTagsByName($tagNames);
+                // Fetch komentar yang baru di-insert berdasarkan product_key
+                // karena bulk insert tidak mengembalikan IDs, kita fetch komentar terakhir
+                $comments = Comment::where('product_key', $productKey)
+                    ->orderBy('id', 'desc')
+                    ->limit(count($buffer))
+                    ->get()
+                    ->reverse()
+                    ->values();
+                
+                Log::info("_insertCommentsWithTags fetched comments for tagging", [
+                    'fetched_count' => count($comments),
+                ]);
+                
+                $tagsAttachedCount = 0;
+                $tagsAttachErrors = 0;
+                
+                foreach ($tagsQueue as $tagInfo) {
+                    $index = $tagInfo['index'];
+                    $tagNames = $tagInfo['tags'];
+                    
+                    if (isset($comments[$index])) {
+                        $comment = $comments[$index];
+                        // Sync tags untuk komentar ini
+                        if (is_array($tagNames) && !empty($tagNames)) {
+                            try {
+                                $comment->syncTagsByName($tagNames);
+                                $tagsAttachedCount += count($tagNames);
+                                
+                                Log::debug("Tags attached to comment", [
+                                    'comment_id' => $comment->id,
+                                    'tags' => $tagNames,
+                                    'tag_count' => count($tagNames),
+                                ]);
+                            } catch (\Exception $e) {
+                                $tagsAttachErrors++;
+                                Log::warning("Failed to attach tags to comment", [
+                                    'comment_id' => $comment->id,
+                                    'tags' => $tagNames,
+                                    'error' => $e->getMessage(),
+                                ]);
+                            }
+                        }
                     }
                 }
+                
+                Log::info("_insertCommentsWithTags tag attachment completed", [
+                    'tags_attached_total' => $tagsAttachedCount,
+                    'errors' => $tagsAttachErrors,
+                    'queue_items_processed' => count($tagsQueue),
+                ]);
+            } else {
+                Log::info("_insertCommentsWithTags no tags to attach");
             }
+            
+            Log::info("_insertCommentsWithTags COMPLETE");
+        } catch (\Exception $e) {
+            Log::error("_insertCommentsWithTags ERROR", [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            throw $e;
         }
     }
 
@@ -221,11 +275,21 @@ class CommentTrustController extends Controller
                 $sample = $rows[0];
                 if (is_array($sample)) {
                     Log::info("Sample row keys (source={$source}): " . implode(',', array_keys($sample)));
+                    // Check if tags field exists in sample
+                    if (array_key_exists('tags', $sample)) {
+                        Log::info("Tags field found in sample row", [
+                            'tags_value' => $sample['tags'],
+                            'tags_type' => gettype($sample['tags']),
+                        ]);
+                    } else {
+                        Log::info("NO tags field in sample row - tags will be NULL");
+                    }
                 }
             }
             $now = Carbon::now();
             $buffer = [];
             $tagsQueue = []; // Queue for attaching tags after insert
+            $tagsFoundCount = 0; // Track how many comments have tags
             
             foreach (($rows ?? []) as $r) {
                 // Normalize keys from different sources
@@ -247,6 +311,11 @@ class CommentTrustController extends Controller
                 $productLabel = $r['product_label'] ?? null;
                 $variantName = $r['variant_name'] ?? null;
                 $tags = $r['tags'] ?? null; // Flask sends array of tag strings per comment
+                
+                // Track tags found
+                if (!empty($tags) && is_array($tags)) {
+                    $tagsFoundCount += count($tags);
+                }
                 
                 $commentData = [
                     'user_id' => $userId,
@@ -302,7 +371,10 @@ class CommentTrustController extends Controller
                 $inserted += count($buffer);
             }
             
-            Log::info("Ingested {$inserted} comments from source={$source} for product={$productKey}");
+            Log::info("Ingested {$inserted} comments from source={$source} for product={$productKey}", [
+                'tags_found_total' => $tagsFoundCount,
+                'comments_with_tags_queue_items' => count($tagsQueue),
+            ]);
         });
 
         return response()->json(['ok' => true, 'inserted' => $inserted, 'product_id' => $productKey]);
