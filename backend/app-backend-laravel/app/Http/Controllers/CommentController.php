@@ -495,4 +495,82 @@ class CommentController extends Controller
         $tagCloud = $this->buildTagCloud($comments);
         return array_slice($tagCloud, 0, $limit, true);
     }
+
+    /**
+     * Get tags for a specific comment (dari relasi database)
+     * GET /api/comments/{productId}/detail/{commentId}/tags
+     */
+    public function getCommentTags(Request $request, string $productId, string $commentId): JsonResponse
+    {
+        $user = $request->user();
+
+        // Verify product belongs to user
+        $product = Product::where('user_id', $user->id)
+            ->where('product_key', $productId)
+            ->first();
+
+        if (!$product) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Product not found or unauthorized'
+            ], 404);
+        }
+
+        // Get comment with tags relation
+        $comment = Comment::where('product_id', $product->id)
+            ->where('id', $commentId)
+            ->with('commentTags')  // Load relasi many-to-many
+            ->first();
+
+        if (!$comment) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Comment not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'ok' => true,
+            'comment_id' => $comment->id,
+            'tags_from_relation' => $comment->commentTags,  // Tags dari relasi M2M
+            'tags_from_json' => $comment->tags,  // Tags dari JSON field
+            'total_tags' => $comment->commentTags->count(),
+        ]);
+    }
+
+    /**
+     * Get all comments with their tags (dari relasi database)
+     * GET /api/comments/{productId}/with-tags
+     */
+    public function getCommentsWithTags(Request $request, string $productId): JsonResponse
+    {
+        $user = $request->user();
+
+        $product = Product::where('user_id', $user->id)
+            ->where('product_key', $productId)
+            ->first();
+
+        if (!$product) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Product not found or unauthorized'
+            ], 404);
+        }
+
+        $page = (int)$request->get('page', 1);
+        $perPage = (int)$request->get('per_page', 15);
+
+        // Get comments with tags eager loaded
+        $comments = Comment::where('product_id', $product->id)
+            ->with(['commentTags' => function($query) {
+                $query->where('is_active', true);
+            }])
+            ->paginate($perPage, ['*'], 'page', $page);
+
+        return response()->json([
+            'ok' => true,
+            'product_id' => $productId,
+            'comments' => $comments,
+        ]);
+    }
 }

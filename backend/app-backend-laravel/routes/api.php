@@ -76,7 +76,9 @@ Route::middleware(['api_token', 'check_token_expiration'])->group(function () {
     // ========================================================================
     Route::prefix('/comments')->group(function () {
         Route::get('/{productId}', [CommentController::class, 'index']);          // List comments
+        Route::get('/{productId}/with-tags', [CommentController::class, 'getCommentsWithTags']);  // Comments with tags relation
         Route::get('/{productId}/detail/{commentId}', [CommentController::class, 'show']);
+        Route::get('/{productId}/detail/{commentId}/tags', [CommentController::class, 'getCommentTags']);  // Get tags for specific comment
         Route::post('/{productId}/filter', [CommentController::class, 'filter']);  // Advanced filtering
         Route::get('/{productId}/search', [CommentController::class, 'search']);   // Text search
         Route::get('/{productId}/stats', [CommentController::class, 'stats']);     // Comment statistics

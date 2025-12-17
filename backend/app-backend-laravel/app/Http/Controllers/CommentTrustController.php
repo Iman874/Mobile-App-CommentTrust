@@ -291,7 +291,12 @@ class CommentTrustController extends Controller
             $tagsQueue = []; // Queue for attaching tags after insert
             $tagsFoundCount = 0; // Track how many comments have tags
             
-            foreach (($rows ?? []) as $r) {
+            Log::info("Starting comment iteration", [
+                'total_rows' => count($rows ?? []),
+                'source' => $source,
+            ]);
+            
+            foreach (($rows ?? []) as $idx => $r) {
                 // Normalize keys from different sources
                 $username = $r['username'] ?? $r['user'] ?? null;
                 $rating = $r['rating'] ?? $r['rating_score'] ?? null;
@@ -315,6 +320,14 @@ class CommentTrustController extends Controller
                 // Track tags found
                 if (!empty($tags) && is_array($tags)) {
                     $tagsFoundCount += count($tags);
+                    
+                    // Log first few tags for debugging
+                    if ($idx < 3) {
+                        Log::info("Tags found in comment row {$idx}", [
+                            'tags' => $tags,
+                            'comment_preview' => substr($comment ?? '', 0, 50),
+                        ]);
+                    }
                 }
                 
                 $commentData = [
@@ -356,9 +369,22 @@ class CommentTrustController extends Controller
                         'index' => count($buffer) - 1,
                         'tags' => $tags
                     ];
+                    
+                    // Log queue addition for first few
+                    if (count($tagsQueue) <= 3) {
+                        Log::info("Added tags to queue", [
+                            'queue_position' => count($tagsQueue) - 1,
+                            'buffer_index' => count($buffer) - 1,
+                            'tags' => $tags,
+                        ]);
+                    }
                 }
                 
                 if (count($buffer) >= 1000) {
+                    Log::info("Flushing buffer (1000 items)", [
+                        'buffer_count' => count($buffer),
+                        'tags_queue_count' => count($tagsQueue),
+                    ]);
                     $this->_insertCommentsWithTags($buffer, $tagsQueue, $productKey);
                     $inserted += 1000;
                     $buffer = [];
@@ -367,6 +393,10 @@ class CommentTrustController extends Controller
             }
             
             if (!empty($buffer)) {
+                Log::info("Final buffer flush", [
+                    'buffer_count' => count($buffer),
+                    'tags_queue_count' => count($tagsQueue),
+                ]);
                 $this->_insertCommentsWithTags($buffer, $tagsQueue, $productKey);
                 $inserted += count($buffer);
             }
