@@ -1,0 +1,62 @@
+[2025-12-17T06:16:23.470744] START scrape-only job (compat) for link: https://shopee.co.id/Samsung-Galaxy-S24-Series-S24-Ultra-S24-Basic-S24-FE-Smart-AI-Kamera-200MP-i.1101386382.23860528324
+[2025-12-17T06:16:57.232357] ERROR scraper failed: HTTPConnectionPool(host='localhost', port=51675): Max retries exceeded with url: /session/42818211a6a92c020e0082e13681216c/url (Caused by NewConnectionError("HTTPConnection(host='localhost', port=51675): Failed to establish a new connection: [Errno 111] Connection refused"))
+[2025-12-17T06:17:29.967267] START scrape-only job (compat) for link: https://shopee.co.id/Samsung-Galaxy-S24-Series-S24-Ultra-S24-Basic-S24-FE-Smart-AI-Kamera-200MP-i.1101386382.23860528324
+[2025-12-17T06:18:30.859826] SCRAPER finished (compat)
+[2025-12-17T06:18:32.026828] START analyze-only job for product 1101386382-23860528324
+[2025-12-17T06:18:32.032194] ANALYSIS 5% :: init: resolve input
+[2025-12-17T06:18:32.037965] ERROR analysis error: 'comment'
+[2025-12-17T06:19:03.616184] START scrape-only job (compat) for link: https://shopee.co.id/Samsung-Galaxy-S24-Series-S24-Ultra-S24-Basic-S24-FE-Smart-AI-Kamera-200MP-i.1101386382.23860528324
+[2025-12-17T06:20:09.516269] SCRAPER finished (compat)
+[2025-12-17T06:20:11.184130] START analyze-only job for product 1101386382-23860528324
+[2025-12-17T06:20:11.184544] ANALYSIS 5% :: init: resolve input
+[2025-12-17T06:20:11.376421] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T06:20:11.410149] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T06:20:11.454141] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T06:20:11.511997] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T06:20:11.651204] ANALYSIS 90% :: [05] trust score
+[2025-12-17T06:20:11.817199] ANALYSIS 98% :: [06] summarize
+[2025-12-17T06:20:11.860789] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T06:20:11.860982] ANALYSIS 100% :: done
+[2025-12-17T06:20:11.861075] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1101386382-23860528324/indobert
+[2025-12-17T06:20:11.861143] Merging analysis results to reviews...
+[2025-12-17T06:20:13.667022] Analysis results merged successfully
+[2025-12-17T06:20:15.236152] Laravel ingest accepted (HTTP 200)
+[2025-12-17T06:20:15.236346] Laravel ingest immediate inserted=691
+[2025-12-17T06:20:15.914217] Laravel poll: count_reviews=691 status=waiting-db
+[2025-12-17T06:20:15.914601] Laravel sync succeeded
+[2025-12-17T06:22:06.191550] REANALYZE request for product 1101386382-23860528324
+[2025-12-17T06:22:06.199779] Deleted analysis directory: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1101386382-23860528324/indobert
+[2025-12-17T06:22:06.200247] [5%] init: resolve input
+[2025-12-17T06:22:06.277700] [10%] [01] preprocess
+[2025-12-17T06:22:06.300211] [20%] [01b] tokenize
+[2025-12-17T06:22:06.321047] [40%] [03] sentiment
+[2025-12-17T06:22:06.338357] [70%] [04] fake detect
+[2025-12-17T06:22:06.421728] [90%] [05] trust score
+[2025-12-17T06:22:06.468936] [98%] [06] summarize
+[2025-12-17T06:22:06.484983] [99%] [07] tagging comments
+[2025-12-17T06:22:06.485188] [100%] done
+[2025-12-17T06:22:06.485243] Pipeline completed, output: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1101386382-23860528324/indobert
+[2025-12-17T06:22:06.975294] Analysis results merged successfully
+[2025-12-17T06:22:07.078823] Tagged 691 reviews
+[2025-12-17T06:22:07.262371] Saved tag statistics: {"Pengiriman Buruk": 66, "Kualitas Bagus": 45, "Puas": 31, "Harga": 20, "Respon Lambat": 18, "Senang": 11, "Harga Murah": 10, "Kualitas Buruk": 8, "Masalah Penjual": 8, "Harga Mahal": 3, "Direkomendasikan": 3, "Barang Tidak Sesuai": 2, "Barang Cacat": 2, "Promo/Diskon": 2, "Layanan Customer Service": 2, "Akan Beli Lagi": 1, "Tidak Berfungsi": 1}
+[2025-12-17T06:22:07.298054] Saved tagged reviews CSV: /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1101386382-23860528324/indobert/review_tagged.csv
+[2025-12-17T06:22:07.298220] REANALYZE finished successfully
+[2025-12-17T06:39:25.650998] START scrape-only job (compat) for link: https://shopee.co.id/Samsung-Galaxy-S24-Series-S24-Ultra-S24-Basic-S24-FE-Smart-AI-Kamera-200MP-i.1101386382.23860528324
+[2025-12-17T06:40:38.401259] SCRAPER finished (compat)
+[2025-12-17T06:40:41.154352] START analyze-only job for product 1101386382-23860528324
+[2025-12-17T06:40:41.238757] ANALYSIS 5% :: init: resolve input
+[2025-12-17T06:40:41.383764] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T06:40:41.418216] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T06:40:41.446587] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T06:40:41.499863] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T06:40:41.613167] ANALYSIS 90% :: [05] trust score
+[2025-12-17T06:40:41.698490] ANALYSIS 98% :: [06] summarize
+[2025-12-17T06:40:41.728803] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T06:40:41.771019] ANALYSIS 100% :: done
+[2025-12-17T06:40:41.771405] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/1101386382-23860528324/indobert
+[2025-12-17T06:40:41.771492] Merging analysis results to reviews...
+[2025-12-17T06:40:42.790133] Analysis results merged successfully
+[2025-12-17T06:40:44.078865] Laravel ingest accepted (HTTP 200)
+[2025-12-17T06:40:44.080088] Laravel ingest immediate inserted=691
+[2025-12-17T06:40:45.037824] Laravel poll: count_reviews=691 status=waiting-db
+[2025-12-17T06:40:45.038813] Laravel sync succeeded

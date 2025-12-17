@@ -1,0 +1,123 @@
+[2025-12-17T06:16:23.473145] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T06:16:23.473315] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T06:16:23.473369] SCRAPER initializing Edge driver for Linux
+[2025-12-17T06:16:33.150211] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T06:16:57.229817] SCRAPER injected 19 cookies from cookies.json into session
+[2025-12-17T06:17:29.968998] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T06:17:29.969307] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T06:17:29.969402] SCRAPER initializing Edge driver for Linux
+[2025-12-17T06:17:35.061227] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T06:17:55.260739] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T06:18:05.455766] SCRAPER product tab detected; proceeding
+[2025-12-17T06:18:05.457806] SCRAPER fetch product data
+[2025-12-17T06:18:09.968861] SCRAPER fetch comments
+[2025-12-17T06:18:10.272896] SCRAPER ratings fetch page 1 offset 0 failed (attempt 1/2): empty ratings
+[2025-12-17T06:18:12.273306] SCRAPER skip page 1 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T06:18:12.717012] SCRAPER ratings fetch page 2 offset 20 failed (attempt 1/2): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[2025-12-17T06:18:14.718359] SCRAPER skip page 2 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T06:18:14.728614] SCRAPER ratings fetch page 3 offset 40 failed (attempt 1/2): HTTPConnectionPool(host='localhost', port=58151): Max retries exceeded with url: /session/79072f1ac23b62f96dd601e3faae8a43/execute/sync (Caused by NewConnectionError("HTTPConnection(host='localhost', port=58151): Failed to establish a new connection: [Errno 111] Connection refused"))
+[2025-12-17T06:18:16.729900] SCRAPER skip page 3 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T06:18:16.746530] SCRAPER ratings fetch page 4 offset 60 failed (attempt 1/2): HTTPConnectionPool(host='localhost', port=58151): Max retries exceeded with url: /session/79072f1ac23b62f96dd601e3faae8a43/execute/sync (Caused by NewConnectionError("HTTPConnection(host='localhost', port=58151): Failed to establish a new connection: [Errno 111] Connection refused"))
+[2025-12-17T06:18:18.747779] SCRAPER skip page 4 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T06:18:18.770708] SCRAPER ratings fetch page 5 offset 80 failed (attempt 1/2): HTTPConnectionPool(host='localhost', port=58151): Max retries exceeded with url: /session/79072f1ac23b62f96dd601e3faae8a43/execute/sync (Caused by NewConnectionError("HTTPConnection(host='localhost', port=58151): Failed to establish a new connection: [Errno 111] Connection refused"))
+[2025-12-17T06:18:20.772973] SCRAPER skip page 5 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T06:18:20.779793] SCRAPER ratings fetch page 6 offset 100 failed (attempt 1/2): HTTPConnectionPool(host='localhost', port=58151): Max retries exceeded with url: /session/79072f1ac23b62f96dd601e3faae8a43/execute/sync (Caused by NewConnectionError("HTTPConnection(host='localhost', port=58151): Failed to establish a new connection: [Errno 111] Connection refused"))
+[2025-12-17T06:18:22.787768] SCRAPER skip page 6 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T06:18:22.799415] SCRAPER ratings fetch page 7 offset 120 failed (attempt 1/2): HTTPConnectionPool(host='localhost', port=58151): Max retries exceeded with url: /session/79072f1ac23b62f96dd601e3faae8a43/execute/sync (Caused by NewConnectionError("HTTPConnection(host='localhost', port=58151): Failed to establish a new connection: [Errno 111] Connection refused"))
+[2025-12-17T06:18:24.802001] SCRAPER skip page 7 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T06:18:24.804658] SCRAPER ratings fetch page 8 offset 140 failed (attempt 1/2): HTTPConnectionPool(host='localhost', port=58151): Max retries exceeded with url: /session/79072f1ac23b62f96dd601e3faae8a43/execute/sync (Caused by NewConnectionError("HTTPConnection(host='localhost', port=58151): Failed to establish a new connection: [Errno 111] Connection refused"))
+[2025-12-17T06:18:26.807309] SCRAPER skip page 8 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T06:18:26.835417] SCRAPER ratings fetch page 9 offset 160 failed (attempt 1/2): HTTPConnectionPool(host='localhost', port=58151): Max retries exceeded with url: /session/79072f1ac23b62f96dd601e3faae8a43/execute/sync (Caused by NewConnectionError("HTTPConnection(host='localhost', port=58151): Failed to establish a new connection: [Errno 111] Connection refused"))
+[2025-12-17T06:18:28.840215] SCRAPER skip page 9 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T06:18:28.841824] SCRAPER ratings fetch page 10 offset 180 failed (attempt 1/2): HTTPConnectionPool(host='localhost', port=58151): Max retries exceeded with url: /session/79072f1ac23b62f96dd601e3faae8a43/execute/sync (Caused by NewConnectionError("HTTPConnection(host='localhost', port=58151): Failed to establish a new connection: [Errno 111] Connection refused"))
+[2025-12-17T06:18:30.842964] SCRAPER skip page 10 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T06:18:30.843168] SCRAPER reached last page without data; stopping at page 10
+[2025-12-17T06:18:30.843413] SCRAPER finished; total 0 reviews saved
+[2025-12-17T06:19:03.617868] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T06:19:03.617999] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T06:19:03.618063] SCRAPER initializing Edge driver for Linux
+[2025-12-17T06:19:04.560100] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T06:19:24.523890] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T06:19:31.066875] SCRAPER product tab detected; proceeding
+[2025-12-17T06:19:31.067114] SCRAPER fetch product data
+[2025-12-17T06:19:32.991593] SCRAPER fetch comments
+[2025-12-17T06:19:33.943200] SCRAPER page 1: collected 20/1382
+[2025-12-17T06:19:34.665218] SCRAPER page 2: collected 40/1382
+[2025-12-17T06:19:35.545122] SCRAPER page 3: collected 60/1382
+[2025-12-17T06:19:36.568095] SCRAPER page 4: collected 80/1382
+[2025-12-17T06:19:37.927703] SCRAPER page 5: collected 100/1382
+[2025-12-17T06:19:38.965177] SCRAPER page 6: collected 120/1382
+[2025-12-17T06:19:40.162672] SCRAPER page 7: collected 140/1382
+[2025-12-17T06:19:41.108335] SCRAPER page 8: collected 160/1382
+[2025-12-17T06:19:42.052514] SCRAPER page 9: collected 180/1382
+[2025-12-17T06:19:43.135047] SCRAPER page 10: collected 200/1382
+[2025-12-17T06:19:44.163882] SCRAPER page 11: collected 220/1382
+[2025-12-17T06:19:45.152935] SCRAPER page 12: collected 240/1382
+[2025-12-17T06:19:46.131273] SCRAPER page 13: collected 260/1382
+[2025-12-17T06:19:47.448941] SCRAPER page 14: collected 280/1382
+[2025-12-17T06:19:48.520318] SCRAPER page 15: collected 300/1382
+[2025-12-17T06:19:49.456859] SCRAPER page 16: collected 320/1382
+[2025-12-17T06:19:50.283660] SCRAPER page 17: collected 340/1382
+[2025-12-17T06:19:51.257567] SCRAPER page 18: collected 360/1382
+[2025-12-17T06:19:52.263120] SCRAPER page 19: collected 380/1382
+[2025-12-17T06:19:53.233484] SCRAPER page 20: collected 400/1382
+[2025-12-17T06:19:54.213013] SCRAPER page 21: collected 420/1382
+[2025-12-17T06:19:55.209984] SCRAPER page 22: collected 440/1382
+[2025-12-17T06:19:56.292199] SCRAPER page 23: collected 460/1382
+[2025-12-17T06:19:57.039152] SCRAPER page 24: collected 480/1382
+[2025-12-17T06:19:57.971623] SCRAPER page 25: collected 500/1382
+[2025-12-17T06:19:58.832354] SCRAPER page 26: collected 520/1382
+[2025-12-17T06:20:00.919258] SCRAPER page 27: collected 540/1382
+[2025-12-17T06:20:01.739794] SCRAPER page 28: collected 560/1382
+[2025-12-17T06:20:02.674669] SCRAPER page 29: collected 580/1382
+[2025-12-17T06:20:03.472399] SCRAPER page 30: collected 600/1382
+[2025-12-17T06:20:04.401795] SCRAPER page 31: collected 620/1382
+[2025-12-17T06:20:05.374067] SCRAPER page 32: collected 640/1382
+[2025-12-17T06:20:06.233178] SCRAPER page 33: collected 660/1382
+[2025-12-17T06:20:07.151149] SCRAPER page 34: collected 680/1382
+[2025-12-17T06:20:07.981254] SCRAPER page 35: collected 691/1382
+[2025-12-17T06:20:08.364281] SCRAPER finished; total 691 reviews saved
+[2025-12-17T06:39:25.653109] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T06:39:25.653468] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T06:39:25.653788] SCRAPER initializing Edge driver for Linux
+[2025-12-17T06:39:26.863400] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T06:39:44.943366] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T06:39:57.441341] SCRAPER product tab detected; proceeding
+[2025-12-17T06:39:57.442518] SCRAPER fetch product data
+[2025-12-17T06:39:59.397255] SCRAPER fetch comments
+[2025-12-17T06:40:00.706909] SCRAPER page 1: collected 20/1382
+[2025-12-17T06:40:01.971662] SCRAPER page 2: collected 40/1382
+[2025-12-17T06:40:03.053211] SCRAPER page 3: collected 60/1382
+[2025-12-17T06:40:04.097082] SCRAPER page 4: collected 80/1382
+[2025-12-17T06:40:05.298966] SCRAPER page 5: collected 100/1382
+[2025-12-17T06:40:06.350711] SCRAPER page 6: collected 120/1382
+[2025-12-17T06:40:07.683391] SCRAPER page 7: collected 140/1382
+[2025-12-17T06:40:08.961966] SCRAPER page 8: collected 160/1382
+[2025-12-17T06:40:10.353039] SCRAPER page 9: collected 180/1382
+[2025-12-17T06:40:11.339883] SCRAPER page 10: collected 200/1382
+[2025-12-17T06:40:12.296160] SCRAPER page 11: collected 220/1382
+[2025-12-17T06:40:13.130825] SCRAPER page 12: collected 240/1382
+[2025-12-17T06:40:14.204904] SCRAPER page 13: collected 260/1382
+[2025-12-17T06:40:15.501507] SCRAPER page 14: collected 280/1382
+[2025-12-17T06:40:17.008559] SCRAPER page 15: collected 300/1382
+[2025-12-17T06:40:18.475255] SCRAPER page 16: collected 320/1382
+[2025-12-17T06:40:19.446068] SCRAPER page 17: collected 340/1382
+[2025-12-17T06:40:20.446056] SCRAPER page 18: collected 360/1382
+[2025-12-17T06:40:21.359755] SCRAPER page 19: collected 380/1382
+[2025-12-17T06:40:22.426136] SCRAPER page 20: collected 400/1382
+[2025-12-17T06:40:23.473419] SCRAPER page 21: collected 420/1382
+[2025-12-17T06:40:24.439271] SCRAPER page 22: collected 440/1382
+[2025-12-17T06:40:25.541883] SCRAPER page 23: collected 460/1382
+[2025-12-17T06:40:26.590992] SCRAPER page 24: collected 480/1382
+[2025-12-17T06:40:27.552858] SCRAPER page 25: collected 500/1382
+[2025-12-17T06:40:28.553352] SCRAPER page 26: collected 520/1382
+[2025-12-17T06:40:29.596732] SCRAPER page 27: collected 540/1382
+[2025-12-17T06:40:30.699116] SCRAPER page 28: collected 560/1382
+[2025-12-17T06:40:31.808426] SCRAPER page 29: collected 580/1382
+[2025-12-17T06:40:32.812010] SCRAPER page 30: collected 600/1382
+[2025-12-17T06:40:33.792054] SCRAPER page 31: collected 620/1382
+[2025-12-17T06:40:34.827011] SCRAPER page 32: collected 640/1382
+[2025-12-17T06:40:35.968395] SCRAPER page 33: collected 660/1382
+[2025-12-17T06:40:36.950167] SCRAPER page 34: collected 680/1382
+[2025-12-17T06:40:37.948748] SCRAPER page 35: collected 691/1382
+[2025-12-17T06:40:38.241678] SCRAPER finished; total 691 reviews saved

@@ -1,0 +1,130 @@
+[2025-12-17T08:02:25.745598] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T08:02:25.745762] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T08:02:25.745829] SCRAPER initializing Edge driver for Linux
+[2025-12-17T08:02:26.515768] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T08:03:00.017874] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T08:03:00.020618] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T08:03:00.020725] SCRAPER initializing Edge driver for Linux
+[2025-12-17T08:03:00.909338] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T08:03:11.787755] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T08:03:20.702582] SCRAPER product tab detected; proceeding
+[2025-12-17T08:03:20.702905] SCRAPER fetch product data
+[2025-12-17T08:03:23.616085] SCRAPER fetch comments
+[2025-12-17T08:03:24.500049] SCRAPER page 1: collected 20/942
+[2025-12-17T08:03:25.422810] SCRAPER page 2: collected 40/942
+[2025-12-17T08:03:26.310579] SCRAPER page 3: collected 60/942
+[2025-12-17T08:03:27.196682] SCRAPER page 4: collected 80/942
+[2025-12-17T08:03:27.980392] SCRAPER page 5: collected 100/942
+[2025-12-17T08:03:29.168461] SCRAPER page 6: collected 120/942
+[2025-12-17T08:03:29.933114] SCRAPER page 7: collected 140/942
+[2025-12-17T08:03:30.676310] SCRAPER page 8: collected 160/942
+[2025-12-17T08:03:31.950060] SCRAPER page 9: collected 180/942
+[2025-12-17T08:03:32.637223] SCRAPER page 10: collected 200/942
+[2025-12-17T08:03:33.406041] SCRAPER page 11: collected 220/942
+[2025-12-17T08:03:34.174412] SCRAPER page 12: collected 240/942
+[2025-12-17T08:03:34.922523] SCRAPER page 13: collected 260/942
+[2025-12-17T08:03:35.788292] SCRAPER page 14: collected 280/942
+[2025-12-17T08:03:36.557181] SCRAPER page 15: collected 300/942
+[2025-12-17T08:03:37.313792] SCRAPER page 16: collected 320/942
+[2025-12-17T08:03:38.181172] SCRAPER page 17: collected 340/942
+[2025-12-17T08:03:39.062983] SCRAPER page 18: collected 360/942
+[2025-12-17T08:03:39.946479] SCRAPER page 19: collected 380/942
+[2025-12-17T08:03:40.941741] SCRAPER page 20: collected 400/942
+[2025-12-17T08:03:41.820602] SCRAPER page 21: collected 420/942
+[2025-12-17T08:03:42.676955] SCRAPER page 22: collected 440/942
+[2025-12-17T08:03:43.558083] SCRAPER page 23: collected 460/942
+[2025-12-17T08:03:44.426369] SCRAPER page 24: collected 471/942
+[2025-12-17T08:03:44.577703] SCRAPER finished; total 471 reviews saved
+[2025-12-17T08:15:12.569139] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T08:15:12.569314] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T08:15:12.569738] SCRAPER initializing Edge driver for Linux
+[2025-12-17T08:15:13.036777] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T08:15:28.972647] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T08:15:36.943477] SCRAPER product tab detected; proceeding
+[2025-12-17T08:15:36.943925] SCRAPER fetch product data
+[2025-12-17T08:15:39.999715] SCRAPER fetch comments
+[2025-12-17T08:15:40.671080] SCRAPER page 1: collected 20/942
+[2025-12-17T08:15:41.525855] SCRAPER page 2: collected 40/942
+[2025-12-17T08:15:42.320290] SCRAPER page 3: collected 60/942
+[2025-12-17T08:15:43.326975] SCRAPER page 4: collected 80/942
+[2025-12-17T08:15:44.144796] SCRAPER page 5: collected 100/942
+[2025-12-17T08:15:44.880254] SCRAPER page 6: collected 120/942
+[2025-12-17T08:15:45.541966] SCRAPER page 7: collected 140/942
+[2025-12-17T08:15:46.236162] SCRAPER page 8: collected 160/942
+[2025-12-17T08:15:46.974118] SCRAPER page 9: collected 180/942
+[2025-12-17T08:15:47.702955] SCRAPER page 10: collected 200/942
+[2025-12-17T08:15:48.984821] SCRAPER page 11: collected 220/942
+[2025-12-17T08:15:49.733468] SCRAPER page 12: collected 240/942
+[2025-12-17T08:15:50.499538] SCRAPER page 13: collected 260/942
+[2025-12-17T08:15:51.240374] SCRAPER page 14: collected 280/942
+[2025-12-17T08:15:52.100997] SCRAPER page 15: collected 300/942
+[2025-12-17T08:15:52.838907] SCRAPER page 16: collected 320/942
+[2025-12-17T08:15:53.507615] SCRAPER page 17: collected 340/942
+[2025-12-17T08:15:54.229735] SCRAPER page 18: collected 360/942
+[2025-12-17T08:15:54.996591] SCRAPER page 19: collected 380/942
+[2025-12-17T08:15:55.633089] SCRAPER page 20: collected 400/942
+[2025-12-17T08:15:56.381276] SCRAPER page 21: collected 420/942
+[2025-12-17T08:15:57.125366] SCRAPER page 22: collected 440/942
+[2025-12-17T08:15:57.876384] SCRAPER page 23: collected 460/942
+[2025-12-17T08:15:58.609679] SCRAPER page 24: collected 471/942
+[2025-12-17T08:15:58.771035] SCRAPER finished; total 471 reviews saved
+[2025-12-17T08:25:44.360105] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T08:25:44.360221] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T08:25:44.360262] SCRAPER initializing Edge driver for Linux
+[2025-12-17T08:25:46.611819] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T08:26:00.806354] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T08:26:13.388110] SCRAPER product tab detected; proceeding
+[2025-12-17T08:26:13.388828] SCRAPER fetch product data
+[2025-12-17T08:26:18.727236] SCRAPER fetch comments
+[2025-12-17T08:26:19.396083] SCRAPER ratings fetch page 1 offset 0 failed (attempt 1/2): empty ratings
+[2025-12-17T08:26:21.397278] SCRAPER skip page 1 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:26:22.009097] SCRAPER ratings fetch page 2 offset 20 failed (attempt 1/2): empty ratings
+[2025-12-17T08:26:24.010305] SCRAPER skip page 2 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:26:25.274344] SCRAPER ratings fetch page 3 offset 40 failed (attempt 1/2): empty ratings
+[2025-12-17T08:26:27.275672] SCRAPER skip page 3 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:26:27.893040] SCRAPER ratings fetch page 4 offset 60 failed (attempt 1/2): empty ratings
+[2025-12-17T08:26:29.894736] SCRAPER skip page 4 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:26:30.234333] SCRAPER ratings fetch page 5 offset 80 failed (attempt 1/2): empty ratings
+[2025-12-17T08:26:32.242027] SCRAPER skip page 5 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:26:33.003811] SCRAPER ratings fetch page 6 offset 100 failed (attempt 1/2): empty ratings
+[2025-12-17T08:26:35.008481] SCRAPER skip page 6 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:26:35.499932] SCRAPER ratings fetch page 7 offset 120 failed (attempt 1/2): empty ratings
+[2025-12-17T08:26:37.501442] SCRAPER skip page 7 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:26:39.254349] SCRAPER ratings fetch page 8 offset 140 failed (attempt 1/2): empty ratings
+[2025-12-17T08:26:41.255681] SCRAPER skip page 8 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:26:41.892940] SCRAPER ratings fetch page 9 offset 160 failed (attempt 1/2): empty ratings
+[2025-12-17T08:26:43.893864] SCRAPER skip page 9 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:26:44.369743] SCRAPER ratings fetch page 10 offset 180 failed (attempt 1/2): empty ratings
+[2025-12-17T08:27:43.746527] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T08:27:43.746843] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T08:27:43.746903] SCRAPER initializing Edge driver for Linux
+[2025-12-17T08:27:44.969831] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T08:28:06.683393] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T08:28:15.299157] SCRAPER product tab detected; proceeding
+[2025-12-17T08:28:15.299296] SCRAPER fetch product data
+[2025-12-17T08:28:19.357806] SCRAPER fetch comments
+[2025-12-17T08:28:20.452058] SCRAPER page 1: collected 20/942
+[2025-12-17T08:28:21.450672] SCRAPER page 2: collected 40/942
+[2025-12-17T08:28:22.289612] SCRAPER page 3: collected 60/942
+[2025-12-17T08:28:23.302699] SCRAPER page 4: collected 80/942
+[2025-12-17T08:28:24.537349] SCRAPER page 5: collected 100/942
+[2025-12-17T08:28:25.668173] SCRAPER page 6: collected 120/942
+[2025-12-17T08:28:26.587392] SCRAPER page 7: collected 140/942
+[2025-12-17T08:28:27.513300] SCRAPER page 8: collected 160/942
+[2025-12-17T08:28:28.447311] SCRAPER page 9: collected 180/942
+[2025-12-17T08:28:29.308700] SCRAPER page 10: collected 200/942
+[2025-12-17T08:28:30.217623] SCRAPER page 11: collected 220/942
+[2025-12-17T08:28:31.172232] SCRAPER page 12: collected 240/942
+[2025-12-17T08:28:32.025772] SCRAPER page 13: collected 260/942
+[2025-12-17T08:28:32.902748] SCRAPER page 14: collected 280/942
+[2025-12-17T08:28:33.788645] SCRAPER page 15: collected 300/942
+[2025-12-17T08:28:34.650439] SCRAPER page 16: collected 320/942
+[2025-12-17T08:28:35.454815] SCRAPER page 17: collected 340/942
+[2025-12-17T08:28:36.398813] SCRAPER page 18: collected 360/942
+[2025-12-17T08:28:37.271012] SCRAPER page 19: collected 380/942
+[2025-12-17T08:28:38.028581] SCRAPER page 20: collected 400/942
+[2025-12-17T08:28:38.918203] SCRAPER page 21: collected 420/942
+[2025-12-17T08:28:39.802328] SCRAPER page 22: collected 440/942
+[2025-12-17T08:28:40.711347] SCRAPER page 23: collected 460/942
+[2025-12-17T08:28:41.521315] SCRAPER page 24: collected 471/942
+[2025-12-17T08:28:41.682338] SCRAPER finished; total 471 reviews saved

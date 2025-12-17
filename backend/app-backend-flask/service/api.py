@@ -152,6 +152,42 @@ def _normalize_shopee_link(link: str) -> str:
     link = link.split("?")[0]
     return link
 
+
+def _expand_short_link(link: str) -> str:
+    """Resolve short Shopee links (e.g. s.shopee.co.id/xxxx) by following redirects.
+    Returns expanded URL, or original link on failure.
+    """
+    if not link:
+        return link
+    try:
+        p = urllib.parse.urlsplit(link)
+        host = (p.netloc or '').lower()
+        # common short domains used by Shopee and shopee link shorteners
+        candidates = ('s.shopee', 'shp.ee', 'shope.ee', 'sapp.shopee')
+        if any(c in host for c in candidates):
+            # Try HEAD first (lighter), fall back to GET if HEAD not allowed
+            try:
+                req = urllib.request.Request(link, method='HEAD', headers={'User-Agent': 'CommentTrust/1.0'})
+                with urllib.request.urlopen(req, timeout=5) as resp:
+                    final = resp.geturl()
+                    if final and final != link:
+                        _write_general_log(f"Expanded short link {link} -> {final}")
+                        return final
+            except Exception:
+                try:
+                    req = urllib.request.Request(link, method='GET', headers={'User-Agent': 'CommentTrust/1.0'})
+                    with urllib.request.urlopen(req, timeout=7) as resp:
+                        final = resp.geturl()
+                        if final and final != link:
+                            _write_general_log(f"Expanded short link {link} -> {final}")
+                            return final
+                except Exception:
+                    pass
+    except Exception:
+        pass
+    return link
+
+
 def _extract_ids(url: str):
     m = re.search(r"i\.(\d+)\.(\d+)", url)
     if m:
@@ -162,7 +198,18 @@ def _extract_ids(url: str):
     return None, None
 
 def _build_canonical(link: str) -> dict:
-    """Produce canonical + short variants from a cleaned Shopee link."""
+    """Produce canonical + short variants from a cleaned Shopee link.
+
+    If the input is a known short link (e.g. s.shopee.co.id/...), expand it first by following redirects.
+    """
+    # Try to expand short link first (no-op for normal links)
+    try:
+        expanded = _expand_short_link(link)
+        if expanded and expanded != link:
+            link = expanded
+    except Exception:
+        pass
+
     cleaned = _normalize_shopee_link(link)
     shopid, itemid = _extract_ids(cleaned)
     # slug part before '-i.shopid.itemid'
@@ -174,9 +221,13 @@ def _build_canonical(link: str) -> dict:
             slug = None
     if shopid and itemid:
         canonical_slug = slug or ''
-        canonical = f"https://shopee.co.id/{canonical_slug}-i.{shopid}.{itemid}" if canonical_slug else f"https://shopee.co.id/-i.{shopid}.{itemid}"
-        # product path variant (often also resolves)
+        # Prefer human-friendly /product/{shopid}/{itemid} when no slug is available
         product_variant = f"https://shopee.co.id/product/{shopid}/{itemid}"
+        if canonical_slug:
+            canonical = f"https://shopee.co.id/{canonical_slug}-i.{shopid}.{itemid}"
+        else:
+            # Use product_variant rather than '-i' path to improve scraper reliability
+            canonical = product_variant
         return {
             'cleaned': cleaned,
             'shopid': shopid,
@@ -442,16 +493,45 @@ def _notify_and_wait_laravel(job: dict, product_id: str, force: bool = False, ma
         except Exception as e:
             _write_general_log(f'Error loading tag statistics: {e}')
     
-    # Load tags CSV if available
-    tags_csv_file = os.path.join(BASE_DIR, 'output', 'comment', product_id, 'indobert', 'review_tags.csv')
-    if os.path.exists(tags_csv_file):
-        try:
-            import pandas as pd
-            tags_df = pd.read_csv(tags_csv_file, encoding='utf-8-sig')
-            tags_csv = tags_df.to_dict(orient='records')
-            _write_general_log(f'Loaded tags CSV for {product_id}: {len(tags_csv)} records')
-        except Exception as e:
-            _write_general_log(f'Error loading tags CSV: {e}')
+    # Load tags CSV if available - use _backend_dir to find correct backend path
+    tags_csv = []
+    backend_dir = _backend_dir(product_id)
+
+    def _attempt_load_tags():
+        local_tags = []
+        if not backend_dir:
+            return local_tags
+        candidate_files = [os.path.join(backend_dir, 'review_tags.csv'), os.path.join(backend_dir, 'review_tagged.csv')]
+        for tags_csv_file in candidate_files:
+            if os.path.exists(tags_csv_file):
+                try:
+                    import pandas as pd
+                    tags_df = pd.read_csv(tags_csv_file, encoding='utf-8-sig')
+                    local_tags = tags_df.to_dict(orient='records')
+                    # Convert pipe-separated tags to arrays
+                    for row in local_tags:
+                        if 'tags' in row and isinstance(row['tags'], str):
+                            row['tags'] = [t.strip() for t in row['tags'].split('|') if t.strip()]
+                    _write_general_log(f'Loaded tags CSV for {product_id} from {os.path.basename(tags_csv_file)}: {len(local_tags)} records')
+                except Exception as e:
+                    _write_general_log(f'Error loading tags CSV: {e}')
+                break
+        return local_tags
+
+    # initial attempt
+    tags_csv = _attempt_load_tags()
+
+    # If we have tag statistics but no CSV yet, wait up to 10 seconds for producer to write the CSV
+    if (not tags_csv) and tag_stats:
+        _write_general_log(f'No tags CSV found but tag_statistics present for {product_id}; waiting up to 10s for CSV')
+        for wait_i in range(10):
+            time.sleep(1)
+            tags_csv = _attempt_load_tags()
+            if tags_csv:
+                _write_general_log(f'Found tags CSV for {product_id} after {wait_i+1}s')
+                break
+        if not tags_csv:
+            _write_general_log(f'No tags CSV produced after waiting for {product_id}')
     
     payload = json.dumps({
         'product_id': product_id,
@@ -746,6 +826,26 @@ def result_all(product_id):
         if isinstance(obj, dict):
             return {k: _walk(_sanitize(v)) for k, v in obj.items()}
         return _sanitize(obj)
+    # Load tags data if available (support both 'review_tags.csv' and legacy 'review_tagged.csv')
+    tags_csv_data = _read(os.path.join(backend_dir or '', 'review_tags.csv'))
+    if not tags_csv_data:
+        tags_csv_data = _read(os.path.join(backend_dir or '', 'review_tagged.csv'))
+    tag_stats_file = os.path.join(review_dir, 'tag_statistics.json')
+    tag_statistics = _read(tag_stats_file) if os.path.exists(tag_stats_file) else None
+
+    # Default to empty structures (avoid sending null to Laravel)
+    if tags_csv_data is None:
+        tags_csv_data = []
+    if tag_statistics is None:
+        tag_statistics = {}
+
+    # Convert pipe-separated tags to arrays
+    if isinstance(tags_csv_data, list):
+        for row in tags_csv_data:
+            if isinstance(row, dict) and 'tags' in row and isinstance(row['tags'], str):
+                # Split pipe-separated tags into array (e.g., "tag1|tag2" -> ["tag1", "tag2"])
+                row['tags'] = [t.strip() for t in row['tags'].split('|') if t.strip()]
+    
     payload = {
         'product_id': product_id,
         'review_raw': _walk(review_raw),
@@ -753,10 +853,12 @@ def result_all(product_id):
         'fake_detection': _walk(fake_detection),
         'trust': _walk(trust),
         'summary': _walk(summary),
-        'product_trust': _walk(product_trust)
+        'product_trust': _walk(product_trust),
+        'tags_csv': _walk(tags_csv_data),
+        'tag_statistics': _walk(tag_statistics)
     }
     try:
-        _write_general_log(f"SANITIZE JSON {product_id} done")
+        _write_general_log(f"SANITIZE JSON {product_id} done tags_csv={len(tags_csv_data) if isinstance(tags_csv_data, list) else 0} tag_stats={bool(tag_statistics)}")
     except Exception:
         pass
     return jsonify(payload)

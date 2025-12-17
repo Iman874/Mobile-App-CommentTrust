@@ -1,0 +1,90 @@
+[2025-12-17T07:56:11.173087] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T07:56:11.174437] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T07:56:11.174556] SCRAPER initializing Edge driver for Linux
+[2025-12-17T07:56:11.987396] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T07:56:30.521606] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T07:56:31.638849] SCRAPER product tab detected; proceeding
+[2025-12-17T07:56:31.639059] SCRAPER fetch product data
+[2025-12-17T07:56:32.801816] SCRAPER fetch comments
+[2025-12-17T07:57:02.839817] SCRAPER ratings fetch page 1 offset 0 failed (attempt 1/2): Message: script timeout
+  (Session info: MicrosoftEdge=143.0.3650.66)
+Stacktrace:
+#0 0x62b2bb9b935e <unknown>
+#1 0x62b2bb401521 <unknown>
+#2 0x62b2bb4994e1 <unknown>
+#3 0x62b2bb49886c <unknown>
+#4 0x62b2bb4457a7 <unknown>
+#5 0x62b2bb446381 <unknown>
+#6 0x62b2bb9880db <unknown>
+#7 0x62b2bb98b208 <unknown>
+#8 0x62b2bb98ac7d <unknown>
+#9 0x62b2bb9752f9 <unknown>
+#10 0x62b2bb98ba38 <unknown>
+#11 0x62b2bb95eb5e <unknown>
+#12 0x62b2bb9a7648 <unknown>
+#13 0x62b2bb9a786e <unknown>
+#14 0x62b2bb9b8869 <unknown>
+#15 0x7a331fa9caa4 <unknown>
+#16 0x7a331fb29c6c <unknown>
+
+[2025-12-17T07:57:04.840764] SCRAPER skip page 1 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:57:45.058856] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T07:57:45.058926] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T07:57:45.059064] SCRAPER initializing Edge driver for Linux
+[2025-12-17T07:57:45.474594] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T07:57:57.526222] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T07:57:58.618837] SCRAPER product tab detected; proceeding
+[2025-12-17T07:57:58.619029] SCRAPER fetch product data
+[2025-12-17T07:57:59.437565] SCRAPER fetch comments
+[2025-12-17T07:57:59.697627] SCRAPER ratings fetch page 1 offset 0 failed (attempt 1/2): empty ratings
+[2025-12-17T07:58:01.698674] SCRAPER skip page 1 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:58:26.266146] SCRAPER ratings fetch page 2 offset 20 failed (attempt 1/2): empty ratings
+[2025-12-17T07:58:28.281673] SCRAPER skip page 2 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:58:28.554625] SCRAPER ratings fetch page 3 offset 40 failed (attempt 1/2): empty ratings
+[2025-12-17T07:58:30.555253] SCRAPER skip page 3 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:58:30.833911] SCRAPER ratings fetch page 4 offset 60 failed (attempt 1/2): empty ratings
+[2025-12-17T07:58:32.849885] SCRAPER skip page 4 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:58:33.061535] SCRAPER ratings fetch page 5 offset 80 failed (attempt 1/2): empty ratings
+[2025-12-17T07:58:35.063702] SCRAPER skip page 5 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:58:35.306070] SCRAPER ratings fetch page 6 offset 100 failed (attempt 1/2): empty ratings
+[2025-12-17T07:58:37.309999] SCRAPER skip page 6 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:58:37.562272] SCRAPER ratings fetch page 7 offset 120 failed (attempt 1/2): empty ratings
+[2025-12-17T07:58:39.562946] SCRAPER skip page 7 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:58:42.419026] SCRAPER ratings fetch page 8 offset 140 failed (attempt 1/2): empty ratings
+[2025-12-17T07:58:44.419543] SCRAPER skip page 8 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:58:45.066741] SCRAPER ratings fetch page 9 offset 160 failed (attempt 1/2): empty ratings
+[2025-12-17T07:58:47.092158] SCRAPER skip page 9 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:58:52.331915] SCRAPER ratings fetch page 10 offset 180 failed (attempt 1/2): empty ratings
+[2025-12-17T07:58:54.333753] SCRAPER skip page 10 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T07:58:54.334069] SCRAPER reached last page without data; stopping at page 10
+[2025-12-17T07:58:54.334685] SCRAPER finished; total 0 reviews saved
+[2025-12-17T07:59:54.078496] SCRAPER using user profile: user-data=Microsoft/Edge/User Data profile=None
+[2025-12-17T07:59:54.078603] SCRAPER detected Linux OS; using direct driver initialization
+[2025-12-17T07:59:54.078642] SCRAPER initializing Edge driver for Linux
+[2025-12-17T07:59:54.336261] SCRAPER Edge driver initialized successfully on Linux
+[2025-12-17T08:00:07.764364] SCRAPER injected 26 cookies from cookies.json into session
+[2025-12-17T08:00:08.810119] SCRAPER product tab detected; proceeding
+[2025-12-17T08:00:08.810488] SCRAPER fetch product data
+[2025-12-17T08:00:09.869768] SCRAPER fetch comments
+[2025-12-17T08:00:10.103056] SCRAPER ratings fetch page 1 offset 0 failed (attempt 1/2): empty ratings
+[2025-12-17T08:00:12.107042] SCRAPER skip page 1 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:00:12.337732] SCRAPER ratings fetch page 2 offset 20 failed (attempt 1/2): empty ratings
+[2025-12-17T08:00:14.343222] SCRAPER skip page 2 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:00:14.576122] SCRAPER ratings fetch page 3 offset 40 failed (attempt 1/2): empty ratings
+[2025-12-17T08:00:16.586823] SCRAPER skip page 3 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:00:16.851031] SCRAPER ratings fetch page 4 offset 60 failed (attempt 1/2): empty ratings
+[2025-12-17T08:00:18.851580] SCRAPER skip page 4 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:00:19.106574] SCRAPER ratings fetch page 5 offset 80 failed (attempt 1/2): empty ratings
+[2025-12-17T08:00:21.109165] SCRAPER skip page 5 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:00:21.271209] SCRAPER ratings fetch page 6 offset 100 failed (attempt 1/2): empty ratings
+[2025-12-17T08:00:23.275890] SCRAPER skip page 6 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:00:23.504975] SCRAPER ratings fetch page 7 offset 120 failed (attempt 1/2): empty ratings
+[2025-12-17T08:00:25.510496] SCRAPER skip page 7 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:00:25.760972] SCRAPER ratings fetch page 8 offset 140 failed (attempt 1/2): empty ratings
+[2025-12-17T08:00:27.761641] SCRAPER skip page 8 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:00:28.051626] SCRAPER ratings fetch page 9 offset 160 failed (attempt 1/2): empty ratings
+[2025-12-17T08:00:30.052789] SCRAPER skip page 9 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:00:30.378046] SCRAPER ratings fetch page 10 offset 180 failed (attempt 1/2): empty ratings
+[2025-12-17T08:00:32.390549] SCRAPER skip page 10 after 2 failures; lanjut halaman berikutnya
+[2025-12-17T08:00:32.390886] SCRAPER reached last page without data; stopping at page 10
+[2025-12-17T08:00:32.391345] SCRAPER finished; total 0 reviews saved

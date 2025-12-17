@@ -1,0 +1,59 @@
+[2025-12-17T08:02:25.744936] START scrape-only job (compat) for link: https://shopee.co.id/opaanlp/5090340/2078083475
+[2025-12-17T08:03:00.009787] START scrape-only job (compat) for link: https://shopee.co.id/opaanlp/5090340/2078083475
+[2025-12-17T08:03:44.610408] SCRAPER finished (compat)
+[2025-12-17T08:03:48.788846] START analyze-only job for product 5090340-2078083475
+[2025-12-17T08:03:48.789740] ANALYSIS 5% :: init: resolve input
+[2025-12-17T08:03:48.921696] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T08:03:48.971338] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T08:03:48.997353] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T08:03:49.047341] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T08:03:49.199086] ANALYSIS 90% :: [05] trust score
+[2025-12-17T08:03:49.259168] ANALYSIS 98% :: [06] summarize
+[2025-12-17T08:03:49.276746] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T08:03:49.304200] ANALYSIS 100% :: done
+[2025-12-17T08:03:49.304657] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/5090340-2078083475/indobert
+[2025-12-17T08:03:49.304809] Merging analysis results to reviews...
+[2025-12-17T08:03:49.897581] Analysis results merged successfully
+[2025-12-17T08:03:51.128902] Laravel ingest accepted (HTTP 200)
+[2025-12-17T08:03:51.129245] Laravel ingest immediate inserted=471
+[2025-12-17T08:03:51.993072] Laravel poll: count_reviews=471 status=waiting-db
+[2025-12-17T08:03:51.995744] Laravel sync succeeded
+[2025-12-17T08:15:12.561077] START scrape-only job (compat) for link: https://shopee.co.id/opaanlp/5090340/2078083475
+[2025-12-17T08:15:58.820700] SCRAPER finished (compat)
+[2025-12-17T08:16:01.308343] START analyze-only job for product 5090340-2078083475
+[2025-12-17T08:16:01.315406] ANALYSIS 5% :: init: resolve input
+[2025-12-17T08:16:01.375179] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T08:16:01.392158] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T08:16:01.417324] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T08:16:01.437874] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T08:16:01.515036] ANALYSIS 90% :: [05] trust score
+[2025-12-17T08:16:01.565332] ANALYSIS 98% :: [06] summarize
+[2025-12-17T08:16:01.583831] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T08:16:01.608109] ANALYSIS 100% :: done
+[2025-12-17T08:16:01.609064] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/5090340-2078083475/indobert
+[2025-12-17T08:16:01.609605] Merging analysis results to reviews...
+[2025-12-17T08:16:02.034026] Analysis results merged successfully
+[2025-12-17T08:16:03.132806] Laravel ingest accepted (HTTP 200)
+[2025-12-17T08:16:03.133489] Laravel ingest immediate inserted=471
+[2025-12-17T08:16:03.555943] Laravel poll: count_reviews=471 status=waiting-db
+[2025-12-17T08:16:03.556432] Laravel sync succeeded
+[2025-12-17T08:25:44.359000] START scrape-only job (compat) for link: https://shopee.co.id/opaanlp/5090340/2078083475
+[2025-12-17T08:27:43.739156] START scrape-only job (compat) for link: https://shopee.co.id/opaanlp/5090340/2078083475
+[2025-12-17T08:28:42.712597] SCRAPER finished (compat)
+[2025-12-17T08:28:45.779500] START analyze-only job for product 5090340-2078083475
+[2025-12-17T08:28:45.785510] ANALYSIS 5% :: init: resolve input
+[2025-12-17T08:28:45.860729] ANALYSIS 10% :: [01] preprocess
+[2025-12-17T08:28:45.883387] ANALYSIS 20% :: [01b] tokenize
+[2025-12-17T08:28:45.913263] ANALYSIS 40% :: [03] sentiment
+[2025-12-17T08:28:45.938939] ANALYSIS 70% :: [04] fake detect
+[2025-12-17T08:28:46.019187] ANALYSIS 90% :: [05] trust score
+[2025-12-17T08:28:46.058192] ANALYSIS 98% :: [06] summarize
+[2025-12-17T08:28:46.073699] ANALYSIS 99% :: [07] tagging comments
+[2025-12-17T08:28:46.091250] ANALYSIS 100% :: done
+[2025-12-17T08:28:46.091672] OUTPUT pipeline finished; outputs at /home/iman874/Documents/GitHub/Mobile-App-CommentTrust/backend/app-backend-flask/output/comment/5090340-2078083475/indobert
+[2025-12-17T08:28:46.091732] Merging analysis results to reviews...
+[2025-12-17T08:28:46.501662] Analysis results merged successfully
+[2025-12-17T08:28:47.578499] Laravel ingest accepted (HTTP 200)
+[2025-12-17T08:28:47.578596] Laravel ingest immediate inserted=471
+[2025-12-17T08:28:48.537815] Laravel poll: count_reviews=471 status=waiting-db
+[2025-12-17T08:28:48.538111] Laravel sync succeeded

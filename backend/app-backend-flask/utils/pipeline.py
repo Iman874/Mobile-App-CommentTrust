@@ -418,8 +418,9 @@ def step_tags_csv(trust_csv: str, review_json: str, out_dir: str) -> str:
     # Load trust/sentiment/fake data from CSV
     df_analysis = pd.read_csv(trust_csv, encoding='utf-8-sig')
     
-    # Load reviews with tags from JSON
+    # Load reviews with tags from JSON, or fall back to review CSV if JSON missing
     reviews = []
+    review_dir = os.path.dirname(review_json)
     if os.path.exists(review_json):
         try:
             with open(review_json, 'r', encoding='utf-8') as f:
@@ -427,11 +428,45 @@ def step_tags_csv(trust_csv: str, review_json: str, out_dir: str) -> str:
                 reviews = data if isinstance(data, list) else []
         except Exception:
             pass
-    
+
+    # Fallback: if no JSON reviews, try to load review CSV (e.g., review-<product>.csv)
+    if not reviews:
+        try:
+            import glob
+            csv_files = glob.glob(os.path.join(review_dir, 'review-*.csv'))
+            if csv_files:
+                df_rev = pd.read_csv(csv_files[0], encoding='utf-8-sig')
+                reviews = df_rev.to_dict(orient='records')
+        except Exception:
+            reviews = []
+
     # If reviews don't have tags yet, apply tagging
     if reviews and not (reviews and 'tags' in reviews[0]):
         reviews = tag_comments(reviews, source_field='comment')
-    
+        # If we loaded from CSV, persist tagged reviews back to review.json for consistency
+        try:
+            os.makedirs(review_dir, exist_ok=True)
+            with open(review_json, 'w', encoding='utf-8') as f:
+                json.dump(reviews, f, ensure_ascii=False, indent=2)
+        except Exception:
+            pass
+        # Write tag statistics for downstream consumers
+        try:
+            from utils.comment_tagger import get_tag_statistics
+        except Exception:
+            try:
+                from comment_tagger import get_tag_statistics
+            except Exception:
+                get_tag_statistics = None
+        try:
+            if get_tag_statistics:
+                tag_stats = get_tag_statistics(reviews)
+                stats_file = os.path.join(review_dir, 'tag_statistics.json')
+                with open(stats_file, 'w', encoding='utf-8') as f:
+                    json.dump(tag_stats, f, ensure_ascii=False, indent=2)
+        except Exception:
+            pass
+
     # Build output dataframe with tags
     rows = []
     for idx, review in enumerate(reviews):
@@ -493,32 +528,23 @@ def run_pipeline(source_dir: str, product_id: str, backend: str = "auto", progre
     if progress: progress(98, "[06] summarize")
     step_summarize(trust_csv, out_dir)
     
-    # Step 7: Apply tagging to reviews in review.json and create tags CSV
+    # Step 7: Apply tagging to reviews and create tags CSV
     if progress: progress(99, "[07] tagging comments")
     try:
         from utils.comment_tagger import tag_comments, get_tag_statistics
         review_file = os.path.join(review_dir, 'review.json')
-        if os.path.exists(review_file):
-            with open(review_file, 'r', encoding='utf-8') as f:
-                reviews = json.load(f)
-                if not isinstance(reviews, list):
-                    reviews = []
-            
-            # Apply tagging
-            tagged_reviews = tag_comments(reviews, source_field='comment')
-            
-            # Save tagged reviews back
-            with open(review_file, 'w', encoding='utf-8') as f:
-                json.dump(tagged_reviews, f, ensure_ascii=False, indent=2)
-            
-            # Save tag statistics
-            tag_stats = get_tag_statistics(tagged_reviews)
-            stats_file = os.path.join(review_dir, 'tag_statistics.json')
-            with open(stats_file, 'w', encoding='utf-8') as f:
-                json.dump(tag_stats, f, ensure_ascii=False, indent=2)
-            
-            # Create tags CSV with all tag data
-            tags_csv = step_tags_csv(trust_csv, review_file, out_dir)
+        # Always invoke step_tags_csv which will handle JSON or CSV fallbacks and write statistics
+        tags_csv = step_tags_csv(trust_csv, review_file, out_dir)
+
+        # Ensure tag_statistics.json exists (some runs create it inside step_tags_csv)
+        stats_file = os.path.join(review_dir, 'tag_statistics.json')
+        if os.path.exists(stats_file):
+            try:
+                tag_stats = json.load(open(stats_file, 'r', encoding='utf-8'))
+            except Exception:
+                tag_stats = {}
+        else:
+            tag_stats = {}
     except Exception as e:
         # Tagging is optional, don't fail pipeline if it errors
         pass
